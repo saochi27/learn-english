@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Học tiếng Anh — IELTS</title>
+<link rel="stylesheet" href="style.css">
+<!-- cài lên màn hình chính điện thoại, chạy toàn màn hình như app thật -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="theme-color" content="#0058a9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Tiếng Anh">
+</head>
+<body>
+
+<!-- header + tab dính chung một khối: chiều cao header đổi theo bề rộng màn
+     hình, nên không thể đặt top cố định cho nav -->
+<div class="dinh-tren">
+<header>
+  <div class="thuong-hieu">
+    <b>Học tiếng Anh</b><span class="nho" id="tien-do-tong">IELTS · 50 unit</span>
+  </div>
+  <button id="nut-quay-lai" class="phu an" onclick="veMenu()">← Danh sách</button>
+  <select id="chon-unit" title="Chọn unit"></select>
+  <div class="cong-tac">
+    <label><input type="checkbox" id="hien-pa" checked> Phiên âm</label>
+    <label><input type="checkbox" id="hien-nghia" checked> Nghĩa</label>
+    <label><input type="checkbox" id="tu-doc"> Tự đọc</label>
+  </div>
+  <button id="nut-cai-dat" class="phu" title="Cài đặt">Cài đặt</button>
+</header>
+
+<nav id="tab">
+  <button data-tab="bai-hoc" class="chon">Bài học</button>
+  <button data-tab="bai-tap">Bài tập</button>
+  <button data-tab="mau-cau">Mẫu câu</button>
+  <button data-tab="truyen">Truyện</button>
+  <button data-tab="hoi-thoai">Hội thoại</button>
+  <button data-tab="de-thi">Đề thi</button>
+  <button data-tab="on-tap">Ôn tập</button>
+  <button data-tab="so-loi">Sổ lỗi</button>
+</nav>
+</div>
+
+<main>
+  <!-- màn danh sách unit, dùng chung cho mọi tab -->
+  <section id="man-menu" class="trang hien"></section>
+
+  <!-- màn chi tiết của từng tab -->
+  <section id="bai-hoc" class="trang chi-tiet"></section>
+  <section id="bai-tap" class="trang chi-tiet"></section>
+  <section id="mau-cau" class="trang chi-tiet"></section>
+  <section id="truyen" class="trang chi-tiet"></section>
+  <section id="hoi-thoai" class="trang chi-tiet"></section>
+  <section id="de-thi" class="trang chi-tiet"></section>
+  <section id="on-tap" class="trang"></section>
+  <section id="so-loi" class="trang"></section>
+</main>
+
+<!-- cài đặt hiển thị cho trình đọc (Truyện / Hội thoại) -->
+<div id="cd-doc" class="tam-doc an">
+  <div class="hop">
+    <div class="keo"></div>
+    <h3>Hiển thị</h3>
+    <label class="radio"><input type="radio" name="che-do" value="en" checked> Chỉ tiếng Anh</label>
+    <label class="radio"><input type="radio" name="che-do" value="pa"> Chỉ phiên âm</label>
+    <label class="radio"><input type="radio" name="che-do" value="ca-hai"> Tiếng Anh và phiên âm</label>
+    <hr>
+    <label>Cỡ chữ
+      <input type="range" id="co-chu" min="15" max="30" step="1" value="18">
+    </label>
+    <label><input type="checkbox" id="hien-dich" checked> Hiện bản dịch</label>
+    <label><input type="checkbox" id="danh-dau-level" checked> Đánh dấu từ theo cấp độ</label>
+    <label><input type="checkbox" id="doc-thoi" checked> Hiện đọc thô (kiểu Việt)</label>
+    <button class="chinh" onclick="dongCaiDatDoc()">Xong</button>
+  </div>
+</div>
+
+<!-- bảng tra từ, hiện khi chạm vào 1 từ -->
+<div id="tra-tu" class="the-tra an">
+  <button class="dong" onclick="dongTraTu()">×</button>
+  <div id="tra-tu-noi-dung"></div>
+</div>
+
+<!-- cài đặt -->
+<div id="cai-dat" class="lop-phu an">
+  <div class="hop">
+    <h3>Cài đặt</h3>
+    <!-- Hồ sơ: nhiều người dùng chung một máy mà tiến độ không lẫn vào nhau -->
+    <b>Người học</b>
+    <label>Hồ sơ đang dùng
+      <select id="cd-ho-so" onchange="doiHoSo(this.value)"></select>
+    </label>
+    <div class="hang" style="gap:8px; margin:-2px 0 6px">
+      <button class="phu" onclick="themHoSo()">+ Thêm người</button>
+      <button class="phu" onclick="doiTenHoSo()">Đổi tên</button>
+      <button class="phu" onclick="xoaHoSo()">Xoá</button>
+    </div>
+    <div class="mo" style="margin-bottom:8px">Mỗi hồ sơ có tiến độ, sổ lỗi và
+      lịch ôn tập riêng.</div>
+    <div class="hang" style="gap:8px; margin:2px 0 4px; flex-wrap:wrap">
+      <button class="phu" onclick="batDongBo()">Đăng nhập đồng bộ</button>
+      <button class="chinh" onclick="dongBoNgay()">Đồng bộ ngay</button>
+      <button class="phu" onclick="tatDongBo()">Tắt</button>
+      <button class="phu" onclick="xoaDuLieuTrenMang()">Xoá dữ liệu trên mạng</button>
+    </div>
+    <div class="mo" style="margin-bottom:4px">Gõ cùng tên và mật khẩu ở thiết bị
+      khác là hai máy dùng chung tiến độ. Tên và mật khẩu KHÔNG gửi đi đâu — máy tự
+      băm thành khoá rồi mới gọi lên mạng. Dấu ⟳ là hồ sơ đã bật đồng bộ.</div>
+    <div class="mo" id="db-trang-thai" style="margin-bottom:10px">Chưa bật cho hồ sơ này.</div>
+    <hr>
+    <label>Giọng đọc
+      <select id="cd-giong"></select>
+    </label>
+    <label>Tốc độ đọc <span id="cd-toc-do-hien">0.9</span>
+      <input type="range" id="cd-toc-do" min="0.5" max="1.2" step="0.05" value="0.9">
+    </label>
+    <label id="hang-audio-san" style="display:none">
+      <span>Dùng audio chất lượng cao<br><span class="mo" id="mo-audio"></span></span>
+      <input type="checkbox" id="cd-audio-san">
+    </label>
+    <hr>
+    <b>Chế độ Mẫu câu</b>
+    <label>Số lần lặp mỗi câu <input type="number" id="cd-lap" min="1" max="5" value="2"></label>
+    <label>Giây chờ giữa các câu <input type="number" id="cd-cho" min="1" max="10" value="3"></label>
+    <label><input type="checkbox" id="cd-pa" checked> Hiện phiên âm khi phát</label>
+    <label><input type="checkbox" id="cd-nghia" checked> Hiện nghĩa khi phát</label>
+    <hr>
+    <label>Phút học hôm nay: <b id="cd-phut">0</b></label>
+    <button onclick="dongCaiDat()">Xong</button>
+  </div>
+</div>
+
+<script src="shim_tinh.js"></script>
+<script src="app.js"></script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});</script>
+<script src="dong_bo.js"></script>
+</body>
+</html>

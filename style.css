@@ -1,0 +1,503 @@
+/* Giao diện học tiếng Anh — ưu tiên đọc lâu không mỏi mắt.
+   Chữ tiếng Anh cỡ lớn, phiên âm màu nhạt hơn, nghĩa tiếng Việt tách hẳn màu. */
+
+:root{
+  --nen:#f6f7f9; --the:#ffffff; --vien:#e2e6ec;
+  --chu:#1a1d21; --chu-nhat:#6b7280;
+  --chinh:#0058a9; --chinh-nhat:#e8f1fa;
+  --dung:#1a7f5a; --sai:#c0392b; --vang:#b8860b;
+  --pa:#7a5cbf;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --nen:#14171c; --the:#1c2027; --vien:#2b313a;
+    --chu:#e8eaed; --chu-nhat:#9aa3ae;
+    --chinh:#5aa9f0; --chinh-nhat:#1b2836;
+    --dung:#4ec99a; --sai:#f07a6d; --vang:#e0b64a;
+    --pa:#b39ae8;
+  }
+}
+
+*{box-sizing:border-box}
+/* Chặn tràn ngang bằng CLIP, không dùng HIDDEN: overflow-x:hidden tạo một
+   scroll container mới và làm position:sticky của header/nav mất tác dụng. */
+html{overflow-x:clip}
+body{
+  margin:0; background:var(--nen); color:var(--chu);
+  font:15px/1.55 "Segoe UI",system-ui,sans-serif;
+  overflow-x:clip;
+  -webkit-text-size-adjust:100%; /* iOS không tự phóng chữ khi quay ngang */
+}
+button{font:inherit; cursor:pointer}
+
+/* ---------- thanh trên ---------- */
+header{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  padding:10px 16px; background:var(--the); border-bottom:1px solid var(--vien);
+  padding-top:calc(10px + env(safe-area-inset-top));  /* tai thỏ iPhone */
+}
+.thuong-hieu{display:flex; align-items:baseline; gap:8px}
+.thuong-hieu b{color:var(--chinh); font-size:17px}
+.nho{color:var(--chu-nhat); font-size:12px}
+header select{
+  padding:6px 10px; border:1px solid var(--vien); border-radius:7px;
+  background:var(--the); color:var(--chu); max-width:min(46vw,330px);
+}
+.cong-tac{display:flex; gap:12px; margin-left:auto; flex-wrap:wrap}
+.cong-tac label{display:flex; align-items:center; gap:5px; font-size:13px; color:var(--chu-nhat)}
+button.phu{
+  padding:6px 12px; border:1px solid var(--vien); border-radius:7px;
+  background:var(--the); color:var(--chu);
+}
+
+/* ---------- tab ----------
+   Không dùng top cố định: chiều cao header đổi theo bề rộng màn hình (trên
+   điện thoại các nút xuống 2 dòng), đặt top:53px thì thanh tab chồng lên
+   header khi cuộn. Dùng một wrapper sticky bọc cả hai là hết vấn đề. */
+nav{
+  display:flex; gap:4px; padding:8px 16px; background:var(--the);
+  border-bottom:1px solid var(--vien);
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  scroll-behavior:smooth; scroll-snap-type:x proximity;
+}
+nav::-webkit-scrollbar{display:none}
+nav button{scroll-snap-align:center}
+nav::-webkit-scrollbar{display:none}
+.dinh-tren{position:sticky; top:0; z-index:20; background:var(--the)}
+nav button{
+  padding:7px 14px; border:0; border-radius:7px; white-space:nowrap;
+  background:transparent; color:var(--chu-nhat);
+}
+nav button.chon{background:var(--chinh-nhat); color:var(--chinh); font-weight:600}
+
+main{max-width:1000px; margin:0 auto; padding:18px 16px 80px}
+.trang{display:none}
+.trang.hien{display:block}
+
+h2{font-size:19px; margin:22px 0 10px; color:var(--chinh)}
+h2:first-child{margin-top:0}
+h3{font-size:15px; margin:16px 0 8px}
+
+.the{
+  background:var(--the); border:1px solid var(--vien);
+  border-radius:10px; padding:14px 16px; margin-bottom:12px;
+}
+.hang{display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap}
+.mo{color:var(--chu-nhat); font-size:13px}
+
+/* ---------- từ và câu ---------- */
+.tu-anh{
+  font-size:17px; font-weight:600; letter-spacing:.2px;
+}
+.cau-anh{
+  font-size:17px; line-height:1.9; letter-spacing:.2px;
+}
+.pa{color:var(--pa); font-family:"Segoe UI",sans-serif; font-size:14px}
+.pa-noi{color:var(--pa); font-size:14px; opacity:.95}
+.tho{color:var(--vang); font-size:13.5px}
+.nghia{color:var(--chu-nhat); font-size:14px}
+
+/* mỗi từ trong câu chạm được để tra */
+.w{cursor:pointer; border-bottom:1px dotted transparent; padding:0 1px; border-radius:3px}
+.w:hover{background:var(--chinh-nhat); border-bottom-color:var(--chinh)}
+
+.loa{
+  border:0; background:transparent; color:var(--chinh);
+  font-size:16px; padding:2px 5px; border-radius:6px;
+}
+.loa:hover{background:var(--chinh-nhat)}
+
+/* ---------- bảng ---------- */
+table{border-collapse:collapse; width:100%; margin:8px 0; font-size:14px}
+th,td{border:1px solid var(--vien); padding:7px 9px; text-align:left; vertical-align:top}
+th{background:var(--chinh-nhat); color:var(--chinh); font-weight:600}
+.cuon{overflow-x:auto}
+
+/* ---------- hội thoại ---------- */
+.luot{padding:10px 0; border-bottom:1px dashed var(--vien)}
+.luot:last-child{border-bottom:0}
+.vai{
+  display:inline-block; min-width:26px; font-weight:700; color:var(--chinh);
+}
+
+/* ---------- bài tập & đề thi ---------- */
+.cau-hoi{padding:10px 0; border-bottom:1px dashed var(--vien)}
+.cau-hoi:last-child{border-bottom:0}
+.cau-hoi input[type=text]{
+  padding:6px 9px; border:1px solid var(--vien); border-radius:6px;
+  background:var(--nen); color:var(--chu); min-width:200px; font:inherit;
+}
+.dung{color:var(--dung); font-weight:600}
+.sai{color:var(--sai); font-weight:600}
+.dong-ho{
+  float:right;
+  background:var(--the); border:2px solid var(--chinh); border-radius:10px;
+  padding:8px 14px; font-size:19px; font-weight:700; color:var(--chinh);
+}
+.dong-ho.gap{border-color:var(--sai); color:var(--sai)}
+button.chinh{
+  padding:9px 18px; border:0; border-radius:8px;
+  background:var(--chinh); color:#fff; font-weight:600;
+}
+button.chinh:disabled{opacity:.5; cursor:default}
+
+/* ---------- mẫu câu (chế độ phát) ---------- */
+.san-khau{
+  background:var(--the); border:1px solid var(--vien); border-radius:12px;
+  padding:34px 22px; text-align:center; min-height:210px;
+  display:flex; flex-direction:column; justify-content:center; gap:12px;
+}
+.san-khau .cau-anh{font-size:26px; line-height:1.7}
+.san-khau .pa-noi{font-size:16px}
+.san-khau .nghia{font-size:16px}
+.dieu-khien{display:flex; gap:8px; justify-content:center; margin-top:14px; flex-wrap:wrap}
+.tien-trinh{
+  height:4px; background:var(--vien); border-radius:3px; margin-top:14px; overflow:hidden;
+}
+.tien-trinh div{height:100%; background:var(--chinh); width:0; transition:width .25s}
+
+/* ---------- tra từ ---------- */
+.the-tra{
+  position:fixed; right:18px; bottom:18px; z-index:40; width:min(340px,92vw);
+  background:var(--the); border:1px solid var(--vien); border-radius:12px;
+  padding:14px 16px; box-shadow:0 10px 34px rgba(0,0,0,.18);
+}
+.the-tra.an{display:none}
+.dong{
+  position:absolute; top:6px; right:8px; border:0; background:transparent;
+  color:var(--chu-nhat); font-size:20px; line-height:1;
+}
+
+/* ---------- lớp phủ cài đặt ---------- */
+.lop-phu{
+  position:fixed; inset:0; z-index:50; background:rgba(0,0,0,.45);
+  display:flex; align-items:center; justify-content:center;
+}
+.lop-phu.an{display:none}
+.lop-phu .hop{
+  background:var(--the); border-radius:14px; padding:20px 22px;
+  width:min(420px,92vw); display:flex; flex-direction:column; gap:11px;
+}
+.lop-phu label{display:flex; align-items:center; gap:9px; justify-content:space-between; font-size:14px}
+.lop-phu input[type=number]{width:70px; padding:5px 7px; border:1px solid var(--vien);
+  border-radius:6px; background:var(--nen); color:var(--chu)}
+.lop-phu select{flex:1; padding:6px; border:1px solid var(--vien); border-radius:6px;
+  background:var(--nen); color:var(--chu)}
+hr{border:0; border-top:1px solid var(--vien); margin:4px 0}
+
+/* ============ màn danh sách unit (menu) ============ */
+.an{display:none !important}
+
+.thanh-tong{
+  background:var(--the); border:1px solid var(--vien); border-radius:10px;
+  padding:12px 15px; margin-bottom:16px;
+}
+.thanh-tong .so-lieu{display:flex; gap:18px; flex-wrap:wrap; font-size:13.5px; margin-bottom:9px}
+.thanh-tong .so-lieu b{color:var(--chinh); font-size:16px}
+.vach{height:7px; background:var(--vien); border-radius:4px; overflow:hidden; display:flex}
+.vach i{display:block; height:100%}
+.vach .xong{background:var(--dung)}
+.vach .dang{background:var(--vang)}
+
+.nhom-level{margin:20px 0 10px; display:flex; align-items:center; gap:10px}
+.nhom-level h3{margin:0}
+.nhom-level .dem{color:var(--chu-nhat); font-size:12.5px}
+
+.luoi-unit{
+  display:grid; gap:9px;
+  grid-template-columns:repeat(auto-fill,minmax(255px,1fr));
+}
+.o-unit{
+  display:flex; gap:11px; align-items:center; text-align:left; cursor:pointer;
+  background:var(--the); border:1px solid var(--vien); border-radius:11px;
+  padding:12px 13px; color:inherit; width:100%;
+}
+.o-unit:hover{border-color:var(--chinh); background:var(--chinh-nhat)}
+.o-unit.xong{border-color:var(--dung)}
+.o-unit.dang{border-color:var(--vang)}
+.o-unit .huy-hieu{
+  flex:0 0 auto; width:40px; height:40px; border-radius:11px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:700; font-size:15px;
+  background:var(--vien); color:var(--chu-nhat);
+}
+.o-unit.xong .huy-hieu{background:var(--dung); color:#fff}
+.o-unit.dang  .huy-hieu{background:var(--vang); color:#fff}
+.o-unit .noi{flex:1; min-width:0; overflow:hidden}
+/* span trong flex phải là block mới co lại được — để inline thì text-overflow
+   không có tác dụng và tên unit dài sẽ đẩy cả trang tràn ngang trên điện thoại */
+.o-unit .ten{display:block; font-weight:600; font-size:14px; line-height:1.35;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.o-unit .phu-de{display:block; color:var(--chu-nhat); font-size:12px; margin-top:2px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.o-unit .dau{flex:0 0 auto; font-size:17px}
+
+/* thanh trạng thái ở đầu màn chi tiết */
+.dau-chi-tiet{
+  display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+  background:var(--the); border:1px solid var(--vien); border-radius:10px;
+  padding:11px 14px; margin-bottom:14px;
+}
+.dau-chi-tiet .tieu{font-weight:700; font-size:16px; margin-right:auto}
+.nut-xong{
+  padding:8px 15px; border-radius:8px; border:1px solid var(--dung);
+  background:transparent; color:var(--dung); font-weight:600;
+}
+.nut-xong.da-xong{background:var(--dung); color:#fff}
+
+/* ============ trình đọc kiểu HelloChinese ============ */
+
+/* thanh công cụ nổi trên đầu bài đọc */
+.thanh-doc{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  background:var(--the); border:1px solid var(--vien); border-radius:10px;
+  padding:8px 12px; margin-bottom:12px;
+}
+.thanh-doc .ten{font-weight:600; margin-right:auto}
+.nut-tron{
+  width:36px; height:36px; border-radius:50%; border:0;
+  background:var(--chinh); color:#fff; font-size:15px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.nut-tron.phu2{background:var(--chinh-nhat); color:var(--chinh)}
+
+/* mỗi câu là một khối riêng, có loa bên trái — bấm câu nào nghe câu đó */
+.cau-doc{
+  display:flex; gap:10px; align-items:flex-start;
+  padding:12px 10px; border-radius:9px; margin-bottom:2px;
+  border-left:3px solid transparent;
+}
+.cau-doc:hover{background:var(--chinh-nhat)}
+.cau-doc.dang-doc{background:var(--chinh-nhat); border-left-color:var(--chinh)}
+.cau-doc .loa{flex:0 0 auto; font-size:15px; margin-top:2px}
+.cau-doc .than{flex:1; min-width:0}
+.cau-doc .dich{color:var(--chu-nhat); font-size:.86em; margin-top:5px}
+.cau-doc .pa-noi,.cau-doc .tho{font-size:.8em; margin-top:3px}
+.danh-dau-cau{
+  border:0; background:transparent; color:var(--chu-nhat);
+  font-size:14px; padding:2px 4px; flex:0 0 auto;
+}
+.danh-dau-cau.bat{color:var(--vang)}
+
+/* từ được tô theo cấp độ đã học — nhìn là biết từ nào còn lạ */
+.w.lv0{border-bottom:2px solid #4ec99a}
+.w.lv1{border-bottom:2px solid #5aa9f0}
+.w.lv2{border-bottom:2px solid #b39ae8}
+.w.lv3{border-bottom:2px solid #e0b64a}
+.w.lv4{border-bottom:2px solid #f07a6d}
+.w.chua-hoc{border-bottom:2px dotted var(--chu-nhat)}
+.chu-thich-mau{display:flex; gap:12px; flex-wrap:wrap; font-size:12px; color:var(--chu-nhat); margin:6px 0 12px}
+.chu-thich-mau span{display:flex; align-items:center; gap:5px}
+.o-mau{width:16px; height:3px; border-radius:2px; display:inline-block}
+
+/* pill chủ đề + chip cấp độ (màn hình Hội thoại) */
+.dai-pill{display:flex; gap:8px; flex-wrap:wrap; margin:10px 0 16px}
+.pill{
+  padding:9px 16px; border-radius:999px; border:1px solid var(--vien);
+  background:var(--the); color:var(--chu); font-size:13.5px; font-weight:600;
+}
+.pill.chon{background:var(--chinh); color:#fff; border-color:var(--chinh)}
+.chip{
+  padding:6px 14px; border-radius:999px; border:1px solid var(--vien);
+  background:var(--the); color:var(--chu-nhat); font-size:13px;
+}
+.chip.chon{background:var(--chinh-nhat); color:var(--chinh); border-color:var(--chinh); font-weight:600}
+
+/* thẻ bài đọc trong danh sách */
+.the-bai{
+  display:flex; gap:12px; align-items:center; cursor:pointer;
+  background:var(--the); border:1px solid var(--vien); border-radius:10px;
+  padding:12px 14px; margin-bottom:8px;
+}
+.the-bai:hover{border-color:var(--chinh)}
+.the-bai .so{
+  flex:0 0 auto; width:38px; height:38px; border-radius:9px;
+  background:var(--chinh-nhat); color:var(--chinh);
+  display:flex; align-items:center; justify-content:center; font-weight:700;
+}
+.the-bai .noi-dung{flex:1; min-width:0}
+.the-bai .ten-bai{font-weight:600}
+.nhan{
+  display:inline-block; padding:2px 8px; border-radius:5px; font-size:11.5px;
+  background:var(--chinh-nhat); color:var(--chinh); font-weight:600;
+}
+
+/* ============ danh sách câu trong Mẫu câu ============ */
+.ds-cau{max-height:52vh; overflow-y:auto; border:1px solid var(--vien);
+  border-radius:10px; background:var(--the); margin-top:12px}
+.dong-cau{
+  display:flex; gap:10px; padding:11px 13px; cursor:pointer;
+  border-bottom:1px solid var(--vien); align-items:flex-start;
+}
+.dong-cau:last-child{border-bottom:0}
+.dong-cau:hover{background:var(--chinh-nhat)}
+.dong-cau.dang-doc{background:var(--chinh-nhat); border-left:3px solid var(--chinh)}
+.dong-cau .stt{flex:0 0 34px; color:var(--chu-nhat); font-size:13px; padding-top:2px}
+.dong-cau .noi{flex:1; min-width:0}
+.dong-cau .en{font-size:15px}
+.dong-cau .vi{color:var(--chu-nhat); font-size:13px; margin-top:2px}
+
+/* ============ tấm cài đặt trượt lên từ dưới ============ */
+.tam-doc{position:fixed; inset:0; z-index:55; background:rgba(0,0,0,.45);
+  display:flex; align-items:flex-end; justify-content:center}
+.tam-doc.an{display:none}
+.tam-doc .hop{
+  background:var(--the); border-radius:16px 16px 0 0; padding:14px 20px 24px;
+  width:min(520px,100%); display:flex; flex-direction:column; gap:11px;
+}
+.keo{width:38px; height:4px; border-radius:3px; background:var(--vien); margin:0 auto 6px}
+.radio{justify-content:flex-start !important; gap:10px !important}
+.tam-doc input[type=range]{flex:1; margin-left:12px}
+
+/* đề thi: đoạn văn đọc và các dòng mô tả phiếu */
+.doan-doc{
+  margin:10px 0; padding:12px 14px; border-left:3px solid var(--chinh);
+  background:var(--chinh-nhat); border-radius:0 8px 8px 0; line-height:1.75;
+}
+.dong-de{padding:2px 0; line-height:1.7}
+.cau-hoi select{
+  padding:6px 9px; border:1px solid var(--vien); border-radius:6px;
+  background:var(--nen); color:var(--chu); font:inherit; min-width:150px;
+}
+details summary{outline:none}
+textarea{
+  width:100%; margin-top:10px; padding:10px 12px; font:inherit; line-height:1.7;
+  border:1px solid var(--vien); border-radius:8px;
+  background:var(--nen); color:var(--chu); resize:vertical;
+}
+.mic.dang-ghi{background:var(--sai); color:#fff; animation:nhay 1s infinite}
+@keyframes nhay{50%{opacity:.55}}
+.kq-giong{margin-top:8px}
+.kq-giong table{font-size:12.5px}
+
+ul{margin:6px 0; padding-left:22px}
+li{margin:5px 0; line-height:1.6}
+
+.trong{color:var(--chu-nhat); padding:26px; text-align:center}
+
+/* ============================================================
+   ĐIỆN THOẠI — dưới 640px
+   Thu gọn khoảng trắng, phóng to vùng bấm được, và quan trọng nhất:
+   ô nhập phải >=16px, nếu nhỏ hơn thì Safari trên iPhone TỰ PHÓNG cả trang
+   mỗi lần bạn chạm vào ô — rất khó dùng.
+   ============================================================ */
+@media (max-width:640px){
+  body{font-size:15.5px}
+  main{padding:14px 12px 90px}
+  header{gap:8px; padding:8px 12px}
+  .thuong-hieu b{font-size:15px}
+  .nho{font-size:11px}
+  /* Phần đầu trang chiếm gần nửa màn hình điện thoại. Dồn select và nút Cài
+     đặt về cùng một dòng, giấu dòng tiến độ chữ nhỏ (đã có ở màn danh sách),
+     để Bài học / Bài tập bắt đầu ngay dưới thanh tab. */
+  /* Xếp phần đầu trang thành lưới 2 dòng cố định thay vì để flex tự xuống
+     dòng — thả tự do thì ô chọn unit giãn hết bề ngang, đẩy nút Cài đặt và
+     hàng công tắc xuống thành 4 dòng, ăn gần nửa màn hình. */
+  header{
+    display:grid; grid-template-columns:1fr auto auto;
+    align-items:center; column-gap:8px; row-gap:6px; padding:6px 12px;
+  }
+  /* Chỉ định cả dòng lẫn cột, không để lưới tự xếp: tự xếp thì nút Cài đặt
+     bị đẩy xuống dòng riêng vì ô chọn unit đã chiếm trọn dòng phía trên. */
+  .thuong-hieu{grid-area:1/1; min-width:0}
+  .thuong-hieu .nho{display:none}
+  header select{grid-area:1/1; max-width:none; width:100%; min-width:0}
+  #nut-quay-lai{grid-area:1/2}
+  #nut-cai-dat{grid-area:1/3}
+  .cong-tac{grid-area:2/1/auto/-1; margin-left:0; gap:16px; justify-content:space-between}
+  /* Ở màn chi tiết, tên unit đã hiện ngay dưới thanh tab -> nhường ô cho
+     select, khỏi tốn thêm một dòng chỉ để nhắc lại tên app. */
+  header:has(select:not(.an)) .thuong-hieu{display:none}
+  .cong-tac label{font-size:12px}
+
+  /* Chỉ thanh tab dính lại khi cuộn. Trước đây cả khối đầu trang dính, ăn
+     186px trên 812px suốt buổi học; giờ cuộn xuống là còn đúng thanh tab. */
+  .dinh-tren{position:static}
+  nav{position:sticky; top:0; z-index:20}
+
+  .dau-chi-tiet{padding:10px 12px; gap:8px}
+  main{padding-top:12px}
+  /* 8 tab dài 606px không lọt khung 375px. Cuộn ngang thì 4 tab luôn khuất,
+     bấm hụt sang tab bên cạnh -> xếp thành lưới 4x2, tab nào cũng thấy. */
+  nav{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    gap:4px; padding:6px 10px; overflow-x:visible;
+  }
+  nav button{
+    padding:9px 4px; font-size:13.5px; min-height:40px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+
+  h2{font-size:17px}
+  .the{padding:12px 13px; border-radius:9px}
+  .luoi-unit{grid-template-columns:1fr}      /* 1 cột, không chia đôi cho chật */
+  .thanh-tong .so-lieu{gap:10px; font-size:13px}
+
+  /* mọi ô nhập >=16px để iOS không tự zoom */
+  input[type=text], textarea, select, .cau-hoi input[type=text]{
+    font-size:16px !important; min-height:44px;
+  }
+  .cau-hoi input[type=text]{width:100%; min-width:0}
+  .cau-hoi select{width:100%}
+  button.chinh, button.phu{min-height:44px; padding:10px 16px}
+  .loa{font-size:19px; padding:6px 9px; min-width:38px}
+
+  /* trình đọc */
+  .san-khau{padding:22px 14px; min-height:auto}
+  .san-khau .cau-anh{font-size:21px}
+  .cau-doc{padding:11px 6px; gap:7px}
+  .doan-doc{padding:11px 12px}
+  .ds-cau{max-height:42vh}
+
+  /* đồng hồ đề thi: đừng nổi đè lên nội dung ở màn hình hẹp */
+  .dong-ho{float:none; display:inline-block; position:static; margin-bottom:10px}
+  .thanh-doc{position:static}
+
+  /* bảng dài cho cuộn ngang trong khung riêng */
+  .cuon{margin:0 -2px}
+  table{font-size:13px}
+  th,td{padding:6px 7px}
+
+  .the-tra{right:10px; left:10px; bottom:10px; width:auto}
+  .lop-phu .hop{max-height:86vh; overflow-y:auto}
+  .tam-doc .hop{padding-bottom:calc(24px + env(safe-area-inset-bottom))}
+}
+.canh-bao{
+  background:#fff6e5; border:1px solid #e6c98a; color:#7a5a12;
+  border-radius:8px; padding:10px 13px; font-size:13.5px; margin-bottom:12px;
+}
+@media (prefers-color-scheme: dark){
+  .canh-bao{background:#2e2716; border-color:#5c4b1f; color:#e0c98a}
+}
+
+/* ---- câu mẫu dưới mỗi cấu trúc (tab Bài học) ----
+   Lùi vào + vạch trái để mắt thấy ngay đây là ví dụ của cấu trúc bên trên,
+   không phải một mẫu câu ngang hàng. */
+.vi-du {
+  margin: 10px 0 0 0;
+  padding-left: 12px;
+  border-left: 3px solid var(--vien, #2b3a4d);
+}
+.nhan-vi-du {
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .55;
+  margin-bottom: 6px;
+}
+.mot-vi-du { margin-bottom: 10px; }
+.mot-vi-du:last-child { margin-bottom: 0; }
+.mot-vi-du .cau-anh { font-size: .95em; font-weight: 400; }
+
+
+/* ---- nút hoàn thành ở cuối màn chi tiết ---- */
+.cuoi-chi-tiet{
+  margin:26px 0 8px; padding-top:18px;
+  border-top:1px solid var(--vien);
+  display:flex; justify-content:center;
+}
+.cuoi-chi-tiet .nut-xong{min-width:220px; text-align:center}
+@media (max-width:640px){
+  .cuoi-chi-tiet .nut-xong{width:100%; min-height:48px}
+}

@@ -1,0 +1,19 @@
+{
+  "name": "Học tiếng Anh — IELTS",
+  "short_name": "Tiếng Anh",
+  "description": "Giáo trình 50 unit, luyện 4 kỹ năng, ôn tập lặp ngắt quãng",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6f7f9",
+  "theme_color": "#0058a9",
+  "lang": "vi",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
