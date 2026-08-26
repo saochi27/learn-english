@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Học tiếng Anh — IELTS</title>
+<link rel="stylesheet" href="style.css">
+<!-- cài lên màn hình chính điện thoại, chạy toàn màn hình như app thật -->
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<meta name="theme-color" content="#0058a9">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Tiếng Anh">
+</head>
+<body>
+
+<!-- Bố cục kiểu khoá học Google: thanh tiến trình nằm BÊN TRÁI và luôn hiện,
+     không phải màn danh sách riêng. Nhìn là thấy ngay còn nợ mục nào, và
+     chuyển mục không phải quay ra quay vào. -->
+<header class="dinh-tren">
+  <button id="nut-rail" class="phu chi-hep" onclick="batTatRail()"
+          aria-label="Mở tiến trình khoá học" aria-expanded="false">☰</button>
+  <div class="thuong-hieu">
+    <b>Học tiếng Anh</b><span class="nho" id="tien-do-tong">IELTS · 50 unit</span>
+  </div>
+</header>
+
+<div class="khung">
+  <!-- màn hình hẹp: thanh bên trượt ra đè lên nội dung, nền mờ để bấm ra ngoài -->
+  <div id="rail-nen" class="an" onclick="dongRail()"></div>
+
+  <aside id="rail" aria-label="Tiến trình khoá học">
+    <div class="rail-dinh">
+      <div class="rail-tieu">
+        <span>Tiến trình khoá học</span>
+        <button class="rail-nut" onclick="doiDayRail()" title="Đổi khoảng cách dòng">⇕</button>
+        <button class="rail-nut" onclick="batTatGonRail()" title="Thu gọn menu">⟨</button>
+      </div>
+      <div class="vong">
+        <div class="vach"><i class="xong" id="vach-xong"></i><i class="dang" id="vach-dang"></i></div>
+        <span class="phan-tram" id="rail-phan-tram">0%</span>
+      </div>
+    </div>
+    <nav id="rail-noi"></nav>
+  </aside>
+
+  <main>
+    <!-- màn tổng quan, hiện lúc mở app và khi bấm tên khoá học -->
+    <section id="man-menu" class="trang hien"></section>
+
+    <!-- màn Unit: danh mục cha, liệt kê 6 mục con kèm tick -->
+    <section id="man-unit" class="trang"></section>
+
+    <!-- màn chi tiết của từng mục -->
+    <section id="bai-hoc" class="trang chi-tiet"></section>
+    <section id="bai-tap" class="trang chi-tiet"></section>
+    <section id="mau-cau" class="trang chi-tiet"></section>
+    <section id="truyen" class="trang chi-tiet"></section>
+    <section id="hoi-thoai" class="trang chi-tiet"></section>
+    <section id="de-thi" class="trang chi-tiet"></section>
+    <section id="on-tap" class="trang"></section>
+    <section id="so-loi" class="trang"></section>
+  </main>
+</div>
+
+<!-- cài đặt hiển thị cho trình đọc (Truyện / Hội thoại) -->
+<div id="cd-doc" class="tam-doc an">
+  <div class="hop">
+    <div class="keo"></div>
+    <h3>Hiển thị</h3>
+    <label class="radio"><input type="radio" name="che-do" value="en" checked> Chỉ tiếng Anh</label>
+    <label class="radio"><input type="radio" name="che-do" value="pa"> Chỉ phiên âm</label>
+    <label class="radio"><input type="radio" name="che-do" value="ca-hai"> Tiếng Anh và phiên âm</label>
+    <hr>
+    <label>Cỡ chữ
+      <input type="range" id="co-chu" min="15" max="30" step="1" value="18">
+    </label>
+    <label><input type="checkbox" id="hien-dich" checked> Hiện bản dịch</label>
+    <label><input type="checkbox" id="danh-dau-level" checked> Đánh dấu từ theo cấp độ</label>
+    <label><input type="checkbox" id="doc-thoi" checked> Hiện đọc thô (kiểu Việt)</label>
+    <button class="chinh" onclick="dongCaiDatDoc()">Xong</button>
+  </div>
+</div>
+
+<!-- bảng tra từ, hiện khi chạm vào 1 từ -->
+<div id="tra-tu" class="the-tra an">
+  <button class="dong" onclick="dongTraTu()">×</button>
+  <div id="tra-tu-noi-dung"></div>
+</div>
+
+<!-- Cài đặt — chia 4 thẻ thay vì một dải cuộn dài.
+     Trước đây tất cả xếp dọc: trên laptop 13" và trên điện thoại thì phải cuộn
+     gần ba màn hình mới tới "Giây xem đáp án", mà nút Xong nằm tít dưới cùng.
+     Giờ đầu và chân hộp đứng yên, chỉ ruột từng thẻ cuộn. -->
+<div id="cai-dat" class="lop-phu an">
+  <div class="hop hop-the">
+    <div class="hop-dau">
+      <h3>Cài đặt</h3>
+      <button class="dong" onclick="dongCaiDat()" aria-label="Đóng">×</button>
+    </div>
+
+    <div class="hop-tab" role="tablist">
+      <button class="chon" data-cd="nguoi-hoc" role="tab">Người học</button>
+      <button data-cd="hien-thi" role="tab">Hiển thị</button>
+      <button data-cd="am-thanh" role="tab">Âm thanh</button>
+      <button data-cd="mau-cau" role="tab">Mẫu câu</button>
+      <button data-cd="on-tap" role="tab">Ôn tập</button>
+    </div>
+
+    <div class="hop-ruot">
+      <!-- Hồ sơ: nhiều người dùng chung một máy mà tiến độ không lẫn vào nhau -->
+      <section class="cd-trang hien" data-cd="nguoi-hoc">
+        <label>Hồ sơ đang dùng
+          <select id="cd-ho-so" onchange="doiHoSo(this.value)"></select>
+        </label>
+        <div class="hang" style="gap:8px; margin:-2px 0 6px">
+          <button class="phu" onclick="themHoSo()">+ Thêm người</button>
+          <button class="phu" onclick="doiTenHoSo()">Đổi tên</button>
+          <button class="phu" onclick="xoaHoSo()">Xoá</button>
+        </div>
+        <div class="mo" style="margin-bottom:8px">Mỗi hồ sơ có tiến độ, sổ lỗi và
+          lịch ôn tập riêng.</div>
+        <hr>
+        <b>Đồng bộ nhiều thiết bị</b>
+        <div class="hang" style="gap:8px; margin:2px 0 4px; flex-wrap:wrap">
+          <button class="phu" onclick="batDongBo()">Đăng nhập đồng bộ</button>
+          <button class="chinh" onclick="dongBoNgay()">Đồng bộ ngay</button>
+          <button class="phu" onclick="tatDongBo()">Tắt</button>
+          <button class="phu" onclick="xoaDuLieuTrenMang()">Xoá dữ liệu trên mạng</button>
+        </div>
+        <div class="mo" style="margin-bottom:4px">Gõ cùng tên và mật khẩu ở thiết bị
+          khác là hai máy dùng chung tiến độ. Tên và mật khẩu KHÔNG gửi đi đâu — máy tự
+          băm thành khoá rồi mới gọi lên mạng. Dấu ⟳ là hồ sơ đã bật đồng bộ.</div>
+        <div class="mo" id="db-trang-thai">Chưa bật cho hồ sơ này.</div>
+      </section>
+
+      <!-- Ba công tắc này trước nằm ở góc phải thanh trên. Đưa vào đây cho
+           thanh trên trống hẳn, và vì chúng cùng loại với các mục Cài đặt
+           khác chứ không phải thao tác dùng liên tục. -->
+      <section class="cd-trang" data-cd="hien-thi">
+        <label>Hiện phiên âm IPA <input type="checkbox" id="hien-pa" checked></label>
+        <label>Hiện nghĩa tiếng Việt <input type="checkbox" id="hien-nghia" checked></label>
+        <hr>
+        <b>Màu đánh dấu từ theo cấp độ</b>
+        <div class="mo">Trong Truyện và Hội thoại, mỗi từ được gạch chân theo
+          level mà nó xuất hiện lần đầu — nhìn là biết từ nào đã học, từ nào lạ.
+          Bật/tắt ở nút <b>Aa</b> trên thanh phát.</div>
+        <div id="o-chu-thich-mau"></div>
+        <hr>
+        <label>Chạm vào câu là tự đọc <input type="checkbox" id="tu-doc"></label>
+        <div class="mo">Bật thì chạm vào câu bất kỳ trong Bài học, Truyện hay
+          Hội thoại là máy đọc luôn, khỏi phải nhắm đúng nút loa nhỏ.</div>
+      </section>
+
+      <section class="cd-trang" data-cd="am-thanh">
+        <label>Giọng đọc
+          <select id="cd-giong"></select>
+        </label>
+        <label>Tốc độ đọc <span id="cd-toc-do-hien">0.9</span>
+          <input type="range" id="cd-toc-do" min="0.5" max="1.2" step="0.05" value="0.9">
+        </label>
+        <label id="hang-audio-san" style="display:none">
+          <span>Dùng audio chất lượng cao<br><span class="mo" id="mo-audio"></span></span>
+          <input type="checkbox" id="cd-audio-san">
+        </label>
+      </section>
+
+      <section class="cd-trang" data-cd="mau-cau">
+        <label>Số lần lặp mỗi câu <input type="number" id="cd-lap" min="1" max="5" value="2"></label>
+        <label>Giây chờ giữa các câu <input type="number" id="cd-cho" min="1" max="10" value="3"></label>
+        <label><input type="checkbox" id="cd-pa" checked> Hiện phiên âm khi phát</label>
+        <label><input type="checkbox" id="cd-nghia" checked> Hiện nghĩa khi phát</label>
+      </section>
+
+      <section class="cd-trang" data-cd="on-tap">
+        <label>Giây xem đáp án <input type="number" id="cd-giay-dap-an" min="0" max="15" value="2"></label>
+        <div class="mo">Đếm từ lúc máy ĐỌC XONG đáp án, không
+          phải từ lúc bấm Kiểm tra. Thẻ sai được cộng thêm 1,5 giây. Muốn đi ngay thì
+          bấm Enter hoặc nút "Tiếp →".</div>
+      </section>
+    </div>
+
+    <div class="hop-chan">
+      <span class="mo">Phút học hôm nay: <b id="cd-phut">0</b></span>
+      <button class="chinh" onclick="dongCaiDat()">Xong</button>
+    </div>
+  </div>
+</div>
+
+<script src="shim_tinh.js"></script>
+<script src="app.js"></script>
+<script>if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});</script>
+<script src="dong_bo.js"></script>
+</body>
+</html>
