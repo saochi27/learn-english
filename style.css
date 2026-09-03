@@ -512,6 +512,52 @@ button.chinh.to .nho-hon{
   border:1px solid currentColor; border-radius:20px; padding:1px 9px;
 }
 
+/* ---------- mini-story (Effortless English) ---------- */
+.khu-mini{margin-top:14px; padding-top:12px; border-top:2px dashed var(--vien)}
+.khu-mini .khoi{background:var(--nen)}
+
+.ds-cum{display:flex; flex-direction:column}
+.mot-cum{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap;
+  padding:7px 0; border-bottom:1px solid var(--vien)}
+.mot-cum:last-child{border-bottom:0}
+.mot-cum .cum{font-weight:600; font-size:15px}
+.mot-cum .nghia{color:var(--chu-nhat); font-size:13.5px}
+
+.ds-hoi{display:flex; flex-direction:column}
+.mot-hoi{display:flex; align-items:flex-start; gap:9px;
+  padding:8px 6px; border-bottom:1px solid var(--vien); border-radius:6px}
+.mot-hoi:last-child{border-bottom:0}
+.mot-hoi.dang-doc{background:var(--chinh-nhat)}
+.mot-hoi .noi{flex:1; min-width:0}
+.mot-hoi .hoi{display:block; font-size:15px}
+/* Đáp án ẩn cho tới khi bạn đã tự nói ra — thấy sẵn đáp án thì chỉ còn là đọc
+   theo, mất hẳn phần "answer" của listen-and-answer. */
+.mot-hoi .dap{display:block; font-size:14px; color:var(--dung); font-weight:600;
+  margin-top:2px}
+.mot-hoi .dap.an-dap{filter:blur(5px); cursor:pointer; user-select:none}
+.mot-hoi.hien-dap .dap.an-dap,
+.ds-hoi.hien-het .dap.an-dap{filter:none; cursor:auto}
+.nhan-loai{flex:0 0 auto; font-size:10.5px; padding:2px 7px; border-radius:20px;
+  background:var(--vien); color:var(--chu-nhat); white-space:nowrap; margin-top:3px}
+.nhan-loai.co_khong{background:#e4f1ea; color:#1a7f5a}
+.nhan-loai.hoac{background:#e6eefb; color:#0058a9}
+.nhan-loai.wh{background:#efe8fb; color:#6a4bb0}
+.nhan-loai.sai_de_sua{background:#fbeae7; color:#b3402e}
+@media (prefers-color-scheme: dark){
+  .nhan-loai.co_khong{background:#173026; color:#4ec99a}
+  .nhan-loai.hoac{background:#152436; color:#5aa9f0}
+  .nhan-loai.wh{background:#241c38; color:#b39ae8}
+  .nhan-loai.sai_de_sua{background:#331d1a; color:#f07a6d}
+}
+
+.mot-dat{padding:10px 0; border-bottom:1px solid var(--vien)}
+.mot-dat:last-child{border-bottom:0}
+.mot-dat .dap-cho-san{font-size:15px; font-weight:600; margin-bottom:6px}
+.mot-dat .dap-cho-san::before{content:"Đáp án: "; font-weight:400; color:var(--chu-nhat)}
+.mot-dat .hang{display:flex; gap:8px}
+.mot-dat input{flex:1; min-width:0}
+.kq-dat{margin-top:6px; font-size:13.5px}
+
 /* ---------- màn Unit: danh sách 6 mục con ---------- */
 .ds-muc-unit{
   display:flex; flex-direction:column;

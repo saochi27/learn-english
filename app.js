@@ -1062,10 +1062,162 @@ function veTruyen(u) {
         ? `<div class="the">${khoiDoan(tienTo, d.cau)}</div>`
         : `<div class="the">${d.cau.map((c, ci) =>
             dongDoc(`${tienTo}${ci}`, c.en, c.pa, c.vi || "")).join("")}</div>`);
+    /* Bài tập mini-story gắn vào ĐÚNG truyện của nó. Ghép theo TÊN chứ không
+       theo thứ tự: doan_van còn có truyện cũ và ba bản góc nhìn xen giữa. */
+    const iMs = (u.mini_story || []).findIndex(m => m.ten === d.ten);
     macDinhKhoi(`truyen/bai-${di}`, di > 0);
-    h += khoi(`truyen/bai-${di}`, d.ten, noi, `${d.cau.length} câu`);
+    h += khoi(`truyen/bai-${di}`, d.ten,
+      noi + (iMs >= 0 ? `<div class="khu-mini">${khoiMiniStory(u.mini_story[iMs], iMs)}</div>` : ""),
+      `${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}`);
   });
   el.innerHTML = h;
+}
+
+/* ================= MINI-STORY (Effortless English) =================
+   Ba phần bài tập gắn liền một truyện, đặt NGAY DƯỚI truyện đó chứ không
+   tách thành mục riêng — đúng trình tự của Hoge: nghe truyện xong là vào
+   ngay chuỗi câu hỏi, không nghỉ giữa chừng. */
+const NHAN_LOAI = {
+  co_khong: "có/không", hoac: "hoặc", wh: "wh-", sai_de_sua: "sai → sửa",
+};
+
+function khoiMiniStory(ms, di) {
+  if (!ms) return "";
+  let h = "";
+  /* Ba khối bài tập GẤP SẴN lần đầu: mở hết ra thì một truyện 8 câu kéo theo
+     48 câu hỏi + 7 cụm + 6 câu đặt hỏi, màn dài 5000px và truyện — thứ phải
+     đọc trước — bị đẩy mất hút. Người học tự mở khối nào muốn làm. */
+  ["cum-tu", "hoi-dap", "dat-hoi"].forEach(k => macDinhKhoi(`mini/${k}-${di}`, true));
+
+  if (ms.cum_tu?.length) {
+    h += khoi(`mini/cum-tu-${di}`, "Cụm từ đáng nhớ",
+      `<div class="ds-cum">` + ms.cum_tu.map(c => `<div class="mot-cum">
+          <span class="cum">${esc(c.cum)}</span>${nutLoa(c.cum)}
+          <span class="nghia">${esc(c.nghia)}</span>
+        </div>`).join("") + `</div>
+      <div class="mo" style="margin-top:8px">Học nguyên CỤM, đừng tách ra học
+        từng từ — người bản ngữ nói bằng những khối dựng sẵn, ghép từng từ theo
+        luật là ra câu đúng ngữ pháp mà nghe không giống ai.</div>`,
+      `${ms.cum_tu.length} cụm`);
+  }
+
+  if (ms.hoi_dap?.length) {
+    h += khoi(`mini/hoi-dap-${di}`, "Nghe và trả lời", `
+      <div class="mo" style="margin:10px 0">Trả lời THÀNH TIẾNG ngay khi nghe
+        xong câu hỏi, đừng dịch trong đầu. Câu hỏi cố tình dễ — chỗ khó là trả
+        lời cho kịp.</div>
+      <div class="dieu-khien" style="justify-content:flex-start; margin:0 0 10px">
+        <button class="chinh" onclick="chayChuoiHoi(${di})" id="nut-chuoi-${di}">Chạy cả chuỗi</button>
+        <button class="phu" onclick="dungChuoiHoi()">Dừng</button>
+        <button class="phu" onclick="batTatHienDap(${di},this)">Hiện hết đáp án</button>
+      </div>
+      <div class="ds-hoi" id="ds-hoi-${di}">` + ms.hoi_dap.map((q, i) => `
+        <div class="mot-hoi" id="hoi-${di}-${i}">
+          <span class="nhan-loai ${esc(q.loai)}">${NHAN_LOAI[q.loai] || q.loai}</span>
+          <span class="noi">
+            <span class="hoi">${esc(q.hoi)}</span>
+            <span class="dap an-dap">${esc(q.dap)}</span>
+          </span>
+          <button class="loa" onclick="docCapHoiDap(${di},${i})" title="Nghe câu hỏi rồi đáp án">🔊</button>
+        </div>`).join("") + `</div>`, `${ms.hoi_dap.length} câu`);
+  }
+
+  if (ms.dat_cau_hoi?.length) {
+    h += khoi(`mini/dat-hoi-${di}`, "Đặt câu hỏi cho đáp án", `
+      <div class="mo" style="margin:10px 0">Cho sẵn câu trả lời, bạn viết câu
+        hỏi. Phần này KHÔNG có trong Effortless English — Hoge chỉ cho trả lời.
+        Thêm vào vì nghe hiểu tốt mà không tự bật ra câu hỏi được là chuyện rất
+        hay gặp.</div>` + ms.dat_cau_hoi.map((d, i) => `
+        <div class="mot-dat" id="dat-${di}-${i}">
+          <div class="dap-cho-san">${esc(d.dap_an)}</div>
+          <div class="hang">
+            <input type="text" placeholder="Câu hỏi tiếng Anh…" id="ip-dat-${di}-${i}"
+              onkeydown="if(event.key==='Enter')kiemDatHoi(${di},${i})">
+            <button class="phu" onclick="kiemDatHoi(${di},${i})">Kiểm tra</button>
+          </div>
+          <div class="kq-dat" id="kq-dat-${di}-${i}"></div>
+        </div>`).join(""), `${ms.dat_cau_hoi.length} câu`);
+  }
+  return h;
+}
+
+/* --- chuỗi hỏi-đáp: hỏi → chờ bạn nói → đáp --- */
+let chuoiHoi = { dang: false, di: 0, i: 0 };
+
+function dungChuoiHoi() {
+  chuoiHoi.dang = false;
+  dungPhat();
+  $$(".mot-hoi").forEach(x => x.classList.remove("dang-doc"));
+}
+
+function chayChuoiHoi(di) {
+  if (chuoiHoi.dang) return dungChuoiHoi();
+  chuoiHoi = { dang: true, di, i: 0 };
+  buocChuoi();
+}
+
+function buocChuoi() {
+  if (!chuoiHoi.dang) return;
+  const ms = (S.duLieuUnit?.mini_story || [])[chuoiHoi.di];
+  const q = ms?.hoi_dap?.[chuoiHoi.i];
+  if (!q) return dungChuoiHoi();
+  $$(".mot-hoi").forEach(x => x.classList.remove("dang-doc"));
+  const dong = $(`#hoi-${chuoiHoi.di}-${chuoiHoi.i}`);
+  if (dong) {
+    dong.classList.add("dang-doc");
+    dong.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  doc(q.hoi, { xong: () => {
+    if (!chuoiHoi.dang) return;
+    /* Khoảng lặng để bạn TỰ nói ra đáp án trước khi nghe. Bỏ khoảng này thì
+       thành nghe đọc chính tả, mất hẳn phần "answer" của listen-and-answer. */
+    setTimeout(() => {
+      if (!chuoiHoi.dang) return;
+      dong?.classList.add("hien-dap");
+      doc(q.dap, { xong: () => {
+        if (!chuoiHoi.dang) return;
+        chuoiHoi.i++;
+        setTimeout(buocChuoi, 500);
+      }});
+    }, (+localStorage.getItem("giayNoi") || 2) * 1000);
+  }});
+}
+
+function docCapHoiDap(di, i) {
+  const ms = (S.duLieuUnit?.mini_story || [])[di];
+  const q = ms?.hoi_dap?.[i];
+  if (!q) return;
+  const dong = $(`#hoi-${di}-${i}`);
+  doc(q.hoi, { xong: () => setTimeout(() => {
+    dong?.classList.add("hien-dap");
+    doc(q.dap);
+  }, (+localStorage.getItem("giayNoi") || 2) * 1000) });
+}
+
+function batTatHienDap(di, nut) {
+  const ds = $(`#ds-hoi-${di}`);
+  const hien = !ds.classList.contains("hien-het");
+  ds.classList.toggle("hien-het", hien);
+  nut.textContent = hien ? "Ẩn đáp án" : "Hiện hết đáp án";
+}
+
+/* --- đặt câu hỏi ngược --- */
+const chuanCauHoi = s => (s || "").toLowerCase()
+  .replace(/[’‘]/g, "'").replace(/[“”]/g, "").replace(/[–—]/g, "-")
+  .replace(/[?.!,]/g, " ").replace(/\s+/g, " ").trim();
+
+function kiemDatHoi(di, i) {
+  const d = (S.duLieuUnit?.mini_story || [])[di]?.dat_cau_hoi?.[i];
+  if (!d) return;
+  const cuaToi = chuanCauHoi($(`#ip-dat-${di}-${i}`).value);
+  const nhan = [d.cau_hoi, ...(d.chap_nhan || [])].map(chuanCauHoi);
+  const o = $(`#kq-dat-${di}-${i}`);
+  if (!cuaToi) { o.innerHTML = `<span class="mo">Chưa nhập câu hỏi.</span>`; return; }
+  const dung = nhan.includes(cuaToi);
+  o.innerHTML = dung
+    ? `<span class="dung">✓ Đúng.</span>`
+    : `<span class="sai">✗ Chưa khớp.</span> <span class="mo">Đáp án mẫu:</span>
+       <b>${esc(d.cau_hoi)}</b>${nutLoa(d.cau_hoi)}`;
 }
 
 /* ================= HỘI THOẠI ================= */
