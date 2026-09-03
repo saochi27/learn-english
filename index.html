@@ -50,6 +50,9 @@
     <!-- màn tổng quan, hiện lúc mở app và khi bấm tên khoá học -->
     <section id="man-menu" class="trang hien"></section>
 
+    <!-- màn Level: liệt kê các unit của một cấp độ -->
+    <section id="man-level" class="trang"></section>
+
     <!-- màn Unit: danh mục cha, liệt kê 6 mục con kèm tick -->
     <section id="man-unit" class="trang"></section>
 
@@ -172,6 +175,9 @@
         <label>Giây chờ giữa các câu <input type="number" id="cd-cho" min="1" max="10" value="3"></label>
         <label><input type="checkbox" id="cd-pa" checked> Hiện phiên âm khi phát</label>
         <label><input type="checkbox" id="cd-nghia" checked> Hiện nghĩa khi phát</label>
+        <label><input type="checkbox" id="cd-giu-phat"> Giữ phát khi chuyển màn hình</label>
+        <div class="mo">Mặc định chuyển màn hình là dừng. Bật cái này thì vẫn phát tiếp và
+          hiện một thanh điều khiển nhỏ ở đáy màn hình.</div>
       </section>
 
       <section class="cd-trang" data-cd="on-tap">
@@ -188,6 +194,9 @@
     </div>
   </div>
 </div>
+
+<!-- Thanh điều khiển nhanh: chỉ hiện khi đang phát mẫu câu mà đang ở màn hình khác -->
+<div id="bar-phat" role="region" aria-label="Đang phát"></div>
 
 <script src="shim_tinh.js"></script>
 <script src="app.js"></script>

@@ -345,7 +345,11 @@ button.chinh:disabled{opacity:.5; cursor:default}
 .san-khau .tho{font-size:14px}
 .san-khau .nghia{font-size:15px}
 .san-khau .mo{font-size:12px}
-.dieu-khien{display:flex; gap:9px; justify-content:center; margin-top:12px; flex-wrap:wrap}
+/* ! margin-bottom BAT BUOC: chi co margin-top thi hang nut dinh sat vien
+   duoi cua the, nhin nhu bi cat - va vong focus cua nut bi the cat mat.
+   Do that 03/09/2026. */
+.dieu-khien{display:flex; gap:9px; justify-content:center;
+  margin:12px 0 14px; flex-wrap:wrap}
 /* nút phát chính to hơn bốn nút phụ để mắt bắt ngay được cái hay bấm nhất */
 .nut-tron.to{width:46px; height:46px; font-size:19px}
 .tien-trinh{
@@ -425,6 +429,9 @@ button.chinh:disabled{opacity:.5; cursor:default}
   .san-khau .cau-anh{font-size:20px}
   .san-khau .tho{display:none}
   .san-khau .pa-noi, .san-khau .nghia{font-size:14px}
+  /* ! Chi de margin-top o day thi margin-bottom cua luat goc VAN GIU (14px).
+     Dung ghi margin viet tat o day - se xoa mat khoang duoi va hang nut lai
+     dinh sat khoi ke tiep. */
   .dieu-khien{margin-top:9px}
   .tien-trinh{margin-top:9px}
 }
@@ -818,4 +825,86 @@ li{margin:5px 0; line-height:1.6}
 .cuoi-chi-tiet .nut-xong{min-width:220px; text-align:center}
 @media (max-width:640px){
   .cuoi-chi-tiet .nut-xong{width:100%; min-height:48px}
+}
+
+
+/* ================= THANH DIEU KHIEN NHANH =================
+   Hien khi dang phat mau cau ma dang o man hinh khac. Nam duoi day, khong
+   che noi dung: co padding-bottom bu vao body khi bar hien.
+   ! Dat z-index duoi hop cai dat: dang mo cai dat ma bar de len tren thi
+     bam khong duoc nut nao. */
+#bar-phat {
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translate(-50%, 200%);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: min(680px, calc(100vw - 24px));
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--nen-the, #fff);
+  border: 1px solid var(--vien, #e3e6ea);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .18);
+  transition: transform .18s ease;
+}
+#bar-phat.hien { transform: translate(-50%, 0); }
+
+#bar-phat .bp-nut {
+  flex: 0 0 auto;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--vien, #e3e6ea);
+  background: transparent;
+  color: var(--chu, #1c2530);
+  font-size: 14px;
+  cursor: pointer;
+}
+#bar-phat .bp-nut:hover { background: var(--nen-phu, #f2f4f7); }
+#bar-phat .bp-nut.chinh {
+  background: var(--chinh, #1666c8);
+  border-color: var(--chinh, #1666c8);
+  color: #fff;
+}
+#bar-phat .bp-nut:focus-visible,
+#bar-phat .bp-chu:focus-visible { outline: 2px solid var(--chinh, #1666c8); outline-offset: 2px; }
+
+/* Ten cau: mot dong, dai qua thi cat - bar khong duoc phinh ra choan man hinh */
+#bar-phat .bp-chu {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+}
+#bar-phat .bp-ten {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 600;
+}
+#bar-phat .bp-mo {
+  font-size: 11px;
+  color: var(--chu-nhat, #6b7684);
+}
+
+@media (max-width: 520px) {
+  #bar-phat { left: 12px; right: 12px; transform: translateY(200%); max-width: none; }
+  #bar-phat.hien { transform: translateY(0); }
+  #bar-phat .bp-mo { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #bar-phat { transition: none; }
 }

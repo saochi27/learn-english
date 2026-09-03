@@ -11,6 +11,7 @@ const S = {
   phutBatDau: Date.now(),
   railMo: new Set(),     // unit đang bung ra trong thanh tiến trình bên trái
   railGap: new Set(),    // nhóm đang thu gọn ở menu trái (khoá chuỗi)
+  level: null,           // level đang xem ở màn Level
   railGon: false,        // menu trái đang thu hẹp hẳn
   railDay: "thoang",     // khoảng cách các dòng menu: thoang | gon
   khoiGap: new Set(),    // khối nội dung đang thu gọn trong màn học
@@ -512,7 +513,12 @@ async function veMauCau(soUnit) {
           </span>
         </div>`).join("")}</div>`, `${d.so_cau} câu`)}`;
 
-  S.phatMauCau.i = 0;
+  /* ! Dang giu phat ma quay lai chinh unit do thi KHONG keo ve cau 1 -
+     nguoi dung dang nghe cau 30, vao xem phien am mot cai la mat cho. */
+  if (!S.phatMauCau.dang || S.phatMauCau.unitDangPhat !== S.unit) {
+    S.phatMauCau.i = 0;
+  }
+  capNhatNutPhat_();
   hienCauHienTai();
 }
 
@@ -527,7 +533,12 @@ function chonCau(i) {
 function hienCauHienTai() {
   const p = S.phatMauCau, c = p.danhSach[p.i];
   if (!c) return;
-  const hienPa = $("#cd-pa").checked, hienNghia = $("#cd-nghia").checked;
+  ghiSoCauDaNghe(S.unit, p.i + 1);
+  veBarPhat();
+  /* ! Giu phat roi chuyen man hinh: #san-khau va cac o cd-* KHONG con trong
+     DOM. Cham vao la nem loi, cat luon vong phat -> tieng im bat giua chung. */
+  if (!$("#san-khau")) return;
+  const hienPa = !!$("#cd-pa")?.checked, hienNghia = !!$("#cd-nghia")?.checked;
   $("#san-khau").innerHTML = `
     <div class="mo">Câu ${p.i + 1}/${p.danhSach.length}</div>
     <div class="cau-anh">${cauCoTuChamDuoc(c.en)}</div>
@@ -542,17 +553,96 @@ function hienCauHienTai() {
     dong.classList.add("dang-doc");
     dong.scrollIntoView({ block: "nearest", behavior: "smooth" });
   }
-  ghiSoCauDaNghe(S.unit, p.i + 1);
 }
 
 let hen = null;
+
+/* ================= DỪNG HẲN VÒNG PHÁT MẪU CÂU =================
+   ! Do thật 03/09/2026: đang ở màn hình Tổng quan mà loa vẫn phát.
+     Nguyên nhân: dungPhat() cũ chỉ cancel speechSynthesis, KHÔNG tắt cờ
+     S.phatMauCau.dang và KHÔNG clearTimeout(hen). Hai hậu quả:
+       - hẹn giờ câu kế đã đặt vẫn nổ sau khi đã chuyển màn hình;
+       - watchdog visibilitychange thấy cờ còn bật thì gọi lại chayCau().
+     Nên phải có một hàm tắt HẲN, và mọi lối chuyển màn hình đều đi qua nó. */
+function dungMauCau_() {
+  const p = S.phatMauCau;
+  if (!p) return;
+  p.dang = false;
+  clearTimeout(hen);
+  speechSynthesis.cancel();
+  capNhatNutPhat_();
+}
+
+/* Nút ▶/■ chỉ tồn tại trên màn hình Mẫu câu. Bật "giữ phát" rồi chuyển màn
+   hình là nút đó không còn trong DOM -> phải kiểm tra trước khi chạm, nếu
+   không thì ném lỗi và cắt luôn phần code phía sau. */
+function capNhatNutPhat_() {
+  const np = $("#nut-phat");
+  if (!np) return;
+  const d = !!S.phatMauCau?.dang;
+  np.textContent = d ? "■" : "▶";
+  np.title = d ? "Dừng" : "Phát";
+  np.setAttribute("aria-label", d ? "Dừng" : "Phát");
+}
+
+/* ================= CHUYỂN MÀN HÌNH =================
+   Mặc định chuyển màn hình là DỪNG — người dùng chốt 03/09/2026: đang xem
+   Tổng quan mà loa phát là sai.
+   Bật "Giữ phát khi chuyển màn hình" thì giữ vòng mẫu câu và hiện bar điều
+   khiển; phần "đọc cả bài" vẫn dừng vì bài đó không còn trên màn hình. */
+function dungPhatKhiChuyen() {
+  if (CD.giuPhat && S.phatMauCau?.dang) {
+    dungPhatBai = true;
+    baiDangPhat = null;
+    $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+    /* ! Ve bar SAU khi ham dieu huong ve xong man hinh moi. Goi ngay o day thi
+       DOM va S.tab con la cua man hinh cu. */
+    setTimeout(veBarPhat, 0);
+    return;
+  }
+  dungPhat();
+}
+
+/* ================= BAR ĐIỀU KHIỂN NHANH =================
+   Chỉ hiện khi ĐANG phát mẫu câu mà KHÔNG ở màn hình Mẫu câu — ở đúng màn
+   hình đó thì đã có thanh điều khiển đầy đủ, thêm bar nữa là trùng.
+   ! Bấm vào tên câu là quay về đúng unit đang phát: đang nghe dở mà muốn xem
+     phiên âm thì không phải mò lại trong thanh bên. */
+function veBarPhat() {
+  const bar = $("#bar-phat");
+  if (!bar) return;
+  const p = S.phatMauCau;
+  /* ! Xet S.tab, va CHI DUNG DUOC vi dungPhatKhiChuyen() ve bar qua
+     setTimeout(0). Cac ham dieu huong goi dungPhatKhiChuyen() o DAU ham roi
+     moi dat S.tab, nen goi thang o day thi S.tab con la tab CU -> bar khong
+     bao gio hien. Do that 03/09/2026.
+     ! Da thu xet theo DOM (#nut-phat) va HONG ca hai huong: xet ton tai thi
+       sai vi cac man hinh chi bi an bang class chu KHONG bi xoa khoi DOM; xet
+       offsetParent thi sai vi luc setTimeout no man hinh moi chua render xong,
+       ve lai man Mau cau ma bar van hien. */
+  const hien = !!p?.dang && S.tab !== "mau-cau";
+  bar.classList.toggle("hien", hien);
+  if (!hien) return;
+
+  const c = p.danhSach[p.i];
+  bar.innerHTML = `
+    <button class="bp-nut" onclick="nhayCau(-1)" title="Câu trước" aria-label="Câu trước">◀</button>
+    <button class="bp-nut chinh" onclick="batTatPhat()" title="Dừng" aria-label="Dừng">■</button>
+    <button class="bp-nut" onclick="nhayCau(1)" title="Câu sau" aria-label="Câu sau">▶</button>
+    <button class="bp-chu" onclick="moMuc(${p.unitDangPhat || S.unit}, 'mau-cau')"
+      title="Mở lại màn hình Mẫu câu">
+      <span class="bp-ten">${esc(c?.en || "")}</span>
+      <span class="bp-mo">Unit ${p.unitDangPhat || S.unit} · câu ${p.i + 1}/${p.danhSach.length}</span>
+    </button>
+    <button class="bp-nut" onclick="dungPhat()" title="Tắt hẳn" aria-label="Tắt hẳn">✕</button>`;
+}
+
 function batTatPhat() {
   const p = S.phatMauCau;
   p.dang = !p.dang;
-  const np = $("#nut-phat");
-  np.textContent = p.dang ? "■" : "▶";
-  np.title = p.dang ? "Dừng" : "Phát";
+  capNhatNutPhat_();
   if (p.dang) {
+    p.unitDangPhat = S.unit;      // bar can biet dang phat unit nao
     giuManHinhSang();
     chayCau();
   } else {
@@ -560,6 +650,7 @@ function batTatPhat() {
     speechSynthesis.cancel();
     thoiGiuManHinh();
   }
+  veBarPhat();
 }
 
 function chayCau() {
@@ -569,8 +660,10 @@ function chayCau() {
   if (!c) { batTatPhat(); return; }
   hienCauHienTai();
 
-  const soLap = Math.max(1, +$("#cd-lap").value || 2);
-  const cho = Math.max(1, +$("#cd-cho").value || 3);
+  /* ! Cac o cai dat nam tren man hinh Mau cau. Giu phat roi chuyen man hinh
+     la chung khong con -> phai co gia tri du phong, neu khong thi NaN. */
+  const soLap = Math.max(1, +($("#cd-lap")?.value) || 2);
+  const cho = Math.max(1, +($("#cd-cho")?.value) || 3);
   let lan = 0;
   const mot = () => {
     if (!p.dang) return;
@@ -617,6 +710,10 @@ const CD = {
      cả ĐOẠN (văn xuôi liền mạch, dịch nằm dưới). Từng câu để luyện đọc,
      cả đoạn để đọc hiểu — 18 lượt thoại tách dòng thì dài gấp ba. */
   kieuDoc: localStorage.getItem("kieuDoc") === "doan" ? "doan" : "cau",
+  /* Chuyen man hinh thi dung phat, hay giu phat tiep? Mac dinh DUNG.
+     Nguoi dung chot 03/09/2026: "tru khi toi chon giu phat khi chuyen man
+     hinh, va co bar cho phep dieu khien nhanh". */
+  giuPhat: localStorage.getItem("giuPhat") === "1",
 };
 let bangTuLevel = {};
 
@@ -907,6 +1004,8 @@ function dungPhat() {
   speechSynthesis.cancel();
   if (dangPhat) { dangPhat.pause(); dangPhat = null; }
   $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+  dungMauCau_();          // ! thieu dong nay la loa van phat sau khi doi man hinh
+  veBarPhat();
   thoiGiuManHinh();
 }
 
@@ -1592,7 +1691,8 @@ function veRail(keo = false) {
     const id = "lv/" + so_lv, gap = S.railGap.has(id);
     const xong = lv.ds.filter(m => soMucXong(m.so) === SO_MUC).length;
     hLevel += `<div class="rail-nhom ${gap ? "thu-gon" : ""}">
-      <button class="rail-level" onclick="batTatRailNhom('${id}',this)" aria-expanded="${!gap}">
+      <button class="rail-level ${S.tab === "level" && S.level === +so_lv ? "chon" : ""}"
+        onclick="bamLevel(${so_lv},this)" aria-expanded="${!gap}">
         <span class="mui">\u203a</span>
         <span class="ten">${esc(lv.ten)}</span>
         <span class="dem">${xong}/${lv.ds.length}</span>
@@ -1652,6 +1752,13 @@ function nhomRail(id, ten, noi, dem = "") {
       </button>
       <div class="rail-goc-noi">${noi}</div>
     </div>`;
+}
+
+/* Cùng luật với dòng unit: đang gấp thì bung ra VÀ mở màn Level; đang mở thì
+   chỉ gấp lại, không điều hướng. */
+function bamLevel(lv, nut) {
+  if (S.railGap.has("lv/" + lv)) { moLevel(lv); return; }
+  batTatRailNhom("lv/" + lv, nut);
 }
 
 /* Gấp/mở tại chỗ, không vẽ lại cả menu: vẽ lại thì cột trái nhảy về đầu */
@@ -1772,7 +1879,7 @@ function mucDangDo() {
 }
 
 function veMenu() {
-  dungPhat();
+  dungPhatKhiChuyen();
   S.tab = "tong-quan";
   const tt = capNhatTienDoTong();
   const tiep = mucDangDo();
@@ -1807,7 +1914,7 @@ function veMenu() {
     const tongLv = lv.ds.length * SO_MUC;
     const xongLv = lv.ds.reduce((a, m) => a + soMucXong(m.so), 0);
     const p = Math.round(xongLv / tongLv * 100);
-    return `<button class="the-level" onclick="moMuc(${lv.ds[0].so},'bai-hoc')">
+    return `<button class="the-level" onclick="moLevel(${lv.ds[0].level})">
         <span class="ten">${esc(lv.ten)}</span>
         <span class="mo">Unit ${lv.ds[0].so}–${lv.ds[lv.ds.length - 1].so} · ${lv.ds.length} unit</span>
         <span class="vach"><i class="xong" style="width:${p}%"></i></span>
@@ -1822,12 +1929,78 @@ function veMenu() {
   dongRail();
 }
 
+/* ================= MÀN LEVEL =================
+   Tầng giữa của cây Tổng quan → Level → Unit → Mục. Thiếu tầng này thì bấm
+   một cấp độ là rơi thẳng vào Bài học của unit đầu tiên, bỏ qua mất bước
+   "cấp này có những unit nào, tôi đang dở unit nào". */
+function moLevel(lv) {
+  dungPhat();
+  S.tab = "level";
+  S.level = lv;
+  S.railGap.delete("lv/" + lv);
+  S.railGap.delete("nhom/bai-hoc");
+  luuRail();
+  veManLevel(lv);
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "man-level"));
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
+function veManLevel(lv) {
+  const ds = S.muc_luc.filter(m => m.level === lv);
+  if (!ds.length) return veMenu();
+  const tenLv = ds[0].ten_level || `Level ${lv}`;
+  const tongMuc = ds.length * SO_MUC;
+  const xongMuc = ds.reduce((a, m) => a + soMucXong(m.so), 0);
+  const pt = Math.round(xongMuc / tongMuc * 100);
+  const unitXong = ds.filter(m => soMucXong(m.so) === SO_MUC).length;
+  const tiep = ds.find(m => soMucXong(m.so) < SO_MUC);
+
+  let h = `<div class="the-mo-dau">
+      <div class="mo">Cấp độ ${lv}</div>
+      <h2>${esc(tenLv)}</h2>
+      <div class="thanh-tong">
+        <div class="so-lieu">
+          <span><b>${pt}%</b> hoàn thành</span>
+          <span><b>${xongMuc}</b> / ${tongMuc} mục đã xong</span>
+          <span><b>${unitXong}</b> / ${ds.length} unit xong trọn vẹn</span>
+        </div>
+        <div class="vach"><i class="xong" style="width:${pt}%"></i></div>
+      </div>
+      ${tiep ? `<button class="chinh to" onclick="moUnit(${tiep.so})">
+          Học tiếp <span class="nho-hon">Unit ${tiep.so} — ${esc(tiep.ten)}</span></button>`
+        : `<div class="the" style="margin-top:12px">Xong trọn vẹn cấp độ này.</div>`}
+    </div>
+
+    <div class="ds-muc-unit">` + ds.map(m => {
+      const k = soMucXong(m.so), het = k === SO_MUC;
+      const tt = het ? "xong" : k ? "dang" : "chua";
+      return `<button class="o-muc ${tt}" onclick="moUnit(${m.so})">
+          <span class="tick ${het ? "du" : k ? "phan" : ""}">${het ? "\u2713" : ""}</span>
+          <span class="noi">
+            <span class="ten">Unit ${m.so} — ${esc(m.ten)}</span>
+            <span class="phu-de">${k}/${SO_MUC} mục · ${m.so_tu} từ · ${m.so_cau_hoi} câu hỏi</span>
+          </span>
+          <span class="dau">\u203a</span>
+        </button>`;
+    }).join("") + `</div>
+
+    <div class="dieu-huong-unit">
+      <button class="phu" onclick="veMenu()">\u2039 Tổng quan</button>
+      ${S.muc_luc.some(m => m.level === lv + 1)
+        ? `<button class="phu" onclick="moLevel(${lv + 1})">Cấp độ ${lv + 1} \u203a</button>` : "<span></span>"}
+    </div>`;
+
+  $("#man-level").innerHTML = h;
+}
+
 /* ================= MÀN UNIT (danh mục cha) =================
    Tương đương trang "module" của một khoá Coursera/Google: liệt kê các mục
    con kèm tick, cho biết còn nợ gì và đi tiếp từ đâu. Đây là chỗ quay về sau
    khi đánh dấu hoàn thành một mục. */
 async function moUnit(so) {
-  dungPhat();
+  dungPhatKhiChuyen();
   S.tab = "unit";
   S.unit = so;
   S.railMo = new Set([so]);
@@ -1880,6 +2053,7 @@ function veManUnit(so) {
 
     <div class="dieu-huong-unit">
       ${truoc ? `<button class="phu" onclick="moUnit(${truoc.so})">\u2039 Unit ${truoc.so}</button>` : "<span></span>"}
+      <button class="phu" onclick="moLevel(${m.level})">${esc(m.ten_level || "Cấp độ")}</button>
       ${sau ? `<button class="phu" onclick="moUnit(${sau.so})">Unit ${sau.so} \u203a</button>` : "<span></span>"}
     </div>`;
 
@@ -1890,7 +2064,7 @@ function veManUnit(so) {
 /* Mở đúng một mục của đúng một unit. Đây là lối vào duy nhất của phần nội dung
    — cả thanh bên trái lẫn nút "Học tiếp" đều gọi vào đây. */
 async function moMuc(so, tab) {
-  dungPhat();
+  dungPhatKhiChuyen();
   S.tab = tab;
   S.railMo = new Set([so]);
   moLevelChua(so);
@@ -1954,7 +2128,7 @@ async function doiUnit(so) {
 /* Ôn tập và Sổ lỗi không thuộc unit nào nên nằm riêng ở đầu thanh bên trái.
    Truyền vào tên một mục thuộc unit thì mở mục đó ở unit đang xem. */
 function chuyenTab(ten) {
-  dungPhat();
+  dungPhatKhiChuyen();
   if (ten === "on-tap" || ten === "so-loi") {
     S.tab = ten;
     $$(".trang").forEach(s => s.classList.toggle("hien", s.id === ten));
@@ -2138,6 +2312,19 @@ async function xoaHoSo() {
   addEventListener("resize", doCaoHeader);
   $("#hien-pa").onchange = $("#hien-nghia").onchange = () => doiUnit(S.unit);
   $("#tu-doc").onchange = e => { if (e.target.checked) alert("Đang bật: chạm vào câu bất kỳ sẽ tự đọc."); };
+
+  /* Giữ phát khi chuyển màn hình. Tắt đi thì ẩn bar ngay, không để bar treo
+     lại trên màn hình sau khi đã tắt tính năng. */
+  const oGiu = $("#cd-giu-phat");
+  if (oGiu) {
+    oGiu.checked = CD.giuPhat;
+    oGiu.onchange = e => {
+      CD.giuPhat = e.target.checked;
+      localStorage.setItem("giuPhat", CD.giuPhat ? "1" : "0");
+      if (!CD.giuPhat) dungMauCau_();
+      veBarPhat();
+    };
+  }
 
   const td = await (await fetch("/api/tien_do")).json();
   S.tienDo = td.tien_do || { unit: {}, phut_theo_ngay: {} };
