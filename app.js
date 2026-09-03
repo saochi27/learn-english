@@ -1512,9 +1512,23 @@ function sangTheKeTiep() {
   veThe();
 }
 
-/* Unit đang lọc ở tab Ôn tập. 0 = trộn mọi unit đã mở (mặc định, đúng tinh
+/* Unit đang lọc ở tab Ôn tập. 0 = trộn mọi unit trong phạm vi (mặc định, đúng tinh
    thần lặp ngắt quãng). Chọn một unit khi vừa học xong và muốn ôn ngay unit đó. */
 let onTapUnit = +(localStorage.getItem("on_tap_unit") || 0);
+/* Phạm vi lấy từ ra ôn. Mặc định "xong": chỉ ôn unit đã học trọn vẹn — đúng
+   tinh thần lặp ngắt quãng, ôn từ của unit mới đọc lướt thì thành học vẹt.
+   Vẫn cho đổi vì lúc mới bắt đầu chưa unit nào xong, siết cứng là màn Ôn tập
+   trống trơn và người học không hiểu vì sao. */
+let onTapPhamVi = ["xong", "mo", "tat_ca"].includes(localStorage.getItem("on_tap_pham_vi"))
+  ? localStorage.getItem("on_tap_pham_vi") : "xong";
+
+function doiPhamViOnTap(v) {
+  onTapPhamVi = v;
+  localStorage.setItem("on_tap_pham_vi", v);
+  onTapUnit = 0;                       // đổi phạm vi thì bỏ lọc theo unit
+  localStorage.setItem("on_tap_unit", 0);
+  veOnTap();
+}
 
 function doiUnitOnTap(v) {
   onTapUnit = +v || 0;
@@ -1522,28 +1536,62 @@ function doiUnitOnTap(v) {
   veOnTap();
 }
 
-async function veOnTap() {
-  const el = $("#on-tap");
+/* unitRieng != null -> ôn riêng MỘT unit, bỏ qua giới hạn phạm vi. Dùng khi
+   vừa học xong unit đó và muốn ôn ngay, chứ chưa cần đợi nó "hoàn thành". */
+async function veOnTap(unitRieng = null) {
+  const el = $(unitRieng ? "#on-tap-unit" : "#on-tap");
   el.innerHTML = `<div class="trong">Đang nạp…</div>`;
-  const d = await (await fetch(`/api/on_tap?so_luong=20&unit=${onTapUnit}`)).json();
+  const u = unitRieng || onTapUnit;
+  const d = await (await fetch(
+    `/api/on_tap?so_luong=20&unit=${u}&pham_vi=${unitRieng ? "tat_ca" : onTapPhamVi}`)).json();
   OT.the = d.the || []; OT.i = 0; OT.dung = 0; OT.sai = 0;
+  OT.oUnit = unitRieng || null;
   const tk = d.thong_ke;
 
+  const dau = unitRieng
+    ? `<div class="tom-tat">Ôn riêng unit ${unitRieng} · ${OT.the.length} thẻ</div>`
+    : `<h2>Ôn tập</h2>${veThongKeOnTap(tk)}${chonPhamViOnTap(tk)}${chonUnitOnTap(tk)}`;
+
   if (!OT.the.length) {
-    el.innerHTML = `<h2>Ôn tập</h2>
-      ${veThongKeOnTap(tk)}${chonUnitOnTap(tk)}
-      <div class="trong">${onTapUnit ? `Unit ${onTapUnit} không còn thẻ nào đến hạn.`
+    el.innerHTML = dau + `<div class="trong">${
+      unitRieng ? `Unit ${unitRieng} chưa có thẻ nào đến hạn hôm nay.`
+        : onTapUnit ? `Unit ${onTapUnit} không còn thẻ nào đến hạn.`
         : "Hôm nay không còn thẻ nào đến hạn."}<br>
-        <span class="mo">${tk.unit_da_mo.length
-        ? "Quay lại mai, hoặc mở thêm unit mới ở tab Bài học."
-        : "Chưa mở unit nào. Vào tab Bài học, mở một unit rồi quay lại đây."}</span></div>`;
+      <span class="mo">${loiKhuyenOnTap(tk, unitRieng)}</span></div>`;
     return;
   }
 
-  el.innerHTML = `<h2>Ôn tập</h2>${veThongKeOnTap(tk)}${chonUnitOnTap(tk)}
+  el.innerHTML = dau + `
     <div class="tien-trinh"><div id="tt-on"></div></div>
     <div id="khu-the"></div>`;
   veThe();
+}
+
+/* Nói rõ VÌ SAO đang trống. Để trống trơn thì người học tưởng app hỏng, chứ
+   không đoán được là do phạm vi mặc định chỉ lấy unit đã hoàn thành. */
+function loiKhuyenOnTap(tk, unitRieng) {
+  if (unitRieng) return "Học phần Bài học của unit này trước, thẻ sẽ xuất hiện.";
+  if (onTapPhamVi === "xong" && !tk.so_unit_xong) {
+    return `Chưa unit nào hoàn thành trọn 6 mục nên chưa có từ nào vào lịch ôn.
+      Bạn đang học dở ${tk.so_unit_mo || 0} unit — đổi phạm vi sang
+      “Unit đang học” ở trên để ôn ngay, hoặc ôn riêng từng unit ở màn Unit.`;
+  }
+  if (!tk.unit_da_mo.length) return "Chưa mở unit nào. Vào Bài học, mở một unit rồi quay lại.";
+  return "Quay lại mai, hoặc mở thêm unit mới ở tab Bài học.";
+}
+
+function chonPhamViOnTap(tk) {
+  const ds = [
+    ["xong", `Unit đã hoàn thành (${tk.so_unit_xong ?? 0})`],
+    ["mo", `Unit đang học (${tk.so_unit_mo ?? 0})`],
+    ["tat_ca", "Tất cả 50 unit"],
+  ];
+  return `<label class="hang" style="gap:8px; margin-bottom:8px">
+      <span class="mo">Phạm vi</span>
+      <select onchange="doiPhamViOnTap(this.value)" style="flex:1; min-width:0">
+        ${ds.map(([v, t]) => `<option value="${v}" ${onTapPhamVi === v ? "selected" : ""}>${t}</option>`).join("")}
+      </select>
+    </label>`;
 }
 
 function chonUnitOnTap(tk) {
@@ -1554,7 +1602,7 @@ function chonUnitOnTap(tk) {
   return `<label class="hang" style="gap:8px; margin-bottom:10px">
       <span class="mo">Ôn unit</span>
       <select onchange="doiUnitOnTap(this.value)" style="flex:1; min-width:0">
-        <option value="0" ${!onTapUnit ? "selected" : ""}>Tất cả unit đã mở (${mo.length})</option>
+        <option value="0" ${!onTapUnit ? "selected" : ""}>Trộn mọi unit trong phạm vi (${mo.length})</option>
         ${mo.map(so => `<option value="${so}" ${onTapUnit === so ? "selected" : ""}>Unit ${so} — ${esc(ten(so))}</option>`).join("")}
       </select>
     </label>`;
@@ -1565,7 +1613,7 @@ function veThongKeOnTap(tk) {
       <div class="so-lieu">
         <span><b>${tk.den_han_hom_nay}</b> thẻ đến hạn hôm nay</span>
         <span><b>${tk.da_thuoc_du_3_the}</b> từ đã thuộc (qua đủ 3 loại thẻ)</span>
-        <span><b>${tk.tu_trong_pham_vi}</b> từ trong phạm vi đã mở / ${tk.tong_tu} tổng</span>
+        <span><b>${tk.tu_trong_pham_vi}</b> từ trong phạm vi đang chọn / ${tk.tong_tu} tổng</span>
       </div>
       <div class="mo">Lịch ôn: ${tk.lich.join(" → ")} ngày.
         Mỗi từ phải qua 3 loại thẻ: nhìn từ chọn nghĩa · nghe gõ lại · điền vào câu.</div>
@@ -1690,8 +1738,8 @@ function ketThucOnTap() {
       <div class="mo" style="margin-top:8px">Thẻ sai sẽ quay lại ngày mai.
         Thẻ đúng lên bậc tiếp theo.</div>
       <div class="dieu-khien">
-        <button class="chinh" onclick="veOnTap()">Ôn tiếp</button>
-        <button class="phu" onclick="veMenu()">← Về tổng quan</button>
+        <button class="chinh" onclick="veOnTap(OT.oUnit)">Ôn tiếp</button>
+        <button class="phu" onclick="OT.oUnit ? moUnit(OT.oUnit) : veMenu()">← Quay lại</button>
       </div>
     </div>`;
 }
@@ -2099,6 +2147,28 @@ function moLevel(lv) {
   window.scrollTo({ top: 0 });
 }
 
+/* Ôn tập riêng của MỘT unit. Không tính vào 6 mục: ôn tập là việc lặp lại
+   không có điểm "xong", đưa vào thì unit không bao giờ hoàn thành được. */
+async function moOnTapUnit(so) {
+  dungPhat();
+  S.tab = "on-tap-unit";
+  S.unit = so;
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "on-tap-unit"));
+  const el = $("#on-tap-unit");
+  el.innerHTML = `<div class="trong">Đang nạp…</div>`;
+  const m = S.muc_luc.find(x => x.so === so) || {};
+  await veOnTap(so);
+  el.prepend(Object.assign(document.createElement("div"), {
+    className: "dau-chi-tiet",
+    innerHTML: `<span class="tieu">Unit ${so} — ${esc(m.ten || "")}</span>
+      <span class="nhan">Ôn tập</span>
+      <button class="nut-xong" onclick="moUnit(${so})">← Về unit</button>`,
+  }));
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
 function veManLevel(lv) {
   const ds = S.muc_luc.filter(m => m.level === lv);
   if (!ds.length) return veMenu();
@@ -2202,6 +2272,15 @@ function veManUnit(so) {
           <span class="dau">\u203a</span>
         </button>`;
     }).join("") + `</div>
+
+    <button class="o-muc o-on-tap" onclick="moOnTapUnit(${so})">
+      <span class="ic-on">\u21bb</span>
+      <span class="noi">
+        <span class="ten">Ôn tập unit này</span>
+        <span class="phu-de">Lặp ngắt quãng các từ của unit ${so}, không đợi unit hoàn thành</span>
+      </span>
+      <span class="dau">\u203a</span>
+    </button>
 
     <div class="dieu-huong-unit">
       ${truoc ? `<button class="phu" onclick="moUnit(${truoc.so})">\u2039 Unit ${truoc.so}</button>` : "<span></span>"}

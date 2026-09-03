@@ -577,6 +577,18 @@ button.chinh.to .nho-hon{
 .o-muc .dau{flex:0 0 auto; color:var(--chu-nhat); font-size:18px}
 .o-muc.xong .ten{color:var(--dung)}
 
+/* Hàng "Ôn tập unit này" đứng riêng dưới 6 mục — viền nét đứt để thấy ngay
+   nó KHÔNG phải mục thứ 7 tính vào tiến độ. */
+.o-on-tap{
+  margin-top:12px; border:1px dashed var(--vien); border-radius:11px;
+  background:var(--the);
+}
+.o-on-tap .ic-on{
+  flex:0 0 auto; width:26px; height:26px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--chinh-nhat); color:var(--chinh); font-size:15px;
+}
+
 .dieu-huong-unit{display:flex; justify-content:space-between; gap:10px; margin-top:16px}
 
 /* Dòng unit đang xem trong menu trái */

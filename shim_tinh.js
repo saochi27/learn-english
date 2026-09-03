@@ -137,9 +137,20 @@
 
   /* --- ôn tập lặp ngắt quãng: port từ on_tap.py --- */
   const ttThe = (b, tu, l) => b[tu + "|" + l] || { lan: 0, ngay_tiep: "", sai: 0 };
-  function unitDaMo() {
+  /* Sáu mục HỌC của một unit. Ôn tập không nằm trong này: nó lặp đi lặp lại,
+     không có điểm "xong", đưa vào thì unit không bao giờ hoàn thành được. */
+  const MUC_HOC = ["bai_hoc", "bai_tap", "mau_cau", "truyen", "hoi_thoai", "de_thi"];
+  /* pham_vi: "xong" (mặc định, unit đã hoàn thành trọn 6 mục) · "mo" (đang học
+     hoặc đã xong Bài học) · "tat_ca".
+     Trả null = KHÔNG giới hạn. Trả mảng (có thể RỖNG) = chỉ các unit trong đó.
+     Phải phân biệt: coi mảng rỗng là "tất cả" thì "chưa unit nào hoàn thành"
+     biến thành "ôn cả 485 từ" — đúng ngược ý nghĩa của phạm vi. */
+  function unitTrongPhamVi(pv) {
+    if (pv === "tat_ca") return null;
     const td = doc(K.td, { unit: {} });
-    return Object.entries(td.unit || {}).filter(([, v]) => ["dang", "xong"].includes(v.bai_hoc)).map(([k]) => +k);
+    return Object.entries(td.unit || {}).filter(([, v]) => pv === "mo"
+      ? ["dang", "xong"].includes(v.bai_hoc)
+      : MUC_HOC.every(m => v[m] === "xong")).map(([k]) => +k);
   }
   function soanThe(tu, loai, tt) {
     const i = KHO[tu], the = { khoa: tu + "|" + loai, tu: i.tu, loai, ten_loai: TEN_LOAI[loai],
@@ -162,11 +173,11 @@
   }
   /* unit != null -> chỉ ôn unit đó và BỎ QUA giới hạn "unit đã mở", vì người
      học đang chủ động chỉ định. Không truyền thì trộn mọi unit đã mở. */
-  function denHan(soLuong = 20, tuMoi = 15, unit = null) {
-    const b = doc(K.on, { the: {} }).the, mo = unitDaMo(), hn = nay();
+  function denHan(soLuong = 20, tuMoi = 15, unit = null, pv = "xong") {
+    const b = doc(K.on, { the: {} }).the, mo = unitTrongPhamVi(pv), hn = nay();
     const qh = [], moi = [];
     for (const [tu, i] of Object.entries(KHO)) {
-      if (unit ? i.unit !== unit : (mo.length && !mo.includes(i.unit))) continue;
+      if (unit ? i.unit !== unit : (mo !== null && !mo.includes(i.unit))) continue;
       for (const l of LOAI) {
         if (l === "dung" && !i.vi_du) continue;
         const tt = ttThe(b, tu, l);
@@ -190,15 +201,18 @@
     d.the[khoa] = tt; ghi(K.on, d);
     return { ok: true, lan: tt.lan, ngay_tiep: tt.ngay_tiep, da_thuoc: tt.lan >= LICH.length };
   }
-  function thongKeOn() {
-    const b = doc(K.on, { the: {} }).the, mo = unitDaMo();
-    const trong = Object.entries(KHO).filter(([, v]) => !mo.length || mo.includes(v.unit));
+  function thongKeOn(pv = "xong") {
+    const b = doc(K.on, { the: {} }).the, mo = unitTrongPhamVi(pv);
+    const trong = Object.entries(KHO).filter(([, v]) => mo === null || mo.includes(v.unit));
     let thuoc = 0;
     for (const [tu, i] of trong)
       if (LOAI.filter(l => !(l === "dung" && !i.vi_du)).every(l => ttThe(b, tu, l).lan >= LICH.length)) thuoc++;
     return { tu_trong_pham_vi: trong.length, tong_tu: Object.keys(KHO).length,
       da_thuoc_du_3_the: thuoc, the_da_hoc: Object.keys(b).length,
-      den_han_hom_nay: denHan(99999).length, unit_da_mo: mo.sort((a, b2) => a - b2), lich: LICH };
+      den_han_hom_nay: denHan(99999, 15, null, pv).length,
+      unit_da_mo: (mo || []).sort((a, b2) => a - b2), pham_vi: pv,
+      so_unit_xong: unitTrongPhamVi("xong").length,
+      so_unit_mo: unitTrongPhamVi("mo").length, lich: LICH };
   }
 
   function traTu(tu) {
@@ -269,7 +283,11 @@
       }
       return json({ tien_do: doc(K.td, { unit: {}, phut_theo_ngay: {}, nghe: {} }), loi: tongHopLoi() });
     }
-    if (duong === "/api/on_tap") return json({ the: denHan(+(q.get("so_luong") || 20), 15, +(q.get("unit") || 0) || null), thong_ke: thongKeOn() });
+    if (duong === "/api/on_tap") {
+      const pv = ["xong", "mo", "tat_ca"].includes(q.get("pham_vi")) ? q.get("pham_vi") : "xong";
+      return json({ the: denHan(+(q.get("so_luong") || 20), 15, +(q.get("unit") || 0) || null, pv),
+                    thong_ke: thongKeOn(pv) });
+    }
     if (duong === "/api/on_tap/tra_loi") return json(traLoiThe(body.khoa, !!body.dung));
     if (duong === "/api/nop_bai") return json(chamBai(body));
     if (duong === "/api/xoa_loi") {
