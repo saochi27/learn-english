@@ -1103,7 +1103,8 @@ function veTruyen(u) {
       noi
       + (iMs >= 0 ? `<div class="khu-mini">${khoiMiniStory(u.mini_story[iMs], iMs)}</div>` : "")
       + nutXongBai,
-      `${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}`,
+      `${NHAN_THE_LOAI[d.the_loai] ? NHAN_THE_LOAI[d.the_loai] + " · " : ""}`
+      + `${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}`,
       xong);
   });
   el.innerHTML = h;
@@ -1158,6 +1159,13 @@ function capNhatDemTruyen() {
    Ba phần bài tập gắn liền một truyện, đặt NGAY DƯỚI truyện đó chứ không
    tách thành mục riêng — đúng trình tự của Hoge: nghe truyện xong là vào
    ngay chuỗi câu hỏi, không nghỉ giữa chừng. */
+/* Nhãn thể loại: nhìn danh sách là thấy ngay có ngụ ngôn, truyện cười, bí ẩn
+   — chứ không phải toàn "chuyện thường ngày" như bản đầu. */
+const NHAN_THE_LOAI = {
+  doi_thuong: "Đời thường", ngu_ngon: "Ngụ ngôn", truyen_cuoi: "Truyện cười",
+  bi_an: "Bí ẩn", cam_dong: "Cảm động", phieu_luu: "Phiêu lưu",
+};
+
 const NHAN_LOAI = {
   co_khong: "có/không", hoac: "hoặc", wh: "wh-", sai_de_sua: "sai → sửa",
 };
