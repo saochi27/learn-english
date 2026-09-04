@@ -296,11 +296,14 @@ function macDinhKhoi(id, gapNeuMoi) {
   localStorage.setItem("khoiGap", JSON.stringify([...S.khoiGap]));
 }
 
-function khoi(id, ten, noi, dem = "") {
+/* daXong = null -> khối không có khái niệm hoàn thành (phần lớn các khối).
+   true/false -> hiện ô tick ở đầu khối, dùng cho từng truyện. */
+function khoi(id, ten, noi, dem = "", daXong = null) {
   const gap = S.khoiGap.has(id);
   return `<section class="khoi ${gap ? "thu-gon" : ""}">
       <button class="khoi-dau" onclick="batTatKhoi('${id}',this)" aria-expanded="${!gap}">
         <span class="mui">›</span>
+        ${daXong === null ? "" : `<span class="tick-truyen ${daXong ? "du" : ""}">✓</span>`}
         <span class="ten">${esc(ten)}</span>
         ${dem ? `<span class="dem">${esc(dem)}</span>` : ""}
       </button>
@@ -936,11 +939,31 @@ function danhSachBai() {
   return [...trang.querySelectorAll(".thanh-doc[data-tien-to]")].map(x => x.dataset.tienTo);
 }
 
+/* MỘT nút cho cả phát và dừng, đổi biểu tượng theo trạng thái. Hai nút riêng
+   vừa tốn chỗ trên thanh, vừa bắt người dùng tự nhớ đang phát hay đang dừng —
+   mà chính cái nút đã biết rồi. Bấm vào bài đang phát = dừng; bấm vào bài khác
+   = chuyển sang bài đó. */
+function batTatPhatBai(tienTo) {
+  if (baiDangPhat === tienTo) { dungPhat(); return; }
+  phatCaBai(tienTo);
+  dongBoNutPhatBai();
+}
+
+function dongBoNutPhatBai() {
+  $$(".nut-phat-bai").forEach(b => {
+    const dang = b.dataset.bai === baiDangPhat;
+    b.textContent = dang ? "■" : "▶";
+    b.title = dang ? "Dừng" : "Phát cả bài";
+    b.classList.toggle("dang-phat", dang);
+  });
+}
+
 function phatCaBai(tienTo) {
   const cac = $$(`[id^="${tienTo}"]`);
   if (!cac.length) return;
   dungPhatBai = false;
   baiDangPhat = tienTo;
+  dongBoNutPhatBai();
   giuManHinhSang();
   let i = 0;
   const tiep = () => {
@@ -1001,6 +1024,7 @@ async function sangUnitKe(conLai = 50) {
 function dungPhat() {
   dungPhatBai = true;
   baiDangPhat = null;
+  dongBoNutPhatBai();
   speechSynthesis.cancel();
   if (dangPhat) { dangPhat.pause(); dangPhat = null; }
   $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
@@ -1017,8 +1041,8 @@ const thanhCongCu = (ten, tienTo) => `<div class="thanh-doc" data-tien-to="${tie
     ${ten ? `<span class="ten">${esc(ten)}</span>` : `<span class="ten"></span>`}
     <button class="nut-tron phu2 ct-kieu" onclick="doiKieuDoc()"
       title="Đổi giữa đọc từng câu và đọc cả đoạn">${CD.kieuDoc === "doan" ? "\u00b6" : "\u2261"}</button>
-    <button class="nut-tron" onclick="phatCaBai('${tienTo}')" title="Phát cả bài">▶</button>
-    <button class="nut-tron phu2" onclick="dungPhat()" title="Dừng">■</button>
+    <button class="nut-tron nut-phat-bai" data-bai="${tienTo}"
+      onclick="batTatPhatBai('${tienTo}')" title="Phát cả bài">▶</button>
     <button class="nut-tron phu2 ct-lap ${CD.lapBai ? "bat" : ""}" onclick="doiLap()"
       title="Phát 1 lần / lặp lại bài">🔁</button>
     <button class="nut-tron phu2 ct-tiep ${CD.tuChuyenBai ? "bat" : ""}" onclick="doiTuChuyen()"
@@ -1054,9 +1078,11 @@ function veTruyen(u) {
       <span class="mo">Đoạn văn mẫu chủ yếu nằm ở Level 3–4 (unit 31–50).</span></div>`;
     return;
   }
-  let h = "";
+  napDaDocTruyen();
+  let h = `<div class="tom-tat" id="dem-truyen"></div>`;
   ds.forEach((d, di) => {
     const tienTo = `tr-${di}-`;
+    const xong = daDocTruyen.has(khoaTruyen(u.so, d.ten));
     const noi = thanhCongCu("", tienTo) +
       (CD.kieuDoc === "doan"
         ? `<div class="the">${khoiDoan(tienTo, d.cau)}</div>`
@@ -1065,12 +1091,67 @@ function veTruyen(u) {
     /* Bài tập mini-story gắn vào ĐÚNG truyện của nó. Ghép theo TÊN chứ không
        theo thứ tự: doan_van còn có truyện cũ và ba bản góc nhìn xen giữa. */
     const iMs = (u.mini_story || []).findIndex(m => m.ten === d.ten);
+    /* Nút đánh dấu nằm CUỐI bài, sau phần bài tập: đọc xong, làm xong rồi mới
+       tới nó — chứ để trên đầu thì bấm trước khi học cũng được. */
+    const nutXongBai = `<div class="cuoi-truyen">
+        <button class="nut-xong ${xong ? "da-xong" : ""}"
+          onclick="batTatTruyenXong(${u.so},${JSON.stringify(d.ten).replace(/"/g, "&quot;")},this)">
+          ${xong ? "✓ Đã học xong" : "Đánh dấu đã học xong"}</button>
+      </div>`;
     macDinhKhoi(`truyen/bai-${di}`, di > 0);
     h += khoi(`truyen/bai-${di}`, d.ten,
-      noi + (iMs >= 0 ? `<div class="khu-mini">${khoiMiniStory(u.mini_story[iMs], iMs)}</div>` : ""),
-      `${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}`);
+      noi
+      + (iMs >= 0 ? `<div class="khu-mini">${khoiMiniStory(u.mini_story[iMs], iMs)}</div>` : "")
+      + nutXongBai,
+      `${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}`,
+      xong);
   });
   el.innerHTML = h;
+  capNhatDemTruyen();
+}
+
+/* --- Đã học xong TỪNG truyện ---
+   Tick riêng cho mỗi truyện, không dùng chung trạng thái "Truyện" của unit:
+   một unit có 5-13 đoạn, đánh dấu chung thì đọc một bài cũng thành xong hết.
+   Khoá theo unit + tên truyện, nhớ trong localStorage của hồ sơ đang dùng. */
+function khoaTruyen(soUnit, ten) {
+  return `${soUnit}|${ten}`;
+}
+
+let daDocTruyen = new Set();
+
+function napDaDocTruyen() {
+  try {
+    const d = JSON.parse(localStorage.getItem("truyenXong__" + (HS?.id || "mac_dinh")));
+    daDocTruyen = new Set(Array.isArray(d) ? d : []);
+  } catch (e) { daDocTruyen = new Set(); }
+}
+
+function luuDaDocTruyen() {
+  localStorage.setItem("truyenXong__" + (HS?.id || "mac_dinh"),
+    JSON.stringify([...daDocTruyen]));
+}
+
+function batTatTruyenXong(soUnit, ten, nut) {
+  const k = khoaTruyen(soUnit, ten);
+  const xong = daDocTruyen.has(k);
+  xong ? daDocTruyen.delete(k) : daDocTruyen.add(k);
+  luuDaDocTruyen();
+  nut.classList.toggle("da-xong", !xong);
+  nut.innerHTML = !xong ? "\u2713 Đã học xong" : "Đánh dấu đã học xong";
+  // cập nhật tick trên đầu khối cho khớp
+  const dau = nut.closest(".khoi")?.querySelector(".khoi-dau .tick-truyen");
+  if (dau) dau.classList.toggle("du", !xong);
+  capNhatDemTruyen();
+}
+
+/* Đếm hiện ở thanh đầu tab Truyện: nhìn là biết còn nợ mấy bài. */
+function capNhatDemTruyen() {
+  const el = $("#dem-truyen");
+  if (!el || !S.duLieuUnit) return;
+  const ds = (S.duLieuUnit.doan_van || []).filter(d => (d.cau || []).length);
+  const xong = ds.filter(d => daDocTruyen.has(khoaTruyen(S.unit, d.ten))).length;
+  el.textContent = `${xong}/${ds.length} bài đã học xong`;
 }
 
 /* ================= MINI-STORY (Effortless English) =================
