@@ -188,14 +188,39 @@ function doc(text, { tocDo, xong, cham, vai, xoay } = {}) {
 /* Giọng tiếng Anh gặp tên riêng tiếng Việt thì đánh vần từng chữ cái —
    "Hoa" đọc thành "ết âu ây". Viết lại theo lối chính tả tiếng Anh TRƯỚC KHI
    đưa cho máy đọc; chữ hiện trên màn hình vẫn giữ nguyên tên thật. */
+/* ĐỊA DANH — thay CẢ CỤM, và thay TRƯỚC tên người.
+   "Da" đứng một mình là chữ cái nên giọng máy đọc "Da Nang" thành
+   "Đi-Ây-Nang". Nhưng không được thay mọi chữ "Da": chỉ đổi khi nó nằm trong
+   tên địa danh. Bảng này phải GIỐNG HỆT bảng trong tao_audio.py — lệch nhau
+   thì mp3 đọc một kiểu, giọng máy đọc một kiểu. */
+const DOI_DIA_DANH = {
+  "Da Nang": "Dah Nang", "Da Lat": "Dah Lat",
+  "Ha Noi": "Ha Noy", "Hanoi": "Ha Noy",
+  "Ho Chi Minh": "Ho Chee Ming",
+  "Nha Trang": "Nya Chang", "Phu Quoc": "Foo Kwock",
+  "Vung Tau": "Voong Tao", "Can Tho": "Kan Ther",
+  "Hoi An": "Hoy An", "Hai Phong": "High Fong",
+  "Sa Pa": "Sah Pah", "Ninh Binh": "Ning Bing",
+  "Hue": "Hway", "Pho": "Fuh", "Tet": "Tet",
+  "Banh mi": "Bang mee", "Ao dai": "Ow zai",
+};
 const DOI_TEN_DOC = {
   Hoa: "Hwah", Linh: "Ling", Minh: "Ming", Chi: "Chee", Thao: "Tao",
   Huong: "Hoong", Ngoc: "Ngock", Phuong: "Foong", Tuan: "Twan", Nga: "Ngah",
   Quang: "Kwang", Trang: "Chang", Yen: "Yenn", Hanh: "Hahn", Duc: "Dook",
   Loan: "Lwan", Nhung: "Nyoong", Oanh: "Wahn", Xuan: "Swan", Vinh: "Ving",
 };
+/* Cụm dài thay trước cụm ngắn: "Ho Chi Minh" phải khớp trước "Ho". */
+const RE_DIA_DANH = new RegExp(
+  Object.keys(DOI_DIA_DANH).sort((a, b) => b.length - a.length)
+    .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g");
+
 const chuanGiongDoc = t =>
-  String(t).replace(/\b[A-Z][a-z]{1,6}\b/g, w => DOI_TEN_DOC[w] || w);
+  String(t)
+    // địa danh TRƯỚC: để tên người chạy trước thì "Ho Chi Minh" đã bị đổi
+    // "Minh" thành "Ming", cụm không còn khớp nữa
+    .replace(RE_DIA_DANH, w => DOI_DIA_DANH[w])
+    .replace(/\b[A-Z][a-z]{1,6}\b/g, w => DOI_TEN_DOC[w] || w);
 
 function docBangMay(text, tocDo, xong, vai, xoay) {
   const u = new SpeechSynthesisUtterance(chuanGiongDoc(text));
