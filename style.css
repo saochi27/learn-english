@@ -726,6 +726,22 @@ button.chinh.to .nho-hon{
   background:var(--the); border:1px solid var(--vien); border-radius:10px;
   padding:11px 14px; margin-bottom:14px;
 }
+/* Tên unit và nhãn level ở thanh đầu là ĐƯỜNG DẪN đi ngược lên, không phải
+   chữ trang trí. Giữ nguyên dáng chữ cũ, chỉ đổi con trỏ và gạch chân khi rê
+   vào — nếu tô nó thành nút xanh thì hai thứ chính ở thanh này lại tranh chỗ
+   với ba nút điều hướng bên phải. */
+.dau-chi-tiet .duong-dan{
+  border:0; background:none; padding:0; font:inherit; color:inherit;
+  text-align:left; cursor:pointer;
+}
+.dau-chi-tiet .duong-dan:hover{color:var(--chinh); text-decoration:underline}
+/* Nhãn level vẫn là viên thuốc như cũ — .duong-dan ở trên có specificity cao
+   hơn .nhan nên phải trả lại nền và padding, không thì bấm được nhưng trông
+   như chữ trần. */
+.dau-chi-tiet .nhan.duong-dan{
+  padding:2px 8px; border-radius:5px; font-size:11.5px;
+  background:var(--chinh-nhat); color:var(--chinh); font-weight:600;
+}
 .dau-chi-tiet .tieu{font-weight:700; font-size:16px; margin-right:auto}
 .nut-xong{
   padding:8px 15px; border-radius:8px; border:1px solid var(--dung);

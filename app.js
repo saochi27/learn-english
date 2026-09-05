@@ -2778,8 +2778,10 @@ function gan_dau_chi_tiet(tab, so, muc) {
   const div = document.createElement("div");
   div.className = "dau-chi-tiet";
   div.innerHTML = `
-    <span class="tieu">Unit ${so} — ${esc(m.ten || "")}</span>
-    <span class="nhan">${esc(m.ten_level || "")}</span>
+    <button class="tieu duong-dan" onclick="moUnit(${so})"
+      title="Về danh sách mục của Unit ${so}">Unit ${so} — ${esc(m.ten || "")}</button>
+    <button class="nhan duong-dan" onclick="moLevel(${m.level ?? 0})"
+      title="Về ${esc(m.ten_level || "level")}">${esc(m.ten_level || "")}</button>
     ${nutXong(so, muc, daXong)}`;
   el.prepend(div);
 
@@ -2823,7 +2825,12 @@ function nhomNutMuc(so, muc, daXong) {
     ? `<button class="nut-dh" title="${esc(nhan)}" aria-label="${esc(nhan)}"
          onclick="moMuc(${m.so},'${m.tab}')">${ic}</button>`
     : `<button class="nut-dh" disabled aria-hidden="true">${ic}</button>`;
+  /* Nút lên lớp cha. Ba nút kia đi NGANG trong chuỗi mục; không có nút này thì
+     muốn quay ra danh sách mục của unit phải mò sang menu trái, mà trên điện
+     thoại menu trái đang thu gọn. */
   return `<div class="nhom-nut-muc">
+      <button class="nut-dh" title="Về Unit ${so}" aria-label="Về Unit ${so}"
+        onclick="moUnit(${so})">\u2191</button>
       ${nut(truoc, "\u2190", truoc
         ? `Mục trước: unit ${truoc.so} — ${TEN_MUC[truoc.tab]}` : "")}
       <button class="nut-xong ${daXong ? "da-xong" : ""}"
