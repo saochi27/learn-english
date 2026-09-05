@@ -750,6 +750,12 @@ button.chinh.to .nho-hon{
 .nut-tron.phu2{background:var(--chinh-nhat); color:var(--chinh)}
 /* công tắc lặp / tự chuyển bài: tắt thì mờ, bật thì đậm màu chính — nhìn
    thanh phát là biết ngay lát nữa hết bài sẽ ra sao */
+/* Nút tốc độ mang chữ ("0.75×") chứ không phải một biểu tượng, nên phải là
+   viên thuốc chứ không phải hình tròn — ép vào 36px thì "1.15×" tràn ra. */
+.nut-tron.ct-toc{
+  width:auto; min-width:46px; padding:0 10px; border-radius:18px;
+  font-size:13px; font-weight:700; font-variant-numeric:tabular-nums;
+}
 .nut-tron.ct-lap,.nut-tron.ct-tiep{opacity:.4; filter:grayscale(1)}
 .nut-tron.ct-lap.bat,.nut-tron.ct-tiep.bat{
   opacity:1; filter:none; background:var(--chinh); color:#fff;

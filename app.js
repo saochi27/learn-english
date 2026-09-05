@@ -6,7 +6,7 @@
 const S = {
   unit: null, tab: "bai-hoc", muc_luc: [], cauHinh: {}, duLieuUnit: null,
   tienDo: { unit: {}, phut_theo_ngay: {} },
-  giong: null, tocDo: 0.9,
+  giong: null, tocDo: +(localStorage.getItem("tocDo") || 0.9),
   phatMauCau: { dang: false, i: 0, lap: 2, cho: 3, danhSach: [] },
   phutBatDau: Date.now(),
   railMo: new Set(),     // unit đang bung ra trong thanh tiến trình bên trái
@@ -175,7 +175,12 @@ function doc(text, { tocDo, xong, cham, vai, xoay } = {}) {
        goc_audio khác rỗng = audio nằm ở tên miền khác (repo audio riêng), lúc
        đó dùng nguyên địa chỉ đầy đủ. */
     const a = new Audio((S.cauHinh?.goc_audio || "audio/") + ten);
-    a.playbackRate = tocDo ?? 1;
+    /* Trước đây mp3 luôn chạy 1.0 nên thanh "Tốc độ đọc" chỉ ăn vào giọng máy
+       Windows — bật audio chất lượng cao là cài đặt như không có.
+       preservesPitch: chậm lại mà không giữ cao độ thì giọng tụt xuống ồm ồm,
+       nghe sai cả nguyên âm, luyện nghe theo đó là hỏng. */
+    a.playbackRate = tocDo ?? S.tocDo;
+    a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true;
     if (xong) a.onended = xong;
     a.onerror = () => docBangMay(text, tocDo, xong, vai, xoay);   // thiếu file thì quay về giọng máy
     dangPhat = a;
@@ -231,6 +236,40 @@ function docBangMay(text, tocDo, xong, vai, xoay) {
   if (xong) u.onend = xong;
   speechSynthesis.speak(u);
 }
+/* ================= TỐC ĐỘ ĐỌC =================
+   Một giá trị duy nhất cho cả app (S.tocDo), đổi được từ ba chỗ: thanh phát
+   của Truyện/Hội thoại, hàng nút của Mẫu câu, và Cài đặt → Âm thanh. Ba chỗ
+   cùng ghi vào một nơi nên không bao giờ lệch nhau. */
+const CAC_TOC_DO = [0.6, 0.75, 0.9, 1, 1.15, 1.3];
+const nhanTocDo = v => String(v) + "×";
+
+function datTocDo(v) {
+  S.tocDo = Math.min(1.5, Math.max(0.5, +v || 0.9));
+  localStorage.setItem("tocDo", S.tocDo);
+  /* Đang phát dở thì đổi luôn, không bắt bấm lại từ đầu — chỉnh tốc độ là
+     lúc người học đang nghe và thấy nhanh/chậm quá. */
+  if (dangPhat) dangPhat.playbackRate = S.tocDo;
+  $$(".ct-toc").forEach(b => {
+    b.textContent = nhanTocDo(S.tocDo);
+    b.title = `Tốc độ đọc ${nhanTocDo(S.tocDo)} — bấm để đổi`;
+  });
+  const t = $("#cd-toc-do"), h = $("#cd-toc-do-hien");
+  if (t) t.value = S.tocDo;
+  if (h) h.textContent = nhanTocDo(S.tocDo);
+}
+
+/* Bấm xoay vòng qua các mức có sẵn. Vì sao không dùng thanh trượt ngay trên
+   thanh phát: thanh trượt cần chỗ và cần nhắm chuột, còn ở đây chỉ cần một
+   nút bằng đầu ngón tay. Muốn chỉnh mịn hơn thì vào Cài đặt → Âm thanh. */
+function xoayTocDo() {
+  const i = CAC_TOC_DO.findIndex(v => v >= S.tocDo - 0.001);
+  datTocDo(CAC_TOC_DO[(i < 0 ? 0 : i + 1) % CAC_TOC_DO.length]);
+}
+
+const nutTocDo = () => `<button class="nut-tron phu2 ct-toc" onclick="xoayTocDo()"
+    title="Tốc độ đọc ${nhanTocDo(S.tocDo)} — bấm để đổi"
+    aria-label="Tốc độ đọc">${nhanTocDo(S.tocDo)}</button>`;
+
 const nutLoa = t => `<button class="loa" onclick="doc(${JSON.stringify(t).replace(/"/g, "&quot;")})" title="Nghe">🔊</button>`;
 
 /* ================= hiển thị câu (chạm từng từ) ================= */
@@ -529,6 +568,7 @@ async function veMauCau(soUnit) {
       <button class="nut-tron to" id="nut-phat" onclick="batTatPhat()" title="Phát / Dừng" aria-label="Phát">▶</button>
       <button class="nut-tron phu2" onclick="nhayCau(1)" title="Câu sau" aria-label="Câu sau">⏭</button>
       <button class="nut-tron phu2" onclick="docLaiCau()" title="Nghe lại câu này" aria-label="Nghe lại">↻</button>
+      ${nutTocDo()}
       <button class="nut-tron phu2" onclick="moCaiDat();chonTheCaiDat('mau-cau')" title="Cài đặt Mẫu câu" aria-label="Cài đặt">⚙</button>
     </div>
     ${khoi("mau-cau/danh-sach", "Danh sách câu",
@@ -1072,6 +1112,7 @@ const thanhCongCu = (ten, tienTo) => `<div class="thanh-doc" data-tien-to="${tie
       title="Phát 1 lần / lặp lại bài">🔁</button>
     <button class="nut-tron phu2 ct-tiep ${CD.tuChuyenBai ? "bat" : ""}" onclick="doiTuChuyen()"
       title="Hết bài tự sang bài kế">⏭</button>
+    ${nutTocDo()}
     <button class="nut-tron phu2" onclick="batTatCaiDatDoc()" title="Hiển thị">Aa</button>
   </div>`;
 
@@ -2990,7 +3031,8 @@ async function xoaHoSo() {
 
   napGiong();
   $("#cd-giong").onchange = e => { S.giong = dsGiong.find(v => v.name === e.target.value); doc("Hello, this is your new voice."); };
-  $("#cd-toc-do").oninput = e => { S.tocDo = +e.target.value; $("#cd-toc-do-hien").textContent = e.target.value; };
+  $("#cd-toc-do").oninput = e => datTocDo(e.target.value);
+  datTocDo(S.tocDo);   // đồng bộ nhãn + nút ngay khi mở app
   $$("#cai-dat .hop-tab button").forEach(b =>
     b.onclick = () => chonTheCaiDat(b.dataset.cd));
   chonTheCaiDat(localStorage.getItem("theCaiDat") || "nguoi-hoc");
