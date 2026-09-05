@@ -46,31 +46,31 @@
    "vi_du": [
     {
      "tu": "morning",
-     "ipa": "/ˈmɔːnɪŋ/",
+     "ipa": "ˈmɔːnɪŋ",
      "nghia": "buổi sáng",
      "unit": 1
     },
     {
      "tu": "evening",
-     "ipa": "/ˈiːvnɪŋ/",
+     "ipa": "ˈiːvnɪŋ",
      "nghia": "buổi tối",
      "unit": 1
     },
     {
      "tu": "sister",
-     "ipa": "/ˈsɪstə/",
+     "ipa": "ˈsɪstə",
      "nghia": "chị/em gái",
      "unit": 2
     },
     {
      "tu": "expensive",
-     "ipa": "/ɪkˈspensɪv/",
+     "ipa": "ɪkˈspensɪv",
      "nghia": "đắt",
      "unit": 3
     },
     {
      "tu": "engineer",
-     "ipa": "/ˌendʒɪˈnɪə/",
+     "ipa": "ˌendʒɪˈnɪə",
      "nghia": "kỹ sư",
      "unit": 5
     }
@@ -110,31 +110,31 @@
    "vi_du": [
     {
      "tu": "friend",
-     "ipa": "/frend/",
+     "ipa": "frend",
      "nghia": "bạn",
      "unit": 1
     },
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     },
     {
      "tu": "expensive",
-     "ipa": "/ɪkˈspensɪv/",
+     "ipa": "ɪkˈspensɪv",
      "nghia": "đắt",
      "unit": 3
     },
     {
      "tu": "weekend",
-     "ipa": "/ˌwiːkˈend/",
+     "ipa": "ˌwiːkˈend",
      "nghia": "cuối tuần",
      "unit": 4
     },
     {
      "tu": "engineer",
-     "ipa": "/ˌendʒɪˈnɪə/",
+     "ipa": "ˌendʒɪˈnɪə",
      "nghia": "kỹ sư",
      "unit": 5
     }
@@ -154,7 +154,7 @@
     },
     {
      "a": "pen",
-     "ipa_a": "/pen/",
+     "ipa_a": "pen",
      "b": "pan",
      "ipa_b": "pæn"
     }
@@ -174,31 +174,31 @@
    "vi_du": [
     {
      "tu": "family",
-     "ipa": "/ˈfæməli/",
+     "ipa": "ˈfæməli",
      "nghia": "gia đình",
      "unit": 2
     },
     {
      "tu": "grandfather",
-     "ipa": "/ˈɡrænfɑːðə/",
+     "ipa": "ˈɡrænfɑːðə",
      "nghia": "ông",
      "unit": 2
     },
     {
      "tu": "grandmother",
-     "ipa": "/ˈɡrænmʌðə/",
+     "ipa": "ˈɡrænmʌðə",
      "nghia": "bà",
      "unit": 2
     },
     {
      "tu": "married",
-     "ipa": "/ˈmærid/",
+     "ipa": "ˈmærid",
      "nghia": "đã kết hôn",
      "unit": 2
     },
     {
      "tu": "salary",
-     "ipa": "/ˈsæləri/",
+     "ipa": "ˈsæləri",
      "nghia": "lương",
      "unit": 5
     }
@@ -238,31 +238,31 @@
    "vi_du": [
     {
      "tu": "country",
-     "ipa": "/ˈkʌntri/",
+     "ipa": "ˈkʌntri",
      "nghia": "đất nước",
      "unit": 1
     },
     {
      "tu": "mother",
-     "ipa": "/ˈmʌðə/",
+     "ipa": "ˈmʌðə",
      "nghia": "mẹ",
      "unit": 2
     },
     {
      "tu": "brother",
-     "ipa": "/ˈbrʌðə/",
+     "ipa": "ˈbrʌðə",
      "nghia": "anh/em trai",
      "unit": 2
     },
     {
      "tu": "son",
-     "ipa": "/sʌn/",
+     "ipa": "sʌn",
      "nghia": "con trai",
      "unit": 2
     },
     {
      "tu": "husband",
-     "ipa": "/ˈhʌzbənd/",
+     "ipa": "ˈhʌzbənd",
      "nghia": "chồng",
      "unit": 2
     }
@@ -302,31 +302,31 @@
    "vi_du": [
     {
      "tu": "from",
-     "ipa": "/frɒm/",
+     "ipa": "frɒm",
      "nghia": "từ, đến từ",
      "unit": 1
     },
     {
      "tu": "dollar",
-     "ipa": "/ˈdɒlə/",
+     "ipa": "ˈdɒlə",
      "nghia": "đô la",
      "unit": 3
     },
     {
      "tu": "o’clock",
-     "ipa": "/əˈklɒk/",
+     "ipa": "əˈklɒk",
      "nghia": "giờ đúng",
      "unit": 4
     },
     {
      "tu": "job",
-     "ipa": "/dʒɒb/",
+     "ipa": "dʒɒb",
      "nghia": "công việc",
      "unit": 5
     },
     {
      "tu": "doctor",
-     "ipa": "/ˈdɒktə/",
+     "ipa": "ˈdɒktə",
      "nghia": "bác sĩ",
      "unit": 5
     }
@@ -360,19 +360,19 @@
    "vi_du": [
     {
      "tu": "goodbye",
-     "ipa": "/ˌɡʊdˈbaɪ/",
+     "ipa": "ˌɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
     },
     {
      "tu": "book",
-     "ipa": "/bʊk/",
+     "ipa": "bʊk",
      "nghia": "sách",
      "unit": 6
     },
     {
      "tu": "cooking",
-     "ipa": "/ˈkʊkɪŋ/",
+     "ipa": "ˈkʊkɪŋ",
      "nghia": "nấu ăn",
      "unit": 7
     }
@@ -412,19 +412,19 @@
    "vi_du": [
     {
      "tu": "teacher",
-     "ipa": "/ˈtiːtʃə/",
+     "ipa": "ˈtiːtʃə",
      "nghia": "giáo viên",
      "unit": 1
     },
     {
      "tu": "afternoon",
-     "ipa": "/ˌɑːftəˈnuːn/",
+     "ipa": "ˌɑːftəˈnuːn",
      "nghia": "buổi chiều",
      "unit": 1
     },
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     }
@@ -445,31 +445,31 @@
    "vi_du": [
     {
      "tu": "meet",
-     "ipa": "/miːt/",
+     "ipa": "miːt",
      "nghia": "gặp",
      "unit": 1
     },
     {
      "tu": "teacher",
-     "ipa": "/ˈtiːtʃə/",
+     "ipa": "ˈtiːtʃə",
      "nghia": "giáo viên",
      "unit": 1
     },
     {
      "tu": "evening",
-     "ipa": "/ˈiːvnɪŋ/",
+     "ipa": "ˈiːvnɪŋ",
      "nghia": "buổi tối",
      "unit": 1
     },
     {
      "tu": "cheap",
-     "ipa": "/tʃiːp/",
+     "ipa": "tʃiːp",
      "nghia": "rẻ",
      "unit": 3
     },
     {
      "tu": "weekend",
-     "ipa": "/ˌwiːkˈend/",
+     "ipa": "ˌwiːkˈend",
      "nghia": "cuối tuần",
      "unit": 4
     }
@@ -509,31 +509,31 @@
    "vi_du": [
     {
      "tu": "afternoon",
-     "ipa": "/ˌɑːftəˈnuːn/",
+     "ipa": "ˌɑːftəˈnuːn",
      "nghia": "buổi chiều",
      "unit": 1
     },
     {
      "tu": "father",
-     "ipa": "/ˈfɑːðə/",
+     "ipa": "ˈfɑːðə",
      "nghia": "bố",
      "unit": 2
     },
     {
      "tu": "grandfather",
-     "ipa": "/ˈɡrænfɑːðə/",
+     "ipa": "ˈɡrænfɑːðə",
      "nghia": "ông",
      "unit": 2
     },
     {
      "tu": "aunt",
-     "ipa": "/ɑːnt/",
+     "ipa": "ɑːnt",
      "nghia": "cô, dì, bác gái",
      "unit": 2
     },
     {
      "tu": "half",
-     "ipa": "/hɑːf/",
+     "ipa": "hɑːf",
      "nghia": "rưỡi, một nửa",
      "unit": 4
     }
@@ -573,31 +573,31 @@
    "vi_du": [
     {
      "tu": "morning",
-     "ipa": "/ˈmɔːnɪŋ/",
+     "ipa": "ˈmɔːnɪŋ",
      "nghia": "buổi sáng",
      "unit": 1
     },
     {
      "tu": "daughter",
-     "ipa": "/ˈdɔːtə/",
+     "ipa": "ˈdɔːtə",
      "nghia": "con gái",
      "unit": 2
     },
     {
      "tu": "quarter",
-     "ipa": "/ˈkwɔːtə/",
+     "ipa": "ˈkwɔːtə",
      "nghia": "mười lăm phút",
      "unit": 4
     },
     {
      "tu": "boring",
-     "ipa": "/ˈbɔːrɪŋ/",
+     "ipa": "ˈbɔːrɪŋ",
      "nghia": "chán",
      "unit": 7
     },
     {
      "tu": "floor",
-     "ipa": "/flɔː/",
+     "ipa": "flɔː",
      "nghia": "sàn / tầng",
      "unit": 10
     }
@@ -637,31 +637,31 @@
    "vi_du": [
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "afternoon",
-     "ipa": "/ˌɑːftəˈnuːn/",
+     "ipa": "ˌɑːftəˈnuːn",
      "nghia": "buổi chiều",
      "unit": 1
     },
     {
      "tu": "to",
-     "ipa": "/tuː/",
+     "ipa": "tuː",
      "nghia": "kém (giờ)",
      "unit": 4
     },
     {
      "tu": "usually",
-     "ipa": "/ˈjuːʒuəli/",
+     "ipa": "ˈjuːʒuəli",
      "nghia": "thường thường",
      "unit": 9
     },
     {
      "tu": "routine",
-     "ipa": "/ruːˈtiːn/",
+     "ipa": "ruːˈtiːn",
      "nghia": "thói quen, nếp sinh hoạt",
      "unit": 9
     }
@@ -701,31 +701,31 @@
    "vi_du": [
     {
      "tu": "early",
-     "ipa": "/ˈɜːli/",
+     "ipa": "ˈɜːli",
      "nghia": "sớm",
      "unit": 4
     },
     {
      "tu": "work",
-     "ipa": "/wɜːk/",
+     "ipa": "wɜːk",
      "nghia": "làm việc / công việc (n)",
      "unit": 5
     },
     {
      "tu": "nurse",
-     "ipa": "/nɜːs/",
+     "ipa": "nɜːs",
      "nghia": "y tá",
      "unit": 5
     },
     {
      "tu": "prefer",
-     "ipa": "/prɪˈfɜː/",
+     "ipa": "prɪˈfɜː",
      "nghia": "thích hơn",
      "unit": 7
     },
     {
      "tu": "furniture",
-     "ipa": "/ˈfɜːnɪtʃə/",
+     "ipa": "ˈfɜːnɪtʃə",
      "nghia": "đồ nội thất (không đếm được)",
      "unit": 10
     }
@@ -765,31 +765,31 @@
    "vi_du": [
     {
      "tu": "name",
-     "ipa": "/neɪm/",
+     "ipa": "neɪm",
      "nghia": "tên",
      "unit": 1
     },
     {
      "tu": "age",
-     "ipa": "/eɪdʒ/",
+     "ipa": "eɪdʒ",
      "nghia": "tuổi",
      "unit": 3
     },
     {
      "tu": "late",
-     "ipa": "/leɪt/",
+     "ipa": "leɪt",
      "nghia": "muộn",
      "unit": 4
     },
     {
      "tu": "table",
-     "ipa": "/ˈteɪbl/",
+     "ipa": "ˈteɪbl",
      "nghia": "bàn",
      "unit": 6
     },
     {
      "tu": "hate",
-     "ipa": "/heɪt/",
+     "ipa": "heɪt",
      "nghia": "ghét",
      "unit": 7
     }
@@ -797,7 +797,7 @@
    "cap_toi_thieu": [
     {
      "a": "late",
-     "ipa_a": "/leɪt/",
+     "ipa_a": "leɪt",
      "b": "let",
      "ipa_b": "let"
     },
@@ -811,7 +811,7 @@
      "a": "pain",
      "ipa_a": "peɪn",
      "b": "pen",
-     "ipa_b": "/pen/"
+     "ipa_b": "pen"
     }
    ]
   },
@@ -829,31 +829,31 @@
    "vi_du": [
     {
      "tu": "hi",
-     "ipa": "/haɪ/",
+     "ipa": "haɪ",
      "nghia": "chào (thân mật)",
      "unit": 1
     },
     {
      "tu": "nice",
-     "ipa": "/naɪs/",
+     "ipa": "naɪs",
      "nghia": "tốt, dễ chịu",
      "unit": 1
     },
     {
      "tu": "goodbye",
-     "ipa": "/ˌɡʊdˈbaɪ/",
+     "ipa": "ˌɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
     },
     {
      "tu": "wife",
-     "ipa": "/waɪf/",
+     "ipa": "waɪf",
      "nghia": "vợ",
      "unit": 2
     },
     {
      "tu": "price",
-     "ipa": "/praɪs/",
+     "ipa": "praɪs",
      "nghia": "giá",
      "unit": 3
     }
@@ -867,7 +867,7 @@
     },
     {
      "a": "time",
-     "ipa_a": "/taɪm/",
+     "ipa_a": "taɪm",
      "b": "tame",
      "ipa_b": "teɪm"
     },
@@ -893,31 +893,31 @@
    "vi_du": [
     {
      "tu": "enjoy",
-     "ipa": "/ɪnˈdʒɔɪ/",
+     "ipa": "ɪnˈdʒɔɪ",
      "nghia": "thích, tận hưởng",
      "unit": 7
     },
     {
      "tu": "join",
-     "ipa": "/dʒɔɪn/",
+     "ipa": "dʒɔɪn",
      "nghia": "tham gia",
      "unit": 17
     },
     {
      "tu": "appointment",
-     "ipa": "/əˈpɔɪntmənt/",
+     "ipa": "əˈpɔɪntmənt",
      "nghia": "lịch hẹn",
      "unit": 20
     },
     {
      "tu": "choice",
-     "ipa": "/tʃɔɪs/",
+     "ipa": "tʃɔɪs",
      "nghia": "lựa chọn",
      "unit": 29
     },
     {
      "tu": "employment",
-     "ipa": "/ɪmˈplɔɪmənt/",
+     "ipa": "ɪmˈplɔɪmənt",
      "nghia": "việc làm",
      "unit": 32
     }
@@ -951,31 +951,31 @@
    "vi_du": [
     {
      "tu": "hello",
-     "ipa": "/həˈləʊ/",
+     "ipa": "həˈləʊ",
      "nghia": "xin chào",
      "unit": 1
     },
     {
      "tu": "phone",
-     "ipa": "/fəʊn/",
+     "ipa": "fəʊn",
      "nghia": "điện thoại",
      "unit": 6
     },
     {
      "tu": "broken",
-     "ipa": "/ˈbrəʊkən/",
+     "ipa": "ˈbrəʊkən",
      "nghia": "hỏng",
      "unit": 6
     },
     {
      "tu": "window",
-     "ipa": "/ˈwɪndəʊ/",
+     "ipa": "ˈwɪndəʊ",
      "nghia": "cửa sổ",
      "unit": 10
     },
     {
      "tu": "sofa",
-     "ipa": "/ˈsəʊfə/",
+     "ipa": "ˈsəʊfə",
      "nghia": "ghế sofa",
      "unit": 10
     }
@@ -1015,31 +1015,31 @@
    "vi_du": [
     {
      "tu": "about",
-     "ipa": "/əˈbaʊt/",
+     "ipa": "əˈbaʊt",
      "nghia": "khoảng",
      "unit": 3
     },
     {
      "tu": "accountant",
-     "ipa": "/əˈkaʊntənt/",
+     "ipa": "əˈkaʊntənt",
      "nghia": "kế toán",
      "unit": 5
     },
     {
      "tu": "house",
-     "ipa": "/haʊs/",
+     "ipa": "haʊs",
      "nghia": "nhà",
      "unit": 10
     },
     {
      "tu": "discount",
-     "ipa": "/ˈdɪskaʊnt/",
+     "ipa": "ˈdɪskaʊnt",
      "nghia": "giảm giá",
      "unit": 12
     },
     {
      "tu": "roundabout",
-     "ipa": "/ˈraʊndəbaʊt/",
+     "ipa": "ˈraʊndəbaʊt",
      "nghia": "vòng xuyến",
      "unit": 13
     }
@@ -1079,31 +1079,31 @@
    "vi_du": [
     {
      "tu": "engineer",
-     "ipa": "/ˌendʒɪˈnɪə/",
+     "ipa": "ˌendʒɪˈnɪə",
      "nghia": "kỹ sư",
      "unit": 5
     },
     {
      "tu": "beard",
-     "ipa": "/bɪəd/",
+     "ipa": "bɪəd",
      "nghia": "râu quai nón",
      "unit": 19
     },
     {
      "tu": "reliable",
-     "ipa": "/rɪˈlaɪəbl/",
+     "ipa": "rɪˈlaɪəbl",
      "nghia": "đáng tin cậy",
      "unit": 19
     },
     {
      "tu": "experience",
-     "ipa": "/ɪkˈspɪəriəns/",
+     "ipa": "ɪkˈspɪəriəns",
      "nghia": "trải nghiệm, kinh nghiệm",
      "unit": 23
     },
     {
      "tu": "appear",
-     "ipa": "/əˈpɪə/",
+     "ipa": "əˈpɪə",
      "nghia": "xuất hiện",
      "unit": 23
     }
@@ -1125,7 +1125,7 @@
      "a": "cheer",
      "ipa_a": "tʃɪə",
      "b": "chair",
-     "ipa_b": "/tʃeə/"
+     "ipa_b": "tʃeə"
     }
    ]
   },
@@ -1143,31 +1143,31 @@
    "vi_du": [
     {
      "tu": "parents",
-     "ipa": "/ˈpeərənts/",
+     "ipa": "ˈpeərənts",
      "nghia": "bố mẹ",
      "unit": 2
     },
     {
      "tu": "chair",
-     "ipa": "/tʃeə/",
+     "ipa": "tʃeə",
      "nghia": "ghế",
      "unit": 6
     },
     {
      "tu": "stairs",
-     "ipa": "/steəz/",
+     "ipa": "steəz",
      "nghia": "cầu thang",
      "unit": 10
     },
     {
      "tu": "vegetarian",
-     "ipa": "/ˌvedʒɪˈteəriən/",
+     "ipa": "ˌvedʒɪˈteəriən",
      "nghia": "người ăn chay",
      "unit": 11
     },
     {
      "tu": "software",
-     "ipa": "/ˈsɒftweə/",
+     "ipa": "ˈsɒftweə",
      "nghia": "phần mềm",
      "unit": 27
     }
@@ -1187,7 +1187,7 @@
     },
     {
      "a": "chair",
-     "ipa_a": "/tʃeə/",
+     "ipa_a": "tʃeə",
      "b": "cheer",
      "ipa_b": "tʃɪə"
     }
@@ -1207,7 +1207,7 @@
    "vi_du": [
     {
      "tu": "sure",
-     "ipa": "/ʃʊə/",
+     "ipa": "ʃʊə",
      "nghia": "chắc chắn",
      "unit": 17
     },
@@ -1253,31 +1253,31 @@
    "vi_du": [
     {
      "tu": "parents",
-     "ipa": "/ˈpeərənts/",
+     "ipa": "ˈpeərənts",
      "nghia": "bố mẹ",
      "unit": 2
     },
     {
      "tu": "price",
-     "ipa": "/praɪs/",
+     "ipa": "praɪs",
      "nghia": "giá",
      "unit": 3
     },
     {
      "tu": "expensive",
-     "ipa": "/ɪkˈspensɪv/",
+     "ipa": "ɪkˈspensɪv",
      "nghia": "đắt",
      "unit": 3
     },
     {
      "tu": "cheap",
-     "ipa": "/tʃiːp/",
+     "ipa": "tʃiːp",
      "nghia": "rẻ",
      "unit": 3
     },
     {
      "tu": "past",
-     "ipa": "/pɑːst/",
+     "ipa": "pɑːst",
      "nghia": "hơn (giờ)",
      "unit": 4
     }
@@ -1317,31 +1317,31 @@
    "vi_du": [
     {
      "tu": "meet",
-     "ipa": "/miːt/",
+     "ipa": "miːt",
      "nghia": "gặp",
      "unit": 1
     },
     {
      "tu": "country",
-     "ipa": "/ˈkʌntri/",
+     "ipa": "ˈkʌntri",
      "nghia": "đất nước",
      "unit": 1
     },
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "teacher",
-     "ipa": "/ˈtiːtʃə/",
+     "ipa": "ˈtiːtʃə",
      "nghia": "giáo viên",
      "unit": 1
     },
     {
      "tu": "afternoon",
-     "ipa": "/ˌɑːftəˈnuːn/",
+     "ipa": "ˌɑːftəˈnuːn",
      "nghia": "buổi chiều",
      "unit": 1
     }
@@ -1349,7 +1349,7 @@
    "cap_toi_thieu": [
     {
      "a": "time",
-     "ipa_a": "/taɪm/",
+     "ipa_a": "taɪm",
      "b": "dime",
      "ipa_b": "daɪm"
     },
@@ -1381,31 +1381,31 @@
    "vi_du": [
     {
      "tu": "country",
-     "ipa": "/ˈkʌntri/",
+     "ipa": "ˈkʌntri",
      "nghia": "đất nước",
      "unit": 1
     },
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     },
     {
      "tu": "uncle",
-     "ipa": "/ˈʌŋkl/",
+     "ipa": "ˈʌŋkl",
      "nghia": "chú, bác, cậu",
      "unit": 2
     },
     {
      "tu": "cousin",
-     "ipa": "/ˈkʌzn/",
+     "ipa": "ˈkʌzn",
      "nghia": "anh chị em họ",
      "unit": 2
     },
     {
      "tu": "expensive",
-     "ipa": "/ɪkˈspensɪv/",
+     "ipa": "ɪkˈspensɪv",
      "nghia": "đắt",
      "unit": 3
     }
@@ -1421,7 +1421,7 @@
      "a": "back",
      "ipa_a": "bæk",
      "b": "bag",
-     "ipa_b": "/bæɡ/"
+     "ipa_b": "bæɡ"
     },
     {
      "a": "pick",
@@ -1445,31 +1445,31 @@
    "vi_du": [
     {
      "tu": "from",
-     "ipa": "/frɒm/",
+     "ipa": "frɒm",
      "nghia": "từ, đến từ",
      "unit": 1
     },
     {
      "tu": "friend",
-     "ipa": "/frend/",
+     "ipa": "frend",
      "nghia": "bạn",
      "unit": 1
     },
     {
      "tu": "afternoon",
-     "ipa": "/ˌɑːftəˈnuːn/",
+     "ipa": "ˌɑːftəˈnuːn",
      "nghia": "buổi chiều",
      "unit": 1
     },
     {
      "tu": "family",
-     "ipa": "/ˈfæməli/",
+     "ipa": "ˈfæməli",
      "nghia": "gia đình",
      "unit": 2
     },
     {
      "tu": "father",
-     "ipa": "/ˈfɑːðə/",
+     "ipa": "ˈfɑːðə",
      "nghia": "bố",
      "unit": 2
     }
@@ -1485,7 +1485,7 @@
      "a": "safe",
      "ipa_a": "seɪf",
      "b": "save",
-     "ipa_b": "/seɪv/"
+     "ipa_b": "seɪv"
     },
     {
      "a": "leaf",
@@ -1509,25 +1509,25 @@
    "vi_du": [
     {
      "tu": "thing",
-     "ipa": "/θɪŋ/",
+     "ipa": "θɪŋ",
      "nghia": "đồ vật",
      "unit": 6
     },
     {
      "tu": "healthy",
-     "ipa": "/ˈhelθi/",
+     "ipa": "ˈhelθi",
      "nghia": "khỏe mạnh / không tốt cho sức khỏe",
      "unit": 20
     },
     {
      "tu": "worth",
-     "ipa": "/wɜːθ/",
+     "ipa": "wɜːθ",
      "nghia": "đáng giá",
      "unit": 28
     },
     {
      "tu": "authentic",
-     "ipa": "/ɔːˈθentɪk/",
+     "ipa": "ɔːˈθentɪk",
      "nghia": "chân thực, nguyên bản",
      "unit": 39
     }
@@ -1567,31 +1567,31 @@
    "vi_du": [
     {
      "tu": "nice",
-     "ipa": "/naɪs/",
+     "ipa": "naɪs",
      "nghia": "tốt, dễ chịu",
      "unit": 1
     },
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "parents",
-     "ipa": "/ˈpeərənts/",
+     "ipa": "ˈpeərənts",
      "nghia": "bố mẹ",
      "unit": 2
     },
     {
      "tu": "sister",
-     "ipa": "/ˈsɪstə/",
+     "ipa": "ˈsɪstə",
      "nghia": "chị/em gái",
      "unit": 2
     },
     {
      "tu": "son",
-     "ipa": "/sʌn/",
+     "ipa": "sʌn",
      "nghia": "con trai",
      "unit": 2
     }
@@ -1631,31 +1631,31 @@
    "vi_du": [
     {
      "tu": "shopping",
-     "ipa": "/ˈʃɒpɪŋ/",
+     "ipa": "ˈʃɒpɪŋ",
      "nghia": "mua sắm",
      "unit": 7
     },
     {
      "tu": "finish",
-     "ipa": "/ˈfɪnɪʃ/",
+     "ipa": "ˈfɪnɪʃ",
      "nghia": "kết thúc",
      "unit": 9
     },
     {
      "tu": "dish",
-     "ipa": "/dɪʃ/",
+     "ipa": "dɪʃ",
      "nghia": "món ăn",
      "unit": 11
     },
     {
      "tu": "delicious",
-     "ipa": "/dɪˈlɪʃəs/",
+     "ipa": "dɪˈlɪʃəs",
      "nghia": "ngon",
      "unit": 11
     },
     {
      "tu": "cash",
-     "ipa": "/kæʃ/",
+     "ipa": "kæʃ",
      "nghia": "tiền mặt",
      "unit": 12
     }
@@ -1695,31 +1695,31 @@
    "vi_du": [
     {
      "tu": "teacher",
-     "ipa": "/ˈtiːtʃə/",
+     "ipa": "ˈtiːtʃə",
      "nghia": "giáo viên",
      "unit": 1
     },
     {
      "tu": "cheap",
-     "ipa": "/tʃiːp/",
+     "ipa": "tʃiːp",
      "nghia": "rẻ",
      "unit": 3
     },
     {
      "tu": "watch",
-     "ipa": "/wɒtʃ/",
+     "ipa": "wɒtʃ",
      "nghia": "đồng hồ đeo tay",
      "unit": 6
     },
     {
      "tu": "chair",
-     "ipa": "/tʃeə/",
+     "ipa": "tʃeə",
      "nghia": "ghế",
      "unit": 6
     },
     {
      "tu": "kitchen",
-     "ipa": "/ˈkɪtʃɪn/",
+     "ipa": "ˈkɪtʃɪn",
      "nghia": "bếp",
      "unit": 10
     }
@@ -1733,7 +1733,7 @@
     },
     {
      "a": "cheap",
-     "ipa_a": "/tʃiːp/",
+     "ipa_a": "tʃiːp",
      "b": "jeep",
      "ipa_b": "dʒiːp"
     },
@@ -1759,31 +1759,31 @@
    "vi_du": [
     {
      "tu": "hello",
-     "ipa": "/həˈləʊ/",
+     "ipa": "həˈləʊ",
      "nghia": "xin chào",
      "unit": 1
     },
     {
      "tu": "hi",
-     "ipa": "/haɪ/",
+     "ipa": "haɪ",
      "nghia": "chào (thân mật)",
      "unit": 1
     },
     {
      "tu": "husband",
-     "ipa": "/ˈhʌzbənd/",
+     "ipa": "ˈhʌzbənd",
      "nghia": "chồng",
      "unit": 2
     },
     {
      "tu": "half",
-     "ipa": "/hɑːf/",
+     "ipa": "hɑːf",
      "nghia": "rưỡi, một nửa",
      "unit": 4
     },
     {
      "tu": "hobby",
-     "ipa": "/ˈhɒbi/",
+     "ipa": "ˈhɒbi",
      "nghia": "sở thích",
      "unit": 7
     }
@@ -1823,31 +1823,31 @@
    "vi_du": [
     {
      "tu": "goodbye",
-     "ipa": "/ˌɡʊdˈbaɪ/",
+     "ipa": "ˌɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
     },
     {
      "tu": "brother",
-     "ipa": "/ˈbrʌðə/",
+     "ipa": "ˈbrʌðə",
      "nghia": "anh/em trai",
      "unit": 2
     },
     {
      "tu": "husband",
-     "ipa": "/ˈhʌzbənd/",
+     "ipa": "ˈhʌzbənd",
      "nghia": "chồng",
      "unit": 2
     },
     {
      "tu": "about",
-     "ipa": "/əˈbaʊt/",
+     "ipa": "əˈbaʊt",
      "nghia": "khoảng",
      "unit": 3
     },
     {
      "tu": "job",
-     "ipa": "/dʒɒb/",
+     "ipa": "dʒɒb",
      "nghia": "công việc",
      "unit": 5
     }
@@ -1887,31 +1887,31 @@
    "vi_du": [
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "friend",
-     "ipa": "/frend/",
+     "ipa": "frend",
      "nghia": "bạn",
      "unit": 1
     },
     {
      "tu": "goodbye",
-     "ipa": "/ˌɡʊdˈbaɪ/",
+     "ipa": "ˌɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
     },
     {
      "tu": "daughter",
-     "ipa": "/ˈdɔːtə/",
+     "ipa": "ˈdɔːtə",
      "nghia": "con gái",
      "unit": 2
     },
     {
      "tu": "husband",
-     "ipa": "/ˈhʌzbənd/",
+     "ipa": "ˈhʌzbənd",
      "nghia": "chồng",
      "unit": 2
     }
@@ -1921,7 +1921,7 @@
      "a": "dime",
      "ipa_a": "daɪm",
      "b": "time",
-     "ipa_b": "/taɪm/"
+     "ipa_b": "taɪm"
     },
     {
      "a": "bed",
@@ -1951,31 +1951,31 @@
    "vi_du": [
     {
      "tu": "goodbye",
-     "ipa": "/ˌɡʊdˈbaɪ/",
+     "ipa": "ˌɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
     },
     {
      "tu": "grandfather",
-     "ipa": "/ˈɡrænfɑːðə/",
+     "ipa": "ˈɡrænfɑːðə",
      "nghia": "ông",
      "unit": 2
     },
     {
      "tu": "grandmother",
-     "ipa": "/ˈɡrænmʌðə/",
+     "ipa": "ˈɡrænmʌðə",
      "nghia": "bà",
      "unit": 2
     },
     {
      "tu": "bag",
-     "ipa": "/bæɡ/",
+     "ipa": "bæɡ",
      "nghia": "túi",
      "unit": 6
     },
     {
      "tu": "glasses",
-     "ipa": "/ˈɡlɑːsɪz/",
+     "ipa": "ˈɡlɑːsɪz",
      "nghia": "kính (luôn số nhiều)",
      "unit": 6
     }
@@ -1989,7 +1989,7 @@
     },
     {
      "a": "bag",
-     "ipa_a": "/bæɡ/",
+     "ipa_a": "bæɡ",
      "b": "back",
      "ipa_b": "bæk"
     },
@@ -2015,31 +2015,31 @@
    "vi_du": [
     {
      "tu": "evening",
-     "ipa": "/ˈiːvnɪŋ/",
+     "ipa": "ˈiːvnɪŋ",
      "nghia": "buổi tối",
      "unit": 1
     },
     {
      "tu": "expensive",
-     "ipa": "/ɪkˈspensɪv/",
+     "ipa": "ɪkˈspensɪv",
      "nghia": "đắt",
      "unit": 3
     },
     {
      "tu": "driver",
-     "ipa": "/ˈdraɪvə/",
+     "ipa": "ˈdraɪvə",
      "nghia": "tài xế",
      "unit": 5
     },
     {
      "tu": "travelling",
-     "ipa": "/ˈtrævəlɪŋ/",
+     "ipa": "ˈtrævəlɪŋ",
      "nghia": "du lịch",
      "unit": 7
     },
     {
      "tu": "vegetables",
-     "ipa": "/ˈvedʒtəblz/",
+     "ipa": "ˈvedʒtəblz",
      "nghia": "rau củ",
      "unit": 11
     }
@@ -2053,7 +2053,7 @@
     },
     {
      "a": "save",
-     "ipa_a": "/seɪv/",
+     "ipa_a": "seɪv",
      "b": "safe",
      "ipa_b": "seɪf"
     },
@@ -2079,31 +2079,31 @@
    "vi_du": [
     {
      "tu": "father",
-     "ipa": "/ˈfɑːðə/",
+     "ipa": "ˈfɑːðə",
      "nghia": "bố",
      "unit": 2
     },
     {
      "tu": "mother",
-     "ipa": "/ˈmʌðə/",
+     "ipa": "ˈmʌðə",
      "nghia": "mẹ",
      "unit": 2
     },
     {
      "tu": "brother",
-     "ipa": "/ˈbrʌðə/",
+     "ipa": "ˈbrʌðə",
      "nghia": "anh/em trai",
      "unit": 2
     },
     {
      "tu": "grandfather",
-     "ipa": "/ˈɡrænfɑːðə/",
+     "ipa": "ˈɡrænfɑːðə",
      "nghia": "ông",
      "unit": 2
     },
     {
      "tu": "grandmother",
-     "ipa": "/ˈɡrænmʌðə/",
+     "ipa": "ˈɡrænmʌðə",
      "nghia": "bà",
      "unit": 2
     }
@@ -2117,7 +2117,7 @@
     },
     {
      "a": "then",
-     "ipa_a": "/ðen/",
+     "ipa_a": "ðen",
      "b": "den",
      "ipa_b": "den"
     },
@@ -2143,31 +2143,31 @@
    "vi_du": [
     {
      "tu": "husband",
-     "ipa": "/ˈhʌzbənd/",
+     "ipa": "ˈhʌzbənd",
      "nghia": "chồng",
      "unit": 2
     },
     {
      "tu": "cousin",
-     "ipa": "/ˈkʌzn/",
+     "ipa": "ˈkʌzn",
      "nghia": "anh chị em họ",
      "unit": 2
     },
     {
      "tu": "busy",
-     "ipa": "/ˈbɪzi/",
+     "ipa": "ˈbɪzi",
      "nghia": "bận",
      "unit": 5
     },
     {
      "tu": "glasses",
-     "ipa": "/ˈɡlɑːsɪz/",
+     "ipa": "ˈɡlɑːsɪz",
      "nghia": "kính (luôn số nhiều)",
      "unit": 6
     },
     {
      "tu": "stairs",
-     "ipa": "/steəz/",
+     "ipa": "steəz",
      "nghia": "cầu thang",
      "unit": 10
     }
@@ -2207,19 +2207,19 @@
    "vi_du": [
     {
      "tu": "usually",
-     "ipa": "/ˈjuːʒuəli/",
+     "ipa": "ˈjuːʒuəli",
      "nghia": "thường thường",
      "unit": 9
     },
     {
      "tu": "unusual",
-     "ipa": "/ʌnˈjuːʒuəl/",
+     "ipa": "ʌnˈjuːʒuəl",
      "nghia": "khác thường",
      "unit": 23
     },
     {
      "tu": "decision",
-     "ipa": "/dɪˈsɪʒn/",
+     "ipa": "dɪˈsɪʒn",
      "nghia": "quyết định",
      "unit": 29
     }
@@ -2247,31 +2247,31 @@
    "vi_du": [
     {
      "tu": "age",
-     "ipa": "/eɪdʒ/",
+     "ipa": "eɪdʒ",
      "nghia": "tuổi",
      "unit": 3
     },
     {
      "tu": "job",
-     "ipa": "/dʒɒb/",
+     "ipa": "dʒɒb",
      "nghia": "công việc",
      "unit": 5
     },
     {
      "tu": "engineer",
-     "ipa": "/ˌendʒɪˈnɪə/",
+     "ipa": "ˌendʒɪˈnɪə",
      "nghia": "kỹ sư",
      "unit": 5
     },
     {
      "tu": "enjoy",
-     "ipa": "/ɪnˈdʒɔɪ/",
+     "ipa": "ɪnˈdʒɔɪ",
      "nghia": "thích, tận hưởng",
      "unit": 7
     },
     {
      "tu": "fridge",
-     "ipa": "/frɪdʒ/",
+     "ipa": "frɪdʒ",
      "nghia": "tủ lạnh",
      "unit": 10
     }
@@ -2287,7 +2287,7 @@
      "a": "jeep",
      "ipa_a": "dʒiːp",
      "b": "cheap",
-     "ipa_b": "/tʃiːp/"
+     "ipa_b": "tʃiːp"
     },
     {
      "a": "ridge",
@@ -2311,31 +2311,31 @@
    "vi_du": [
     {
      "tu": "from",
-     "ipa": "/frɒm/",
+     "ipa": "frɒm",
      "nghia": "từ, đến từ",
      "unit": 1
     },
     {
      "tu": "country",
-     "ipa": "/ˈkʌntri/",
+     "ipa": "ˈkʌntri",
      "nghia": "đất nước",
      "unit": 1
     },
     {
      "tu": "friend",
-     "ipa": "/frend/",
+     "ipa": "frend",
      "nghia": "bạn",
      "unit": 1
     },
     {
      "tu": "parents",
-     "ipa": "/ˈpeərənts/",
+     "ipa": "ˈpeərənts",
      "nghia": "bố mẹ",
      "unit": 2
     },
     {
      "tu": "brother",
-     "ipa": "/ˈbrʌðə/",
+     "ipa": "ˈbrʌðə",
      "nghia": "anh/em trai",
      "unit": 2
     }
@@ -2355,7 +2355,7 @@
     },
     {
      "a": "rice",
-     "ipa_a": "/raɪs/",
+     "ipa_a": "raɪs",
      "b": "lice",
      "ipa_b": "laɪs"
     }
@@ -2375,31 +2375,31 @@
    "vi_du": [
     {
      "tu": "name",
-     "ipa": "/neɪm/",
+     "ipa": "neɪm",
      "nghia": "tên",
      "unit": 1
     },
     {
      "tu": "meet",
-     "ipa": "/miːt/",
+     "ipa": "miːt",
      "nghia": "gặp",
      "unit": 1
     },
     {
      "tu": "from",
-     "ipa": "/frɒm/",
+     "ipa": "frɒm",
      "nghia": "từ, đến từ",
      "unit": 1
     },
     {
      "tu": "morning",
-     "ipa": "/ˈmɔːnɪŋ/",
+     "ipa": "ˈmɔːnɪŋ",
      "nghia": "buổi sáng",
      "unit": 1
     },
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     }
@@ -2433,31 +2433,31 @@
    "vi_du": [
     {
      "tu": "name",
-     "ipa": "/neɪm/",
+     "ipa": "neɪm",
      "nghia": "tên",
      "unit": 1
     },
     {
      "tu": "nice",
-     "ipa": "/naɪs/",
+     "ipa": "naɪs",
      "nghia": "tốt, dễ chịu",
      "unit": 1
     },
     {
      "tu": "country",
-     "ipa": "/ˈkʌntri/",
+     "ipa": "ˈkʌntri",
      "nghia": "đất nước",
      "unit": 1
     },
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "friend",
-     "ipa": "/frend/",
+     "ipa": "frend",
      "nghia": "bạn",
      "unit": 1
     }
@@ -2491,31 +2491,31 @@
    "vi_du": [
     {
      "tu": "morning",
-     "ipa": "/ˈmɔːnɪŋ/",
+     "ipa": "ˈmɔːnɪŋ",
      "nghia": "buổi sáng",
      "unit": 1
     },
     {
      "tu": "evening",
-     "ipa": "/ˈiːvnɪŋ/",
+     "ipa": "ˈiːvnɪŋ",
      "nghia": "buổi tối",
      "unit": 1
     },
     {
      "tu": "uncle",
-     "ipa": "/ˈʌŋkl/",
+     "ipa": "ˈʌŋkl",
      "nghia": "chú, bác, cậu",
      "unit": 2
     },
     {
      "tu": "thing",
-     "ipa": "/θɪŋ/",
+     "ipa": "θɪŋ",
      "nghia": "đồ vật",
      "unit": 6
     },
     {
      "tu": "swimming",
-     "ipa": "/ˈswɪmɪŋ/",
+     "ipa": "ˈswɪmɪŋ",
      "nghia": "bơi lội",
      "unit": 7
     }
@@ -2529,7 +2529,7 @@
     },
     {
      "a": "thing",
-     "ipa_a": "/θɪŋ/",
+     "ipa_a": "θɪŋ",
      "b": "thin",
      "ipa_b": "θɪn"
     },
@@ -2555,31 +2555,31 @@
    "vi_du": [
     {
      "tu": "hello",
-     "ipa": "/həˈləʊ/",
+     "ipa": "həˈləʊ",
      "nghia": "xin chào",
      "unit": 1
     },
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     },
     {
      "tu": "family",
-     "ipa": "/ˈfæməli/",
+     "ipa": "ˈfæməli",
      "nghia": "gia đình",
      "unit": 2
     },
     {
      "tu": "uncle",
-     "ipa": "/ˈʌŋkl/",
+     "ipa": "ˈʌŋkl",
      "nghia": "chú, bác, cậu",
      "unit": 2
     },
     {
      "tu": "dollar",
-     "ipa": "/ˈdɒlə/",
+     "ipa": "ˈdɒlə",
      "nghia": "đô la",
      "unit": 3
     }
@@ -2619,31 +2619,31 @@
    "vi_du": [
     {
      "tu": "welcome",
-     "ipa": "/ˈwelkəm/",
+     "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
     },
     {
      "tu": "wife",
-     "ipa": "/waɪf/",
+     "ipa": "waɪf",
      "nghia": "vợ",
      "unit": 2
     },
     {
      "tu": "quarter",
-     "ipa": "/ˈkwɔːtə/",
+     "ipa": "ˈkwɔːtə",
      "nghia": "mười lăm phút",
      "unit": 4
     },
     {
      "tu": "weekend",
-     "ipa": "/ˌwiːkˈend/",
+     "ipa": "ˌwiːkˈend",
      "nghia": "cuối tuần",
      "unit": 4
     },
     {
      "tu": "work",
-     "ipa": "/wɜːk/",
+     "ipa": "wɜːk",
      "nghia": "làm việc / công việc (n)",
      "unit": 5
     }
@@ -2677,31 +2677,31 @@
    "vi_du": [
     {
      "tu": "student",
-     "ipa": "/ˈstjuːdnt/",
+     "ipa": "ˈstjuːdnt",
      "nghia": "học sinh, sinh viên",
      "unit": 1
     },
     {
      "tu": "usually",
-     "ipa": "/ˈjuːʒuəli/",
+     "ipa": "ˈjuːʒuəli",
      "nghia": "thường thường",
      "unit": 9
     },
     {
      "tu": "menu",
-     "ipa": "/ˈmenjuː/",
+     "ipa": "ˈmenjuː",
      "nghia": "thực đơn",
      "unit": 11
     },
     {
      "tu": "humid",
-     "ipa": "/ˈhjuːmɪd/",
+     "ipa": "ˈhjuːmɪd",
      "nghia": "ẩm",
      "unit": 14
     },
     {
      "tu": "yesterday",
-     "ipa": "/ˈjestədeɪ/",
+     "ipa": "ˈjestədeɪ",
      "nghia": "hôm qua",
      "unit": 15
     }
@@ -4051,49 +4051,49 @@
     "vi_du": [
      {
       "cau": "I am fine, thank you. And you?",
-      "ipa_noi": "/aɪ əm faɪn θæŋk‿jə ən‿juː/",
+      "ipa_noi": "aɪ əm faɪn θæŋk‿jə ən‿juː",
       "tho_noi": "ai-ơm-fain-thangk-yơ-ơn-yu",
       "unit": 1
      },
      {
       "cau": "No, I am not. I am a student.",
-      "ipa_noi": "/nəʊ aɪ əm nɑːt‿aɪ əm‿ə ˈstjuːdnt/",
+      "ipa_noi": "nəʊ aɪ əm nɑːt‿aɪ əm‿ə ˈstjuːdnt",
       "tho_noi": "nâu-ai-ơm-nat-ai-ơm-ơ-styudnt",
       "unit": 1
      },
      {
       "cau": "Really? How do you spell your name?",
-      "ipa_noi": "/ˈrɪliː haʊ də jə spel‿jə neɪm/",
+      "ipa_noi": "ˈrɪliː haʊ də jə spel‿jə neɪm",
       "tho_noi": "rili-hao-dơ-yơ-spel-yơ-nâym",
       "unit": 1
      },
      {
       "cau": "A - N - N - A. Anna.",
-      "ipa_noi": "/ə en‿en‿ə ˈænə/",
+      "ipa_noi": "ə en‿en‿ə ˈænə",
       "tho_noi": "ơ-en-en-ơ-anơ",
       "unit": 1
      },
      {
       "cau": "Thank you. See you tomorrow!",
-      "ipa_noi": "/θæŋk‿jə siː jə təˈmɑːˌrəʊ/",
+      "ipa_noi": "θæŋk‿jə siː jə təˈmɑːˌrəʊ",
       "tho_noi": "thangk-yơ-si-yơ-tơmarâu",
       "unit": 1
      },
      {
       "cau": "See you. Have a nice day!",
-      "ipa_noi": "/siː jə həv‿ə naɪs deɪ/",
+      "ipa_noi": "siː jə həv‿ə naɪs deɪ",
       "tho_noi": "si-yơ-hơv-ơ-nais-dây",
       "unit": 1
      },
      {
       "cau": "Yes, it is. Please come in.",
-      "ipa_noi": "/jes‿ɪt‿ɪz pliːz kʌm‿ɪn/",
+      "ipa_noi": "jes‿ɪt‿ɪz pliːz kʌm‿ɪn",
       "tho_noi": "yes-it-iz-pliz-kâm-in",
       "unit": 1
      },
      {
       "cau": "Thank you. I am Lan. I am a new student.",
-      "ipa_noi": "/θæŋk‿jə aɪ əm læn‿aɪ əm‿ə nuː ˈstjuːdnt/",
+      "ipa_noi": "θæŋk‿jə aɪ əm læn‿aɪ əm‿ə nuː ˈstjuːdnt",
       "tho_noi": "thangk-yơ-ai-ơm-lan-ai-ơm-ơ-nu-styudnt",
       "unit": 1
      }
@@ -4107,37 +4107,37 @@
     "vi_du": [
      {
       "cau": "Nice to meet you.",
-      "ipa_noi": "/naɪs tə miː‿tʃuː/",
+      "ipa_noi": "naɪs tə miː‿tʃuː",
       "tho_noi": "nais-tơ-mi-chu",
       "unit": 1
      },
      {
       "cau": "Nice to meet you too. Where are you from?",
-      "ipa_noi": "/naɪs tə miː‿tʃə tuː weə ə jə frɒm/",
+      "ipa_noi": "naɪs tə miː‿tʃə tuː weə ə jə frɒm",
       "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
       "unit": 1
      },
      {
       "cau": "Nice to meet you, Mr. Brown.",
-      "ipa_noi": "/naɪs tə miː‿tʃə ˈmɪstə braʊn/",
+      "ipa_noi": "naɪs tə miː‿tʃə ˈmɪstə braʊn",
       "tho_noi": "nais-tơ-mi-chơ-mistơ-braon",
       "unit": 1
      },
      {
       "cau": "Nice to meet you too. Where are you from?",
-      "ipa_noi": "/naɪs tə miː‿tʃə tuː weə ə jə frɒm/",
+      "ipa_noi": "naɪs tə miː‿tʃə tuː weə ə jə frɒm",
       "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
       "unit": 1
      },
      {
       "cau": "I am Nam. Nice to meet you, Lan.",
-      "ipa_noi": "/aɪ əm næm naɪs tə miː‿tʃə læn/",
+      "ipa_noi": "aɪ əm næm naɪs tə miː‿tʃə læn",
       "tho_noi": "ai-ơm-nam-nais-tơ-mi-chơ-lan",
       "unit": 1
      },
      {
       "cau": "Is that your friend over there?",
-      "ipa_noi": "/ɪz ðə‿tʃə frend ˈəʊvə ðeə/",
+      "ipa_noi": "ɪz ðə‿tʃə frend ˈəʊvə ðeə",
       "tho_noi": "iz-dhơ-chơ-frend-âuvơ-dhe",
       "unit": 1
      }
@@ -4151,37 +4151,37 @@
     "vi_du": [
      {
       "cau": "You look tired. What time did you start today?",
-      "ipa_noi": "/jə lʊk ˈtaɪəd‿wʌt taɪm dɪ‿dʒə stɑːt təˈdeɪ/",
+      "ipa_noi": "jə lʊk ˈtaɪəd‿wʌt taɪm dɪ‿dʒə stɑːt təˈdeɪ",
       "tho_noi": "yơ-luk-taiơd-wât-taim-di-jơ-stat-tơdây",
       "unit": 9
      },
      {
       "cau": "Would you like to stay there long?",
-      "ipa_noi": "/wə‿dʒə laɪk tə steɪ ðə lɔːŋ/",
+      "ipa_noi": "wə‿dʒə laɪk tə steɪ ðə lɔːŋ",
       "tho_noi": "wơ-jơ-laik-tơ-stây-dhơ-long",
       "unit": 10
      },
      {
       "cau": "What would you like to drink?",
-      "ipa_noi": "/wʌt‿wə‿dʒə laɪk tə drɪŋk/",
+      "ipa_noi": "wʌt‿wə‿dʒə laɪk tə drɪŋk",
       "tho_noi": "wât-wơ-jơ-laik-tơ-dringk",
       "unit": 11
      },
      {
       "cau": "Would you like anything to drink?",
-      "ipa_noi": "/wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk/",
+      "ipa_noi": "wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk",
       "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
       "unit": 11
      },
      {
       "cau": "Would you like anything to drink?",
-      "ipa_noi": "/wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk/",
+      "ipa_noi": "wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk",
       "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
       "unit": 11
      },
      {
       "cau": "Of course. How much rice would you like?",
-      "ipa_noi": "/əv kɔːs haʊ mʌtʃ raɪs‿wə‿dʒə laɪk/",
+      "ipa_noi": "əv kɔːs haʊ mʌtʃ raɪs‿wə‿dʒə laɪk",
       "tho_noi": "ơv-kos-hao-mâch-rais-wơ-jơ-laik",
       "unit": 11
      }
@@ -4195,37 +4195,37 @@
     "vi_du": [
      {
       "cau": "Thank you. I am happy to be here.",
-      "ipa_noi": "/θæŋk‿jə aɪ əm ˈhæpiː tə biː hɪə/",
+      "ipa_noi": "θæŋk‿jə aɪ əm ˈhæpiː tə biː hɪə",
       "tho_noi": "thangk-yơ-ai-ơm-hapi-tơ-bi-hia",
       "unit": 1
      },
      {
       "cau": "It is a nice afternoon to meet.",
-      "ipa_noi": "/ɪt‿ɪz‿ə naɪs ˌɑːftəˈnuːn tə miːt/",
+      "ipa_noi": "ɪt‿ɪz‿ə naɪs ˌɑːftəˈnuːn tə miːt",
       "tho_noi": "it-iz-ơ-nais-aftơnun-tơ-mit",
       "unit": 1
      },
      {
       "cau": "That is nice. I want to meet them.",
-      "ipa_noi": "/ðət‿ɪz naɪs‿aɪ wɑːnt tə miːt ðem/",
+      "ipa_noi": "ðət‿ɪz naɪs‿aɪ wɑːnt tə miːt ðem",
       "tho_noi": "dhơt-iz-nais-ai-want-tơ-mit-dhem",
       "unit": 2
      },
      {
       "cau": "Yes, let me introduce you to my father.",
-      "ipa_noi": "/jes let miː ˌɪntrəˈduːs‿jə tə maɪ ˈfɑːðə/",
+      "ipa_noi": "jes let miː ˌɪntrəˈduːs‿jə tə maɪ ˈfɑːðə",
       "tho_noi": "yes-let-mi-intrơdus-yơ-tơ-mai-fadhơ",
       "unit": 2
      },
      {
       "cau": "Hello, it is nice to meet you.",
-      "ipa_noi": "/həˈləʊ ɪt‿ɪz naɪs tə miː‿tʃuː/",
+      "ipa_noi": "həˈləʊ ɪt‿ɪz naɪs tə miː‿tʃuː",
       "tho_noi": "hơlâu-it-iz-nais-tơ-mi-chu",
       "unit": 2
      },
      {
       "cau": "It is two dollars back to you.",
-      "ipa_noi": "/ɪt‿ɪz tuː ˈdɑːləz bæk tə juː/",
+      "ipa_noi": "ɪt‿ɪz tuː ˈdɑːləz bæk tə juː",
       "tho_noi": "it-iz-tu-dalơz-bak-tơ-yu",
       "unit": 3
      }

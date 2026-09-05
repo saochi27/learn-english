@@ -30,8 +30,8 @@ const $$ = s => [...document.querySelectorAll(s)];
    nạp TRƯỚC app.js, nên lớp bọc này nằm ngoài và gọi vào shim. */
 const HS = {
   id: localStorage.getItem("ho_so") || "mac_dinh",
-  ds: [{ id: "mac_dinh", ten: "Người học" }],
-  ten: () => (HS.ds.find(h => h.id === HS.id) || {}).ten || "Người học",
+  ds: [{ id: "mac_dinh", ten: "User" }],
+  ten: () => (HS.ds.find(h => h.id === HS.id) || {}).ten || "User",
   // Khoá localStorage riêng cho từng hồ sơ (số câu đã nghe ở tab Mẫu câu)
   khoa: k => `${k}__${HS.id}`,
 };
@@ -1941,9 +1941,10 @@ async function batTatXong(soUnit, muc) {
   if (moi === "xong") { moUnit(soUnit); return; }
   veRail();
   const daXong = moi === "xong";
-  $$(`#${S.tab} .nut-xong`).forEach(b => {
+  $$(`#${S.tab} .nhom-nut-muc .nut-xong`).forEach(b => {
     b.classList.toggle("da-xong", daXong);
-    b.textContent = daXong ? "✓ Đã hoàn thành" : "Đánh dấu hoàn thành";
+    b.setAttribute("aria-pressed", String(daXong));
+    b.title = daXong ? "Đã hoàn thành — bấm để bỏ đánh dấu" : "Đánh dấu hoàn thành";
   });
 }
 
@@ -2040,7 +2041,7 @@ function veRail(keo = false) {
   /* --- 3. Cài đặt: mỗi dòng mở thẳng đúng thẻ trong hộp Cài đặt, khỏi phải
          mở hộp rồi tự đi tìm --- */
   h += nhomRail("nhom/cai-dat", "Cài đặt",
-    don("\u263a", "Người học", "", "moCaiDat();chonTheCaiDat('nguoi-hoc')",
+    don("\u263a", "User", "", "moCaiDat();chonTheCaiDat('nguoi-hoc')",
         typeof HS !== "undefined" ? HS.ten() : "") +
     don("\u266a", "Âm thanh", "", "moCaiDat();chonTheCaiDat('am-thanh')") +
     don("\u25b6", "Chế độ Mẫu câu", "", "moCaiDat();chonTheCaiDat('mau-cau')") +
@@ -2485,8 +2486,8 @@ function moChiTietAm(ipa) {
           </div>
           <div class="hang" style="gap:8px; margin-top:6px">
             <button class="phu" onclick="doCap(${i})">🔊 Nghe ngẫu nhiên</button>
-            <button class="phu an" id="doan-a-${i}" onclick="traLoiCap(${i},'a')">Là “${esc(c.a)}”</button>
-            <button class="phu an" id="doan-b-${i}" onclick="traLoiCap(${i},'b')">Là “${esc(c.b)}”</button>
+            <button class="phu an" id="doan-a-${i}" onclick="traLoiCap(${i},'a')">“${esc(c.a)}”</button>
+            <button class="phu an" id="doan-b-${i}" onclick="traLoiCap(${i},'b')">“${esc(c.b)}”</button>
             <span id="kq-cap-${i}"></span>
           </div>
         </div>`).join("")}`, `${a.cap_toi_thieu.length} cặp`) : ""}
@@ -2529,7 +2530,7 @@ function traLoiCap(i, chon) {
   const dung = chon === that;
   $(`#kq-cap-${i}`).innerHTML = dung
     ? `<span class="dung">✓ Đúng — “${esc(that === "a" ? c.a : c.b)}”</span>`
-    : `<span class="sai">✗ Là “${esc(that === "a" ? c.a : c.b)}”</span>`;
+    : `<span class="sai">✗ “${esc(that === "a" ? c.a : c.b)}”</span>`;
   if (!dung) doc(that === "a" ? c.a : c.b);
 }
 
@@ -2750,9 +2751,51 @@ function gan_dau_chi_tiet(tab, so, muc) {
   el.append(duoi);
 }
 
-const nutXong = (so, muc, daXong) => `<button class="nut-xong ${daXong ? "da-xong" : ""}"
-    onclick="batTatXong(${so},'${muc}')">
-    ${daXong ? "✓ Đã hoàn thành" : "Đánh dấu hoàn thành"}</button>`;
+/* Chuỗi phẳng toàn khoá: unit 1 mục 1 → … → unit 1 mục 6 → unit 2 mục 1 → …
+   Nhờ vậy nút trước/sau đi liền mạch qua ranh giới unit, không cụt ở mục cuối
+   rồi bắt người học tự quay ra tìm unit kế. */
+function chuoiMuc() {
+  const cac = Object.keys(MUC);
+  const ra = [];
+  S.muc_luc.forEach(m => cac.forEach(t => ra.push({ so: m.so, tab: t })));
+  return ra;
+}
+
+function mucKe(so, tab, buoc) {
+  const ds = chuoiMuc();
+  const i = ds.findIndex(x => x.so === so && x.tab === tab);
+  if (i < 0) return null;
+  return ds[i + buoc] || null;
+}
+
+/* Ba nút biểu tượng, KHÔNG chữ — đặt ở cả đầu lẫn cuối mục.
+   Vì sao cả hai đầu: đọc xong thì con trỏ đang ở đáy trang, bắt cuộn ngược
+   lên để bấm một nút là thừa một thao tác mỗi bài; còn muốn bỏ qua mục thì
+   lại cần nút ngay trên đầu, chưa đọc gì đã đi.
+   Mỗi nút có title và aria-label để rê chuột biết là gì, và trình đọc màn
+   hình vẫn đọc được — biểu tượng trần thì không ai đoán ra. */
+function nhomNutMuc(so, muc, daXong) {
+  const tab = Object.keys(MUC).find(t => MUC[t] === muc) || S.tab;
+  const truoc = mucKe(so, tab, -1);
+  const sau = mucKe(so, tab, +1);
+  const nut = (m, ic, nhan) => m
+    ? `<button class="nut-dh" title="${esc(nhan)}" aria-label="${esc(nhan)}"
+         onclick="moMuc(${m.so},'${m.tab}')">${ic}</button>`
+    : `<button class="nut-dh" disabled aria-hidden="true">${ic}</button>`;
+  return `<div class="nhom-nut-muc">
+      ${nut(truoc, "\u2190", truoc
+        ? `Mục trước: unit ${truoc.so} — ${TEN_MUC[truoc.tab]}` : "")}
+      <button class="nut-xong ${daXong ? "da-xong" : ""}"
+        title="${daXong ? "Đã hoàn thành — bấm để bỏ đánh dấu" : "Đánh dấu hoàn thành"}"
+        aria-label="${daXong ? "Đã hoàn thành" : "Đánh dấu hoàn thành"}"
+        aria-pressed="${daXong}"
+        onclick="batTatXong(${so},'${muc}')">\u2713</button>
+      ${nut(sau, "\u2192", sau
+        ? `Mục sau: unit ${sau.so} — ${TEN_MUC[sau.tab]}` : "")}
+    </div>`;
+}
+
+const nutXong = (so, muc, daXong) => nhomNutMuc(so, muc, daXong);
 
 /* ================= khung ================= */
 async function doiUnit(so) {

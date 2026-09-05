@@ -607,6 +607,32 @@ button.chinh.to .nho-hon{
 .tu-cap .pa{font-size:12px; color:var(--pa)}
 .hai-tu .vs{color:var(--chu-nhat)}
 
+/* ---------- ba nút đầu/cuối mỗi mục: ← ✓ → ---------- */
+.nhom-nut-muc{display:flex; align-items:center; gap:8px}
+.nut-dh{
+  width:38px; height:38px; flex:0 0 auto; border-radius:9px;
+  border:1px solid var(--vien); background:var(--the); color:var(--chu);
+  font-size:17px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.nut-dh:hover:not(:disabled){border-color:var(--chinh); background:var(--chinh-nhat);
+  color:var(--chinh)}
+/* Đầu và cuối khoá thì không còn mục để đi — mờ đi chứ không giấu, để hàng
+   nút không bị xê dịch giữa các mục. */
+.nut-dh:disabled{opacity:.3; cursor:default}
+
+/* Nút hoàn thành cũng thành biểu tượng. Chưa xong: viền rỗng. Xong: nền xanh
+   đặc — nhìn là biết trạng thái, không cần đọc chữ. */
+.nhom-nut-muc .nut-xong{
+  width:44px; height:38px; padding:0; flex:0 0 auto; border-radius:9px;
+  font-size:17px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--vien); background:var(--the); color:var(--chu-nhat);
+}
+.nhom-nut-muc .nut-xong:hover{border-color:var(--dung); color:var(--dung)}
+.nhom-nut-muc .nut-xong.da-xong{
+  background:var(--dung); border-color:var(--dung); color:#fff;
+}
 /* ---------- trọng âm ---------- */
 .luoi-tu-nhan{
   display:grid; gap:8px;
@@ -965,10 +991,7 @@ li{margin:5px 0; line-height:1.6}
   border-top:1px solid var(--vien);
   display:flex; justify-content:center;
 }
-.cuoi-chi-tiet .nut-xong{min-width:220px; text-align:center}
-@media (max-width:640px){
-  .cuoi-chi-tiet .nut-xong{width:100%; min-height:48px}
-}
+
 
 
 /* ================= THANH DIEU KHIEN NHANH =================
