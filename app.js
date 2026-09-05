@@ -2286,10 +2286,11 @@ async function moIPA() {
   window.scrollTo({ top: 0 });
 }
 
-/* Lọc: xem hết 44 âm, hay chỉ 18 âm người Việt sai nhiều nhất. Mặc định là
-   nhóm ưu tiên — học đủ 44 âm đều tay thì tốn thời gian vào những âm tiếng
-   Việt đã có sẵn. */
-let locIPA = localStorage.getItem("locIPA") || "uu_tien";
+/* Lọc: xem hết 44 âm, hay chỉ 18 âm người Việt sai nhiều nhất.
+   Mặc định TẤT CẢ — bảng âm là chỗ tra cứu trước khi là chỗ luyện: cần biết
+   /ʊə/ đọc sao thì phải thấy nó ngay, mà nó không nằm trong nhóm hay sai.
+   Lọc 18 âm để riêng phía sau, dùng khi đã muốn luyện có trọng tâm. */
+let locIPA = localStorage.getItem("locIPA") || "tat_ca";
 
 function doiLocIPA(v) {
   locIPA = v;
@@ -2408,10 +2409,10 @@ function veIPA() {
         <div class="vach"><i class="xong" style="width:${Math.round(xong / d.am.length * 100)}%"></i></div>
       </div>
       <div class="hang" style="gap:8px; margin-top:12px; flex-wrap:wrap">
-        <button class="${locIPA === "uu_tien" ? "chinh" : "phu"}" onclick="doiLocIPA('uu_tien')">
-          Âm hay sai (18)</button>
         <button class="${locIPA === "tat_ca" ? "chinh" : "phu"}" onclick="doiLocIPA('tat_ca')">
           Tất cả 44 âm</button>
+        <button class="${locIPA === "uu_tien" ? "chinh" : "phu"}" onclick="doiLocIPA('uu_tien')">
+          Âm hay sai (18)</button>
       </div>
     </div>` + thanhThePhatAm();
 
