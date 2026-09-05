@@ -260,6 +260,7 @@
 
     if (duong === "/api/cau_hinh") return json(await tai("du_lieu/cau_hinh.json"));
     if (duong === "/api/muc_luc") return json(await tai("du_lieu/muc_luc.json"));
+    if (duong === "/api/ipa") return json(await tai("du_lieu/ipa.json"));
     if (duong === "/api/tu_theo_level") return json(TU_LEVEL);
     if (hai) {
       const n = String(hai[2]).padStart(2, "0");

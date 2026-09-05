@@ -1,0 +1,2593 @@
+{
+ "nhom": [
+  {
+   "ma": "nguyen_am_ngan",
+   "ten": "Nguyên âm ngắn",
+   "so": 7
+  },
+  {
+   "ma": "nguyen_am_dai",
+   "ten": "Nguyên âm dài",
+   "so": 5
+  },
+  {
+   "ma": "nguyen_am_doi",
+   "ten": "Nguyên âm đôi",
+   "so": 8
+  },
+  {
+   "ma": "phu_am_vo_thanh",
+   "ten": "Phụ âm vô thanh",
+   "so": 9
+  },
+  {
+   "ma": "phu_am_huu_thanh",
+   "ten": "Phụ âm hữu thanh",
+   "so": 9
+  },
+  {
+   "ma": "phu_am_vang",
+   "ten": "Phụ âm vang & bán nguyên âm",
+   "so": 6
+  }
+ ],
+ "am": [
+  {
+   "ipa": "ɪ",
+   "nhom": "nguyen_am_ngan",
+   "tho": "i (ngắn)",
+   "mo_ta": "Miệng hé nhỏ, lưỡi cao vừa, buông NHANH. Không kéo dài.",
+   "bay": "Đọc thành /iː/ dài. Người Việt không phân biệt dài–ngắn nên ship thành sheep.",
+   "uu_tien": 1,
+   "nham_voi": "iː",
+   "vi_du": [
+    {
+     "tu": "morning",
+     "ipa": "/ˈmɔːnɪŋ/",
+     "nghia": "buổi sáng",
+     "unit": 1
+    },
+    {
+     "tu": "evening",
+     "ipa": "/ˈiːvnɪŋ/",
+     "nghia": "buổi tối",
+     "unit": 1
+    },
+    {
+     "tu": "sister",
+     "ipa": "/ˈsɪstə/",
+     "nghia": "chị/em gái",
+     "unit": 2
+    },
+    {
+     "tu": "expensive",
+     "ipa": "/ɪkˈspensɪv/",
+     "nghia": "đắt",
+     "unit": 3
+    },
+    {
+     "tu": "engineer",
+     "ipa": "/ˌendʒɪˈnɪə/",
+     "nghia": "kỹ sư",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "ship",
+     "ipa_a": "ʃɪp",
+     "b": "sheep",
+     "ipa_b": "ʃiːp"
+    },
+    {
+     "a": "fit",
+     "ipa_a": "fɪt",
+     "b": "feet",
+     "ipa_b": "fiːt"
+    },
+    {
+     "a": "live",
+     "ipa_a": "laɪv",
+     "b": "leave",
+     "ipa_b": "liːv"
+    }
+   ]
+  },
+  {
+   "ipa": "e",
+   "nhom": "nguyen_am_ngan",
+   "tho": "e",
+   "mo_ta": "Miệng mở vừa, lưỡi trước. Giống 'e' tiếng Việt trong 'xe'.",
+   "bay": "Ít sai. Nhưng hay lẫn với /æ/: bed và bad nghe như một.",
+   "uu_tien": 2,
+   "nham_voi": "æ",
+   "vi_du": [
+    {
+     "tu": "friend",
+     "ipa": "/frend/",
+     "nghia": "bạn",
+     "unit": 1
+    },
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    },
+    {
+     "tu": "expensive",
+     "ipa": "/ɪkˈspensɪv/",
+     "nghia": "đắt",
+     "unit": 3
+    },
+    {
+     "tu": "weekend",
+     "ipa": "/ˌwiːkˈend/",
+     "nghia": "cuối tuần",
+     "unit": 4
+    },
+    {
+     "tu": "engineer",
+     "ipa": "/ˌendʒɪˈnɪə/",
+     "nghia": "kỹ sư",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bed",
+     "ipa_a": "bed",
+     "b": "bad",
+     "ipa_b": "bæd"
+    },
+    {
+     "a": "men",
+     "ipa_a": "men",
+     "b": "man",
+     "ipa_b": "mæn"
+    },
+    {
+     "a": "pen",
+     "ipa_a": "/pen/",
+     "b": "pan",
+     "ipa_b": "pæn"
+    }
+   ]
+  },
+  {
+   "ipa": "æ",
+   "nhom": "nguyen_am_ngan",
+   "tho": "a (bẹt)",
+   "mo_ta": "Mở miệng RỘNG hơn 'e', kéo hai mép sang ngang, hàm hạ thấp.",
+   "bay": "Tiếng Việt không có âm này. Bị đọc thành 'e' hoặc 'a' → bad thành 'bed' hoặc 'bát'.",
+   "uu_tien": 1,
+   "nham_voi": "e",
+   "vi_du": [
+    {
+     "tu": "family",
+     "ipa": "/ˈfæməli/",
+     "nghia": "gia đình",
+     "unit": 2
+    },
+    {
+     "tu": "grandfather",
+     "ipa": "/ˈɡrænfɑːðə/",
+     "nghia": "ông",
+     "unit": 2
+    },
+    {
+     "tu": "grandmother",
+     "ipa": "/ˈɡrænmʌðə/",
+     "nghia": "bà",
+     "unit": 2
+    },
+    {
+     "tu": "married",
+     "ipa": "/ˈmærid/",
+     "nghia": "đã kết hôn",
+     "unit": 2
+    },
+    {
+     "tu": "salary",
+     "ipa": "/ˈsæləri/",
+     "nghia": "lương",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bad",
+     "ipa_a": "bæd",
+     "b": "bed",
+     "ipa_b": "bed"
+    },
+    {
+     "a": "man",
+     "ipa_a": "mæn",
+     "b": "men",
+     "ipa_b": "men"
+    },
+    {
+     "a": "sat",
+     "ipa_a": "sæt",
+     "b": "set",
+     "ipa_b": "set"
+    }
+   ]
+  },
+  {
+   "ipa": "ʌ",
+   "nhom": "nguyen_am_ngan",
+   "tho": "â",
+   "mo_ta": "Miệng mở vừa, lưỡi giữa, âm ngắn và gọn. Gần 'â' trong 'câu'.",
+   "bay": "Hay bị đọc thành 'a' → cup thành 'cáp'. Cũng hay lẫn với /ɑː/.",
+   "uu_tien": 2,
+   "nham_voi": "ɑː",
+   "vi_du": [
+    {
+     "tu": "country",
+     "ipa": "/ˈkʌntri/",
+     "nghia": "đất nước",
+     "unit": 1
+    },
+    {
+     "tu": "mother",
+     "ipa": "/ˈmʌðə/",
+     "nghia": "mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "brother",
+     "ipa": "/ˈbrʌðə/",
+     "nghia": "anh/em trai",
+     "unit": 2
+    },
+    {
+     "tu": "son",
+     "ipa": "/sʌn/",
+     "nghia": "con trai",
+     "unit": 2
+    },
+    {
+     "tu": "husband",
+     "ipa": "/ˈhʌzbənd/",
+     "nghia": "chồng",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "cup",
+     "ipa_a": "kʌp",
+     "b": "carp",
+     "ipa_b": "kɑːp"
+    },
+    {
+     "a": "bun",
+     "ipa_a": "bʌn",
+     "b": "barn",
+     "ipa_b": "bɑːn"
+    },
+    {
+     "a": "hut",
+     "ipa_a": "hʌt",
+     "b": "heart",
+     "ipa_b": "hɑːt"
+    }
+   ]
+  },
+  {
+   "ipa": "ɒ",
+   "nhom": "nguyen_am_ngan",
+   "tho": "o (ngắn)",
+   "mo_ta": "Môi tròn nhỏ, miệng mở, âm NGẮN. Chỉ có trong Anh-Anh.",
+   "bay": "Đọc thành /ɔː/ dài → not thành 'nought'.",
+   "uu_tien": 2,
+   "nham_voi": "ɔː",
+   "vi_du": [
+    {
+     "tu": "from",
+     "ipa": "/frɒm/",
+     "nghia": "từ, đến từ",
+     "unit": 1
+    },
+    {
+     "tu": "dollar",
+     "ipa": "/ˈdɒlə/",
+     "nghia": "đô la",
+     "unit": 3
+    },
+    {
+     "tu": "o’clock",
+     "ipa": "/əˈklɒk/",
+     "nghia": "giờ đúng",
+     "unit": 4
+    },
+    {
+     "tu": "job",
+     "ipa": "/dʒɒb/",
+     "nghia": "công việc",
+     "unit": 5
+    },
+    {
+     "tu": "doctor",
+     "ipa": "/ˈdɒktə/",
+     "nghia": "bác sĩ",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "cot",
+     "ipa_a": "kɑːt",
+     "b": "caught",
+     "ipa_b": "kɑːt"
+    },
+    {
+     "a": "shot",
+     "ipa_a": "ʃɑːt",
+     "b": "short",
+     "ipa_b": "ʃɔːt"
+    }
+   ]
+  },
+  {
+   "ipa": "ʊ",
+   "nhom": "nguyen_am_ngan",
+   "tho": "u (ngắn)",
+   "mo_ta": "Môi tròn hơi hé, lưỡi sau cao vừa, buông nhanh.",
+   "bay": "Đọc thành /uː/ dài → full thành fool.",
+   "uu_tien": 1,
+   "nham_voi": "uː",
+   "vi_du": [
+    {
+     "tu": "goodbye",
+     "ipa": "/ˌɡʊdˈbaɪ/",
+     "nghia": "tạm biệt",
+     "unit": 1
+    },
+    {
+     "tu": "book",
+     "ipa": "/bʊk/",
+     "nghia": "sách",
+     "unit": 6
+    },
+    {
+     "tu": "cooking",
+     "ipa": "/ˈkʊkɪŋ/",
+     "nghia": "nấu ăn",
+     "unit": 7
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "full",
+     "ipa_a": "fʊl",
+     "b": "fool",
+     "ipa_b": "fuːl"
+    },
+    {
+     "a": "pull",
+     "ipa_a": "pʊl",
+     "b": "pool",
+     "ipa_b": "puːl"
+    },
+    {
+     "a": "look",
+     "ipa_a": "lʊk",
+     "b": "Luke",
+     "ipa_b": "luːk"
+    }
+   ]
+  },
+  {
+   "ipa": "ə",
+   "nhom": "nguyen_am_ngan",
+   "tho": "ơ (nhẹ)",
+   "mo_ta": "Âm YẾU nhất, miệng gần như không làm gì. Chỉ nằm ở âm tiết KHÔNG nhấn.",
+   "bay": "Người Việt đọc rõ mọi âm tiết nên biến schwa thành nguyên âm đầy đủ — đó là lý do lớn nhất khiến câu nghe 'từng chữ một' chứ không thành dòng.",
+   "uu_tien": 1,
+   "nham_voi": "ʌ",
+   "vi_du": [
+    {
+     "tu": "teacher",
+     "ipa": "/ˈtiːtʃə/",
+     "nghia": "giáo viên",
+     "unit": 1
+    },
+    {
+     "tu": "afternoon",
+     "ipa": "/ˌɑːftəˈnuːn/",
+     "nghia": "buổi chiều",
+     "unit": 1
+    },
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    }
+   ],
+   "cap_toi_thieu": []
+  },
+  {
+   "ipa": "iː",
+   "nhom": "nguyen_am_dai",
+   "tho": "i (dài)",
+   "mo_ta": "Kéo DÀI, môi bè ngang như đang cười, lưỡi cao và ra trước.",
+   "bay": "Không kéo đủ dài → sheep thành ship. Độ dài là dấu hiệu phân biệt chính.",
+   "uu_tien": 1,
+   "nham_voi": "ɪ",
+   "vi_du": [
+    {
+     "tu": "meet",
+     "ipa": "/miːt/",
+     "nghia": "gặp",
+     "unit": 1
+    },
+    {
+     "tu": "teacher",
+     "ipa": "/ˈtiːtʃə/",
+     "nghia": "giáo viên",
+     "unit": 1
+    },
+    {
+     "tu": "evening",
+     "ipa": "/ˈiːvnɪŋ/",
+     "nghia": "buổi tối",
+     "unit": 1
+    },
+    {
+     "tu": "cheap",
+     "ipa": "/tʃiːp/",
+     "nghia": "rẻ",
+     "unit": 3
+    },
+    {
+     "tu": "weekend",
+     "ipa": "/ˌwiːkˈend/",
+     "nghia": "cuối tuần",
+     "unit": 4
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "sheep",
+     "ipa_a": "ʃiːp",
+     "b": "ship",
+     "ipa_b": "ʃɪp"
+    },
+    {
+     "a": "feet",
+     "ipa_a": "fiːt",
+     "b": "fit",
+     "ipa_b": "fɪt"
+    },
+    {
+     "a": "leave",
+     "ipa_a": "liːv",
+     "b": "live",
+     "ipa_b": "laɪv"
+    }
+   ]
+  },
+  {
+   "ipa": "ɑː",
+   "nhom": "nguyen_am_dai",
+   "tho": "a (dài)",
+   "mo_ta": "Mở miệng to, lưỡi hạ thấp và lùi sau, kéo dài.",
+   "bay": "Đọc ngắn thành 'a' tiếng Việt. Anh-Anh KHÔNG đọc /r/ sau nó: car = /kɑː/.",
+   "uu_tien": 2,
+   "nham_voi": "ʌ",
+   "vi_du": [
+    {
+     "tu": "afternoon",
+     "ipa": "/ˌɑːftəˈnuːn/",
+     "nghia": "buổi chiều",
+     "unit": 1
+    },
+    {
+     "tu": "father",
+     "ipa": "/ˈfɑːðə/",
+     "nghia": "bố",
+     "unit": 2
+    },
+    {
+     "tu": "grandfather",
+     "ipa": "/ˈɡrænfɑːðə/",
+     "nghia": "ông",
+     "unit": 2
+    },
+    {
+     "tu": "aunt",
+     "ipa": "/ɑːnt/",
+     "nghia": "cô, dì, bác gái",
+     "unit": 2
+    },
+    {
+     "tu": "half",
+     "ipa": "/hɑːf/",
+     "nghia": "rưỡi, một nửa",
+     "unit": 4
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "cart",
+     "ipa_a": "kɑːt",
+     "b": "cut",
+     "ipa_b": "kʌt"
+    },
+    {
+     "a": "heart",
+     "ipa_a": "hɑːt",
+     "b": "hut",
+     "ipa_b": "hʌt"
+    },
+    {
+     "a": "barn",
+     "ipa_a": "bɑːn",
+     "b": "bun",
+     "ipa_b": "bʌn"
+    }
+   ]
+  },
+  {
+   "ipa": "ɔː",
+   "nhom": "nguyen_am_dai",
+   "tho": "o (dài)",
+   "mo_ta": "Môi tròn, đẩy ra trước, kéo dài. Lưỡi lùi sau.",
+   "bay": "Đọc ngắn thành /ɒ/ → caught thành cot.",
+   "uu_tien": 2,
+   "nham_voi": "ɒ",
+   "vi_du": [
+    {
+     "tu": "morning",
+     "ipa": "/ˈmɔːnɪŋ/",
+     "nghia": "buổi sáng",
+     "unit": 1
+    },
+    {
+     "tu": "daughter",
+     "ipa": "/ˈdɔːtə/",
+     "nghia": "con gái",
+     "unit": 2
+    },
+    {
+     "tu": "quarter",
+     "ipa": "/ˈkwɔːtə/",
+     "nghia": "mười lăm phút",
+     "unit": 4
+    },
+    {
+     "tu": "boring",
+     "ipa": "/ˈbɔːrɪŋ/",
+     "nghia": "chán",
+     "unit": 7
+    },
+    {
+     "tu": "floor",
+     "ipa": "/flɔː/",
+     "nghia": "sàn / tầng",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "caught",
+     "ipa_a": "kɑːt",
+     "b": "cot",
+     "ipa_b": "kɑːt"
+    },
+    {
+     "a": "port",
+     "ipa_a": "pɔːt",
+     "b": "pot",
+     "ipa_b": "pɑːt"
+    },
+    {
+     "a": "short",
+     "ipa_a": "ʃɔːt",
+     "b": "shot",
+     "ipa_b": "ʃɑːt"
+    }
+   ]
+  },
+  {
+   "ipa": "uː",
+   "nhom": "nguyen_am_dai",
+   "tho": "u (dài)",
+   "mo_ta": "Môi tròn chúm nhỏ, đẩy ra trước, kéo dài.",
+   "bay": "Đọc ngắn thành /ʊ/ → fool thành full.",
+   "uu_tien": 1,
+   "nham_voi": "ʊ",
+   "vi_du": [
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "afternoon",
+     "ipa": "/ˌɑːftəˈnuːn/",
+     "nghia": "buổi chiều",
+     "unit": 1
+    },
+    {
+     "tu": "to",
+     "ipa": "/tuː/",
+     "nghia": "kém (giờ)",
+     "unit": 4
+    },
+    {
+     "tu": "usually",
+     "ipa": "/ˈjuːʒuəli/",
+     "nghia": "thường thường",
+     "unit": 9
+    },
+    {
+     "tu": "routine",
+     "ipa": "/ruːˈtiːn/",
+     "nghia": "thói quen, nếp sinh hoạt",
+     "unit": 9
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "fool",
+     "ipa_a": "fuːl",
+     "b": "full",
+     "ipa_b": "fʊl"
+    },
+    {
+     "a": "pool",
+     "ipa_a": "puːl",
+     "b": "pull",
+     "ipa_b": "pʊl"
+    },
+    {
+     "a": "Luke",
+     "ipa_a": "luːk",
+     "b": "look",
+     "ipa_b": "lʊk"
+    }
+   ]
+  },
+  {
+   "ipa": "ɜː",
+   "nhom": "nguyen_am_dai",
+   "tho": "ơ (dài)",
+   "mo_ta": "Lưỡi ở giữa, môi KHÔNG tròn, kéo dài đều. Đây là 'ơ' kéo dài.",
+   "bay": "Hay bị đọc thành 'ơ' ngắn hoặc thêm /r/ kiểu Mỹ. Anh-Anh: bird = /bɜːd/.",
+   "uu_tien": 2,
+   "nham_voi": "ə",
+   "vi_du": [
+    {
+     "tu": "early",
+     "ipa": "/ˈɜːli/",
+     "nghia": "sớm",
+     "unit": 4
+    },
+    {
+     "tu": "work",
+     "ipa": "/wɜːk/",
+     "nghia": "làm việc / công việc (n)",
+     "unit": 5
+    },
+    {
+     "tu": "nurse",
+     "ipa": "/nɜːs/",
+     "nghia": "y tá",
+     "unit": 5
+    },
+    {
+     "tu": "prefer",
+     "ipa": "/prɪˈfɜː/",
+     "nghia": "thích hơn",
+     "unit": 7
+    },
+    {
+     "tu": "furniture",
+     "ipa": "/ˈfɜːnɪtʃə/",
+     "nghia": "đồ nội thất (không đếm được)",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bird",
+     "ipa_a": "bɜːd",
+     "b": "bud",
+     "ipa_b": "bʌd"
+    },
+    {
+     "a": "hurt",
+     "ipa_a": "hɜːt",
+     "b": "hut",
+     "ipa_b": "hʌt"
+    },
+    {
+     "a": "turn",
+     "ipa_a": "tɜːn",
+     "b": "ton",
+     "ipa_b": "tʌn"
+    }
+   ]
+  },
+  {
+   "ipa": "eɪ",
+   "nhom": "nguyen_am_doi",
+   "tho": "ây",
+   "mo_ta": "Bắt đầu ở /e/ rồi TRƯỢT lên /ɪ/. Một hơi liền, không tách đôi.",
+   "bay": "Đọc thành 'ê' đứng yên → name thành 'nêm'. Phải nghe rõ chỗ trượt.",
+   "uu_tien": 2,
+   "nham_voi": "e",
+   "vi_du": [
+    {
+     "tu": "name",
+     "ipa": "/neɪm/",
+     "nghia": "tên",
+     "unit": 1
+    },
+    {
+     "tu": "age",
+     "ipa": "/eɪdʒ/",
+     "nghia": "tuổi",
+     "unit": 3
+    },
+    {
+     "tu": "late",
+     "ipa": "/leɪt/",
+     "nghia": "muộn",
+     "unit": 4
+    },
+    {
+     "tu": "table",
+     "ipa": "/ˈteɪbl/",
+     "nghia": "bàn",
+     "unit": 6
+    },
+    {
+     "tu": "hate",
+     "ipa": "/heɪt/",
+     "nghia": "ghét",
+     "unit": 7
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "late",
+     "ipa_a": "/leɪt/",
+     "b": "let",
+     "ipa_b": "let"
+    },
+    {
+     "a": "main",
+     "ipa_a": "meɪn",
+     "b": "men",
+     "ipa_b": "men"
+    },
+    {
+     "a": "pain",
+     "ipa_a": "peɪn",
+     "b": "pen",
+     "ipa_b": "/pen/"
+    }
+   ]
+  },
+  {
+   "ipa": "aɪ",
+   "nhom": "nguyen_am_doi",
+   "tho": "ai",
+   "mo_ta": "Từ /a/ trượt lên /ɪ/. Giống 'ai' tiếng Việt.",
+   "bay": "Ít sai — tiếng Việt có sẵn 'ai'.",
+   "uu_tien": 3,
+   "nham_voi": "eɪ",
+   "vi_du": [
+    {
+     "tu": "hi",
+     "ipa": "/haɪ/",
+     "nghia": "chào (thân mật)",
+     "unit": 1
+    },
+    {
+     "tu": "nice",
+     "ipa": "/naɪs/",
+     "nghia": "tốt, dễ chịu",
+     "unit": 1
+    },
+    {
+     "tu": "goodbye",
+     "ipa": "/ˌɡʊdˈbaɪ/",
+     "nghia": "tạm biệt",
+     "unit": 1
+    },
+    {
+     "tu": "wife",
+     "ipa": "/waɪf/",
+     "nghia": "vợ",
+     "unit": 2
+    },
+    {
+     "tu": "price",
+     "ipa": "/praɪs/",
+     "nghia": "giá",
+     "unit": 3
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "like",
+     "ipa_a": "laɪk",
+     "b": "lake",
+     "ipa_b": "leɪk"
+    },
+    {
+     "a": "time",
+     "ipa_a": "/taɪm/",
+     "b": "tame",
+     "ipa_b": "teɪm"
+    },
+    {
+     "a": "bite",
+     "ipa_a": "baɪt",
+     "b": "bait",
+     "ipa_b": "beɪt"
+    }
+   ]
+  },
+  {
+   "ipa": "ɔɪ",
+   "nhom": "nguyen_am_doi",
+   "tho": "oi",
+   "mo_ta": "Từ /ɔː/ trượt lên /ɪ/. Giống 'oi' tiếng Việt.",
+   "bay": "Ít sai.",
+   "uu_tien": 3,
+   "nham_voi": "aɪ",
+   "vi_du": [
+    {
+     "tu": "enjoy",
+     "ipa": "/ɪnˈdʒɔɪ/",
+     "nghia": "thích, tận hưởng",
+     "unit": 7
+    },
+    {
+     "tu": "join",
+     "ipa": "/dʒɔɪn/",
+     "nghia": "tham gia",
+     "unit": 17
+    },
+    {
+     "tu": "appointment",
+     "ipa": "/əˈpɔɪntmənt/",
+     "nghia": "lịch hẹn",
+     "unit": 20
+    },
+    {
+     "tu": "choice",
+     "ipa": "/tʃɔɪs/",
+     "nghia": "lựa chọn",
+     "unit": 29
+    },
+    {
+     "tu": "employment",
+     "ipa": "/ɪmˈplɔɪmənt/",
+     "nghia": "việc làm",
+     "unit": 32
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "boil",
+     "ipa_a": "bɔɪl",
+     "b": "bile",
+     "ipa_b": "baɪl"
+    },
+    {
+     "a": "point",
+     "ipa_a": "pɔɪnt",
+     "b": "pint",
+     "ipa_b": "paɪnt"
+    }
+   ]
+  },
+  {
+   "ipa": "əʊ",
+   "nhom": "nguyen_am_doi",
+   "tho": "âu",
+   "mo_ta": "Bắt đầu ở schwa /ə/ rồi tròn môi về /ʊ/. Anh-Anh KHÔNG phải 'ô'.",
+   "bay": "Đọc thành 'ô' tiếng Việt → go thành 'gô'. Phải bắt đầu từ 'ơ' rồi mới tròn môi.",
+   "uu_tien": 1,
+   "nham_voi": "ɔː",
+   "vi_du": [
+    {
+     "tu": "hello",
+     "ipa": "/həˈləʊ/",
+     "nghia": "xin chào",
+     "unit": 1
+    },
+    {
+     "tu": "phone",
+     "ipa": "/fəʊn/",
+     "nghia": "điện thoại",
+     "unit": 6
+    },
+    {
+     "tu": "broken",
+     "ipa": "/ˈbrəʊkən/",
+     "nghia": "hỏng",
+     "unit": 6
+    },
+    {
+     "tu": "window",
+     "ipa": "/ˈwɪndəʊ/",
+     "nghia": "cửa sổ",
+     "unit": 10
+    },
+    {
+     "tu": "sofa",
+     "ipa": "/ˈsəʊfə/",
+     "nghia": "ghế sofa",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "coat",
+     "ipa_a": "kəʊt",
+     "b": "caught",
+     "ipa_b": "kɑːt"
+    },
+    {
+     "a": "boat",
+     "ipa_a": "bəʊt",
+     "b": "bought",
+     "ipa_b": "bɑːt"
+    },
+    {
+     "a": "so",
+     "ipa_a": "səʊ",
+     "b": "saw",
+     "ipa_b": "sɔː"
+    }
+   ]
+  },
+  {
+   "ipa": "aʊ",
+   "nhom": "nguyen_am_doi",
+   "tho": "ao",
+   "mo_ta": "Từ /a/ trượt về /ʊ/, môi tròn dần. Giống 'ao' tiếng Việt.",
+   "bay": "Ít sai.",
+   "uu_tien": 3,
+   "nham_voi": "əʊ",
+   "vi_du": [
+    {
+     "tu": "about",
+     "ipa": "/əˈbaʊt/",
+     "nghia": "khoảng",
+     "unit": 3
+    },
+    {
+     "tu": "accountant",
+     "ipa": "/əˈkaʊntənt/",
+     "nghia": "kế toán",
+     "unit": 5
+    },
+    {
+     "tu": "house",
+     "ipa": "/haʊs/",
+     "nghia": "nhà",
+     "unit": 10
+    },
+    {
+     "tu": "discount",
+     "ipa": "/ˈdɪskaʊnt/",
+     "nghia": "giảm giá",
+     "unit": 12
+    },
+    {
+     "tu": "roundabout",
+     "ipa": "/ˈraʊndəbaʊt/",
+     "nghia": "vòng xuyến",
+     "unit": 13
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "now",
+     "ipa_a": "naʊ",
+     "b": "no",
+     "ipa_b": "nəʊ"
+    },
+    {
+     "a": "loud",
+     "ipa_a": "laʊd",
+     "b": "load",
+     "ipa_b": "ləʊd"
+    },
+    {
+     "a": "town",
+     "ipa_a": "taʊn",
+     "b": "tone",
+     "ipa_b": "təʊn"
+    }
+   ]
+  },
+  {
+   "ipa": "ɪə",
+   "nhom": "nguyen_am_doi",
+   "tho": "ia",
+   "mo_ta": "Từ /ɪ/ trượt về schwa. Anh-Anh không có /r/: here = /hɪə/.",
+   "bay": "Thêm /r/ cuối kiểu Mỹ, hoặc đọc thành 'ia' đứng yên.",
+   "uu_tien": 2,
+   "nham_voi": "eə",
+   "vi_du": [
+    {
+     "tu": "engineer",
+     "ipa": "/ˌendʒɪˈnɪə/",
+     "nghia": "kỹ sư",
+     "unit": 5
+    },
+    {
+     "tu": "beard",
+     "ipa": "/bɪəd/",
+     "nghia": "râu quai nón",
+     "unit": 19
+    },
+    {
+     "tu": "reliable",
+     "ipa": "/rɪˈlaɪəbl/",
+     "nghia": "đáng tin cậy",
+     "unit": 19
+    },
+    {
+     "tu": "experience",
+     "ipa": "/ɪkˈspɪəriəns/",
+     "nghia": "trải nghiệm, kinh nghiệm",
+     "unit": 23
+    },
+    {
+     "tu": "appear",
+     "ipa": "/əˈpɪə/",
+     "nghia": "xuất hiện",
+     "unit": 23
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "beer",
+     "ipa_a": "bɪə",
+     "b": "bear",
+     "ipa_b": "beə"
+    },
+    {
+     "a": "here",
+     "ipa_a": "hɪə",
+     "b": "hair",
+     "ipa_b": "heə"
+    },
+    {
+     "a": "cheer",
+     "ipa_a": "tʃɪə",
+     "b": "chair",
+     "ipa_b": "/tʃeə/"
+    }
+   ]
+  },
+  {
+   "ipa": "eə",
+   "nhom": "nguyen_am_doi",
+   "tho": "e (kéo)",
+   "mo_ta": "Từ /e/ trượt về schwa, miệng mở vừa. Không có /r/.",
+   "bay": "Lẫn với /ɪə/: hair và here nghe như một.",
+   "uu_tien": 2,
+   "nham_voi": "ɪə",
+   "vi_du": [
+    {
+     "tu": "parents",
+     "ipa": "/ˈpeərənts/",
+     "nghia": "bố mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "chair",
+     "ipa": "/tʃeə/",
+     "nghia": "ghế",
+     "unit": 6
+    },
+    {
+     "tu": "stairs",
+     "ipa": "/steəz/",
+     "nghia": "cầu thang",
+     "unit": 10
+    },
+    {
+     "tu": "vegetarian",
+     "ipa": "/ˌvedʒɪˈteəriən/",
+     "nghia": "người ăn chay",
+     "unit": 11
+    },
+    {
+     "tu": "software",
+     "ipa": "/ˈsɒftweə/",
+     "nghia": "phần mềm",
+     "unit": 27
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bear",
+     "ipa_a": "beə",
+     "b": "beer",
+     "ipa_b": "bɪə"
+    },
+    {
+     "a": "hair",
+     "ipa_a": "heə",
+     "b": "here",
+     "ipa_b": "hɪə"
+    },
+    {
+     "a": "chair",
+     "ipa_a": "/tʃeə/",
+     "b": "cheer",
+     "ipa_b": "tʃɪə"
+    }
+   ]
+  },
+  {
+   "ipa": "ʊə",
+   "nhom": "nguyen_am_doi",
+   "tho": "ua",
+   "mo_ta": "Từ /ʊ/ trượt về schwa. Âm hiếm, nhiều người bản ngữ nay đọc thành /ɔː/.",
+   "bay": "Hiếm gặp nên ít luyện; gặp thì hay đọc thành 'ua' rời.",
+   "uu_tien": 3,
+   "nham_voi": "ɔː",
+   "vi_du": [
+    {
+     "tu": "sure",
+     "ipa": "/ʃʊə/",
+     "nghia": "chắc chắn",
+     "unit": 17
+    },
+    {
+     "tu": "tour",
+     "ipa": "tʊə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "poor",
+     "ipa": "pʊə",
+     "nghia": "",
+     "unit": 0
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "tour",
+     "ipa_a": "tʊə",
+     "b": "tore",
+     "ipa_b": "tɔː"
+    },
+    {
+     "a": "poor",
+     "ipa_a": "pʊə",
+     "b": "pour",
+     "ipa_b": "pɔː"
+    }
+   ]
+  },
+  {
+   "ipa": "p",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "p",
+   "mo_ta": "Hai môi khép rồi BẬT mạnh. Đầu từ phải có luồng hơi rõ.",
+   "bay": "Cuối từ bị nuốt: tiếng Việt có /p/ cuối nhưng KHÔNG bật hơi → 'stop' mất hẳn đuôi.",
+   "uu_tien": 1,
+   "nham_voi": "b",
+   "vi_du": [
+    {
+     "tu": "parents",
+     "ipa": "/ˈpeərənts/",
+     "nghia": "bố mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "price",
+     "ipa": "/praɪs/",
+     "nghia": "giá",
+     "unit": 3
+    },
+    {
+     "tu": "expensive",
+     "ipa": "/ɪkˈspensɪv/",
+     "nghia": "đắt",
+     "unit": 3
+    },
+    {
+     "tu": "cheap",
+     "ipa": "/tʃiːp/",
+     "nghia": "rẻ",
+     "unit": 3
+    },
+    {
+     "tu": "past",
+     "ipa": "/pɑːst/",
+     "nghia": "hơn (giờ)",
+     "unit": 4
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "pat",
+     "ipa_a": "pæt",
+     "b": "bat",
+     "ipa_b": "bæt"
+    },
+    {
+     "a": "cap",
+     "ipa_a": "kæp",
+     "b": "cab",
+     "ipa_b": "kæb"
+    },
+    {
+     "a": "rope",
+     "ipa_a": "rəʊp",
+     "b": "robe",
+     "ipa_b": "rəʊb"
+    }
+   ]
+  },
+  {
+   "ipa": "t",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "t",
+   "mo_ta": "Đầu lưỡi chạm lợi trên rồi bật. Đầu từ có hơi bật rõ.",
+   "bay": "Cuối từ bị nuốt hoặc không bật — 'what' nghe cụt.",
+   "uu_tien": 1,
+   "nham_voi": "d",
+   "vi_du": [
+    {
+     "tu": "meet",
+     "ipa": "/miːt/",
+     "nghia": "gặp",
+     "unit": 1
+    },
+    {
+     "tu": "country",
+     "ipa": "/ˈkʌntri/",
+     "nghia": "đất nước",
+     "unit": 1
+    },
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "teacher",
+     "ipa": "/ˈtiːtʃə/",
+     "nghia": "giáo viên",
+     "unit": 1
+    },
+    {
+     "tu": "afternoon",
+     "ipa": "/ˌɑːftəˈnuːn/",
+     "nghia": "buổi chiều",
+     "unit": 1
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "time",
+     "ipa_a": "/taɪm/",
+     "b": "dime",
+     "ipa_b": "daɪm"
+    },
+    {
+     "a": "bet",
+     "ipa_a": "bet",
+     "b": "bed",
+     "ipa_b": "bed"
+    },
+    {
+     "a": "write",
+     "ipa_a": "raɪt",
+     "b": "ride",
+     "ipa_b": "raɪd"
+    }
+   ]
+  },
+  {
+   "ipa": "k",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "k",
+   "mo_ta": "Cuống lưỡi chạm ngạc mềm rồi bật.",
+   "bay": "Cuối từ bị nuốt: 'book' mất đuôi.",
+   "uu_tien": 1,
+   "nham_voi": "ɡ",
+   "vi_du": [
+    {
+     "tu": "country",
+     "ipa": "/ˈkʌntri/",
+     "nghia": "đất nước",
+     "unit": 1
+    },
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    },
+    {
+     "tu": "uncle",
+     "ipa": "/ˈʌŋkl/",
+     "nghia": "chú, bác, cậu",
+     "unit": 2
+    },
+    {
+     "tu": "cousin",
+     "ipa": "/ˈkʌzn/",
+     "nghia": "anh chị em họ",
+     "unit": 2
+    },
+    {
+     "tu": "expensive",
+     "ipa": "/ɪkˈspensɪv/",
+     "nghia": "đắt",
+     "unit": 3
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "coat",
+     "ipa_a": "kəʊt",
+     "b": "goat",
+     "ipa_b": "ɡəʊt"
+    },
+    {
+     "a": "back",
+     "ipa_a": "bæk",
+     "b": "bag",
+     "ipa_b": "/bæɡ/"
+    },
+    {
+     "a": "pick",
+     "ipa_a": "pɪk",
+     "b": "pig",
+     "ipa_b": "pɪɡ"
+    }
+   ]
+  },
+  {
+   "ipa": "f",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "f",
+   "mo_ta": "Răng trên chạm nhẹ môi dưới, thổi hơi ra liên tục.",
+   "bay": "Tiếng Việt KHÔNG có /f/ cuối → 'life' bị nuốt đuôi hoặc thành 'lai'.",
+   "uu_tien": 1,
+   "nham_voi": "v",
+   "vi_du": [
+    {
+     "tu": "from",
+     "ipa": "/frɒm/",
+     "nghia": "từ, đến từ",
+     "unit": 1
+    },
+    {
+     "tu": "friend",
+     "ipa": "/frend/",
+     "nghia": "bạn",
+     "unit": 1
+    },
+    {
+     "tu": "afternoon",
+     "ipa": "/ˌɑːftəˈnuːn/",
+     "nghia": "buổi chiều",
+     "unit": 1
+    },
+    {
+     "tu": "family",
+     "ipa": "/ˈfæməli/",
+     "nghia": "gia đình",
+     "unit": 2
+    },
+    {
+     "tu": "father",
+     "ipa": "/ˈfɑːðə/",
+     "nghia": "bố",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "fan",
+     "ipa_a": "fæn",
+     "b": "van",
+     "ipa_b": "væn"
+    },
+    {
+     "a": "safe",
+     "ipa_a": "seɪf",
+     "b": "save",
+     "ipa_b": "/seɪv/"
+    },
+    {
+     "a": "leaf",
+     "ipa_a": "liːf",
+     "b": "leave",
+     "ipa_b": "liːv"
+    }
+   ]
+  },
+  {
+   "ipa": "θ",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "th (lưỡi)",
+   "mo_ta": "ĐẦU LƯỠI ĐẶT GIỮA HAI HÀM RĂNG rồi thổi hơi. Phải nhìn thấy lưỡi.",
+   "bay": "Âm khó nhất. Tiếng Việt không có → bị thay bằng /t/ hoặc /s/: think thành 'tink'/'sink'.",
+   "uu_tien": 1,
+   "nham_voi": "s",
+   "vi_du": [
+    {
+     "tu": "thing",
+     "ipa": "/θɪŋ/",
+     "nghia": "đồ vật",
+     "unit": 6
+    },
+    {
+     "tu": "healthy",
+     "ipa": "/ˈhelθi/",
+     "nghia": "khỏe mạnh / không tốt cho sức khỏe",
+     "unit": 20
+    },
+    {
+     "tu": "worth",
+     "ipa": "/wɜːθ/",
+     "nghia": "đáng giá",
+     "unit": 28
+    },
+    {
+     "tu": "authentic",
+     "ipa": "/ɔːˈθentɪk/",
+     "nghia": "chân thực, nguyên bản",
+     "unit": 39
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "think",
+     "ipa_a": "θɪŋk",
+     "b": "sink",
+     "ipa_b": "sɪŋk"
+    },
+    {
+     "a": "thin",
+     "ipa_a": "θɪn",
+     "b": "sin",
+     "ipa_b": "sɪn"
+    },
+    {
+     "a": "three",
+     "ipa_a": "θriː",
+     "b": "tree",
+     "ipa_b": "triː"
+    }
+   ]
+  },
+  {
+   "ipa": "s",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "s",
+   "mo_ta": "Đầu lưỡi gần lợi trên, hơi rít qua khe hẹp.",
+   "bay": "Cuối từ hay bị nuốt — mất luôn dấu hiệu số nhiều và ngôi thứ ba.",
+   "uu_tien": 1,
+   "nham_voi": "z",
+   "vi_du": [
+    {
+     "tu": "nice",
+     "ipa": "/naɪs/",
+     "nghia": "tốt, dễ chịu",
+     "unit": 1
+    },
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "parents",
+     "ipa": "/ˈpeərənts/",
+     "nghia": "bố mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "sister",
+     "ipa": "/ˈsɪstə/",
+     "nghia": "chị/em gái",
+     "unit": 2
+    },
+    {
+     "tu": "son",
+     "ipa": "/sʌn/",
+     "nghia": "con trai",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bus",
+     "ipa_a": "bʌs",
+     "b": "buzz",
+     "ipa_b": "bʌz"
+    },
+    {
+     "a": "place",
+     "ipa_a": "pleɪs",
+     "b": "plays",
+     "ipa_b": "pleɪz"
+    },
+    {
+     "a": "ice",
+     "ipa_a": "aɪs",
+     "b": "eyes",
+     "ipa_b": "aɪz"
+    }
+   ]
+  },
+  {
+   "ipa": "ʃ",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "sh",
+   "mo_ta": "Lưỡi lùi sau /s/ một chút, môi hơi tròn, hơi rít trầm hơn.",
+   "bay": "Bị thay bằng /s/ → she thành 'see'.",
+   "uu_tien": 2,
+   "nham_voi": "s",
+   "vi_du": [
+    {
+     "tu": "shopping",
+     "ipa": "/ˈʃɒpɪŋ/",
+     "nghia": "mua sắm",
+     "unit": 7
+    },
+    {
+     "tu": "finish",
+     "ipa": "/ˈfɪnɪʃ/",
+     "nghia": "kết thúc",
+     "unit": 9
+    },
+    {
+     "tu": "dish",
+     "ipa": "/dɪʃ/",
+     "nghia": "món ăn",
+     "unit": 11
+    },
+    {
+     "tu": "delicious",
+     "ipa": "/dɪˈlɪʃəs/",
+     "nghia": "ngon",
+     "unit": 11
+    },
+    {
+     "tu": "cash",
+     "ipa": "/kæʃ/",
+     "nghia": "tiền mặt",
+     "unit": 12
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "she",
+     "ipa_a": "ʃiː",
+     "b": "see",
+     "ipa_b": "siː"
+    },
+    {
+     "a": "shop",
+     "ipa_a": "ʃɑːp",
+     "b": "sop",
+     "ipa_b": "sɑːp"
+    },
+    {
+     "a": "ship",
+     "ipa_a": "ʃɪp",
+     "b": "sip",
+     "ipa_b": "sɪp"
+    }
+   ]
+  },
+  {
+   "ipa": "tʃ",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "ch",
+   "mo_ta": "Ghép /t/ rồi /ʃ/ liền một hơi. Gần 'ch' tiếng Việt nhưng bật mạnh hơn.",
+   "bay": "Cuối từ hay bị nuốt: 'watch' mất đuôi.",
+   "uu_tien": 2,
+   "nham_voi": "dʒ",
+   "vi_du": [
+    {
+     "tu": "teacher",
+     "ipa": "/ˈtiːtʃə/",
+     "nghia": "giáo viên",
+     "unit": 1
+    },
+    {
+     "tu": "cheap",
+     "ipa": "/tʃiːp/",
+     "nghia": "rẻ",
+     "unit": 3
+    },
+    {
+     "tu": "watch",
+     "ipa": "/wɒtʃ/",
+     "nghia": "đồng hồ đeo tay",
+     "unit": 6
+    },
+    {
+     "tu": "chair",
+     "ipa": "/tʃeə/",
+     "nghia": "ghế",
+     "unit": 6
+    },
+    {
+     "tu": "kitchen",
+     "ipa": "/ˈkɪtʃɪn/",
+     "nghia": "bếp",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "chin",
+     "ipa_a": "tʃɪn",
+     "b": "gin",
+     "ipa_b": "dʒɪn"
+    },
+    {
+     "a": "cheap",
+     "ipa_a": "/tʃiːp/",
+     "b": "jeep",
+     "ipa_b": "dʒiːp"
+    },
+    {
+     "a": "rich",
+     "ipa_a": "rɪtʃ",
+     "b": "ridge",
+     "ipa_b": "rɪdʒ"
+    }
+   ]
+  },
+  {
+   "ipa": "h",
+   "nhom": "phu_am_vo_thanh",
+   "tho": "h",
+   "mo_ta": "Chỉ là luồng hơi từ họng, không cản ở đâu cả.",
+   "bay": "Người Việt hay NUỐT /h/ đầu từ — 'hello' thành 'ello'. Đặt tay trước miệng phải cảm nhận được hơi.",
+   "uu_tien": 2,
+   "nham_voi": "",
+   "vi_du": [
+    {
+     "tu": "hello",
+     "ipa": "/həˈləʊ/",
+     "nghia": "xin chào",
+     "unit": 1
+    },
+    {
+     "tu": "hi",
+     "ipa": "/haɪ/",
+     "nghia": "chào (thân mật)",
+     "unit": 1
+    },
+    {
+     "tu": "husband",
+     "ipa": "/ˈhʌzbənd/",
+     "nghia": "chồng",
+     "unit": 2
+    },
+    {
+     "tu": "half",
+     "ipa": "/hɑːf/",
+     "nghia": "rưỡi, một nửa",
+     "unit": 4
+    },
+    {
+     "tu": "hobby",
+     "ipa": "/ˈhɒbi/",
+     "nghia": "sở thích",
+     "unit": 7
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "hair",
+     "ipa_a": "heə",
+     "b": "air",
+     "ipa_b": "eə"
+    },
+    {
+     "a": "heat",
+     "ipa_a": "hiːt",
+     "b": "eat",
+     "ipa_b": "iːt"
+    },
+    {
+     "a": "hold",
+     "ipa_a": "həʊld",
+     "b": "old",
+     "ipa_b": "əʊld"
+    }
+   ]
+  },
+  {
+   "ipa": "b",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "b",
+   "mo_ta": "Như /p/ nhưng RUNG dây thanh, không bật hơi mạnh.",
+   "bay": "Cuối từ bị nuốt hoặc thành /p/: 'job' thành 'jop'.",
+   "uu_tien": 2,
+   "nham_voi": "p",
+   "vi_du": [
+    {
+     "tu": "goodbye",
+     "ipa": "/ˌɡʊdˈbaɪ/",
+     "nghia": "tạm biệt",
+     "unit": 1
+    },
+    {
+     "tu": "brother",
+     "ipa": "/ˈbrʌðə/",
+     "nghia": "anh/em trai",
+     "unit": 2
+    },
+    {
+     "tu": "husband",
+     "ipa": "/ˈhʌzbənd/",
+     "nghia": "chồng",
+     "unit": 2
+    },
+    {
+     "tu": "about",
+     "ipa": "/əˈbaʊt/",
+     "nghia": "khoảng",
+     "unit": 3
+    },
+    {
+     "tu": "job",
+     "ipa": "/dʒɒb/",
+     "nghia": "công việc",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "bat",
+     "ipa_a": "bæt",
+     "b": "pat",
+     "ipa_b": "pæt"
+    },
+    {
+     "a": "cab",
+     "ipa_a": "kæb",
+     "b": "cap",
+     "ipa_b": "kæp"
+    },
+    {
+     "a": "robe",
+     "ipa_a": "rəʊb",
+     "b": "rope",
+     "ipa_b": "rəʊp"
+    }
+   ]
+  },
+  {
+   "ipa": "d",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "d",
+   "mo_ta": "Như /t/ nhưng rung dây thanh. KHÔNG phải 'd' tiếng Việt (đó là /z/ hoặc /j/).",
+   "bay": "Người Việt đọc 'd' thành /z/ theo thói quen chính tả tiếng Việt.",
+   "uu_tien": 1,
+   "nham_voi": "t",
+   "vi_du": [
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "friend",
+     "ipa": "/frend/",
+     "nghia": "bạn",
+     "unit": 1
+    },
+    {
+     "tu": "goodbye",
+     "ipa": "/ˌɡʊdˈbaɪ/",
+     "nghia": "tạm biệt",
+     "unit": 1
+    },
+    {
+     "tu": "daughter",
+     "ipa": "/ˈdɔːtə/",
+     "nghia": "con gái",
+     "unit": 2
+    },
+    {
+     "tu": "husband",
+     "ipa": "/ˈhʌzbənd/",
+     "nghia": "chồng",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "dime",
+     "ipa_a": "daɪm",
+     "b": "time",
+     "ipa_b": "/taɪm/"
+    },
+    {
+     "a": "bed",
+     "ipa_a": "bed",
+     "b": "bet",
+     "ipa_b": "bet"
+    },
+    {
+     "a": "ride",
+     "ipa_a": "raɪd",
+     "b": "write",
+     "ipa_b": "raɪt"
+    }
+   ]
+  },
+  {
+   "ipa": "ɡ",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "g",
+   "mo_ta": "Như /k/ nhưng rung dây thanh.",
+   "bay": "Cuối từ thành /k/: 'bag' thành 'back'.",
+   "uu_tien": 2,
+   "nham_voi": "k",
+   "vi_du": [
+    {
+     "tu": "goodbye",
+     "ipa": "/ˌɡʊdˈbaɪ/",
+     "nghia": "tạm biệt",
+     "unit": 1
+    },
+    {
+     "tu": "grandfather",
+     "ipa": "/ˈɡrænfɑːðə/",
+     "nghia": "ông",
+     "unit": 2
+    },
+    {
+     "tu": "grandmother",
+     "ipa": "/ˈɡrænmʌðə/",
+     "nghia": "bà",
+     "unit": 2
+    },
+    {
+     "tu": "bag",
+     "ipa": "/bæɡ/",
+     "nghia": "túi",
+     "unit": 6
+    },
+    {
+     "tu": "glasses",
+     "ipa": "/ˈɡlɑːsɪz/",
+     "nghia": "kính (luôn số nhiều)",
+     "unit": 6
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "goat",
+     "ipa_a": "ɡəʊt",
+     "b": "coat",
+     "ipa_b": "kəʊt"
+    },
+    {
+     "a": "bag",
+     "ipa_a": "/bæɡ/",
+     "b": "back",
+     "ipa_b": "bæk"
+    },
+    {
+     "a": "pig",
+     "ipa_a": "pɪɡ",
+     "b": "pick",
+     "ipa_b": "pɪk"
+    }
+   ]
+  },
+  {
+   "ipa": "v",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "v",
+   "mo_ta": "Răng trên chạm môi dưới, RUNG. Không phải 'v' tiếng Việt (đó gần /j/).",
+   "bay": "Miền Nam đọc 'v' thành 'd'/'y'. Và tiếng Việt không có /v/ CUỐI → 'have' mất đuôi.",
+   "uu_tien": 1,
+   "nham_voi": "f",
+   "vi_du": [
+    {
+     "tu": "evening",
+     "ipa": "/ˈiːvnɪŋ/",
+     "nghia": "buổi tối",
+     "unit": 1
+    },
+    {
+     "tu": "expensive",
+     "ipa": "/ɪkˈspensɪv/",
+     "nghia": "đắt",
+     "unit": 3
+    },
+    {
+     "tu": "driver",
+     "ipa": "/ˈdraɪvə/",
+     "nghia": "tài xế",
+     "unit": 5
+    },
+    {
+     "tu": "travelling",
+     "ipa": "/ˈtrævəlɪŋ/",
+     "nghia": "du lịch",
+     "unit": 7
+    },
+    {
+     "tu": "vegetables",
+     "ipa": "/ˈvedʒtəblz/",
+     "nghia": "rau củ",
+     "unit": 11
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "van",
+     "ipa_a": "væn",
+     "b": "fan",
+     "ipa_b": "fæn"
+    },
+    {
+     "a": "save",
+     "ipa_a": "/seɪv/",
+     "b": "safe",
+     "ipa_b": "seɪf"
+    },
+    {
+     "a": "leave",
+     "ipa_a": "liːv",
+     "b": "leaf",
+     "ipa_b": "liːf"
+    }
+   ]
+  },
+  {
+   "ipa": "ð",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "dh",
+   "mo_ta": "Đầu lưỡi giữa hai hàm răng như /θ/ nhưng RUNG dây thanh.",
+   "bay": "Bị thay bằng /d/ hoặc /z/: 'this' thành 'dis'/'zis'. Rất hay gặp vì the, this, that, they đều dùng âm này.",
+   "uu_tien": 1,
+   "nham_voi": "d",
+   "vi_du": [
+    {
+     "tu": "father",
+     "ipa": "/ˈfɑːðə/",
+     "nghia": "bố",
+     "unit": 2
+    },
+    {
+     "tu": "mother",
+     "ipa": "/ˈmʌðə/",
+     "nghia": "mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "brother",
+     "ipa": "/ˈbrʌðə/",
+     "nghia": "anh/em trai",
+     "unit": 2
+    },
+    {
+     "tu": "grandfather",
+     "ipa": "/ˈɡrænfɑːðə/",
+     "nghia": "ông",
+     "unit": 2
+    },
+    {
+     "tu": "grandmother",
+     "ipa": "/ˈɡrænmʌðə/",
+     "nghia": "bà",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "they",
+     "ipa_a": "ðeɪ",
+     "b": "day",
+     "ipa_b": "deɪ"
+    },
+    {
+     "a": "then",
+     "ipa_a": "/ðen/",
+     "b": "den",
+     "ipa_b": "den"
+    },
+    {
+     "a": "breathe",
+     "ipa_a": "briːð",
+     "b": "breed",
+     "ipa_b": "briːd"
+    }
+   ]
+  },
+  {
+   "ipa": "z",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "z",
+   "mo_ta": "Như /s/ nhưng rung dây thanh.",
+   "bay": "Cuối từ bị nuốt → mất dấu hiệu số nhiều: 'dogs' thành 'dog'.",
+   "uu_tien": 1,
+   "nham_voi": "s",
+   "vi_du": [
+    {
+     "tu": "husband",
+     "ipa": "/ˈhʌzbənd/",
+     "nghia": "chồng",
+     "unit": 2
+    },
+    {
+     "tu": "cousin",
+     "ipa": "/ˈkʌzn/",
+     "nghia": "anh chị em họ",
+     "unit": 2
+    },
+    {
+     "tu": "busy",
+     "ipa": "/ˈbɪzi/",
+     "nghia": "bận",
+     "unit": 5
+    },
+    {
+     "tu": "glasses",
+     "ipa": "/ˈɡlɑːsɪz/",
+     "nghia": "kính (luôn số nhiều)",
+     "unit": 6
+    },
+    {
+     "tu": "stairs",
+     "ipa": "/steəz/",
+     "nghia": "cầu thang",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "buzz",
+     "ipa_a": "bʌz",
+     "b": "bus",
+     "ipa_b": "bʌs"
+    },
+    {
+     "a": "plays",
+     "ipa_a": "pleɪz",
+     "b": "place",
+     "ipa_b": "pleɪs"
+    },
+    {
+     "a": "eyes",
+     "ipa_a": "aɪz",
+     "b": "ice",
+     "ipa_b": "aɪs"
+    }
+   ]
+  },
+  {
+   "ipa": "ʒ",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "zh",
+   "mo_ta": "Như /ʃ/ nhưng rung. Âm hiếm, hay ở giữa từ: measure, vision.",
+   "bay": "Bị thay bằng /z/ hoặc /dʒ/.",
+   "uu_tien": 3,
+   "nham_voi": "dʒ",
+   "vi_du": [
+    {
+     "tu": "usually",
+     "ipa": "/ˈjuːʒuəli/",
+     "nghia": "thường thường",
+     "unit": 9
+    },
+    {
+     "tu": "unusual",
+     "ipa": "/ʌnˈjuːʒuəl/",
+     "nghia": "khác thường",
+     "unit": 23
+    },
+    {
+     "tu": "decision",
+     "ipa": "/dɪˈsɪʒn/",
+     "nghia": "quyết định",
+     "unit": 29
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "measure",
+     "ipa_a": "ˈmeʒə",
+     "b": "major",
+     "ipa_b": "ˈmeɪdʒə"
+    }
+   ]
+  },
+  {
+   "ipa": "dʒ",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "j",
+   "mo_ta": "Ghép /d/ rồi /ʒ/ liền một hơi.",
+   "bay": "Cuối từ bị nuốt: 'age', 'bridge' mất đuôi.",
+   "uu_tien": 2,
+   "nham_voi": "tʃ",
+   "vi_du": [
+    {
+     "tu": "age",
+     "ipa": "/eɪdʒ/",
+     "nghia": "tuổi",
+     "unit": 3
+    },
+    {
+     "tu": "job",
+     "ipa": "/dʒɒb/",
+     "nghia": "công việc",
+     "unit": 5
+    },
+    {
+     "tu": "engineer",
+     "ipa": "/ˌendʒɪˈnɪə/",
+     "nghia": "kỹ sư",
+     "unit": 5
+    },
+    {
+     "tu": "enjoy",
+     "ipa": "/ɪnˈdʒɔɪ/",
+     "nghia": "thích, tận hưởng",
+     "unit": 7
+    },
+    {
+     "tu": "fridge",
+     "ipa": "/frɪdʒ/",
+     "nghia": "tủ lạnh",
+     "unit": 10
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "gin",
+     "ipa_a": "dʒɪn",
+     "b": "chin",
+     "ipa_b": "tʃɪn"
+    },
+    {
+     "a": "jeep",
+     "ipa_a": "dʒiːp",
+     "b": "cheap",
+     "ipa_b": "/tʃiːp/"
+    },
+    {
+     "a": "ridge",
+     "ipa_a": "rɪdʒ",
+     "b": "rich",
+     "ipa_b": "rɪtʃ"
+    }
+   ]
+  },
+  {
+   "ipa": "r",
+   "nhom": "phu_am_huu_thanh",
+   "tho": "r",
+   "mo_ta": "Lưỡi cong lên nhưng KHÔNG chạm vào đâu. Không rung như 'r' tiếng Việt.",
+   "bay": "Đọc rung lưỡi kiểu tiếng Việt. Và Anh-Anh KHÔNG đọc /r/ cuối: car = /kɑː/, teacher = /ˈtiːtʃə/.",
+   "uu_tien": 2,
+   "nham_voi": "l",
+   "vi_du": [
+    {
+     "tu": "from",
+     "ipa": "/frɒm/",
+     "nghia": "từ, đến từ",
+     "unit": 1
+    },
+    {
+     "tu": "country",
+     "ipa": "/ˈkʌntri/",
+     "nghia": "đất nước",
+     "unit": 1
+    },
+    {
+     "tu": "friend",
+     "ipa": "/frend/",
+     "nghia": "bạn",
+     "unit": 1
+    },
+    {
+     "tu": "parents",
+     "ipa": "/ˈpeərənts/",
+     "nghia": "bố mẹ",
+     "unit": 2
+    },
+    {
+     "tu": "brother",
+     "ipa": "/ˈbrʌðə/",
+     "nghia": "anh/em trai",
+     "unit": 2
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "right",
+     "ipa_a": "raɪt",
+     "b": "light",
+     "ipa_b": "laɪt"
+    },
+    {
+     "a": "road",
+     "ipa_a": "rəʊd",
+     "b": "load",
+     "ipa_b": "ləʊd"
+    },
+    {
+     "a": "rice",
+     "ipa_a": "/raɪs/",
+     "b": "lice",
+     "ipa_b": "laɪs"
+    }
+   ]
+  },
+  {
+   "ipa": "m",
+   "nhom": "phu_am_vang",
+   "tho": "m",
+   "mo_ta": "Hai môi khép, hơi ra đằng mũi.",
+   "bay": "Ít sai — tiếng Việt có /m/ cuối.",
+   "uu_tien": 3,
+   "nham_voi": "n",
+   "vi_du": [
+    {
+     "tu": "name",
+     "ipa": "/neɪm/",
+     "nghia": "tên",
+     "unit": 1
+    },
+    {
+     "tu": "meet",
+     "ipa": "/miːt/",
+     "nghia": "gặp",
+     "unit": 1
+    },
+    {
+     "tu": "from",
+     "ipa": "/frɒm/",
+     "nghia": "từ, đến từ",
+     "unit": 1
+    },
+    {
+     "tu": "morning",
+     "ipa": "/ˈmɔːnɪŋ/",
+     "nghia": "buổi sáng",
+     "unit": 1
+    },
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "some",
+     "ipa_a": "sʌm",
+     "b": "sun",
+     "ipa_b": "sʌn"
+    },
+    {
+     "a": "ram",
+     "ipa_a": "ræm",
+     "b": "ran",
+     "ipa_b": "ræn"
+    }
+   ]
+  },
+  {
+   "ipa": "n",
+   "nhom": "phu_am_vang",
+   "tho": "n",
+   "mo_ta": "Đầu lưỡi chạm lợi trên, hơi ra đằng mũi.",
+   "bay": "Miền Bắc hay lẫn n–l. Cuối từ thì tiếng Việt có sẵn nên ít sai.",
+   "uu_tien": 2,
+   "nham_voi": "l",
+   "vi_du": [
+    {
+     "tu": "name",
+     "ipa": "/neɪm/",
+     "nghia": "tên",
+     "unit": 1
+    },
+    {
+     "tu": "nice",
+     "ipa": "/naɪs/",
+     "nghia": "tốt, dễ chịu",
+     "unit": 1
+    },
+    {
+     "tu": "country",
+     "ipa": "/ˈkʌntri/",
+     "nghia": "đất nước",
+     "unit": 1
+    },
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "friend",
+     "ipa": "/frend/",
+     "nghia": "bạn",
+     "unit": 1
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "night",
+     "ipa_a": "naɪt",
+     "b": "light",
+     "ipa_b": "laɪt"
+    },
+    {
+     "a": "no",
+     "ipa_a": "nəʊ",
+     "b": "low",
+     "ipa_b": "ləʊ"
+    }
+   ]
+  },
+  {
+   "ipa": "ŋ",
+   "nhom": "phu_am_vang",
+   "tho": "ng",
+   "mo_ta": "Cuống lưỡi chạm ngạc mềm, hơi ra đằng mũi. Tiếng Việt có sẵn ('ông').",
+   "bay": "Ít sai ở cuối. Nhưng 'ng' + /ɡ/ như 'finger' thì hay thiếu.",
+   "uu_tien": 3,
+   "nham_voi": "n",
+   "vi_du": [
+    {
+     "tu": "morning",
+     "ipa": "/ˈmɔːnɪŋ/",
+     "nghia": "buổi sáng",
+     "unit": 1
+    },
+    {
+     "tu": "evening",
+     "ipa": "/ˈiːvnɪŋ/",
+     "nghia": "buổi tối",
+     "unit": 1
+    },
+    {
+     "tu": "uncle",
+     "ipa": "/ˈʌŋkl/",
+     "nghia": "chú, bác, cậu",
+     "unit": 2
+    },
+    {
+     "tu": "thing",
+     "ipa": "/θɪŋ/",
+     "nghia": "đồ vật",
+     "unit": 6
+    },
+    {
+     "tu": "swimming",
+     "ipa": "/ˈswɪmɪŋ/",
+     "nghia": "bơi lội",
+     "unit": 7
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "sing",
+     "ipa_a": "sɪŋ",
+     "b": "sin",
+     "ipa_b": "sɪn"
+    },
+    {
+     "a": "thing",
+     "ipa_a": "/θɪŋ/",
+     "b": "thin",
+     "ipa_b": "θɪn"
+    },
+    {
+     "a": "ban",
+     "ipa_a": "bæn",
+     "b": "bang",
+     "ipa_b": "bæŋ"
+    }
+   ]
+  },
+  {
+   "ipa": "l",
+   "nhom": "phu_am_vang",
+   "tho": "l",
+   "mo_ta": "Đầu lưỡi chạm lợi trên, hơi thoát HAI BÊN lưỡi.",
+   "bay": "Tiếng Việt KHÔNG có /l/ cuối → 'well', 'call' bị nuốt hoặc thành 'oo'.",
+   "uu_tien": 1,
+   "nham_voi": "n",
+   "vi_du": [
+    {
+     "tu": "hello",
+     "ipa": "/həˈləʊ/",
+     "nghia": "xin chào",
+     "unit": 1
+    },
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    },
+    {
+     "tu": "family",
+     "ipa": "/ˈfæməli/",
+     "nghia": "gia đình",
+     "unit": 2
+    },
+    {
+     "tu": "uncle",
+     "ipa": "/ˈʌŋkl/",
+     "nghia": "chú, bác, cậu",
+     "unit": 2
+    },
+    {
+     "tu": "dollar",
+     "ipa": "/ˈdɒlə/",
+     "nghia": "đô la",
+     "unit": 3
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "light",
+     "ipa_a": "laɪt",
+     "b": "night",
+     "ipa_b": "naɪt"
+    },
+    {
+     "a": "low",
+     "ipa_a": "ləʊ",
+     "b": "no",
+     "ipa_b": "nəʊ"
+    },
+    {
+     "a": "feel",
+     "ipa_a": "fiːl",
+     "b": "fee",
+     "ipa_b": "fiː"
+    }
+   ]
+  },
+  {
+   "ipa": "w",
+   "nhom": "phu_am_vang",
+   "tho": "w",
+   "mo_ta": "Môi tròn chúm rồi mở ra. Như 'oa' trong 'hoa' nhưng nhanh.",
+   "bay": "Ít sai.",
+   "uu_tien": 3,
+   "nham_voi": "v",
+   "vi_du": [
+    {
+     "tu": "welcome",
+     "ipa": "/ˈwelkəm/",
+     "nghia": "chào mừng",
+     "unit": 1
+    },
+    {
+     "tu": "wife",
+     "ipa": "/waɪf/",
+     "nghia": "vợ",
+     "unit": 2
+    },
+    {
+     "tu": "quarter",
+     "ipa": "/ˈkwɔːtə/",
+     "nghia": "mười lăm phút",
+     "unit": 4
+    },
+    {
+     "tu": "weekend",
+     "ipa": "/ˌwiːkˈend/",
+     "nghia": "cuối tuần",
+     "unit": 4
+    },
+    {
+     "tu": "work",
+     "ipa": "/wɜːk/",
+     "nghia": "làm việc / công việc (n)",
+     "unit": 5
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "wet",
+     "ipa_a": "wet",
+     "b": "vet",
+     "ipa_b": "vet"
+    },
+    {
+     "a": "west",
+     "ipa_a": "west",
+     "b": "vest",
+     "ipa_b": "vest"
+    }
+   ]
+  },
+  {
+   "ipa": "j",
+   "nhom": "phu_am_vang",
+   "tho": "y",
+   "mo_ta": "Lưỡi cao ra trước rồi trượt sang nguyên âm. Như 'y' trong 'yêu'.",
+   "bay": "Ít sai. Nhưng 'student' Anh-Anh có /j/: /ˈstjuːdənt/.",
+   "uu_tien": 3,
+   "nham_voi": "dʒ",
+   "vi_du": [
+    {
+     "tu": "student",
+     "ipa": "/ˈstjuːdnt/",
+     "nghia": "học sinh, sinh viên",
+     "unit": 1
+    },
+    {
+     "tu": "usually",
+     "ipa": "/ˈjuːʒuəli/",
+     "nghia": "thường thường",
+     "unit": 9
+    },
+    {
+     "tu": "menu",
+     "ipa": "/ˈmenjuː/",
+     "nghia": "thực đơn",
+     "unit": 11
+    },
+    {
+     "tu": "humid",
+     "ipa": "/ˈhjuːmɪd/",
+     "nghia": "ẩm",
+     "unit": 14
+    },
+    {
+     "tu": "yesterday",
+     "ipa": "/ˈjestədeɪ/",
+     "nghia": "hôm qua",
+     "unit": 15
+    }
+   ],
+   "cap_toi_thieu": [
+    {
+     "a": "yes",
+     "ipa_a": "jes",
+     "b": "jess",
+     "ipa_b": "dʒes"
+    },
+    {
+     "a": "year",
+     "ipa_a": "jɪə",
+     "b": "jeer",
+     "ipa_b": "dʒɪə"
+    }
+   ]
+  }
+ ]
+}

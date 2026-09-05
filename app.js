@@ -1969,6 +1969,7 @@ function veRail(keo = false) {
   /* --- 1. Tổng quan --- */
   let h = nhomRail("nhom/tong-quan", "Tổng quan",
     don("\u25a4", "Tổng quan", "tong-quan", "veMenu()") +
+    don("\u0250", "Phiên âm IPA", "ipa", "moIPA()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
     don("\u270e", "Sổ lỗi", "so-loi", "chuyenTab('so-loi')"));
 
@@ -2216,6 +2217,205 @@ function veMenu() {
   $$(".trang").forEach(s => s.classList.toggle("hien", s.id === "man-menu"));
   veRail();
   dongRail();
+}
+
+/* ================= HỌC PHIÊN ÂM IPA =================
+   IPA hiện khắp app nhưng chưa có chỗ nào dạy chính ký hiệu đó.
+
+   Ba quyết định:
+   - MẢNG RIÊNG, không phải mục thứ 7 của unit: 44 âm là tập cố định, không
+     gắn với chủ đề unit nào; chia rải ra 50 unit là tùy tiện. Người học còn
+     cần tra ngay giữa chừng ("/ʊə/ đọc sao?").
+   - DẠY QUA TỪ, không qua ký hiệu đứng một mình: nhiều phụ âm tắc không thể
+     phát âm rời, mà TTS đọc "/θ/" trơ trọi cũng nghe không ra gì.
+   - LUYỆN NGHE PHÂN BIỆT TRƯỚC: nghe không ra khác nhau thì tập nói kiểu gì
+     cũng không sửa được. Nên bài tập chính là chọn A hay B trong cặp tối
+     thiểu, không phải đọc theo. */
+let duLieuIPA = null;
+let amDaHoc = new Set();
+
+function napAmDaHoc() {
+  try {
+    const d = JSON.parse(localStorage.getItem("ipaXong__" + (HS?.id || "mac_dinh")));
+    amDaHoc = new Set(Array.isArray(d) ? d : []);
+  } catch (e) { amDaHoc = new Set(); }
+}
+
+function luuAmDaHoc() {
+  localStorage.setItem("ipaXong__" + (HS?.id || "mac_dinh"),
+    JSON.stringify([...amDaHoc]));
+}
+
+async function moIPA() {
+  dungPhat();
+  S.tab = "ipa";
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "ipa"));
+  if (!duLieuIPA) {
+    $("#ipa").innerHTML = `<div class="trong">Đang nạp…</div>`;
+    duLieuIPA = await (await fetch("/api/ipa")).json();
+  }
+  napAmDaHoc();
+  veIPA();
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
+/* Lọc: xem hết 44 âm, hay chỉ 18 âm người Việt sai nhiều nhất. Mặc định là
+   nhóm ưu tiên — học đủ 44 âm đều tay thì tốn thời gian vào những âm tiếng
+   Việt đã có sẵn. */
+let locIPA = localStorage.getItem("locIPA") || "uu_tien";
+
+function doiLocIPA(v) {
+  locIPA = v;
+  localStorage.setItem("locIPA", v);
+  veIPA();
+}
+
+function veIPA() {
+  const d = duLieuIPA;
+  if (!d) return;
+  const ds = d.am.filter(a => locIPA === "tat_ca" || a.uu_tien === 1);
+  const xong = d.am.filter(a => amDaHoc.has(a.ipa)).length;
+
+  let h = `<div class="the-mo-dau">
+      <h2>Phiên âm IPA</h2>
+      <div class="mo">44 ký hiệu của tiếng Anh-Anh — đúng bộ ký hiệu đang hiện
+        ở Từ vựng, Mẫu câu và Truyện.</div>
+      <div class="thanh-tong">
+        <div class="so-lieu">
+          <span><b>${xong}</b> / ${d.am.length} âm đã học</span>
+          <span><b>18</b> âm người Việt hay sai nhất</span>
+        </div>
+        <div class="vach"><i class="xong" style="width:${Math.round(xong / d.am.length * 100)}%"></i></div>
+      </div>
+      <div class="hang" style="gap:8px; margin-top:12px; flex-wrap:wrap">
+        <button class="${locIPA === "uu_tien" ? "chinh" : "phu"}" onclick="doiLocIPA('uu_tien')">
+          Âm hay sai (18)</button>
+        <button class="${locIPA === "tat_ca" ? "chinh" : "phu"}" onclick="doiLocIPA('tat_ca')">
+          Tất cả 44 âm</button>
+      </div>
+    </div>`;
+
+  d.nhom.forEach(nh => {
+    const trong = ds.filter(a => a.nhom === nh.ma);
+    if (!trong.length) return;
+    h += `<h3>${esc(nh.ten)} <span class="mo">· ${trong.length} âm</span></h3>
+      <div class="luoi-am">` + trong.map(a => `
+        <button class="o-am ${amDaHoc.has(a.ipa) ? "xong" : ""} ${a.uu_tien === 1 ? "hay-sai" : ""}"
+          onclick="moChiTietAm(${JSON.stringify(a.ipa).replace(/"/g, "&quot;")})">
+          <span class="ky-hieu">/${esc(a.ipa)}/</span>
+          <span class="tho">${esc(a.tho)}</span>
+          ${amDaHoc.has(a.ipa) ? `<span class="dau-xong">✓</span>` : ""}
+        </button>`).join("") + `</div>`;
+  });
+
+  $("#ipa").innerHTML = h;
+}
+
+function moChiTietAm(ipa) {
+  const a = duLieuIPA.am.find(x => x.ipa === ipa);
+  if (!a) return;
+  const xong = amDaHoc.has(a.ipa);
+  const nhamVoi = a.nham_voi ? duLieuIPA.am.find(x => x.ipa === a.nham_voi) : null;
+
+  $("#ipa").innerHTML = `
+    <div class="dau-chi-tiet">
+      <span class="tieu">/${esc(a.ipa)}/ — đọc thô: ${esc(a.tho)}</span>
+      ${a.uu_tien === 1 ? `<span class="nhan canh">Người Việt hay sai</span>` : ""}
+      <button class="nut-xong" onclick="veIPA()">← Về bảng âm</button>
+    </div>
+
+    <div class="the">
+      <h3 style="margin-top:0">Cách tạo âm</h3>
+      <div>${esc(a.mo_ta)}</div>
+      <h3>Bẫy của người Việt</h3>
+      <div class="canh-bao">${esc(a.bay)}</div>
+      ${nhamVoi ? `<div class="mo" style="margin-top:8px">Hay lẫn với
+        <b>/${esc(nhamVoi.ipa)}/</b> (${esc(nhamVoi.tho)}) —
+        <button class="phu" style="padding:2px 8px"
+          onclick="moChiTietAm(${JSON.stringify(nhamVoi.ipa).replace(/"/g, "&quot;")})">xem âm đó</button></div>` : ""}
+    </div>
+
+    ${khoi(`ipa/vi-du-${a.ipa}`, "Từ có âm này", `<div class="ds-tu">` +
+      a.vi_du.map(v => `<div class="mot-tu">
+          <div class="dinh">
+            <span class="tu-anh">${esc(v.tu)}</span>${nutLoa(v.tu)}
+            <span class="pa">${esc(v.ipa)}</span>
+            ${v.nghia ? `<span class="nghia">${esc(v.nghia)}</span>` : ""}
+            ${v.unit ? `<span class="mo">unit ${v.unit}</span>` : ""}
+          </div>
+        </div>`).join("") + `</div>`, `${a.vi_du.length} từ`)}
+
+    ${a.cap_toi_thieu.length ? khoi(`ipa/cap-${a.ipa}`, "Cặp tối thiểu — nghe phân biệt", `
+      <div class="mo" style="margin:10px 0">Hai từ chỉ khác đúng một âm. Bấm
+        <b>Nghe ngẫu nhiên</b>, đoán máy vừa đọc từ nào. Nghe ra được khác nhau
+        thì mới sửa được cách nói — làm ngược lại không ăn thua.</div>
+      ${a.cap_toi_thieu.map((c, i) => `
+        <div class="mot-cap" id="cap-${i}">
+          <div class="hai-tu">
+            <button class="tu-cap" onclick="docTuCap(${i},'a')">
+              <b>${esc(c.a)}</b><span class="pa">/${esc(c.ipa_a)}/</span></button>
+            <span class="vs">–</span>
+            <button class="tu-cap" onclick="docTuCap(${i},'b')">
+              <b>${esc(c.b)}</b><span class="pa">/${esc(c.ipa_b)}/</span></button>
+          </div>
+          <div class="hang" style="gap:8px; margin-top:6px">
+            <button class="phu" onclick="doCap(${i})">🔊 Nghe ngẫu nhiên</button>
+            <button class="phu an" id="doan-a-${i}" onclick="traLoiCap(${i},'a')">Là “${esc(c.a)}”</button>
+            <button class="phu an" id="doan-b-${i}" onclick="traLoiCap(${i},'b')">Là “${esc(c.b)}”</button>
+            <span id="kq-cap-${i}"></span>
+          </div>
+        </div>`).join("")}`, `${a.cap_toi_thieu.length} cặp`) : ""}
+
+    <div class="cuoi-chi-tiet">
+      <button class="nut-xong ${xong ? "da-xong" : ""}"
+        onclick="batTatAmXong(${JSON.stringify(a.ipa).replace(/"/g, "&quot;")},this)">
+        ${xong ? "✓ Đã học xong" : "Đánh dấu đã học xong"}</button>
+    </div>`;
+
+  amDangXem = a;
+  dapAnCap = {};
+  window.scrollTo({ top: 0 });
+}
+
+let amDangXem = null, dapAnCap = {};
+
+function docTuCap(i, ben) {
+  const c = amDangXem?.cap_toi_thieu?.[i];
+  if (c) doc(ben === "a" ? c.a : c.b);
+}
+
+/* Nghe ngẫu nhiên một trong hai từ rồi để người học đoán. Không hiện đáp án
+   trước — thấy chữ rồi thì tai không phải làm gì nữa. */
+function doCap(i) {
+  const c = amDangXem?.cap_toi_thieu?.[i];
+  if (!c) return;
+  const ben = Math.random() < 0.5 ? "a" : "b";
+  dapAnCap[i] = ben;
+  $(`#kq-cap-${i}`).innerHTML = `<span class="mo">Nghe rồi chọn…</span>`;
+  $(`#doan-a-${i}`).classList.remove("an");
+  $(`#doan-b-${i}`).classList.remove("an");
+  doc(ben === "a" ? c.a : c.b);
+}
+
+function traLoiCap(i, chon) {
+  const that = dapAnCap[i];
+  if (!that) return;
+  const c = amDangXem.cap_toi_thieu[i];
+  const dung = chon === that;
+  $(`#kq-cap-${i}`).innerHTML = dung
+    ? `<span class="dung">✓ Đúng — “${esc(that === "a" ? c.a : c.b)}”</span>`
+    : `<span class="sai">✗ Là “${esc(that === "a" ? c.a : c.b)}”</span>`;
+  if (!dung) doc(that === "a" ? c.a : c.b);
+}
+
+function batTatAmXong(ipa, nut) {
+  const xong = amDaHoc.has(ipa);
+  xong ? amDaHoc.delete(ipa) : amDaHoc.add(ipa);
+  luuAmDaHoc();
+  nut.classList.toggle("da-xong", !xong);
+  nut.textContent = !xong ? "✓ Đã học xong" : "Đánh dấu đã học xong";
 }
 
 /* ================= MÀN LEVEL =================
