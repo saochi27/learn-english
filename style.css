@@ -607,6 +607,42 @@ button.chinh.to .nho-hon{
 .tu-cap .pa{font-size:12px; color:var(--pa)}
 .hai-tu .vs{color:var(--chu-nhat)}
 
+/* ---------- trọng âm ---------- */
+.luoi-tu-nhan{
+  display:grid; gap:8px;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+}
+.tu-nhan{
+  display:flex; flex-direction:column; align-items:flex-start; gap:1px;
+  padding:8px 11px; cursor:pointer; color:inherit; text-align:left;
+  background:var(--the); border:1px solid var(--vien); border-radius:9px;
+}
+.tu-nhan:hover{border-color:var(--chinh); background:var(--chinh-nhat)}
+.tu-nhan b{font-size:15px}
+.tu-nhan .pa{font-size:12px; color:var(--pa)}
+.tu-nhan .cho-nhan{font-size:11px; color:var(--chu-nhat)}
+.nhom-nhan{margin:14px 0}
+.nhom-nhan .ten-nhom{
+  font-weight:700; font-size:12.5px; color:var(--chinh); margin-bottom:6px;
+}
+
+/* ---------- nối âm ---------- */
+.ds-cau-noi{display:flex; flex-direction:column}
+.cau-noi{padding:10px 0; border-bottom:1px solid var(--vien)}
+.cau-noi:last-child{border-bottom:0}
+.cau-noi .en{font-size:15.5px}
+/* Dấu ‿ là chỗ hai từ dính vào nhau — tô đậm cho mắt bắt được ngay, đó là
+   toàn bộ nội dung cần nhìn ở dòng phiên âm này. */
+.cau-noi .pa-noi{color:var(--pa); font-size:14px; margin-top:3px; font-weight:600}
+.cau-noi .tho{color:var(--vang); font-size:13px; margin-top:2px}
+
+/* Phép tự kiểm — làm nổi vì đây là thứ giúp người tự học sửa được mà không
+   cần thầy, khác hẳn phần mô tả khẩu hình chỉ đọc rồi gật. */
+.tu-kiem{
+  background:var(--chinh-nhat); border-left:3px solid var(--chinh);
+  border-radius:0 8px 8px 0; padding:9px 12px;
+}
+
 /* ---------- màn Unit: danh sách 6 mục con ---------- */
 .ds-muc-unit{
   display:flex; flex-direction:column;

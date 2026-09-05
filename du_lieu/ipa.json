@@ -38,6 +38,9 @@
    "tho": "i (ngắn)",
    "mo_ta": "Miệng hé nhỏ, lưỡi cao vừa, buông NHANH. Không kéo dài.",
    "bay": "Đọc thành /iː/ dài. Người Việt không phân biệt dài–ngắn nên ship thành sheep.",
+   "khau_hinh": "Môi hé nhỏ, không bè ngang. Hàm gần khép. Lưỡi nâng cao vừa phải về phía trước, KHÔNG đẩy sát vòm.",
+   "luong_hoi": "Hơi thoát tự do qua miệng, không bị cản. Dây thanh rung. Ngắt NHANH, không ngân.",
+   "tu_kiem": "Đặt ngón tay dưới cằm: đọc /ɪ/ rồi /iː/ — cằm phải gần như không nhúc nhích, chỉ khác ở ĐỘ DÀI. Nếu bạn thấy môi kéo ngang ra là đang đọc thành /iː/.",
    "uu_tien": 1,
    "nham_voi": "iː",
    "vi_du": [
@@ -99,6 +102,9 @@
    "tho": "e",
    "mo_ta": "Miệng mở vừa, lưỡi trước. Giống 'e' tiếng Việt trong 'xe'.",
    "bay": "Ít sai. Nhưng hay lẫn với /æ/: bed và bad nghe như một.",
+   "khau_hinh": "Môi thả lỏng, hàm mở khoảng một đốt ngón tay. Lưỡi phía trước, độ cao trung bình.",
+   "luong_hoi": "Thoát tự do qua miệng, dây thanh rung.",
+   "tu_kiem": "Soi gương: miệng mở vừa phải. Nếu mở rộng đến mức thấy hàm dưới hạ hẳn xuống thì đã thành /æ/.",
    "uu_tien": 2,
    "nham_voi": "æ",
    "vi_du": [
@@ -160,6 +166,9 @@
    "tho": "a (bẹt)",
    "mo_ta": "Mở miệng RỘNG hơn 'e', kéo hai mép sang ngang, hàm hạ thấp.",
    "bay": "Tiếng Việt không có âm này. Bị đọc thành 'e' hoặc 'a' → bad thành 'bed' hoặc 'bát'.",
+   "khau_hinh": "Hạ hàm dưới XUỐNG THẤP, kéo hai mép sang ngang như đang nhăn mặt. Lưỡi thấp và ra trước.",
+   "luong_hoi": "Thoát tự do, dây thanh rung. Âm to và bẹt.",
+   "tu_kiem": "Đặt hai ngón tay dọc giữa hai hàm răng — /æ/ phải lọt được hai ngón. /e/ chỉ lọt một. Đây là cách chắc nhất để biết mình có mở đủ rộng chưa.",
    "uu_tien": 1,
    "nham_voi": "e",
    "vi_du": [
@@ -221,6 +230,9 @@
    "tho": "â",
    "mo_ta": "Miệng mở vừa, lưỡi giữa, âm ngắn và gọn. Gần 'â' trong 'câu'.",
    "bay": "Hay bị đọc thành 'a' → cup thành 'cáp'. Cũng hay lẫn với /ɑː/.",
+   "khau_hinh": "Miệng mở vừa, môi KHÔNG tròn, lưỡi ở giữa khoang miệng, thả lỏng hoàn toàn.",
+   "luong_hoi": "Thoát tự do, dây thanh rung, âm ngắn và gọn.",
+   "tu_kiem": "Thả lỏng hàm rồi kêu một tiếng ngạc nhiên ngắn — đó gần đúng /ʌ/. Nếu môi tròn lại là đang trượt sang /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɑː",
    "vi_du": [
@@ -282,6 +294,9 @@
    "tho": "o (ngắn)",
    "mo_ta": "Môi tròn nhỏ, miệng mở, âm NGẮN. Chỉ có trong Anh-Anh.",
    "bay": "Đọc thành /ɔː/ dài → not thành 'nought'.",
+   "khau_hinh": "Môi tròn NHỎ, hàm mở khá rộng, lưỡi hạ thấp và lùi về sau.",
+   "luong_hoi": "Thoát tự do, dây thanh rung, ngắt nhanh.",
+   "tu_kiem": "Soi gương: phải thấy môi tròn. Không tròn là thành /ʌ/, tròn mà kéo dài là thành /ɔː/.",
    "uu_tien": 2,
    "nham_voi": "ɔː",
    "vi_du": [
@@ -337,6 +352,9 @@
    "tho": "u (ngắn)",
    "mo_ta": "Môi tròn hơi hé, lưỡi sau cao vừa, buông nhanh.",
    "bay": "Đọc thành /uː/ dài → full thành fool.",
+   "khau_hinh": "Môi tròn nhưng chỉ hơi hé, KHÔNG chúm nhọn. Lưỡi sau, cao vừa. Cơ môi thả lỏng.",
+   "luong_hoi": "Thoát tự do, dây thanh rung, ngắt nhanh.",
+   "tu_kiem": "Đọc /ʊ/ rồi /uː/ trước gương: /uː/ môi chúm nhọn và đẩy ra trước, /ʊ/ thì không. Môi chúm là đã sai.",
    "uu_tien": 1,
    "nham_voi": "uː",
    "vi_du": [
@@ -386,6 +404,9 @@
    "tho": "ơ (nhẹ)",
    "mo_ta": "Âm YẾU nhất, miệng gần như không làm gì. Chỉ nằm ở âm tiết KHÔNG nhấn.",
    "bay": "Người Việt đọc rõ mọi âm tiết nên biến schwa thành nguyên âm đầy đủ — đó là lý do lớn nhất khiến câu nghe 'từng chữ một' chứ không thành dòng.",
+   "khau_hinh": "KHÔNG làm gì cả. Môi thả lỏng, lưỡi nằm giữa, hàm buông tự nhiên. Đây là vị trí nghỉ của miệng.",
+   "luong_hoi": "Rất nhẹ, rất ngắn, dây thanh rung yếu. Âm mờ đi chứ không phát rõ.",
+   "tu_kiem": "Đọc 'teacher' và cố ý KHÔNG nhấn âm cuối — nếu bạn nghe rõ được một nguyên âm cụ thể ở cuối thì đang đọc quá rõ. Schwa đúng là gần như không nghe ra âm gì.",
    "uu_tien": 1,
    "nham_voi": "ʌ",
    "vi_du": [
@@ -416,6 +437,9 @@
    "tho": "i (dài)",
    "mo_ta": "Kéo DÀI, môi bè ngang như đang cười, lưỡi cao và ra trước.",
    "bay": "Không kéo đủ dài → sheep thành ship. Độ dài là dấu hiệu phân biệt chính.",
+   "khau_hinh": "Môi BÈ NGANG như đang cười. Lưỡi đẩy cao và ra trước, gần chạm vòm miệng. Giữ nguyên khẩu hình suốt âm.",
+   "luong_hoi": "Thoát qua khe hẹp giữa lưỡi và vòm, dây thanh rung, KÉO DÀI gấp đôi /ɪ/.",
+   "tu_kiem": "Đặt ngón tay ngang hai khoé môi: đọc /iː/ phải thấy môi kéo căng ra hai bên. Đếm thầm 'một-hai' trong lúc phát âm — chưa đủ hai nhịp là chưa đủ dài.",
    "uu_tien": 1,
    "nham_voi": "ɪ",
    "vi_du": [
@@ -477,6 +501,9 @@
    "tho": "a (dài)",
    "mo_ta": "Mở miệng to, lưỡi hạ thấp và lùi sau, kéo dài.",
    "bay": "Đọc ngắn thành 'a' tiếng Việt. Anh-Anh KHÔNG đọc /r/ sau nó: car = /kɑː/.",
+   "khau_hinh": "Mở miệng TO nhất trong các nguyên âm. Lưỡi hạ thấp và lùi sâu về sau. Môi không tròn.",
+   "luong_hoi": "Thoát tự do qua khoang rộng, dây thanh rung, kéo dài.",
+   "tu_kiem": "Đây là âm bác sĩ bảo bạn kêu khi khám họng. Soi gương phải nhìn thấy cuống họng.",
    "uu_tien": 2,
    "nham_voi": "ʌ",
    "vi_du": [
@@ -538,6 +565,9 @@
    "tho": "o (dài)",
    "mo_ta": "Môi tròn, đẩy ra trước, kéo dài. Lưỡi lùi sau.",
    "bay": "Đọc ngắn thành /ɒ/ → caught thành cot.",
+   "khau_hinh": "Môi tròn và ĐẨY RA TRƯỚC. Hàm mở vừa. Lưỡi lùi sau, cao hơn /ɑː/ một chút.",
+   "luong_hoi": "Thoát qua khe môi tròn, dây thanh rung, kéo dài.",
+   "tu_kiem": "Đặt ngón tay trước môi — phải chạm được môi đang chìa ra. Môi không chìa là đang đọc /ɑː/ hoặc /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɒ",
    "vi_du": [
@@ -599,6 +629,9 @@
    "tho": "u (dài)",
    "mo_ta": "Môi tròn chúm nhỏ, đẩy ra trước, kéo dài.",
    "bay": "Đọc ngắn thành /ʊ/ → fool thành full.",
+   "khau_hinh": "Môi CHÚM NHỌN như huýt sáo, đẩy ra trước. Lưỡi sau, nâng cao sát vòm mềm.",
+   "luong_hoi": "Thoát qua lỗ môi nhỏ, dây thanh rung, kéo dài.",
+   "tu_kiem": "Thử huýt sáo rồi chuyển thẳng sang /uː/ — khẩu hình gần như không đổi. Nếu môi bè ra là sai.",
    "uu_tien": 1,
    "nham_voi": "ʊ",
    "vi_du": [
@@ -660,6 +693,9 @@
    "tho": "ơ (dài)",
    "mo_ta": "Lưỡi ở giữa, môi KHÔNG tròn, kéo dài đều. Đây là 'ơ' kéo dài.",
    "bay": "Hay bị đọc thành 'ơ' ngắn hoặc thêm /r/ kiểu Mỹ. Anh-Anh: bird = /bɜːd/.",
+   "khau_hinh": "Lưỡi ở GIỮA, không trước không sau, không cao không thấp. Môi KHÔNG tròn, thả lỏng. Hàm mở vừa.",
+   "luong_hoi": "Thoát tự do, dây thanh rung, kéo dài đều, không đổi khẩu hình giữa chừng.",
+   "tu_kiem": "Đây là schwa /ə/ nhưng kéo dài và có nhấn. Đọc /ə/ rồi giữ nguyên miệng mà kéo dài ra — đó là /ɜː/. Nếu lưỡi cong lên kiểu Mỹ thì đã sai với Anh-Anh.",
    "uu_tien": 2,
    "nham_voi": "ə",
    "vi_du": [
@@ -721,6 +757,9 @@
    "tho": "ây",
    "mo_ta": "Bắt đầu ở /e/ rồi TRƯỢT lên /ɪ/. Một hơi liền, không tách đôi.",
    "bay": "Đọc thành 'ê' đứng yên → name thành 'nêm'. Phải nghe rõ chỗ trượt.",
+   "khau_hinh": "BẮT ĐẦU ở /e/ (hàm mở vừa) rồi TRƯỢT dần lên /ɪ/ (hàm khép lại, môi bè ra). Miệng phải DI CHUYỂN.",
+   "luong_hoi": "Một luồng hơi liền mạch, dây thanh rung suốt, không ngắt giữa hai phần.",
+   "tu_kiem": "Đặt ngón tay dưới cằm: cằm phải NÂNG LÊN trong lúc phát âm. Cằm đứng yên nghĩa là bạn đang đọc 'ê' một nốt.",
    "uu_tien": 2,
    "nham_voi": "e",
    "vi_du": [
@@ -782,6 +821,9 @@
    "tho": "ai",
    "mo_ta": "Từ /a/ trượt lên /ɪ/. Giống 'ai' tiếng Việt.",
    "bay": "Ít sai — tiếng Việt có sẵn 'ai'.",
+   "khau_hinh": "Bắt đầu miệng mở rộng /a/ rồi khép dần về /ɪ/.",
+   "luong_hoi": "Một hơi liền, dây thanh rung suốt.",
+   "tu_kiem": "Cằm phải đi từ thấp lên cao. Giống 'ai' tiếng Việt nên thường đã đúng sẵn.",
    "uu_tien": 3,
    "nham_voi": "eɪ",
    "vi_du": [
@@ -843,6 +885,9 @@
    "tho": "oi",
    "mo_ta": "Từ /ɔː/ trượt lên /ɪ/. Giống 'oi' tiếng Việt.",
    "bay": "Ít sai.",
+   "khau_hinh": "Bắt đầu môi tròn /ɔː/ rồi mở ra và khép về /ɪ/, môi từ tròn chuyển sang bè.",
+   "luong_hoi": "Một hơi liền, dây thanh rung suốt.",
+   "tu_kiem": "Soi gương: môi phải đi từ tròn sang bè. Giống 'oi' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "aɪ",
    "vi_du": [
@@ -898,6 +943,9 @@
    "tho": "âu",
    "mo_ta": "Bắt đầu ở schwa /ə/ rồi tròn môi về /ʊ/. Anh-Anh KHÔNG phải 'ô'.",
    "bay": "Đọc thành 'ô' tiếng Việt → go thành 'gô'. Phải bắt đầu từ 'ơ' rồi mới tròn môi.",
+   "khau_hinh": "BẮT ĐẦU ở schwa /ə/ — môi THẢ LỎNG, KHÔNG tròn — rồi mới tròn môi dần về /ʊ/. Đây là chỗ người Việt sai nhiều nhất.",
+   "luong_hoi": "Một hơi liền, dây thanh rung suốt.",
+   "tu_kiem": "Soi gương đọc 'go': lúc BẮT ĐẦU môi phải thả lỏng, chỉ tròn lại ở cuối. Nếu môi đã tròn ngay từ đầu thì bạn đang đọc 'gô' tiếng Việt chứ không phải /ɡəʊ/.",
    "uu_tien": 1,
    "nham_voi": "ɔː",
    "vi_du": [
@@ -959,6 +1007,9 @@
    "tho": "ao",
    "mo_ta": "Từ /a/ trượt về /ʊ/, môi tròn dần. Giống 'ao' tiếng Việt.",
    "bay": "Ít sai.",
+   "khau_hinh": "Bắt đầu miệng mở rộng /a/ rồi tròn môi dần về /ʊ/.",
+   "luong_hoi": "Một hơi liền, dây thanh rung suốt.",
+   "tu_kiem": "Môi phải tròn dần lại ở cuối. Giống 'ao' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "əʊ",
    "vi_du": [
@@ -1020,6 +1071,9 @@
    "tho": "ia",
    "mo_ta": "Từ /ɪ/ trượt về schwa. Anh-Anh không có /r/: here = /hɪə/.",
    "bay": "Thêm /r/ cuối kiểu Mỹ, hoặc đọc thành 'ia' đứng yên.",
+   "khau_hinh": "Bắt đầu /ɪ/ rồi thả lỏng về schwa. Kết thúc miệng ở vị trí nghỉ, KHÔNG cong lưỡi lên.",
+   "luong_hoi": "Một hơi liền, nhỏ dần ở cuối.",
+   "tu_kiem": "Đọc 'here' mà cuối câu lưỡi cong lên là bạn đang thêm /r/ kiểu Mỹ. Anh-Anh kết thúc bằng miệng thả lỏng.",
    "uu_tien": 2,
    "nham_voi": "eə",
    "vi_du": [
@@ -1081,6 +1135,9 @@
    "tho": "e (kéo)",
    "mo_ta": "Từ /e/ trượt về schwa, miệng mở vừa. Không có /r/.",
    "bay": "Lẫn với /ɪə/: hair và here nghe như một.",
+   "khau_hinh": "Bắt đầu /e/ (hàm mở vừa) rồi thả về schwa.",
+   "luong_hoi": "Một hơi liền, nhỏ dần.",
+   "tu_kiem": "Khác /ɪə/ ở CHỖ BẮT ĐẦU: /eə/ hàm mở hơn. Đọc 'hair' rồi 'here' liền nhau, cằm phải ở hai độ cao khác nhau.",
    "uu_tien": 2,
    "nham_voi": "ɪə",
    "vi_du": [
@@ -1142,6 +1199,9 @@
    "tho": "ua",
    "mo_ta": "Từ /ʊ/ trượt về schwa. Âm hiếm, nhiều người bản ngữ nay đọc thành /ɔː/.",
    "bay": "Hiếm gặp nên ít luyện; gặp thì hay đọc thành 'ua' rời.",
+   "khau_hinh": "Bắt đầu môi hơi tròn /ʊ/ rồi thả về schwa.",
+   "luong_hoi": "Một hơi liền, nhỏ dần.",
+   "tu_kiem": "Âm hiếm. Nhiều người bản ngữ nay đọc thành /ɔː/, nên đọc 'poor' thành /pɔː/ cũng chấp nhận được.",
    "uu_tien": 3,
    "nham_voi": "ɔː",
    "vi_du": [
@@ -1185,6 +1245,9 @@
    "tho": "p",
    "mo_ta": "Hai môi khép rồi BẬT mạnh. Đầu từ phải có luồng hơi rõ.",
    "bay": "Cuối từ bị nuốt: tiếng Việt có /p/ cuối nhưng KHÔNG bật hơi → 'stop' mất hẳn đuôi.",
+   "khau_hinh": "Hai môi khép CHẶT, ngậm hơi lại, rồi bật mở đột ngột.",
+   "luong_hoi": "Hơi bị chặn hoàn toàn ở môi rồi NỔ ra. Dây thanh KHÔNG rung. Đầu từ phải có luồng hơi bật rõ.",
+   "tu_kiem": "Cầm một mảnh giấy trước miệng đọc 'pen' — giấy phải BAY. Không bay là chưa bật hơi. Cuối từ ('stop') cũng phải nghe được tiếng bật nhẹ.",
    "uu_tien": 1,
    "nham_voi": "b",
    "vi_du": [
@@ -1246,6 +1309,9 @@
    "tho": "t",
    "mo_ta": "Đầu lưỡi chạm lợi trên rồi bật. Đầu từ có hơi bật rõ.",
    "bay": "Cuối từ bị nuốt hoặc không bật — 'what' nghe cụt.",
+   "khau_hinh": "Đầu lưỡi chạm vào LỢI TRÊN (ngay sau răng cửa), chặn hơi rồi bật ra.",
+   "luong_hoi": "Hơi chặn ở lợi rồi nổ. Dây thanh KHÔNG rung.",
+   "tu_kiem": "Mảnh giấy trước miệng đọc 'time' — phải bay. Đọc 'what' cuối câu vẫn phải cảm thấy lưỡi chạm lợi, đừng bỏ lửng.",
    "uu_tien": 1,
    "nham_voi": "d",
    "vi_du": [
@@ -1307,6 +1373,9 @@
    "tho": "k",
    "mo_ta": "Cuống lưỡi chạm ngạc mềm rồi bật.",
    "bay": "Cuối từ bị nuốt: 'book' mất đuôi.",
+   "khau_hinh": "CUỐNG lưỡi nâng lên chạm ngạc mềm (phần mềm phía sau vòm miệng), chặn hơi rồi bật.",
+   "luong_hoi": "Hơi chặn ở sâu trong họng rồi nổ. Dây thanh KHÔNG rung.",
+   "tu_kiem": "Mảnh giấy phải bay khi đọc 'cat'. Đặt tay lên cổ họng — KHÔNG được thấy rung; thấy rung là đang đọc /ɡ/.",
    "uu_tien": 1,
    "nham_voi": "ɡ",
    "vi_du": [
@@ -1368,6 +1437,9 @@
    "tho": "f",
    "mo_ta": "Răng trên chạm nhẹ môi dưới, thổi hơi ra liên tục.",
    "bay": "Tiếng Việt KHÔNG có /f/ cuối → 'life' bị nuốt đuôi hoặc thành 'lai'.",
+   "khau_hinh": "Răng CỬA TRÊN chạm nhẹ lên MÔI DƯỚI, để hở một khe.",
+   "luong_hoi": "Hơi thổi liên tục qua khe răng–môi, KHÔNG chặn hẳn. Dây thanh không rung. Có thể kéo dài âm này.",
+   "tu_kiem": "Soi gương: phải thấy răng trên đặt lên môi dưới. Đặt tay trước miệng thấy hơi ra đều. Kéo dài 'ffff' được 3 giây là đúng khẩu hình.",
    "uu_tien": 1,
    "nham_voi": "v",
    "vi_du": [
@@ -1429,6 +1501,9 @@
    "tho": "th (lưỡi)",
    "mo_ta": "ĐẦU LƯỠI ĐẶT GIỮA HAI HÀM RĂNG rồi thổi hơi. Phải nhìn thấy lưỡi.",
    "bay": "Âm khó nhất. Tiếng Việt không có → bị thay bằng /t/ hoặc /s/: think thành 'tink'/'sink'.",
+   "khau_hinh": "ĐẦU LƯỠI ĐƯA RA GIỮA HAI HÀM RĂNG, thò ra ngoài một chút. Phải NHÌN THẤY lưỡi trong gương.",
+   "luong_hoi": "Hơi thổi qua khe giữa lưỡi và răng cửa trên. Dây thanh KHÔNG rung. Kéo dài được.",
+   "tu_kiem": "Hai phép thử: (1) soi gương phải thấy đầu lưỡi; (2) đặt ngón tay trước miệng, đọc 'think' — ngón tay phải chạm được lưỡi. Không chạm được nghĩa là lưỡi còn nằm trong, và bạn đang đọc /t/ hoặc /s/.",
    "uu_tien": 1,
    "nham_voi": "s",
    "vi_du": [
@@ -1484,6 +1559,9 @@
    "tho": "s",
    "mo_ta": "Đầu lưỡi gần lợi trên, hơi rít qua khe hẹp.",
    "bay": "Cuối từ hay bị nuốt — mất luôn dấu hiệu số nhiều và ngôi thứ ba.",
+   "khau_hinh": "Đầu lưỡi nâng gần lợi trên nhưng KHÔNG chạm, chừa khe rất hẹp. Răng gần khép. Môi hơi bè.",
+   "luong_hoi": "Hơi rít mạnh qua khe hẹp, tạo tiếng xì cao. Dây thanh không rung.",
+   "tu_kiem": "Kéo dài 'ssss' như tiếng rắn. Đặt tay lên cổ họng — không được rung. Cuối từ ('books') phải nghe rõ tiếng xì, nuốt mất là mất luôn dấu hiệu số nhiều.",
    "uu_tien": 1,
    "nham_voi": "z",
    "vi_du": [
@@ -1545,6 +1623,9 @@
    "tho": "sh",
    "mo_ta": "Lưỡi lùi sau /s/ một chút, môi hơi tròn, hơi rít trầm hơn.",
    "bay": "Bị thay bằng /s/ → she thành 'see'.",
+   "khau_hinh": "Lưỡi lùi về sau hơn /s/, bè rộng ra. Môi HƠI TRÒN và chìa nhẹ ra trước.",
+   "luong_hoi": "Hơi rít qua khe rộng hơn /s/, tiếng TRẦM hơn. Dây thanh không rung.",
+   "tu_kiem": "Đây là âm ra hiệu im lặng 'suỵt'. Đọc /s/ rồi /ʃ/ liền nhau trước gương: môi phải tròn lại khi sang /ʃ/.",
    "uu_tien": 2,
    "nham_voi": "s",
    "vi_du": [
@@ -1606,6 +1687,9 @@
    "tho": "ch",
    "mo_ta": "Ghép /t/ rồi /ʃ/ liền một hơi. Gần 'ch' tiếng Việt nhưng bật mạnh hơn.",
    "bay": "Cuối từ hay bị nuốt: 'watch' mất đuôi.",
+   "khau_hinh": "Bắt đầu như /t/ (lưỡi chạm lợi, chặn hơi) rồi nhả ra thành /ʃ/. Một động tác liền, không phải hai âm rời.",
+   "luong_hoi": "Chặn rồi xì — hơi nổ nhẹ rồi rít. Dây thanh không rung.",
+   "tu_kiem": "Đọc 'watch' cuối câu phải nghe rõ tiếng xì sau tiếng bật. Chỉ nghe tiếng bật là bạn đang đọc /t/.",
    "uu_tien": 2,
    "nham_voi": "dʒ",
    "vi_du": [
@@ -1667,6 +1751,9 @@
    "tho": "h",
    "mo_ta": "Chỉ là luồng hơi từ họng, không cản ở đâu cả.",
    "bay": "Người Việt hay NUỐT /h/ đầu từ — 'hello' thành 'ello'. Đặt tay trước miệng phải cảm nhận được hơi.",
+   "khau_hinh": "Miệng đã ở sẵn khẩu hình của nguyên âm phía sau. Không cản ở môi, răng hay lưỡi.",
+   "luong_hoi": "CHỈ LÀ MỘT LUỒNG HƠI từ họng đẩy ra. Dây thanh không rung.",
+   "tu_kiem": "Hà hơi vào lòng bàn tay như khi làm mờ kính — đó là /h/. Đọc 'hello', bàn tay đặt trước miệng phải thấy HƠI ẤM. Không thấy gì nghĩa là bạn đã nuốt mất /h/.",
    "uu_tien": 2,
    "nham_voi": "",
    "vi_du": [
@@ -1728,6 +1815,9 @@
    "tho": "b",
    "mo_ta": "Như /p/ nhưng RUNG dây thanh, không bật hơi mạnh.",
    "bay": "Cuối từ bị nuốt hoặc thành /p/: 'job' thành 'jop'.",
+   "khau_hinh": "Giống /p/: hai môi khép chặt rồi mở.",
+   "luong_hoi": "Hơi chặn ở môi rồi nhả. Dây thanh RUNG, và hơi bật ra NHẸ hơn /p/ nhiều.",
+   "tu_kiem": "Đặt tay lên cổ họng đọc 'bat' — phải thấy RUNG. Mảnh giấy trước miệng thì gần như không bay (khác hẳn /p/).",
    "uu_tien": 2,
    "nham_voi": "p",
    "vi_du": [
@@ -1789,6 +1879,9 @@
    "tho": "d",
    "mo_ta": "Như /t/ nhưng rung dây thanh. KHÔNG phải 'd' tiếng Việt (đó là /z/ hoặc /j/).",
    "bay": "Người Việt đọc 'd' thành /z/ theo thói quen chính tả tiếng Việt.",
+   "khau_hinh": "Giống /t/: đầu lưỡi chạm lợi trên rồi nhả.",
+   "luong_hoi": "Chặn ở lợi rồi nhả, dây thanh RUNG.",
+   "tu_kiem": "Sờ cổ họng phải thấy rung. CẢNH BÁO: 'd' tiếng Việt KHÔNG phải âm này — 'da' tiếng Việt đọc gần /z/ (miền Bắc) hoặc /j/ (miền Nam). Phải đặt lưỡi chạm lợi thật sự.",
    "uu_tien": 1,
    "nham_voi": "t",
    "vi_du": [
@@ -1850,6 +1943,9 @@
    "tho": "g",
    "mo_ta": "Như /k/ nhưng rung dây thanh.",
    "bay": "Cuối từ thành /k/: 'bag' thành 'back'.",
+   "khau_hinh": "Giống /k/: cuống lưỡi chạm ngạc mềm rồi nhả.",
+   "luong_hoi": "Chặn sâu trong họng rồi nhả, dây thanh RUNG.",
+   "tu_kiem": "Sờ cổ họng đọc 'go' phải thấy rung; đọc 'coat' thì không. Đó là khác biệt duy nhất giữa hai âm.",
    "uu_tien": 2,
    "nham_voi": "k",
    "vi_du": [
@@ -1911,6 +2007,9 @@
    "tho": "v",
    "mo_ta": "Răng trên chạm môi dưới, RUNG. Không phải 'v' tiếng Việt (đó gần /j/).",
    "bay": "Miền Nam đọc 'v' thành 'd'/'y'. Và tiếng Việt không có /v/ CUỐI → 'have' mất đuôi.",
+   "khau_hinh": "Giống /f/: răng cửa trên chạm môi dưới.",
+   "luong_hoi": "Hơi qua khe răng–môi, dây thanh RUNG. Kéo dài được.",
+   "tu_kiem": "Kéo dài 'vvvv' và sờ cổ họng — phải rung, và phải thấy tê nhẹ ở môi dưới. CẢNH BÁO: 'v' tiếng Việt miền Nam đọc gần /j/, không chạm răng vào môi. Soi gương kiểm tra.",
    "uu_tien": 1,
    "nham_voi": "f",
    "vi_du": [
@@ -1972,6 +2071,9 @@
    "tho": "dh",
    "mo_ta": "Đầu lưỡi giữa hai hàm răng như /θ/ nhưng RUNG dây thanh.",
    "bay": "Bị thay bằng /d/ hoặc /z/: 'this' thành 'dis'/'zis'. Rất hay gặp vì the, this, that, they đều dùng âm này.",
+   "khau_hinh": "Giống /θ/: đầu lưỡi giữa hai hàm răng, thò ra một chút.",
+   "luong_hoi": "Hơi qua khe lưỡi–răng, dây thanh RUNG.",
+   "tu_kiem": "Đặt ngón tay trước miệng đọc 'this' — phải chạm lưỡi, VÀ sờ cổ họng phải thấy rung. Đủ hai điều mới đúng. Rất quan trọng vì the, this, that, they đều dùng âm này.",
    "uu_tien": 1,
    "nham_voi": "d",
    "vi_du": [
@@ -2033,6 +2135,9 @@
    "tho": "z",
    "mo_ta": "Như /s/ nhưng rung dây thanh.",
    "bay": "Cuối từ bị nuốt → mất dấu hiệu số nhiều: 'dogs' thành 'dog'.",
+   "khau_hinh": "Giống /s/: lưỡi gần lợi trên, khe hẹp.",
+   "luong_hoi": "Hơi rít qua khe, dây thanh RUNG.",
+   "tu_kiem": "Kéo dài 'zzzz' như tiếng ong bay, sờ cổ họng thấy rung. Đọc 'buzz' và 'bus' liền nhau — chỉ khác ở chỗ rung này.",
    "uu_tien": 1,
    "nham_voi": "s",
    "vi_du": [
@@ -2094,6 +2199,9 @@
    "tho": "zh",
    "mo_ta": "Như /ʃ/ nhưng rung. Âm hiếm, hay ở giữa từ: measure, vision.",
    "bay": "Bị thay bằng /z/ hoặc /dʒ/.",
+   "khau_hinh": "Giống /ʃ/: lưỡi lùi sau, bè, môi hơi tròn.",
+   "luong_hoi": "Hơi rít trầm, dây thanh RUNG.",
+   "tu_kiem": "Đọc /ʃ/ rồi bật giọng lên thành /ʒ/, giữ nguyên khẩu hình. Âm hiếm, hay nằm giữa từ: measure, vision.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
    "vi_du": [
@@ -2131,6 +2239,9 @@
    "tho": "j",
    "mo_ta": "Ghép /d/ rồi /ʒ/ liền một hơi.",
    "bay": "Cuối từ bị nuốt: 'age', 'bridge' mất đuôi.",
+   "khau_hinh": "Bắt đầu như /d/ rồi nhả thành /ʒ/, một động tác liền.",
+   "luong_hoi": "Chặn rồi xì, dây thanh RUNG suốt.",
+   "tu_kiem": "Đọc 'jeep' và 'cheap' liền nhau, sờ cổ họng — /dʒ/ rung ngay từ đầu, /tʃ/ thì không.",
    "uu_tien": 2,
    "nham_voi": "tʃ",
    "vi_du": [
@@ -2192,6 +2303,9 @@
    "tho": "r",
    "mo_ta": "Lưỡi cong lên nhưng KHÔNG chạm vào đâu. Không rung như 'r' tiếng Việt.",
    "bay": "Đọc rung lưỡi kiểu tiếng Việt. Và Anh-Anh KHÔNG đọc /r/ cuối: car = /kɑː/, teacher = /ˈtiːtʃə/.",
+   "khau_hinh": "Lưỡi CONG NHẸ lên và lùi về sau nhưng TUYỆT ĐỐI KHÔNG CHẠM vào đâu. Môi hơi tròn.",
+   "luong_hoi": "Hơi thoát tự do quanh lưỡi, dây thanh rung. Không có rung lưỡi, không có va chạm.",
+   "tu_kiem": "Đọc 'right' — nếu bạn nghe tiếng lưỡi rung lập bập thì đó là 'r' tiếng Việt, sai. Lưỡi phải lơ lửng. Và Anh-Anh KHÔNG đọc /r/ ở cuối: 'car' = /kɑː/, không có gì sau nguyên âm.",
    "uu_tien": 2,
    "nham_voi": "l",
    "vi_du": [
@@ -2253,6 +2367,9 @@
    "tho": "m",
    "mo_ta": "Hai môi khép, hơi ra đằng mũi.",
    "bay": "Ít sai — tiếng Việt có /m/ cuối.",
+   "khau_hinh": "Hai môi khép, lưỡi thả lỏng.",
+   "luong_hoi": "Miệng bị chặn hoàn toàn nên hơi thoát ĐẰNG MŨI. Dây thanh rung.",
+   "tu_kiem": "Bịt mũi rồi thử đọc 'm' — không kêu được. Đó là bằng chứng hơi đi đằng mũi.",
    "uu_tien": 3,
    "nham_voi": "n",
    "vi_du": [
@@ -2308,6 +2425,9 @@
    "tho": "n",
    "mo_ta": "Đầu lưỡi chạm lợi trên, hơi ra đằng mũi.",
    "bay": "Miền Bắc hay lẫn n–l. Cuối từ thì tiếng Việt có sẵn nên ít sai.",
+   "khau_hinh": "Đầu lưỡi chạm lợi trên (như /t/), môi mở.",
+   "luong_hoi": "Miệng bị lưỡi chặn nên hơi thoát ĐẰNG MŨI. Dây thanh rung.",
+   "tu_kiem": "Bịt mũi thì không kêu được. Nếu bạn hay lẫn n–l: /n/ hơi ra mũi, /l/ hơi ra miệng — bịt mũi vẫn đọc được /l/.",
    "uu_tien": 2,
    "nham_voi": "l",
    "vi_du": [
@@ -2363,6 +2483,9 @@
    "tho": "ng",
    "mo_ta": "Cuống lưỡi chạm ngạc mềm, hơi ra đằng mũi. Tiếng Việt có sẵn ('ông').",
    "bay": "Ít sai ở cuối. Nhưng 'ng' + /ɡ/ như 'finger' thì hay thiếu.",
+   "khau_hinh": "CUỐNG lưỡi chạm ngạc mềm (như /k/), đầu lưỡi hạ thấp, không chạm lợi.",
+   "luong_hoi": "Hơi thoát đằng mũi. Dây thanh rung.",
+   "tu_kiem": "Tiếng Việt có sẵn trong 'ông', 'ăng'. Đọc 'sing' — đầu lưỡi phải nằm im dưới, chạm lợi là thành /n/ ('sin').",
    "uu_tien": 3,
    "nham_voi": "n",
    "vi_du": [
@@ -2424,6 +2547,9 @@
    "tho": "l",
    "mo_ta": "Đầu lưỡi chạm lợi trên, hơi thoát HAI BÊN lưỡi.",
    "bay": "Tiếng Việt KHÔNG có /l/ cuối → 'well', 'call' bị nuốt hoặc thành 'oo'.",
+   "khau_hinh": "Đầu lưỡi chạm lợi trên, HAI BÊN lưỡi hạ xuống chừa lối cho hơi đi.",
+   "luong_hoi": "Hơi thoát HAI BÊN lưỡi, không qua giữa. Dây thanh rung.",
+   "tu_kiem": "Kéo dài 'llll' rồi hít vào — hai bên lưỡi phải thấy MÁT. Cuối từ ('well', 'call') tiếng Việt không có nên hay bị nuốt: phải cảm thấy lưỡi chạm lợi rồi mới dừng.",
    "uu_tien": 1,
    "nham_voi": "n",
    "vi_du": [
@@ -2485,6 +2611,9 @@
    "tho": "w",
    "mo_ta": "Môi tròn chúm rồi mở ra. Như 'oa' trong 'hoa' nhưng nhanh.",
    "bay": "Ít sai.",
+   "khau_hinh": "Môi CHÚM TRÒN mạnh rồi bung ra nhanh sang nguyên âm sau.",
+   "luong_hoi": "Thoát tự do, dây thanh rung. Là một động tác TRƯỢT, không đứng yên.",
+   "tu_kiem": "Soi gương: môi phải chúm rõ ở đầu rồi mở ra. Môi không chúm là mất âm.",
    "uu_tien": 3,
    "nham_voi": "v",
    "vi_du": [
@@ -2540,6 +2669,9 @@
    "tho": "y",
    "mo_ta": "Lưỡi cao ra trước rồi trượt sang nguyên âm. Như 'y' trong 'yêu'.",
    "bay": "Ít sai. Nhưng 'student' Anh-Anh có /j/: /ˈstjuːdənt/.",
+   "khau_hinh": "Lưỡi nâng cao ra trước gần vị trí /iː/ rồi trượt sang nguyên âm sau.",
+   "luong_hoi": "Thoát tự do, dây thanh rung. Cũng là động tác trượt.",
+   "tu_kiem": "Giống 'y' trong 'yêu'. Lưu ý Anh-Anh có /j/ ở 'student' /ˈstjuːdənt/, 'Tuesday' — đọc thiếu là ra giọng Mỹ.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
    "vi_du": [
@@ -2589,5 +2721,1516 @@
     }
    ]
   }
- ]
+ ],
+ "trong_am": {
+  "quy_tac": [
+   {
+    "ma": "duoi_tion",
+    "ten": "Đuôi -tion / -sion / -cian",
+    "mo_ta": "Trọng âm rơi vào âm tiết NGAY TRƯỚC đuôi. Quy tắc chắc nhất trong tiếng Anh, gần như không có ngoại lệ.",
+    "vi_tri": "truoc_duoi",
+    "hau_to": [
+     "tion",
+     "sion",
+     "cian"
+    ],
+    "vi_du": [
+     {
+      "tu": "acquisition",
+      "ipa": "ˌækwəˈzɪʃən",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "action",
+      "ipa": "ˈækʃən",
+      "nghia": "",
+      "unit": 16,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "addition",
+      "ipa": "əˈdɪʃən",
+      "nghia": "",
+      "unit": 20,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "administration",
+      "ipa": "æˌdmɪnɪˈstreɪʃən",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 5,
+      "trong_am": 4,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "agitation",
+      "ipa": "ˌædʒəˈteɪʃən",
+      "nghia": "",
+      "unit": 41,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "alteration",
+      "ipa": "ˌɔːltəˈreɪʃən",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "ma": "duoi_ic",
+    "ten": "Đuôi -ic / -ical",
+    "mo_ta": "Cũng nhấn vào âm tiết ngay trước đuôi.",
+    "vi_tri": "truoc_duoi",
+    "hau_to": [
+     "ic",
+     "ical"
+    ],
+    "vi_du": [
+     {
+      "tu": "academic",
+      "ipa": "ˌækəˈdemɪk",
+      "nghia": "thuộc học thuật",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "authentic",
+      "ipa": "ɔːˈθentɪk",
+      "nghia": "chân thực, nguyên bản",
+      "unit": 39,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "basic",
+      "ipa": "ˈbeɪsɪk",
+      "nghia": "",
+      "unit": 10,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "chaotic",
+      "ipa": "keɪˈɑːtɪk",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "chronic",
+      "ipa": "ˈkrɑːnɪk",
+      "nghia": "",
+      "unit": 35,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "clinic",
+      "ipa": "ˈklɪnɪk",
+      "nghia": "",
+      "unit": 20,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "ma": "duoi_ity",
+    "ten": "Đuôi -ity / -ify / -logy / -graphy",
+    "mo_ta": "Nhấn vào âm tiết thứ BA TÍNH TỪ CUỐI lên.",
+    "vi_tri": "ba_tu_cuoi",
+    "hau_to": [
+     "ity",
+     "ify",
+     "logy",
+     "graphy"
+    ],
+    "vi_du": [
+     {
+      "tu": "ability",
+      "ipa": "əˈbɪləˌtiː",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accessibility",
+      "ipa": "ˌæksesəˈbɪlɪtiː",
+      "nghia": "",
+      "unit": 38,
+      "so_am_tiet": 6,
+      "trong_am": 4,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "activity",
+      "ipa": "æˈktɪvətiː",
+      "nghia": "",
+      "unit": 5,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "availability",
+      "ipa": "əˌveɪləˈbɪlətiː",
+      "nghia": "",
+      "unit": 50,
+      "so_am_tiet": 6,
+      "trong_am": 4,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "biodiversity",
+      "ipa": "ˌbaɪəʊdaɪˈvɜːsəti",
+      "nghia": "đa dạng sinh học",
+      "unit": 33,
+      "so_am_tiet": 6,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "capability",
+      "ipa": "ˌkeɪpəˈbɪlətiː",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 5,
+      "trong_am": 3,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "ma": "duoi_ee",
+    "ten": "Đuôi -ee / -eer / -ese / -ette",
+    "mo_ta": "Hiếm gặp: nhấn vào CHÍNH cái đuôi. Đây là nhóm ngoại lệ ngược hẳn thói quen nhấn đầu từ.",
+    "vi_tri": "cuoi",
+    "hau_to": [
+     "ee",
+     "eer",
+     "ese",
+     "ette"
+    ],
+    "vi_du": [
+     {
+      "tu": "agree",
+      "ipa": "əˈɡriː",
+      "nghia": "",
+      "unit": 7,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "baguette",
+      "ipa": "ˌbæˈɡet",
+      "nghia": "",
+      "unit": 30,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "career",
+      "ipa": "kəˈrɪə",
+      "nghia": "",
+      "unit": 25,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "degree",
+      "ipa": "dɪˈɡriː",
+      "nghia": "độ",
+      "unit": 14,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "disagree",
+      "ipa": "dɪsəˈɡriː",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "engineer",
+      "ipa": "ˌendʒɪˈnɪə",
+      "nghia": "kỹ sư",
+      "unit": 5,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     }
+    ]
+   },
+   {
+    "ma": "hai_am_tiet",
+    "ten": "Từ hai âm tiết",
+    "mo_ta": "Danh từ và tính từ thường nhấn âm ĐẦU; động từ thường nhấn âm SAU. Đây là xu hướng, không phải luật cứng.",
+    "vi_tri": "tu_do",
+    "hau_to": [],
+    "vi_du": [
+     {
+      "tu": "able",
+      "ipa": "ˈeɪbəl",
+      "nghia": "",
+      "unit": 5,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "about",
+      "ipa": "əˈbaʊt",
+      "nghia": "khoảng",
+      "unit": 3,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "above",
+      "ipa": "əˈbʌv",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "abroad",
+      "ipa": "əˈbrɔːd",
+      "nghia": "ở nước ngoài",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "absence",
+      "ipa": "ˈæbsəns",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "absent",
+      "ipa": "ˈæbsənt",
+      "nghia": "",
+      "unit": 26,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     }
+    ]
+   }
+  ],
+  "bang_luyen": [
+   {
+    "so_am_tiet": 2,
+    "trong_am": 1,
+    "tu": [
+     {
+      "tu": "able",
+      "ipa": "ˈeɪbəl",
+      "nghia": "",
+      "unit": 5,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "absence",
+      "ipa": "ˈæbsəns",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "absent",
+      "ipa": "ˈæbsənt",
+      "nghia": "",
+      "unit": 26,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accents",
+      "ipa": "ˈæksents",
+      "nghia": "",
+      "unit": 47,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "access",
+      "ipa": "ˈæˌkses",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "action",
+      "ipa": "ˈækʃən",
+      "nghia": "",
+      "unit": 16,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "active",
+      "ipa": "ˈæktɪv",
+      "nghia": "",
+      "unit": 7,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "added",
+      "ipa": "ˈædəd",
+      "nghia": "",
+      "unit": 38,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "address",
+      "ipa": "ˈæˌdres",
+      "nghia": "",
+      "unit": 16,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adverb",
+      "ipa": "ˈædvəb",
+      "nghia": "",
+      "unit": 43,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "after",
+      "ipa": "ˈæftə",
+      "nghia": "",
+      "unit": 4,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "agent",
+      "ipa": "ˈeɪdʒənt",
+      "nghia": "",
+      "unit": 21,
+      "so_am_tiet": 2,
+      "trong_am": 1,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 2,
+    "trong_am": 2,
+    "tu": [
+     {
+      "tu": "about",
+      "ipa": "əˈbaʊt",
+      "nghia": "khoảng",
+      "unit": 3,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "above",
+      "ipa": "əˈbʌv",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "abroad",
+      "ipa": "əˈbrɔːd",
+      "nghia": "ở nước ngoài",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "abstract",
+      "ipa": "æbˈstrækt",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accent",
+      "ipa": "əˈksent",
+      "nghia": "",
+      "unit": 47,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accept",
+      "ipa": "æˈksept",
+      "nghia": "",
+      "unit": 17,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "account",
+      "ipa": "əˈkaʊnt",
+      "nghia": "tài khoản",
+      "unit": 28,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "achieve",
+      "ipa": "əˈtʃiːv",
+      "nghia": "đạt được",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "achieved",
+      "ipa": "əˈtʃiːvd",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "across",
+      "ipa": "əˈkrɔːs",
+      "nghia": "",
+      "unit": 2,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acute",
+      "ipa": "əˈkjuːt",
+      "nghia": "",
+      "unit": 35,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adapt",
+      "ipa": "əˈdæpt",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 2,
+      "trong_am": 2,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 3,
+    "trong_am": 1,
+    "tu": [
+     {
+      "tu": "absolute",
+      "ipa": "ˈæbsəˌluːt",
+      "nghia": "",
+      "unit": 45,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accident",
+      "ipa": "ˈæksədənt",
+      "nghia": "",
+      "unit": 29,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accurate",
+      "ipa": "ˈækjərət",
+      "nghia": "",
+      "unit": 37,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "actively",
+      "ipa": "ˈæktɪvliː",
+      "nghia": "",
+      "unit": 33,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "actual",
+      "ipa": "ˈæktʃəwəl",
+      "nghia": "",
+      "unit": 48,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adequate",
+      "ipa": "ˈædəkwət",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adjective",
+      "ipa": "ˈædʒɪktɪv",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "advocate",
+      "ipa": "ˈædvəkət",
+      "nghia": "",
+      "unit": 33,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "afterward",
+      "ipa": "ˈæftəwəd",
+      "nghia": "",
+      "unit": 41,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "allocate",
+      "ipa": "ˈæləˌkeɪt",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "analysts",
+      "ipa": "ˈænəlɪsts",
+      "nghia": "",
+      "unit": 37,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "analyze",
+      "ipa": "ˈænəˌlaɪz",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 3,
+      "trong_am": 1,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 3,
+    "trong_am": 2,
+    "tu": [
+     {
+      "tu": "abandon",
+      "ipa": "əˈbændən",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accessible",
+      "ipa": "əkˈsesəbl",
+      "nghia": "dễ tiếp cận",
+      "unit": 34,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "accomplished",
+      "ipa": "əˈkɑːmplɪʃt",
+      "nghia": "",
+      "unit": 48,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "according",
+      "ipa": "əˈkɔːdɪŋ",
+      "nghia": "",
+      "unit": 35,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accountant",
+      "ipa": "əˈkaʊntənt",
+      "nghia": "kế toán",
+      "unit": 5,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "accusing",
+      "ipa": "əˈkjuːzɪŋ",
+      "nghia": "",
+      "unit": 37,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "achievement",
+      "ipa": "əˈtʃiːvmənt",
+      "nghia": "",
+      "unit": 23,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "achieving",
+      "ipa": "əˈtʃiːvɪŋ",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acknowledge",
+      "ipa": "æˈknɑːlɪdʒ",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acquaintance",
+      "ipa": "əˈkweɪntəns",
+      "nghia": "",
+      "unit": 43,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acquire",
+      "ipa": "əˈkwaɪə",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acquiring",
+      "ipa": "əˈkwaɪrɪŋ",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 3,
+      "trong_am": 2,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 3,
+    "trong_am": 3,
+    "tu": [
+     {
+      "tu": "afternoon",
+      "ipa": "ˌɑːftəˈnuːn",
+      "nghia": "buổi chiều",
+      "unit": 1,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "anymore",
+      "ipa": "ˌeniːˈmɔː",
+      "nghia": "",
+      "unit": 21,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "automation",
+      "ipa": "ˌɔːtəˈmeɪʃn",
+      "nghia": "tự động hóa",
+      "unit": 34,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "coexist",
+      "ipa": "ˌkəʊəˈɡzɪst",
+      "nghia": "",
+      "unit": 45,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "comprehends",
+      "ipa": "ˌkɑːmpriːˈhendz",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "conservation",
+      "ipa": "ˌkɒnsəˈveɪʃn",
+      "nghia": "bảo tồn",
+      "unit": 33,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "contradicts",
+      "ipa": "ˌkɑːntrəˈdɪkts",
+      "nghia": "",
+      "unit": 48,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "disagree",
+      "ipa": "dɪsəˈɡriː",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "disappear",
+      "ipa": "ˌdɪsəˈpɪə",
+      "nghia": "",
+      "unit": 14,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "disappeared",
+      "ipa": "ˌdɪsəˈpɪəd",
+      "nghia": "",
+      "unit": 14,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "disappears",
+      "ipa": "ˌdɪsəˈpɪəz",
+      "nghia": "",
+      "unit": 14,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "engineer",
+      "ipa": "ˌendʒɪˈnɪə",
+      "nghia": "kỹ sư",
+      "unit": 5,
+      "so_am_tiet": 3,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 4,
+    "trong_am": 1,
+    "tu": [
+     {
+      "tu": "accuracy",
+      "ipa": "ˈækjərəsiː",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "actually",
+      "ipa": "ˈæˌktʃuːəliː",
+      "nghia": "",
+      "unit": 5,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adequately",
+      "ipa": "ˈædəkwətliː",
+      "nghia": "",
+      "unit": 50,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "advertisers",
+      "ipa": "ˈædvəˌtaɪzəz",
+      "nghia": "",
+      "unit": 37,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "agriculture",
+      "ipa": "ˈæɡrɪˌkʌltʃə",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "allocated",
+      "ipa": "ˈæləˌkeɪtɪd",
+      "nghia": "",
+      "unit": 41,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "architecture",
+      "ipa": "ˈɑːkəˌtektʃə",
+      "nghia": "",
+      "unit": 50,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "arguably",
+      "ipa": "ˈɑːɡjuːəbliː",
+      "nghia": "",
+      "unit": 45,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "calculated",
+      "ipa": "ˈkælkjəˌleɪtɪd",
+      "nghia": "",
+      "unit": 26,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "categories",
+      "ipa": "ˈkætəˌɡɔːriːz",
+      "nghia": "",
+      "unit": 35,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "circumstances",
+      "ipa": "ˈsɜːkəˌmstænsəz",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "comfortable",
+      "ipa": "ˈkʌmfətəbəl",
+      "nghia": "",
+      "unit": 8,
+      "so_am_tiet": 4,
+      "trong_am": 1,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 4,
+    "trong_am": 2,
+    "tu": [
+     {
+      "tu": "abilities",
+      "ipa": "əˈbɪləˌtiːz",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "ability",
+      "ipa": "əˈbɪləˌtiː",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accommodate",
+      "ipa": "əˈkɑːməˌdeɪt",
+      "nghia": "",
+      "unit": 39,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accomplishment",
+      "ipa": "əˈkɑːmplɪʃmənt",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "accountable",
+      "ipa": "əˈkaʊntəbəl",
+      "nghia": "",
+      "unit": 49,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "acknowledges",
+      "ipa": "æˈknɑːlɪdʒɪz",
+      "nghia": "",
+      "unit": 39,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "activities",
+      "ipa": "æˈktɪvətiːz",
+      "nghia": "",
+      "unit": 29,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "activity",
+      "ipa": "æˈktɪvətiː",
+      "nghia": "",
+      "unit": 5,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "adaptable",
+      "ipa": "əˈdæptəbəl",
+      "nghia": "",
+      "unit": 47,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "advantages",
+      "ipa": "æˈdvæntɪdʒɪz",
+      "nghia": "",
+      "unit": 36,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "advertisement",
+      "ipa": "ədˈvɜːtɪsmənt",
+      "nghia": "quảng cáo",
+      "unit": 37,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "affordable",
+      "ipa": "əˈfɔːdəbəl",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 2,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 4,
+    "trong_am": 3,
+    "tu": [
+     {
+      "tu": "absolutely",
+      "ipa": "ˌæbsəˈluːtliː",
+      "nghia": "",
+      "unit": 18,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "academic",
+      "ipa": "ˌækəˈdemɪk",
+      "nghia": "thuộc học thuật",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "acquisition",
+      "ipa": "ˌækwəˈzɪʃən",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "agitation",
+      "ipa": "ˌædʒəˈteɪʃən",
+      "nghia": "",
+      "unit": 41,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "alteration",
+      "ipa": "ˌɔːltəˈreɪʃən",
+      "nghia": "",
+      "unit": 42,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "application",
+      "ipa": "ˌæpləˈkeɪʃən",
+      "nghia": "",
+      "unit": 22,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "apprehension",
+      "ipa": "ˌæprɪˈhenʃən",
+      "nghia": "",
+      "unit": 45,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "artificial",
+      "ipa": "ˌɑːtəˈfɪʃəl",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "beneficial",
+      "ipa": "ˌbenəˈfɪʃəl",
+      "nghia": "",
+      "unit": 50,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "collocation",
+      "ipa": "kɑːləˈkeɪʃən",
+      "nghia": "",
+      "unit": 50,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "combination",
+      "ipa": "ˌkɑːmbəˈneɪʃən",
+      "nghia": "",
+      "unit": 32,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "complications",
+      "ipa": "ˌkɑːmpləˈkeɪʃənz",
+      "nghia": "",
+      "unit": 45,
+      "so_am_tiet": 4,
+      "trong_am": 3,
+      "nguon": "cmu"
+     }
+    ]
+   },
+   {
+    "so_am_tiet": 4,
+    "trong_am": 4,
+    "tu": [
+     {
+      "tu": "accommodation",
+      "ipa": "əˌkɒməˈdeɪʃn",
+      "nghia": "chỗ ở",
+      "unit": 21,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "deforestation",
+      "ipa": "ˌdiːfɒrɪˈsteɪʃn",
+      "nghia": "phá rừng",
+      "unit": 33,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "globalisation",
+      "ipa": "ˌɡləʊbəlaɪˈzeɪʃn",
+      "nghia": "toàn cầu hóa",
+      "unit": 39,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "nevertheless",
+      "ipa": "ˌnevəðəˈles",
+      "nghia": "",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "cmu"
+     },
+     {
+      "tu": "qualification",
+      "ipa": "ˌkwɒlɪfɪˈkeɪʃn",
+      "nghia": "bằng cấp",
+      "unit": 31,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "urbanisation",
+      "ipa": "ˌɜːbənaɪˈzeɪʃn",
+      "nghia": "đô thị hóa",
+      "unit": 36,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "giao_trinh"
+     },
+     {
+      "tu": "vietnamese",
+      "ipa": "viːˌetnɑːˈmiːs",
+      "nghia": "",
+      "unit": 1,
+      "so_am_tiet": 4,
+      "trong_am": 4,
+      "nguon": "cmu"
+     }
+    ]
+   }
+  ]
+ },
+ "noi_am": {
+  "quy_tac": [
+   {
+    "ma": "phu_nguyen",
+    "ten": "Phụ âm cuối + nguyên âm đầu",
+    "mo_ta": "Phụ âm cuối của từ trước dính sang nguyên âm đầu của từ sau, đọc như một từ. Đây là kiểu nối hay gặp nhất.",
+    "bay": "Người Việt tách rời từng từ vì tiếng Việt là ngôn ngữ đơn âm, mỗi tiếng một khối. Không nối thì câu nghe rời rạc như đọc danh sách.",
+    "vi_du": [
+     {
+      "cau": "I am fine, thank you. And you?",
+      "ipa_noi": "/aɪ əm faɪn θæŋk‿jə ən‿juː/",
+      "tho_noi": "ai-ơm-fain-thangk-yơ-ơn-yu",
+      "unit": 1
+     },
+     {
+      "cau": "No, I am not. I am a student.",
+      "ipa_noi": "/nəʊ aɪ əm nɑːt‿aɪ əm‿ə ˈstjuːdnt/",
+      "tho_noi": "nâu-ai-ơm-nat-ai-ơm-ơ-styudnt",
+      "unit": 1
+     },
+     {
+      "cau": "Really? How do you spell your name?",
+      "ipa_noi": "/ˈrɪliː haʊ də jə spel‿jə neɪm/",
+      "tho_noi": "rili-hao-dơ-yơ-spel-yơ-nâym",
+      "unit": 1
+     },
+     {
+      "cau": "A - N - N - A. Anna.",
+      "ipa_noi": "/ə en‿en‿ə ˈænə/",
+      "tho_noi": "ơ-en-en-ơ-anơ",
+      "unit": 1
+     },
+     {
+      "cau": "Thank you. See you tomorrow!",
+      "ipa_noi": "/θæŋk‿jə siː jə təˈmɑːˌrəʊ/",
+      "tho_noi": "thangk-yơ-si-yơ-tơmarâu",
+      "unit": 1
+     },
+     {
+      "cau": "See you. Have a nice day!",
+      "ipa_noi": "/siː jə həv‿ə naɪs deɪ/",
+      "tho_noi": "si-yơ-hơv-ơ-nais-dây",
+      "unit": 1
+     },
+     {
+      "cau": "Yes, it is. Please come in.",
+      "ipa_noi": "/jes‿ɪt‿ɪz pliːz kʌm‿ɪn/",
+      "tho_noi": "yes-it-iz-pliz-kâm-in",
+      "unit": 1
+     },
+     {
+      "cau": "Thank you. I am Lan. I am a new student.",
+      "ipa_noi": "/θæŋk‿jə aɪ əm læn‿aɪ əm‿ə nuː ˈstjuːdnt/",
+      "tho_noi": "thangk-yơ-ai-ơm-lan-ai-ơm-ơ-nu-styudnt",
+      "unit": 1
+     }
+    ]
+   },
+   {
+    "ma": "t_j",
+    "ten": "/t/ + /j/ → /tʃ/",
+    "mo_ta": "Âm /t/ gặp /j/ (chữ y) biến thành /tʃ/: meet you → mee-chu.",
+    "bay": "Nghe người bản ngữ nói 'mee-chu' rồi tưởng họ dùng từ khác.",
+    "vi_du": [
+     {
+      "cau": "Nice to meet you.",
+      "ipa_noi": "/naɪs tə miː‿tʃuː/",
+      "tho_noi": "nais-tơ-mi-chu",
+      "unit": 1
+     },
+     {
+      "cau": "Nice to meet you too. Where are you from?",
+      "ipa_noi": "/naɪs tə miː‿tʃə tuː weə ə jə frɒm/",
+      "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
+      "unit": 1
+     },
+     {
+      "cau": "Nice to meet you, Mr. Brown.",
+      "ipa_noi": "/naɪs tə miː‿tʃə ˈmɪstə braʊn/",
+      "tho_noi": "nais-tơ-mi-chơ-mistơ-braon",
+      "unit": 1
+     },
+     {
+      "cau": "Nice to meet you too. Where are you from?",
+      "ipa_noi": "/naɪs tə miː‿tʃə tuː weə ə jə frɒm/",
+      "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
+      "unit": 1
+     },
+     {
+      "cau": "I am Nam. Nice to meet you, Lan.",
+      "ipa_noi": "/aɪ əm næm naɪs tə miː‿tʃə læn/",
+      "tho_noi": "ai-ơm-nam-nais-tơ-mi-chơ-lan",
+      "unit": 1
+     },
+     {
+      "cau": "Is that your friend over there?",
+      "ipa_noi": "/ɪz ðə‿tʃə frend ˈəʊvə ðeə/",
+      "tho_noi": "iz-dhơ-chơ-frend-âuvơ-dhe",
+      "unit": 1
+     }
+    ]
+   },
+   {
+    "ma": "d_j",
+    "ten": "/d/ + /j/ → /dʒ/",
+    "mo_ta": "Tương tự: would you → wou-ju, did you → di-ju.",
+    "bay": "Cùng lý do trên.",
+    "vi_du": [
+     {
+      "cau": "You look tired. What time did you start today?",
+      "ipa_noi": "/jə lʊk ˈtaɪəd‿wʌt taɪm dɪ‿dʒə stɑːt təˈdeɪ/",
+      "tho_noi": "yơ-luk-taiơd-wât-taim-di-jơ-stat-tơdây",
+      "unit": 9
+     },
+     {
+      "cau": "Would you like to stay there long?",
+      "ipa_noi": "/wə‿dʒə laɪk tə steɪ ðə lɔːŋ/",
+      "tho_noi": "wơ-jơ-laik-tơ-stây-dhơ-long",
+      "unit": 10
+     },
+     {
+      "cau": "What would you like to drink?",
+      "ipa_noi": "/wʌt‿wə‿dʒə laɪk tə drɪŋk/",
+      "tho_noi": "wât-wơ-jơ-laik-tơ-dringk",
+      "unit": 11
+     },
+     {
+      "cau": "Would you like anything to drink?",
+      "ipa_noi": "/wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk/",
+      "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
+      "unit": 11
+     },
+     {
+      "cau": "Would you like anything to drink?",
+      "ipa_noi": "/wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk/",
+      "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
+      "unit": 11
+     },
+     {
+      "cau": "Of course. How much rice would you like?",
+      "ipa_noi": "/əv kɔːs haʊ mʌtʃ raɪs‿wə‿dʒə laɪk/",
+      "tho_noi": "ơv-kos-hao-mâch-rais-wơ-jơ-laik",
+      "unit": 11
+     }
+    ]
+   },
+   {
+    "ma": "dang_yeu",
+    "ten": "Dạng yếu của từ chức năng",
+    "mo_ta": "to, of, and, for, are, was… trong câu nói nhanh bị rút thành schwa: to → /tə/, of → /əv/, and → /ən/.",
+    "bay": "Đọc rõ 'tu', 'ov', 'ended' cho mọi từ chức năng là nguyên nhân lớn nhất khiến câu nghe cứng và chậm.",
+    "vi_du": [
+     {
+      "cau": "Thank you. I am happy to be here.",
+      "ipa_noi": "/θæŋk‿jə aɪ əm ˈhæpiː tə biː hɪə/",
+      "tho_noi": "thangk-yơ-ai-ơm-hapi-tơ-bi-hia",
+      "unit": 1
+     },
+     {
+      "cau": "It is a nice afternoon to meet.",
+      "ipa_noi": "/ɪt‿ɪz‿ə naɪs ˌɑːftəˈnuːn tə miːt/",
+      "tho_noi": "it-iz-ơ-nais-aftơnun-tơ-mit",
+      "unit": 1
+     },
+     {
+      "cau": "That is nice. I want to meet them.",
+      "ipa_noi": "/ðət‿ɪz naɪs‿aɪ wɑːnt tə miːt ðem/",
+      "tho_noi": "dhơt-iz-nais-ai-want-tơ-mit-dhem",
+      "unit": 2
+     },
+     {
+      "cau": "Yes, let me introduce you to my father.",
+      "ipa_noi": "/jes let miː ˌɪntrəˈduːs‿jə tə maɪ ˈfɑːðə/",
+      "tho_noi": "yes-let-mi-intrơdus-yơ-tơ-mai-fadhơ",
+      "unit": 2
+     },
+     {
+      "cau": "Hello, it is nice to meet you.",
+      "ipa_noi": "/həˈləʊ ɪt‿ɪz naɪs tə miː‿tʃuː/",
+      "tho_noi": "hơlâu-it-iz-nais-tơ-mi-chu",
+      "unit": 2
+     },
+     {
+      "cau": "It is two dollars back to you.",
+      "ipa_noi": "/ɪt‿ɪz tuː ˈdɑːləz bæk tə juː/",
+      "tho_noi": "it-iz-tu-dalơz-bak-tơ-yu",
+      "unit": 3
+     }
+    ]
+   }
+  ]
+ }
 }

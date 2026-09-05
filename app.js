@@ -1994,7 +1994,7 @@ function veRail(keo = false) {
   /* --- 1. Tổng quan --- */
   let h = nhomRail("nhom/tong-quan", "Tổng quan",
     don("\u25a4", "Tổng quan", "tong-quan", "veMenu()") +
-    don("\u0250", "Phiên âm IPA", "ipa", "moIPA()") +
+    don("\u0250", "Phát âm", "ipa", "moIPA()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
     don("\u270e", "Sổ lỗi", "so-loi", "chuyenTab('so-loi')"));
 
@@ -2297,16 +2297,109 @@ function doiLocIPA(v) {
   veIPA();
 }
 
+/* Ba thẻ: Âm · Trọng âm · Nối âm.
+   Vì sao gộp một mảng chứ không tách ba mục ở menu: ba thứ này là một chuỗi
+   phải học liền nhau. Đọc đúng từng âm mà sai trọng âm thì người nghe vẫn
+   không hiểu; đúng cả hai mà đọc rời từng từ thì câu vẫn nghe "từng chữ một". */
+let theIPA = localStorage.getItem("thePhatAm") || "am";
+
+function doiThePhatAm(v) {
+  theIPA = v;
+  localStorage.setItem("thePhatAm", v);
+  veIPA();
+}
+
+const thanhThePhatAm = () => `
+  <div class="hop-tab" style="border:1px solid var(--vien); border-radius:9px;
+       margin-bottom:14px; background:var(--the)">
+    ${[["am", "Âm (IPA)"], ["trong_am", "Trọng âm"], ["noi_am", "Nối âm"]]
+      .map(([v, t]) => `<button class="${theIPA === v ? "chon" : ""}"
+        onclick="doiThePhatAm('${v}')">${t}</button>`).join("")}
+  </div>`;
+
+function veTrongAm() {
+  const d = duLieuIPA.trong_am;
+  if (!d) return `<div class="trong">Chưa có dữ liệu trọng âm.</div>`;
+  const oTu = v => `<button class="tu-nhan" onclick="doc(${JSON.stringify(v.tu).replace(/"/g, "&quot;")})">
+      <b>${esc(v.tu)}</b><span class="pa">/${esc(v.ipa)}/</span>
+      <span class="cho-nhan">âm ${v.trong_am}/${v.so_am_tiet}</span></button>`;
+
+  let h = `<div class="the">
+      <h3 style="margin-top:0">Vì sao trọng âm quan trọng hơn bạn nghĩ</h3>
+      <div>Tiếng Việt mỗi tiếng một thanh điệu, đọc đều nhau. Tiếng Anh thì
+        MỘT âm tiết được nhấn mạnh hẳn, các âm tiết còn lại bị nuốt ngắn lại.
+        Nhấn sai chỗ thì dù phát âm từng âm đúng hết, người nghe vẫn không
+        nhận ra từ — đây là lý do phổ biến nhất khiến người bản ngữ hỏi lại.</div>
+    </div>`;
+
+  d.quy_tac.forEach((q, i) => {
+    h += khoi(`ta/${q.ma}`, q.ten,
+      `<div class="mo" style="margin:10px 0">${esc(q.mo_ta)}</div>
+       <div class="luoi-tu-nhan">${q.vi_du.map(oTu).join("")}</div>`,
+      `${q.vi_du.length} ví dụ`);
+  });
+
+  h += khoi("ta/bang-luyen", "Bảng luyện theo dạng",
+    `<div class="mo" style="margin:10px 0">Xếp theo số âm tiết và vị trí nhấn.
+       Đọc to cả nhóm một lượt — cùng một dạng nhấn thì miệng quen nhanh hơn
+       học lẻ từng từ.</div>` +
+    d.bang_luyen.map(b => `
+      <div class="nhom-nhan">
+        <div class="ten-nhom">${b.so_am_tiet} âm tiết · nhấn âm ${b.trong_am}</div>
+        <div class="luoi-tu-nhan">${b.tu.map(oTu).join("")}</div>
+      </div>`).join(""), `${d.bang_luyen.length} dạng`);
+  return h;
+}
+
+function veNoiAm() {
+  const d = duLieuIPA.noi_am;
+  if (!d) return `<div class="trong">Chưa có dữ liệu nối âm.</div>`;
+  let h = `<div class="the">
+      <h3 style="margin-top:0">Vì sao câu nghe "từng chữ một"</h3>
+      <div>Tiếng Việt là ngôn ngữ đơn âm — mỗi tiếng một khối tách bạch. Đem
+        thói quen đó sang tiếng Anh thì câu thành một chuỗi từ rời. Người bản
+        ngữ NỐI các từ lại thành dòng liền, và đó là khác biệt lớn nhất giữa
+        "đọc được" và "nói được".</div>
+      <div class="mo" style="margin-top:8px">Dấu <b>‿</b> trong phiên âm bên
+        dưới đánh dấu đúng chỗ hai từ dính vào nhau.</div>
+    </div>`;
+
+  d.quy_tac.forEach(q => {
+    h += khoi(`na/${q.ma}`, q.ten, `
+      <div class="mo" style="margin:10px 0">${esc(q.mo_ta)}</div>
+      <div class="canh-bao">${esc(q.bay)}</div>
+      <div class="ds-cau-noi">${q.vi_du.map(v => `
+        <div class="cau-noi">
+          <div class="hang">
+            <span class="en">${esc(v.cau)}</span>${nutLoa(v.cau)}
+          </div>
+          <div class="pa-noi">${esc(v.ipa_noi)}</div>
+          ${v.tho_noi ? `<div class="tho">${esc(v.tho_noi)}</div>` : ""}
+        </div>`).join("")}</div>`, `${q.vi_du.length} câu`);
+  });
+  return h;
+}
+
 function veIPA() {
   const d = duLieuIPA;
   if (!d) return;
+  if (theIPA !== "am") {
+    $("#ipa").innerHTML = `<div class="the-mo-dau">
+        <h2>Phát âm</h2>
+        <div class="mo">Ba phần học liền nhau: từng âm → nhấn đúng chỗ → nối
+          các từ thành dòng.</div>
+      </div>` + thanhThePhatAm()
+      + (theIPA === "trong_am" ? veTrongAm() : veNoiAm());
+    return;
+  }
   const ds = d.am.filter(a => locIPA === "tat_ca" || a.uu_tien === 1);
   const xong = d.am.filter(a => amDaHoc.has(a.ipa)).length;
 
   let h = `<div class="the-mo-dau">
-      <h2>Phiên âm IPA</h2>
-      <div class="mo">44 ký hiệu của tiếng Anh-Anh — đúng bộ ký hiệu đang hiện
-        ở Từ vựng, Mẫu câu và Truyện.</div>
+      <h2>Phát âm</h2>
+      <div class="mo">44 ký hiệu tiếng Anh-Anh — đúng bộ đang hiện ở Từ vựng,
+        Mẫu câu và Truyện. Mỗi âm có khẩu hình, đường đi của luồng hơi, và một
+        phép TỰ KIỂM làm được không cần thầy.</div>
       <div class="thanh-tong">
         <div class="so-lieu">
           <span><b>${xong}</b> / ${d.am.length} âm đã học</span>
@@ -2320,7 +2413,7 @@ function veIPA() {
         <button class="${locIPA === "tat_ca" ? "chinh" : "phu"}" onclick="doiLocIPA('tat_ca')">
           Tất cả 44 âm</button>
       </div>
-    </div>`;
+    </div>` + thanhThePhatAm();
 
   d.nhom.forEach(nh => {
     const trong = ds.filter(a => a.nhom === nh.ma);
@@ -2352,8 +2445,12 @@ function moChiTietAm(ipa) {
     </div>
 
     <div class="the">
-      <h3 style="margin-top:0">Cách tạo âm</h3>
-      <div>${esc(a.mo_ta)}</div>
+      <h3 style="margin-top:0">Khẩu hình — môi, hàm, lưỡi</h3>
+      <div>${esc(a.khau_hinh || a.mo_ta)}</div>
+      <h3>Luồng hơi</h3>
+      <div>${esc(a.luong_hoi || "")}</div>
+      ${a.tu_kiem ? `<h3>Tự kiểm — không cần thầy</h3>
+        <div class="tu-kiem">${esc(a.tu_kiem)}</div>` : ""}
       <h3>Bẫy của người Việt</h3>
       <div class="canh-bao">${esc(a.bay)}</div>
       ${nhamVoi ? `<div class="mo" style="margin-top:8px">Hay lẫn với
