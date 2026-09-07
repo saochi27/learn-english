@@ -6,7 +6,7 @@
 const S = {
   unit: null, tab: "bai-hoc", muc_luc: [], cauHinh: {}, duLieuUnit: null,
   tienDo: { unit: {}, phut_theo_ngay: {} },
-  giong: null, tocDo: +(localStorage.getItem("tocDo") || 0.9),
+  giong: null, tocDo: +(localStorage.getItem("tocDo") || 1),
   phatMauCau: { dang: false, i: 0, lap: 2, cho: 3, danhSach: [] },
   phutBatDau: Date.now(),
   railMo: new Set(),     // unit đang bung ra trong thanh tiến trình bên trái
@@ -244,7 +244,7 @@ const CAC_TOC_DO = [0.6, 0.75, 0.9, 1, 1.15, 1.3];
 const nhanTocDo = v => String(v) + "×";
 
 function datTocDo(v) {
-  S.tocDo = Math.min(1.5, Math.max(0.5, +v || 0.9));
+  S.tocDo = Math.min(1.5, Math.max(0.5, +v || 1));
   localStorage.setItem("tocDo", S.tocDo);
   /* Đang phát dở thì đổi luôn, không bắt bấm lại từ đầu — chỉnh tốc độ là
      lúc người học đang nghe và thấy nhanh/chậm quá. */
