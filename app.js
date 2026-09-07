@@ -2182,19 +2182,47 @@ function veThi() {
 }
 
 /* ================= THƯ VIỆN TRUYỆN =================
-   Truyện tách thành MỘT MỤC RIÊNG, không chỉ nằm rải trong từng unit.
-   Vì sao: 62 unit × 5-13 truyện là hơn 300 truyện, mà muốn đọc tiếp một
-   truyện dở dang thì phải nhớ nó ở unit nào rồi lần vào từng unit một. Đọc
-   truyện là việc đi ngang qua các unit chứ không đi dọc theo bài học — nên
-   nó cần một danh sách của riêng nó, lọc được theo thể loại và đã/chưa đọc. */
+   Bố cục học theo thư viện truyện của HelloChinese, giữ lại đúng phần hợp
+   với app này:
+     - "Đọc tiếp" ghim trên cùng: mở app ra là đi tiếp được ngay, không phải
+       nhớ hôm qua dừng ở truyện nào
+     - ô THỂ LOẠI có đếm số: nhìn là biết kho có gì và còn bao nhiêu chưa đọc
+     - chip CẤP ĐỘ để chọn nhanh phần vừa sức
+   Bỏ phần ảnh bìa: app không có kho ảnh, mà bìa bịa ra thì vừa nặng vừa
+   không nói lên nội dung. Thay bằng ô màu theo thể loại — cùng tác dụng
+   nhận diện, không tốn một byte ảnh nào. */
 let locTheLoai = localStorage.getItem("locTheLoai") || "tat_ca";
-let locDaDoc = localStorage.getItem("locDaDoc") || "tat_ca";
+let locCapDo = localStorage.getItem("locCapDo") || "tat_ca";
 let khoTruyen = null;
+
+const TL = {
+  giao_trinh: { ten: "Bài đọc giáo trình", ic: "\u25a4", mau: "#5aa9f0" },
+  doi_thuong: { ten: "Đời thường", ic: "\u2615", mau: "#4ec99a" },
+  ngu_ngon: { ten: "Ngụ ngôn", ic: "\u273f", mau: "#e0b64a" },
+  truyen_cuoi: { ten: "Truyện cười", ic: "\u263a", mau: "#f07a6d" },
+  bi_an: { ten: "Bí ẩn", ic: "\u25d1", mau: "#b39ae8" },
+  cam_dong: { ten: "Cảm động", ic: "\u2665", mau: "#f2a2c0" },
+  phieu_luu: { ten: "Phiêu lưu", ic: "\u2691", mau: "#68c5c0" },
+  mini: { ten: "Mini-story", ic: "\u25c8", mau: "#8fb3d9" },
+};
+const tlCua = t => TL[t] || TL.mini;
 
 function doiLocTruyen(khoa, v) {
   if (khoa === "the_loai") { locTheLoai = v; localStorage.setItem("locTheLoai", v); }
-  else { locDaDoc = v; localStorage.setItem("locDaDoc", v); }
+  else { locCapDo = v; localStorage.setItem("locCapDo", v); }
   veThuVien();
+}
+
+/* Truyện đọc gần đây nhất — ghi lại mỗi lần mở một truyện từ thư viện. */
+function ghiTruyenGanDay(t) {
+  try {
+    localStorage.setItem("truyenGanDay__" + (HS?.id || "mac_dinh"), JSON.stringify(t));
+  } catch (e) { /* hết chỗ lưu thì thôi, không phải dữ liệu quan trọng */ }
+}
+function docTruyenGanDay() {
+  try {
+    return JSON.parse(localStorage.getItem("truyenGanDay__" + (HS?.id || "mac_dinh")));
+  } catch (e) { return null; }
 }
 
 async function moThuVien() {
@@ -2215,9 +2243,10 @@ async function moThuVien() {
 }
 
 /* Mở đúng truyện đang chọn: vào mục Truyện của unit rồi bung khối đó ra.
-   Không làm bước bung thì người học rơi vào một trang 13 khối đóng và phải
-   tự dò lại đúng truyện vừa bấm. */
-async function moTruyenTu(soUnit, idx) {
+   Không bung thì người học rơi vào một trang 13 khối đóng và phải tự dò lại
+   đúng truyện vừa bấm. */
+async function moTruyenTu(soUnit, idx, ten) {
+  ghiTruyenGanDay({ unit: soUnit, idx, ten });
   S.khoiGap.delete(`truyen/bai-${idx}`);
   luuRail();
   await moMuc(soUnit, "truyen");
@@ -2230,25 +2259,41 @@ async function moTruyenTu(soUnit, idx) {
   }, 350);
 }
 
+const daDoc = t => daDocTruyen.has(khoaTruyen(t.unit, t.ten));
+
+/* Một thẻ truyện: dải màu theo thể loại thay cho ảnh bìa. */
+function theTruyen(t, ml) {
+  const tl = tlCua(t.the_loai);
+  const m = ml[t.unit] || {};
+  return `<button class="the-truyen ${daDoc(t) ? "da-doc" : ""}"
+      style="--mau-tl:${tl.mau}"
+      onclick="moTruyenTu(${t.unit},${t.idx},${JSON.stringify(t.ten).replace(/"/g, "&quot;")})">
+      <span class="bia">${tl.ic}</span>
+      <span class="noi">
+        <span class="ten">${esc(t.ten.replace(/^(Truyện|Mini-story)\s*[—-]\s*/, ""))}</span>
+        <span class="mo">
+          <i class="cham" style="background:${tl.mau}"></i>${esc(tl.ten)}
+          · ${t.so_cau || 0} câu · Unit ${t.unit}
+        </span>
+      </span>
+      ${daDoc(t) ? `<span class="xong">✓</span>` : ""}
+    </button>`;
+}
+
 function veThuVien() {
   const el = $("#thu-vien");
-  const tenLevel = {};
-  S.muc_luc.forEach(m => (tenLevel[m.so] = m));
+  const ml = {};
+  S.muc_luc.forEach(m => (ml[m.so] = m));
 
-  const tat = khoTruyen.map(t => ({
-    ...t,
-    xong: daDocTruyen.has(khoaTruyen(t.unit, t.ten)),
-    the_loai: t.the_loai || "",
-  }));
-  const xongTat = tat.filter(t => t.xong).length;
-
-  const ds = tat.filter(t =>
-    (locDaDoc === "tat_ca" || (locDaDoc === "xong") === t.xong)
-    && (locTheLoai === "tat_ca" || (t.level ?? 0) === +locTheLoai));
-
-  const cacLevel = [...new Set(tat.map(t => t.level ?? 0))].sort((a, b) => a - b);
-  const nut = (khoa, v, nhan, dang) => `<button class="${dang === v ? "chinh" : "phu"}"
-      onclick="doiLocTruyen('${khoa}','${v}')">${nhan}</button>`;
+  const tat = khoTruyen;
+  const xongTat = tat.filter(daDoc).length;
+  const capDo = [...new Set(tat.map(t => t.level ?? 0))].sort((a, b) => a - b);
+  const demTL = {};
+  tat.forEach(t => {
+    const k = t.the_loai || "mini";
+    (demTL[k] ||= { tong: 0, xong: 0 }).tong++;
+    if (daDoc(t)) demTL[k].xong++;
+  });
 
   let h = `<div class="the-mo-dau gon">
       <div class="thanh-tong">
@@ -2256,23 +2301,66 @@ function veThuVien() {
           Math.round(xongTat / Math.max(1, tat.length) * 100)}%"></i></div>
         <div class="so-lieu">
           <span><b>${xongTat}</b>/${tat.length} truyện đã đọc</span>
-          <span>${cacLevel.length} cấp độ</span>
+          <span>${capDo.length} cấp độ · ${Object.keys(demTL).length} thể loại</span>
         </div>
       </div>
-    </div>
-    <div class="hang loc-truyen">
-      ${nut("the_loai", "tat_ca", "Mọi cấp độ", locTheLoai)}
-      ${cacLevel.map(l => nut("the_loai", String(l),
-        l < 0 ? "Trẻ em" : "Level " + l, locTheLoai)).join("")}
-    </div>
-    <div class="hang loc-truyen">
-      ${nut("da_doc", "tat_ca", "Tất cả", locDaDoc)}
-      ${nut("da_doc", "chua", "Chưa đọc", locDaDoc)}
-      ${nut("da_doc", "xong", "Đã đọc", locDaDoc)}
     </div>`;
 
+  /* --- Đọc tiếp --- */
+  const gan = docTruyenGanDay();
+  const tGan = gan && tat.find(x => x.unit === gan.unit && x.idx === gan.idx);
+  const tiep = (tGan && !daDoc(tGan)) ? tGan : tat.find(t => !daDoc(t));
+  if (tiep) {
+    const tl = tlCua(tiep.the_loai);
+    h += `<h3 class="tv-tieu">${tGan && !daDoc(tGan) ? "Đọc tiếp" : "Bắt đầu từ đây"}</h3>
+      <button class="the-tiep" style="--mau-tl:${tl.mau}"
+        onclick="moTruyenTu(${tiep.unit},${tiep.idx},${
+          JSON.stringify(tiep.ten).replace(/"/g, "&quot;")})">
+        <span class="bia">${tl.ic}</span>
+        <span class="noi">
+          <span class="ten">${esc(tiep.ten.replace(/^(Truyện|Mini-story)\s*[—-]\s*/, ""))}</span>
+          <span class="mo">${esc(tlCua(tiep.the_loai).ten)} · ${tiep.so_cau || 0} câu
+            · Unit ${tiep.unit} — ${esc((ml[tiep.unit] || {}).ten || "")}</span>
+        </span>
+        <span class="mui">›</span>
+      </button>`;
+  }
+
+  /* --- Đọc theo thể loại --- */
+  h += `<h3 class="tv-tieu">Đọc theo thể loại</h3>
+    <div class="luoi-tl">
+      ${Object.entries(demTL).sort((a, b) => b[1].tong - a[1].tong).map(([k, d]) => {
+        const tl = tlCua(k);
+        return `<button class="o-tl ${locTheLoai === k ? "chon" : ""}"
+            style="--mau-tl:${tl.mau}" onclick="doiLocTruyen('the_loai','${
+              locTheLoai === k ? "tat_ca" : k}')">
+            <span class="ic">${tl.ic}</span>
+            <span class="dem">${d.xong}/${d.tong}</span>
+            <span class="ten">${esc(tl.ten)}</span>
+          </button>`;
+      }).join("")}
+    </div>`;
+
+  /* --- Đọc theo cấp độ --- */
+  const chip = (v, nhan) => `<button class="chip ${locCapDo === v ? "chon" : ""}"
+      onclick="doiLocTruyen('cap_do','${v}')">${nhan}</button>`;
+  h += `<h3 class="tv-tieu">Đọc theo cấp độ</h3>
+    <div class="hang chip-hang">
+      ${chip("tat_ca", "Tất cả")}
+      ${capDo.map(l => chip(String(l), l < 0 ? "Trẻ em" : "Level " + l)).join("")}
+      ${chip("chua", "Chưa đọc")}
+    </div>`;
+
+  /* --- Danh sách theo bộ lọc --- */
+  const ds = tat.filter(t =>
+    (locTheLoai === "tat_ca" || (t.the_loai || "mini") === locTheLoai)
+    && (locCapDo === "tat_ca"
+        || (locCapDo === "chua" ? !daDoc(t) : (t.level ?? 0) === +locCapDo)));
+
+  h += `<h3 class="tv-tieu">${ds.length} truyện${
+    locTheLoai === "tat_ca" && locCapDo === "tat_ca" ? "" : " khớp bộ lọc"}</h3>`;
   if (!ds.length) {
-    el.innerHTML = h + `<div class="trong">Không có truyện nào khớp bộ lọc.</div>`;
+    el.innerHTML = h + `<div class="trong">Không có truyện nào khớp.</div>`;
     return;
   }
 
@@ -2280,26 +2368,18 @@ function veThuVien() {
   ds.forEach(t => (theoUnit[t.unit] ||= []).push(t));
   h += `<div class="ds-thu-vien">`;
   Object.keys(theoUnit).map(Number).sort((a, b) => {
-    const la = tenLevel[a]?.level ?? 0, lb = tenLevel[b]?.level ?? 0;
+    const la = ml[a]?.level ?? 0, lb = ml[b]?.level ?? 0;
     return la - lb || a - b;
   }).forEach(so => {
-    const m = tenLevel[so] || {};
+    const m = ml[so] || {};
     const cac = theoUnit[so];
-    const xong = cac.filter(t => t.xong).length;
+    const xong = cac.filter(daDoc).length;
     h += `<div class="nhom-tv">
         <button class="dau-tv" onclick="moUnit(${so})">
           <span class="ten">Unit ${so} — ${esc(m.ten || "")}</span>
           <span class="mo">${esc(m.ten_level || "")} · ${xong}/${cac.length} đã đọc</span>
         </button>
-        ${cac.map(t => `<button class="mot-tv ${t.xong ? "da-doc" : ""}"
-            onclick="moTruyenTu(${t.unit},${t.idx})">
-            <span class="tick">${t.xong ? "✓" : "○"}</span>
-            <span class="noi">
-              <span class="ten">${esc(t.ten)}</span>
-              <span class="mo">${t.so_ky_tu ? Math.round(t.so_ky_tu / 5) + " từ" : ""}</span>
-            </span>
-            <span class="mui">›</span>
-          </button>`).join("")}
+        ${cac.map(t => theTruyen(t, ml)).join("")}
       </div>`;
   });
   h += `</div>`;
