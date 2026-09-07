@@ -988,7 +988,6 @@ function dongCaiDatDoc() {
 
 function veLaiTrangDoc() {
   if (S.tab === "mot-truyen") veMotTruyen();      // màn đọc một truyện
-  else if (S.tab === "truyen") veTruyen(S.duLieuUnit);
   else if (S.tab === "hoi-thoai") veHoiThoai(S.duLieuUnit);
 }
 
@@ -1357,43 +1356,6 @@ const doiLap = () => doiCongTac("lapBai", "ct-lap");
 const doiTuChuyen = () => doiCongTac("tuChuyenBai", "ct-tiep");
 
 /* ================= 4 · TRUYỆN (đoạn văn) ================= */
-/* Mục Truyện của unit = MỤC LỤC, mỗi truyện một dòng.
-   Trước đây tất cả truyện đổ ra một trang, mỗi truyện một khối gấp được. Một
-   unit 13 truyện thì trang dài hơn 10.000px, và bài tập của truyện này nằm
-   xen giữa truyện kia — đọc dở một bài, cuộn xuống đã sang chuyện khác.
-   Nay bấm vào một truyện là sang MÀN RIÊNG của nó, như mục lục chương của
-   một quyển sách. */
-function veTruyen(u) {
-  const el = $("#truyen");
-  const ds = (u.doan_van || []).filter(d => (d.cau || []).length);
-  if (!ds.length) {
-    el.innerHTML = `<div class="trong">Unit ${u.so} không có đoạn văn.<br>
-      <span class="mo">Đoạn văn mẫu chủ yếu nằm ở Level 3–4 (unit 31–50).</span></div>`;
-    return;
-  }
-  napDaDocTruyen();
-  const xongTat = ds.filter(d => daDocTruyen.has(khoaTruyen(u.so, d.ten))).length;
-  let h = `<div class="tom-tat" id="dem-truyen">${xongTat}/${ds.length} bài đã học xong</div>
-    <div class="muc-luc-truyen">`;
-  ds.forEach((d, di) => {
-    const xong = daDocTruyen.has(khoaTruyen(u.so, d.ten));
-    const iMs = (u.mini_story || []).findIndex(m => m.ten === d.ten);
-    const tl = tlCua(d.the_loai || (d.mini ? "mini" : "giao_trinh"));
-    h += `<button class="dong-truyen ${xong ? "da-doc" : ""}" style="--mau-tl:${tl.mau}"
-        onclick="moMotTruyen(${u.so},${di})">
-        <span class="so">${String(di + 1).padStart(2, "0")}</span>
-        <span class="noi">
-          <span class="ten">${esc(d.ten.replace(/^(Truyện|Mini-story)\s*[—-]\s*/, ""))}</span>
-          <span class="mo"><i class="cham" style="background:${tl.mau}"></i>${esc(tl.ten)}
-            · ${d.cau.length} câu${iMs >= 0 ? " · có bài tập" : ""}</span>
-        </span>
-        <span class="tick">${xong ? "✓" : "›"}</span>
-      </button>`;
-  });
-  el.innerHTML = h + `</div>`;
-  setTimeout(capNhatNutXongTruyen, 0);   // chờ hàng nút được gắn vào đầu mục
-}
-
 /* ================= MÀN ĐỌC MỘT TRUYỆN =================
    Hai chặng trên cùng một màn: ĐỌC rồi LÀM BÀI. Tách hẳn khỏi mục lục để lúc
    đọc không có gì khác trên màn hình.
@@ -1435,7 +1397,7 @@ let tuThuVien = false;
 function thoatTruyen() {
   dungPhat();
   if (tuThuVien) { tuThuVien = false; moThuVien(); return; }
-  moMuc(truyenDangDoc?.unit ?? S.unit, "truyen");
+  moThuVien();
 }
 
 function veMotTruyen() {
@@ -1467,6 +1429,7 @@ function veMotTruyen() {
         ${iMs < 0 ? "disabled" : ""}>Làm bài test${iMs < 0 ? " (chưa có)" : ""}</button>
     </div>`;
 
+  if (iMs < 0) t.che_do = "doc";
   if (t.che_do === "doc") {
     const tienTo = `tr-${t.idx}-`;
     h += thanhCongCu("", tienTo)
@@ -1535,7 +1498,7 @@ function batTatTruyenXong(soUnit, ten, nut) {
   luuDaDocTruyen();
   nut.classList.toggle("da-xong", !xong);
   nut.innerHTML = !xong ? "\u2713 Đã học xong" : "Đánh dấu đã học xong";
-  dongBoTrangThaiTruyen(soUnit);
+  veLaiManTruyen();
 }
 
 /* Trạng thái mục "Truyện" của unit SUY RA từ số truyện đã đọc, không phải do
@@ -1553,48 +1516,7 @@ function dsTruyenCuaUnit(soUnit) {
    đọc một truyện. */
 function veLaiManTruyen() {
   if (S.tab === "mot-truyen") veMotTruyen();
-  else if (S.tab === "truyen" && S.duLieuUnit) veTruyen(S.duLieuUnit);
 }
-
-async function dongBoTrangThaiTruyen(soUnit) {
-  const ds = dsTruyenCuaUnit(soUnit);
-  if (!ds.length) return;
-  const xong = ds.filter(d => daDocTruyen.has(khoaTruyen(soUnit, d.ten))).length;
-  const moi = xong === 0 ? "chua" : xong === ds.length ? "xong" : "dang";
-  if (trangThai(soUnit, "truyen") !== moi) await datTrangThai(soUnit, "truyen", moi);
-  veRail();
-  capNhatNutXongTruyen();
-}
-
-/* Nút ✓ ở hàng điều hướng của mục Truyện: hiện đúng "đã đọc mấy / tổng mấy",
-   và bấm là đánh dấu HẾT (hoặc bỏ hết) chứ không phải lật một cờ riêng. */
-function capNhatNutXongTruyen() {
-  if (S.tab !== "truyen") return;
-  const ds = dsTruyenCuaUnit(S.unit);
-  const xong = ds.filter(d => daDocTruyen.has(khoaTruyen(S.unit, d.ten))).length;
-  const du = ds.length > 0 && xong === ds.length;
-  $$("#truyen .nhom-nut-muc .nut-xong").forEach(b => {
-    b.classList.toggle("da-xong", du);
-    b.setAttribute("aria-pressed", String(du));
-    b.title = ds.length
-      ? `Đã đọc ${xong}/${ds.length} truyện — bấm để đánh dấu ${du ? "chưa đọc" : "đã đọc"} hết`
-      : "Đánh dấu hoàn thành";
-  });
-}
-
-async function batTatMoiTruyen(soUnit) {
-  const ds = dsTruyenCuaUnit(soUnit);
-  if (!ds.length) return;
-  const du = ds.every(d => daDocTruyen.has(khoaTruyen(soUnit, d.ten)));
-  ds.forEach(d => {
-    const k = khoaTruyen(soUnit, d.ten);
-    du ? daDocTruyen.delete(k) : daDocTruyen.add(k);
-  });
-  luuDaDocTruyen();
-  await dongBoTrangThaiTruyen(soUnit);
-  veTruyen(S.duLieuUnit);
-}
-
 
 /* ================= MINI-STORY (Effortless English) =================
    Ba phần bài tập gắn liền một truyện, đặt NGAY DƯỚI truyện đó chứ không
@@ -1693,12 +1615,12 @@ const kieuDatHoi = () => localStorage.getItem("kieuDatHoi") || "chon";
 
 function doiKieuTraLoi(v) {
   localStorage.setItem("kieuTraLoi", v);
-  if (S.duLieuUnit) veTruyen(S.duLieuUnit);
+  veLaiManTruyen();
 }
 
 function doiKieuDatHoi(v) {
   localStorage.setItem("kieuDatHoi", v);
-  if (S.duLieuUnit) veTruyen(S.duLieuUnit);
+  veLaiManTruyen();
 }
 
 const thanhKieuTraLoi = () => `
@@ -3125,8 +3047,13 @@ async function xoaLoi(dieu_kien) {
    mất thông tin đó và không biết còn nợ gì. */
 const MUC = {
   "bai-hoc": "bai_hoc", "bai-tap": "bai_tap", "mau-cau": "mau_cau",
-  "truyen": "truyen", "hoi-thoai": "hoi_thoai", "de-thi": "de_thi",
+  "hoi-thoai": "hoi_thoai", "de-thi": "de_thi",
 };
+/* Truyện KHÔNG còn là một mục của unit — nó đã thành mục riêng ở menu, gom
+   truyện của cả khoá. Để cả hai chỗ thì cùng một bài hiện hai nơi, mà tiến độ
+   unit lại đòi đọc hết 13 truyện mới đủ 6/6.
+   Bài tập mini-story đi theo truyện sang màn đọc riêng (thẻ "Làm bài test"),
+   không mất phần nào. */
 
 function trangThai(soUnit, muc) {
   return S.tienDo?.unit?.[soUnit]?.[muc] || "chua";
@@ -3184,7 +3111,7 @@ function capNhatTienDoTong() {
    không cần thao tác nào. Giờ 6 mục nằm ngay dưới tên unit. */
 const TEN_MUC = {
   "bai-hoc": "Bài học", "bai-tap": "Bài tập", "mau-cau": "Mẫu câu",
-  "truyen": "Truyện", "hoi-thoai": "Hội thoại", "de-thi": "Đề thi",
+  "hoi-thoai": "Hội thoại", "de-thi": "Đề thi",
 };
 const SO_MUC = Object.keys(MUC).length;
 const soMucXong = so => Object.values(MUC).filter(k => trangThai(so, k) === "xong").length;
@@ -3396,7 +3323,6 @@ function phuDeTheoTab(tab, m) {
   if (tab === "bai-tap") return `${m.so_cau_hoi} câu hỏi`;
   if (tab === "mau-cau") return `đã nghe ${S.tienDo?.nghe?.[m.so] || 0} câu`;
   if (tab === "hoi-thoai") return `${m.so_hoi_thoai} lượt thoại`;
-  if (tab === "truyen") return `đoạn văn mẫu`;
   if (tab === "de-thi") return `đề mini`;
   return "";
 }
@@ -4014,7 +3940,7 @@ function nhomNutMuc(so, muc, daXong) {
         title="${daXong ? "Đã hoàn thành — bấm để bỏ đánh dấu" : "Đánh dấu hoàn thành"}"
         aria-label="${daXong ? "Đã hoàn thành" : "Đánh dấu hoàn thành"}"
         aria-pressed="${daXong}"
-        onclick="${muc === "truyen" ? `batTatMoiTruyen(${so})` : `batTatXong(${so},'${muc}')`}">\u2713</button>
+        onclick="batTatXong(${so},'${muc}')">\u2713</button>
       ${nut(sau, "\u2192", sau
         ? `Mục sau: unit ${sau.so} — ${TEN_MUC[sau.tab]}` : "")}
     </div>`;
@@ -4029,7 +3955,6 @@ async function doiUnit(so) {
   S.duLieuUnit = await (await fetch(`/api/unit/${so}`)).json();
   veBaiHoc(S.duLieuUnit);
   veBaiTap(S.duLieuUnit);
-  veTruyen(S.duLieuUnit);
   veHoiThoai(S.duLieuUnit);
   if (S.tab === "mau-cau") await veMauCau(so);
   if (S.tab === "de-thi") await veDeThi(so);
