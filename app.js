@@ -1310,6 +1310,7 @@ function veTruyen(u) {
   });
   el.innerHTML = h;
   capNhatDemTruyen();
+  setTimeout(capNhatNutXongTruyen, 0);   // chờ hàng nút được gắn vào đầu mục
 }
 
 /* --- Đã học xong TỪNG truyện ---
@@ -1345,6 +1346,57 @@ function batTatTruyenXong(soUnit, ten, nut) {
   const dau = nut.closest(".khoi")?.querySelector(".khoi-dau .tick-truyen");
   if (dau) dau.classList.toggle("du", !xong);
   capNhatDemTruyen();
+  dongBoTrangThaiTruyen(soUnit);
+}
+
+/* Trạng thái mục "Truyện" của unit SUY RA từ số truyện đã đọc, không phải do
+   bấm một nút.
+   Một unit có 5-13 truyện. Trước đây nút ✓ ở đầu mục đánh dấu xong cả mục,
+   nên đọc một truyện rồi bấm là unit hiện "Truyện ✓" trong khi còn 12 truyện
+   chưa đụng tới — tiến độ nói dối. Năm mục kia mỗi mục là một việc trọn vẹn,
+   riêng Truyện là một tập. */
+function dsTruyenCuaUnit(soUnit) {
+  const u = soUnit === S.unit ? S.duLieuUnit : null;
+  return ((u?.doan_van) || []).filter(d => (d.cau || []).length);
+}
+
+async function dongBoTrangThaiTruyen(soUnit) {
+  const ds = dsTruyenCuaUnit(soUnit);
+  if (!ds.length) return;
+  const xong = ds.filter(d => daDocTruyen.has(khoaTruyen(soUnit, d.ten))).length;
+  const moi = xong === 0 ? "chua" : xong === ds.length ? "xong" : "dang";
+  if (trangThai(soUnit, "truyen") !== moi) await datTrangThai(soUnit, "truyen", moi);
+  veRail();
+  capNhatNutXongTruyen();
+}
+
+/* Nút ✓ ở hàng điều hướng của mục Truyện: hiện đúng "đã đọc mấy / tổng mấy",
+   và bấm là đánh dấu HẾT (hoặc bỏ hết) chứ không phải lật một cờ riêng. */
+function capNhatNutXongTruyen() {
+  if (S.tab !== "truyen") return;
+  const ds = dsTruyenCuaUnit(S.unit);
+  const xong = ds.filter(d => daDocTruyen.has(khoaTruyen(S.unit, d.ten))).length;
+  const du = ds.length > 0 && xong === ds.length;
+  $$("#truyen .nhom-nut-muc .nut-xong").forEach(b => {
+    b.classList.toggle("da-xong", du);
+    b.setAttribute("aria-pressed", String(du));
+    b.title = ds.length
+      ? `Đã đọc ${xong}/${ds.length} truyện — bấm để đánh dấu ${du ? "chưa đọc" : "đã đọc"} hết`
+      : "Đánh dấu hoàn thành";
+  });
+}
+
+async function batTatMoiTruyen(soUnit) {
+  const ds = dsTruyenCuaUnit(soUnit);
+  if (!ds.length) return;
+  const du = ds.every(d => daDocTruyen.has(khoaTruyen(soUnit, d.ten)));
+  ds.forEach(d => {
+    const k = khoaTruyen(soUnit, d.ten);
+    du ? daDocTruyen.delete(k) : daDocTruyen.add(k);
+  });
+  luuDaDocTruyen();
+  await dongBoTrangThaiTruyen(soUnit);
+  veTruyen(S.duLieuUnit);
 }
 
 /* Đếm hiện ở thanh đầu tab Truyện: nhìn là biết còn nợ mấy bài. */
@@ -2093,6 +2145,131 @@ function veThi() {
       : theThi === "so-cau" ? veSoCau() : veLuyen());
 }
 
+/* ================= THƯ VIỆN TRUYỆN =================
+   Truyện tách thành MỘT MỤC RIÊNG, không chỉ nằm rải trong từng unit.
+   Vì sao: 62 unit × 5-13 truyện là hơn 300 truyện, mà muốn đọc tiếp một
+   truyện dở dang thì phải nhớ nó ở unit nào rồi lần vào từng unit một. Đọc
+   truyện là việc đi ngang qua các unit chứ không đi dọc theo bài học — nên
+   nó cần một danh sách của riêng nó, lọc được theo thể loại và đã/chưa đọc. */
+let locTheLoai = localStorage.getItem("locTheLoai") || "tat_ca";
+let locDaDoc = localStorage.getItem("locDaDoc") || "tat_ca";
+let khoTruyen = null;
+
+function doiLocTruyen(khoa, v) {
+  if (khoa === "the_loai") { locTheLoai = v; localStorage.setItem("locTheLoai", v); }
+  else { locDaDoc = v; localStorage.setItem("locDaDoc", v); }
+  veThuVien();
+}
+
+async function moThuVien() {
+  dungPhat();
+  S.tab = "thu-vien";
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "thu-vien"));
+  if (!khoTruyen) {
+    $("#thu-vien").innerHTML = `<div class="trong">Đang nạp…</div>`;
+    try {
+      khoTruyen = (await (await fetch("/api/danh_sach_doc")).json()).truyen || [];
+    } catch (e) { khoTruyen = []; }
+  }
+  napDaDocTruyen();
+  veThuVien();
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
+/* Mở đúng truyện đang chọn: vào mục Truyện của unit rồi bung khối đó ra.
+   Không làm bước bung thì người học rơi vào một trang 13 khối đóng và phải
+   tự dò lại đúng truyện vừa bấm. */
+async function moTruyenTu(soUnit, idx) {
+  S.khoiGap.delete(`truyen/bai-${idx}`);
+  luuRail();
+  await moMuc(soUnit, "truyen");
+  setTimeout(() => {
+    const k = $$("#truyen .khoi")[idx];
+    if (k) {
+      k.classList.remove("thu-gon");
+      k.scrollIntoView({ block: "start", behavior: "smooth" });
+    }
+  }, 350);
+}
+
+function veThuVien() {
+  const el = $("#thu-vien");
+  const tenLevel = {};
+  S.muc_luc.forEach(m => (tenLevel[m.so] = m));
+
+  const tat = khoTruyen.map(t => ({
+    ...t,
+    xong: daDocTruyen.has(khoaTruyen(t.unit, t.ten)),
+    the_loai: t.the_loai || "",
+  }));
+  const xongTat = tat.filter(t => t.xong).length;
+
+  const ds = tat.filter(t =>
+    (locDaDoc === "tat_ca" || (locDaDoc === "xong") === t.xong)
+    && (locTheLoai === "tat_ca" || (t.level ?? 0) === +locTheLoai));
+
+  const cacLevel = [...new Set(tat.map(t => t.level ?? 0))].sort((a, b) => a - b);
+  const nut = (khoa, v, nhan, dang) => `<button class="${dang === v ? "chinh" : "phu"}"
+      onclick="doiLocTruyen('${khoa}','${v}')">${nhan}</button>`;
+
+  let h = `<div class="the-mo-dau gon">
+      <div class="thanh-tong">
+        <div class="vach"><i class="xong" style="width:${
+          Math.round(xongTat / Math.max(1, tat.length) * 100)}%"></i></div>
+        <div class="so-lieu">
+          <span><b>${xongTat}</b>/${tat.length} truyện đã đọc</span>
+          <span>${cacLevel.length} cấp độ</span>
+        </div>
+      </div>
+    </div>
+    <div class="hang loc-truyen">
+      ${nut("the_loai", "tat_ca", "Mọi cấp độ", locTheLoai)}
+      ${cacLevel.map(l => nut("the_loai", String(l),
+        l < 0 ? "Trẻ em" : "Level " + l, locTheLoai)).join("")}
+    </div>
+    <div class="hang loc-truyen">
+      ${nut("da_doc", "tat_ca", "Tất cả", locDaDoc)}
+      ${nut("da_doc", "chua", "Chưa đọc", locDaDoc)}
+      ${nut("da_doc", "xong", "Đã đọc", locDaDoc)}
+    </div>`;
+
+  if (!ds.length) {
+    el.innerHTML = h + `<div class="trong">Không có truyện nào khớp bộ lọc.</div>`;
+    return;
+  }
+
+  const theoUnit = {};
+  ds.forEach(t => (theoUnit[t.unit] ||= []).push(t));
+  h += `<div class="ds-thu-vien">`;
+  Object.keys(theoUnit).map(Number).sort((a, b) => {
+    const la = tenLevel[a]?.level ?? 0, lb = tenLevel[b]?.level ?? 0;
+    return la - lb || a - b;
+  }).forEach(so => {
+    const m = tenLevel[so] || {};
+    const cac = theoUnit[so];
+    const xong = cac.filter(t => t.xong).length;
+    h += `<div class="nhom-tv">
+        <button class="dau-tv" onclick="moUnit(${so})">
+          <span class="ten">Unit ${so} — ${esc(m.ten || "")}</span>
+          <span class="mo">${esc(m.ten_level || "")} · ${xong}/${cac.length} đã đọc</span>
+        </button>
+        ${cac.map(t => `<button class="mot-tv ${t.xong ? "da-doc" : ""}"
+            onclick="moTruyenTu(${t.unit},${t.idx})">
+            <span class="tick">${t.xong ? "✓" : "○"}</span>
+            <span class="noi">
+              <span class="ten">${esc(t.ten)}</span>
+              <span class="mo">${t.so_ky_tu ? Math.round(t.so_ky_tu / 5) + " từ" : ""}</span>
+            </span>
+            <span class="mui">›</span>
+          </button>`).join("")}
+      </div>`;
+  });
+  h += `</div>`;
+  el.innerHTML = h;
+}
+
 /* ================= HỘI THOẠI ================= */
 function veHoiThoai(u) {
   const el = $("#hoi-thoai");
@@ -2756,6 +2933,7 @@ function veRail(keo = false) {
     don("\u2302", "Tổng quan", "tong-quan", "veMenu()") +
     don("\u0250", "Phát âm", "ipa", "moIPA()") +
     don("\u23f1", "Thì trong tiếng Anh", "thi", "moThi()") +
+    don("\u25e7", "Truyện", "thu-vien", "moThuVien()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
     don("\u270e", "Sổ lỗi", "so-loi", "chuyenTab('so-loi')"));
 
@@ -3558,7 +3736,7 @@ function nhomNutMuc(so, muc, daXong) {
         title="${daXong ? "Đã hoàn thành — bấm để bỏ đánh dấu" : "Đánh dấu hoàn thành"}"
         aria-label="${daXong ? "Đã hoàn thành" : "Đánh dấu hoàn thành"}"
         aria-pressed="${daXong}"
-        onclick="batTatXong(${so},'${muc}')">\u2713</button>
+        onclick="${muc === "truyen" ? `batTatMoiTruyen(${so})` : `batTatXong(${so},'${muc}')`}">\u2713</button>
       ${nut(sau, "\u2192", sau
         ? `Mục sau: unit ${sau.so} — ${TEN_MUC[sau.tab]}` : "")}
     </div>`;
