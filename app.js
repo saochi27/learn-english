@@ -324,15 +324,46 @@ async function traTu(tu, el) {
   const cau = el?.closest(".cau-anh")?.innerText || "";
   const r = await fetch(`/api/tra_tu?tu=${encodeURIComponent(tu)}&cau=${encodeURIComponent(cau)}`);
   const d = await r.json();
+  /* Đúng BA DÒNG: từ + loa, phiên âm, nghĩa.
+     Trước đây còn hai dòng ghi chú ("từ này không có trong giáo trình",
+     "phiên âm do máy sinh"). Người học chạm vào một từ là để biết nó đọc sao
+     và nghĩa gì; hai dòng kia đúng nhưng nói về NGUỒN dữ liệu, đọc một lần là
+     đủ, để thường trực thì hộp cao gấp đôi mà không thêm thông tin nào. */
   $("#tra-tu-noi-dung").innerHTML = `
     <div class="hang"><span class="tu-anh">${esc(d.tu)}</span> ${nutLoa(d.tu)}</div>
     ${d.ipa ? `<div class="pa">${esc(d.ipa)}</div>` : ""}
-    ${d.nghia ? `<div class="nghia">${esc(d.nghia)}</div>` : ""}
-    ${d.vi_du ? `<div class="mo" style="margin-top:6px">Ví dụ: ${esc(d.vi_du)}</div>` : ""}
-    ${d._ghi_chu ? `<div class="mo" style="margin-top:6px">${esc(d._ghi_chu)}</div>` : ""}
-    ${d.nguon_ipa === "cmu" ? `<div class="mo">Phiên âm do máy sinh — có thể sai, đối chiếu lại nếu quan trọng.</div>` : ""}`;
+    <div class="nghia">${esc(d.nghia || "")}</div>`;
+  datChoTraTu(el);
   $("#tra-tu").classList.remove("an");
   doc(d.tu);
+}
+
+/* Đặt hộp tra từ NGAY DƯỚI chữ vừa chạm, trên màn hẹp.
+   Hộp vốn neo ở góc phải dưới. Trên tablet chỗ đó trùng với thanh tìm kiếm
+   nổi của trình duyệt, che mất hộp. Mà kể cả không bị che thì mắt vẫn phải
+   nhảy từ giữa câu xuống góc màn rồi quay lại.
+   Màn rộng giữ nguyên góc phải dưới: ở đó hộp không đè lên bài đọc. */
+function datChoTraTu(el) {
+  const h = $("#tra-tu");
+  h.style.left = h.style.top = h.style.right = h.style.bottom = "";
+  h.classList.remove("neo-tu");
+  if (!el || innerWidth > 1024) return;
+
+  const r = el.getBoundingClientRect();
+  h.classList.add("neo-tu");
+  h.style.visibility = "hidden";
+  h.classList.remove("an");
+  const rong = h.offsetWidth || 320, cao = h.offsetHeight || 120;
+  h.classList.add("an");
+  h.style.visibility = "";
+
+  const le = 8;
+  let x = Math.min(Math.max(le, r.left), innerWidth - rong - le);
+  // Không đủ chỗ bên dưới thì lật lên trên, đừng để hộp tràn khỏi màn.
+  let y = r.bottom + 8;
+  if (y + cao > innerHeight - le) y = Math.max(le, r.top - cao - 8);
+  h.style.left = x + "px";
+  h.style.top = y + "px";
 }
 const dongTraTu = () => $("#tra-tu").classList.add("an");
 

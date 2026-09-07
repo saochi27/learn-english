@@ -1327,3 +1327,8 @@ li{margin:5px 0; line-height:1.6}
 .mot-tv.da-doc .noi .ten{color:var(--chu-nhat)}
 .mot-tv .noi .mo{font-size:11.5px; color:var(--chu-nhat)}
 .mot-tv .mui{flex:0 0 auto; color:var(--chu-nhat)}
+
+/* Hộp tra từ neo dưới chữ vừa chạm (màn hẹp) — bỏ neo góc phải dưới. */
+.the-tra.neo-tu{
+  right:auto; bottom:auto; width:min(320px, calc(100vw - 16px));
+}
