@@ -65,6 +65,7 @@
     <section id="de-thi" class="trang chi-tiet"></section>
     <!-- học phiên âm IPA: 44 âm, không thuộc unit nào -->
     <section id="ipa" class="trang"></section>
+    <section id="thi" class="trang"></section>
     <section id="on-tap" class="trang"></section>
     <!-- ôn tập riêng của MỘT unit, mở từ màn Unit -->
     <section id="on-tap-unit" class="trang"></section>
@@ -149,6 +150,9 @@
       <section class="cd-trang" data-cd="hien-thi">
         <label>Hiện phiên âm IPA <input type="checkbox" id="hien-pa" checked></label>
         <label>Hiện nghĩa tiếng Việt <input type="checkbox" id="hien-nghia" checked></label>
+        <label>Hiện phiên âm đọc thô (kiểu Việt) <input type="checkbox" id="cd-doc-tho" checked></label>
+        <div class="mo">Dòng màu vàng dưới phiên âm IPA, ví dụ <i>ờ-bao</i> cho
+          <i>about</i>. Cũng bật/tắt được ở nút <b>Aa</b> trên thanh phát.</div>
         <hr>
         <b>Màu đánh dấu từ theo cấp độ</b>
         <div class="mo">Trong Truyện và Hội thoại, mỗi từ được gạch chân theo
@@ -182,6 +186,14 @@
         <label>Giây chờ giữa các câu <input type="number" id="cd-cho" min="1" max="10" value="3"></label>
         <label><input type="checkbox" id="cd-pa" checked> Hiện phiên âm khi phát</label>
         <label><input type="checkbox" id="cd-nghia" checked> Hiện nghĩa khi phát</label>
+        <hr>
+        <label>Đọc tách từng mảnh <input type="checkbox" id="cd-doc-tach"></label>
+        <div class="mo">Bật thì ở <b>lượt lặp cuối</b> của mỗi câu, máy đọc
+          <i>trọn câu → từng mảnh → trọn câu</i>. Mảnh cắt ở chỗ nối âm chứ không
+          cắt theo khoảng trắng: <i>My · sister · works in a · bank</i> — tách
+          <i>works / in / a</i> ra đọc rời là luyện thẳng vào lỗi đọc từng chữ.
+          Đây là tách NHỊP ĐỌC, màn hình không thêm dòng nào.</div>
+        <hr>
         <label><input type="checkbox" id="cd-giu-phat"> Giữ phát khi chuyển màn hình</label>
         <div class="mo">Mặc định chuyển màn hình là dừng. Bật cái này thì vẫn phát tiếp và
           hiện một thanh điều khiển nhỏ ở đáy màn hình.</div>

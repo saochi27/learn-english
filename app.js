@@ -611,7 +611,7 @@ function hienCauHienTai() {
     <div class="mo">Câu ${p.i + 1}/${p.danhSach.length}</div>
     <div class="cau-anh">${cauCoTuChamDuoc(c.en)}</div>
     ${hienPa && c.pa?.ipa_noi ? `<div class="pa-noi">${esc(c.pa.ipa_noi)}</div>` : ""}
-    ${hienPa && c.pa?.tho_noi ? `<div class="tho">${esc(c.pa.tho_noi)}</div>` : ""}
+    ${hienPa && CD.docTho && c.pa?.tho_noi ? `<div class="tho">${esc(c.pa.tho_noi)}</div>` : ""}
     ${hienNghia && c.vi ? `<div class="nghia">${esc(c.vi)}</div>` : ""}`;
   $("#thanh-tien-trinh").style.width = ((p.i + 1) / p.danhSach.length * 100) + "%";
 
@@ -721,6 +721,62 @@ function batTatPhat() {
   veBarPhat();
 }
 
+/* ---------- đọc tách từng mảnh ----------
+   Cắt câu ở đúng chỗ NỐI ÂM, không cắt theo khoảng trắng:
+     My sister works in a bank  ->  My · sister · works in a · bank
+   Vì sao: /wɜːks‿ɪn‿ə/ là một khối hơi liền. Tách thành "works" "in" "a" rồi
+   đọc rời là luyện thẳng vào lỗi nặng nhất của người Việt — đọc từng chữ một.
+   Mảnh ở đây là mảnh NHỎ NHẤT mà vẫn còn đọc đúng.
+
+   Số mảnh đếm từ dấu ‿ trong ipa_noi — cùng một chuỗi mà nguon/phien_am.py
+   dùng để cắt lúc tạo mp3, nên tên mảnh hai bên luôn khớp và tra được file. */
+function manhCau(c) {
+  const tu = (c?.pa?.tu || []).map(t => t.tu);
+  if (!tu.length) return [];
+  const noi = String(c.pa.ipa_noi || "").replace(/^\/|\/$/g, "").trim().split(/\s+/);
+  const dem = noi.reduce((n, t) => n + (t.split("‿").length - 1) + 1, 0);
+  if (!noi[0] || dem !== tu.length) return tu;   // lệch thì cắt theo từ, không đoán
+  const ra = [];
+  let i = 0;
+  for (const t of noi) {
+    const k = t.split("‿").length;
+    ra.push({ chu: tu.slice(i, i + k).join(" "), tu0: i, tu1: i + k });
+    i += k;
+  }
+  return ra;
+}
+
+/* Tô mảnh đang đọc ngay trên câu ở sân khấu. Không thêm dòng nào — chỉ sáng
+   lên đúng những chữ đang phát, để tai và mắt khớp nhau. */
+function sangManh(m) {
+  const w = $$("#san-khau .cau-anh .w");
+  w.forEach(x => x.classList.remove("dang-manh"));
+  if (!m || m.tu0 == null) return;
+  for (let i = m.tu0; i < m.tu1 && i < w.length; i++) w[i].classList.add("dang-manh");
+}
+
+/* Một lượt "mổ xẻ": đọc đúng -> đọc từng mảnh -> đọc đúng.
+   Hai lượt đọc đúng kẹp hai đầu là có chủ ý: nghe trọn câu trước để biết đích
+   đến, mổ ra xem từng mảnh, rồi nghe lại trọn câu để ráp lại. Chỉ mổ không
+   ráp thì học xong vẫn nói rời từng chữ. */
+function docTachCau(c, xong) {
+  const p = S.phatMauCau;
+  const ds = manhCau(c).filter(m => (m.chu || m) !== "");
+  const nghi = 260;
+  const doc1 = (i) => {
+    if (!p.dang) return;
+    if (i >= ds.length) {
+      sangManh(null);
+      hen = setTimeout(() => p.dang && doc(c.en, { xong }), nghi + 140);
+      return;
+    }
+    const m = ds[i];
+    sangManh(m);
+    doc(m.chu ?? m, { xong: () => { if (p.dang) hen = setTimeout(() => doc1(i + 1), nghi); } });
+  };
+  doc(c.en, { xong: () => { if (p.dang) hen = setTimeout(() => doc1(0), nghi + 140); } });
+}
+
 function chayCau() {
   const p = S.phatMauCau;
   if (!p.dang) return;
@@ -733,16 +789,22 @@ function chayCau() {
   const soLap = Math.max(1, +($("#cd-lap")?.value) || 2);
   const cho = Math.max(1, +($("#cd-cho")?.value) || 3);
   let lan = 0;
+  /* Chỉ MỔ XẺ Ở LƯỢT CUỐI: câu nào cũng được nghe trọn vẹn, tự nhiên trước
+     đã, tách ra là bước sau. Tách ngay từ lượt đầu thì chưa kịp có ấn tượng
+     về câu đã bị cắt vụn. */
+  const tach = docTachBat();
   const mot = () => {
     if (!p.dang) return;
     lan++;
+    const sang = () => {
+      if (!p.dang) return;
+      if (lan < soLap) hen = setTimeout(mot, 700);
+      else hen = setTimeout(() => { p.i = (p.i + 1) % p.danhSach.length; chayCau(); }, cho * 1000);
+    };
+    if (tach && lan === soLap) return docTachCau(c, sang);
     doc(c.en, {
       xoay: p.i,                 // mỗi câu một giọng, xoay vòng cho đỡ nhàm
-      xong: () => {
-        if (!p.dang) return;
-        if (lan < soLap) hen = setTimeout(mot, 700);
-        else hen = setTimeout(() => { p.i = (p.i + 1) % p.danhSach.length; chayCau(); }, cho * 1000);
-      }
+      xong: sang,
     });
   };
   mot();
@@ -756,6 +818,7 @@ function nhayCau(d) {
   if (p.dang) chayCau();
 }
 const docLaiCau = () => doc(S.phatMauCau.danhSach[S.phatMauCau.i]?.en);
+const docTachBat = () => localStorage.getItem("docTach") === "1";
 
 /* ================= TRÌNH ĐỌC (dùng chung cho Truyện & Hội thoại) =================
    Học theo cách HelloChinese trình bày bài đọc:
@@ -1257,10 +1320,12 @@ function khoiMiniStory(ms, di) {
   }
 
   if (ms.hoi_dap?.length) {
+    const kt = kieuTraLoi();
     h += khoi(`mini/hoi-dap-${di}`, "Nghe và trả lời", `
       <div class="mo" style="margin:10px 0">Trả lời THÀNH TIẾNG ngay khi nghe
         xong câu hỏi, đừng dịch trong đầu. Câu hỏi cố tình dễ — chỗ khó là trả
         lời cho kịp.</div>
+      ${thanhKieuTraLoi()}
       <div class="dieu-khien" style="justify-content:flex-start; margin:0 0 10px">
         <button class="chinh" onclick="chayChuoiHoi(${di})" id="nut-chuoi-${di}">Chạy cả chuỗi</button>
         <button class="phu" onclick="dungChuoiHoi()">Dừng</button>
@@ -1272,28 +1337,225 @@ function khoiMiniStory(ms, di) {
           <span class="noi">
             <span class="hoi">${esc(q.hoi)}</span>
             <span class="dap an-dap">${esc(q.dap)}</span>
+            ${kt === "nghe" ? "" : oLamBai(ms, di, i, kt)}
           </span>
           <button class="loa" onclick="docCapHoiDap(${di},${i})" title="Nghe câu hỏi rồi đáp án">🔊</button>
         </div>`).join("") + `</div>`, `${ms.hoi_dap.length} câu`);
   }
 
   if (ms.dat_cau_hoi?.length) {
+    const kd = kieuDatHoi();
     h += khoi(`mini/dat-hoi-${di}`, "Đặt câu hỏi cho đáp án", `
-      <div class="mo" style="margin:10px 0">Cho sẵn câu trả lời, bạn viết câu
+      <div class="mo" style="margin:10px 0">Cho sẵn câu trả lời, bạn tìm câu
         hỏi. Phần này KHÔNG có trong Effortless English — Hoge chỉ cho trả lời.
         Thêm vào vì nghe hiểu tốt mà không tự bật ra câu hỏi được là chuyện rất
-        hay gặp.</div>` + ms.dat_cau_hoi.map((d, i) => `
+        hay gặp.</div>
+      ${thanhKieuDatHoi()}
+      ${kd === "chon" ? `<div class="mo" style="margin:0 0 10px">Chọn câu hỏi
+        đúng theo ĐÚNG THÌ của truyện. Ba câu còn lại đều là lỗi có thật:
+        sai từ để hỏi, sai trợ động từ, hoặc quên đảo ngữ.</div>` : ""}
+      ` + ms.dat_cau_hoi.map((d, i) => `
         <div class="mot-dat" id="dat-${di}-${i}">
           <div class="dap-cho-san">${esc(d.dap_an)}</div>
-          <div class="hang">
-            <input type="text" placeholder="Câu hỏi tiếng Anh…" id="ip-dat-${di}-${i}"
-              onkeydown="if(event.key==='Enter')kiemDatHoi(${di},${i})">
-            <button class="phu" onclick="kiemDatHoi(${di},${i})">Kiểm tra</button>
-          </div>
+          ${kd === "chon" && (d.nhieu || []).length >= 2
+            ? oChonCauHoi(d, di, i)
+            : `<div class="hang">
+                <input type="text" placeholder="Câu hỏi tiếng Anh…" id="ip-dat-${di}-${i}"
+                  onkeydown="if(event.key==='Enter')kiemDatHoi(${di},${i})">
+                <button class="phu" onclick="kiemDatHoi(${di},${i})">Kiểm tra</button>
+              </div>`}
           <div class="kq-dat" id="kq-dat-${di}-${i}"></div>
         </div>`).join(""), `${ms.dat_cau_hoi.length} câu`);
   }
   return h;
+}
+
+/* ================= LÀM BÀI: GÕ HAY CHỌN =================
+   Trước đây hai phần bài tập chỉ có một cách: phần "Nghe và trả lời" không
+   nhận câu trả lời nào cả (chỉ nghe rồi tự đối chiếu), còn phần "Đặt câu hỏi"
+   bắt gõ đúng từng chữ so với một đáp án mẫu duy nhất.
+   Cả hai đều không đo được thứ chúng muốn đo: một câu trả lời có nhiều cách
+   nói đúng, một đáp án có nhiều câu hỏi đúng. */
+const kieuTraLoi = () => localStorage.getItem("kieuTraLoi") || "chon";
+const kieuDatHoi = () => localStorage.getItem("kieuDatHoi") || "chon";
+
+function doiKieuTraLoi(v) {
+  localStorage.setItem("kieuTraLoi", v);
+  if (S.duLieuUnit) veTruyen(S.duLieuUnit);
+}
+
+function doiKieuDatHoi(v) {
+  localStorage.setItem("kieuDatHoi", v);
+  if (S.duLieuUnit) veTruyen(S.duLieuUnit);
+}
+
+const thanhKieuTraLoi = () => `
+  <div class="hop-tab hop-tab-vien" style="margin-bottom:10px">
+    ${[["chon", "Chọn đáp án"], ["go", "Gõ đáp án"], ["nghe", "Chỉ nghe"]]
+      .map(([v, t]) => `<button class="${kieuTraLoi() === v ? "chon" : ""}"
+        onclick="doiKieuTraLoi('${v}')">${t}</button>`).join("")}
+  </div>`;
+
+const thanhKieuDatHoi = () => `
+  <div class="hop-tab hop-tab-vien" style="margin-bottom:10px">
+    ${[["chon", "Chọn câu hỏi"], ["go", "Tự gõ câu hỏi"]]
+      .map(([v, t]) => `<button class="${kieuDatHoi() === v ? "chon" : ""}"
+        onclick="doiKieuDatHoi('${v}')">${t}</button>`).join("")}
+  </div>`;
+
+/* --- chuẩn hoá để so --- */
+const chuanDap = s => (s || "").toLowerCase()
+  .replace(/[’‘]/g, "'").replace(/[“”]/g, "").replace(/[–—]/g, "-")
+  .replace(/[?.!,;:]/g, " ").replace(/\s+/g, " ").trim();
+
+/* Từ không mang thông tin. Bỏ chúng đi thì "She is at home" và "At home" có
+   cùng phần lõi, và đó mới là thứ cần so. */
+const TU_RONG = new Set(["a", "an", "the", "is", "are", "am", "was", "were",
+  "do", "does", "did", "to", "at", "in", "on", "of", "it", "he", "she", "they",
+  "his", "her", "their", "there", "that", "this", "and", "yes", "no"]);
+
+const loiDap = s => chuanDap(s).split(" ").filter(w => w && !TU_RONG.has(w));
+
+/* Ba mức, không phải hai. Vì sao không chỉ đúng/sai: máy chỉ đối chiếu được
+   TỪ KHOÁ, không hiểu câu. Câu chứa đủ từ khoá nhưng phủ định ngược lại thì
+   máy không thấy — nói thẳng là "gần đúng, tự đối chiếu" trung thực hơn là
+   chấm "đúng" rồi để người học tin nhầm. */
+function chamDap(cuaToi, mau) {
+  const a = chuanDap(cuaToi), b = chuanDap(mau);
+  if (!a) return { muc: "trong" };
+  if (a === b) return { muc: "dung" };
+
+  const coYes = /\byes\b/.test(a), coNo = /\bno\b|n't|\bnot\b/.test(a);
+  const mauYes = /^yes\b/.test(b), mauNo = /^no\b|\bnot\b/.test(b);
+  if ((mauYes && coNo && !coYes) || (mauNo && coYes && !coNo)) {
+    return { muc: "sai", vi: "Câu trả lời ngược với đáp án." };
+  }
+
+  const loi = loiDap(mau), cua = loiDap(cuaToi);
+  if (!loi.length) return { muc: (mauYes && coYes) || (mauNo && coNo) ? "dung" : "gan" };
+  const thieu = loi.filter(w => !cua.includes(w));
+  if (!thieu.length) return { muc: "dung" };
+  if (thieu.length < loi.length) return { muc: "gan", vi: `Còn thiếu: ${thieu.join(", ")}` };
+  return { muc: "sai" };
+}
+
+/* --- ô làm bài của phần Nghe và trả lời --- */
+/* Nhiễu lấy từ ĐÁP ÁN THẬT của các câu khác trong cùng truyện: đều là câu
+   trả lời hợp lý cho một câu hỏi nào đó của truyện này, nên chọn nhầm nghĩa là
+   nghe chưa ra câu hỏi — đúng thứ bài này muốn đo. Bịa đáp án vu vơ thì loại
+   trừ được bằng cảm giác, không cần nghe. */
+function dapNhieu(ms, i) {
+  const q = ms.hoi_dap[i];
+  const dap = q.dap;
+  const co = [dap];
+  const them = x => {
+    if (x && !co.some(y => chuanDap(y) === chuanDap(x))) co.push(x);
+  };
+
+  if (q.loai === "co_khong" || q.loai === "sai_de_sua") {
+    them(/^yes/i.test(dap) ? "No." : "Yes.");
+  }
+  if (q.loai === "hoac") {
+    // câu hỏi "A or B" — mảnh còn lại chính là nhiễu tốt nhất
+    const m = String(q.hoi).match(/\b(.+?)\s+or\s+(.+?)\s*\?/i);
+    if (m) { them(m[1].split(/\s+/).slice(-3).join(" ")); them(m[2]); }
+  }
+  ms.hoi_dap.forEach((k, j) => { if (j !== i && co.length < 4) them(k.dap); });
+  return co.slice(0, 4);
+}
+
+function oLamBai(ms, di, i, kt) {
+  if (kt === "go") {
+    return `<div class="o-lam">
+        <input type="text" placeholder="Trả lời tiếng Anh…" id="ip-dap-${di}-${i}"
+          onkeydown="if(event.key==='Enter')kiemDap(${di},${i})">
+        <button class="phu" onclick="kiemDap(${di},${i})">Kiểm tra</button>
+        <div class="kq-dap" id="kq-dap-${di}-${i}"></div>
+      </div>`;
+  }
+  const cac = xaoTheoKhoa(dapNhieu(ms, i), `${di}|${i}|${ms.ten}`);
+  return `<div class="o-lam o-chon" id="chon-dap-${di}-${i}">
+      ${cac.map(x => `<button class="nut-chon"
+        data-dap="${esc(x)}" onclick="chonDap(${di},${i},this)">${esc(x)}</button>`).join("")}
+      <div class="kq-dap" id="kq-dap-${di}-${i}"></div>
+    </div>`;
+}
+
+/* Xáo theo khoá cố định: cùng một câu thì thứ tự luôn như nhau. Xáo ngẫu
+   nhiên mỗi lần vẽ lại thì bấm nhầm liên tục, mà vẽ lại xảy ra mỗi lần đổi
+   một cài đặt bất kỳ. */
+function xaoTheoKhoa(ds, khoa) {
+  let h = 0;
+  for (let i = 0; i < khoa.length; i++) h = (h * 31 + khoa.charCodeAt(i)) >>> 0;
+  const ra = ds.slice();
+  for (let i = ra.length - 1; i > 0; i--) {
+    h = (h * 1103515245 + 12345) >>> 0;
+    const j = h % (i + 1);
+    [ra[i], ra[j]] = [ra[j], ra[i]];
+  }
+  return ra;
+}
+
+function chonDap(di, i, nut) {
+  const q = (S.duLieuUnit?.mini_story || [])[di]?.hoi_dap?.[i];
+  if (!q) return;
+  const hop = $(`#chon-dap-${di}-${i}`);
+  if (hop.classList.contains("da-lam")) return;
+  hop.classList.add("da-lam");
+  const dung = chuanDap(nut.dataset.dap) === chuanDap(q.dap);
+  hop.querySelectorAll(".nut-chon").forEach(b => {
+    b.disabled = true;
+    if (chuanDap(b.dataset.dap) === chuanDap(q.dap)) b.classList.add("dung");
+    else if (b === nut) b.classList.add("sai");
+  });
+  $(`#kq-dap-${di}-${i}`).innerHTML = dung
+    ? `<span class="dung">✓ Đúng.</span>`
+    : `<span class="sai">✗ Đáp án: <b>${esc(q.dap)}</b></span>`;
+  $(`#hoi-${di}-${i}`)?.classList.add("hien-dap");
+  doc(q.dap);
+}
+
+function kiemDap(di, i) {
+  const q = (S.duLieuUnit?.mini_story || [])[di]?.hoi_dap?.[i];
+  if (!q) return;
+  const kq = chamDap($(`#ip-dap-${di}-${i}`).value, q.dap);
+  const o = $(`#kq-dap-${di}-${i}`);
+  if (kq.muc === "trong") { o.innerHTML = `<span class="mo">Chưa nhập gì.</span>`; return; }
+  o.innerHTML = kq.muc === "dung"
+    ? `<span class="dung">✓ Được.</span> <span class="mo">Mẫu: ${esc(q.dap)}</span>`
+    : kq.muc === "gan"
+      ? `<span class="gan">≈ Gần đúng.</span> <span class="mo">${esc(kq.vi || "")}
+         — mẫu: ${esc(q.dap)}</span>`
+      : `<span class="sai">✗ Chưa đúng.</span> <span class="mo">${esc(kq.vi || "")}
+         Mẫu: <b>${esc(q.dap)}</b></span>`;
+  $(`#hoi-${di}-${i}`)?.classList.add("hien-dap");
+}
+
+/* --- ô chọn của phần Đặt câu hỏi --- */
+function oChonCauHoi(d, di, i) {
+  const cac = xaoTheoKhoa([d.cau_hoi, ...(d.nhieu || []).slice(0, 3)],
+    `${di}|${i}|${d.dap_an}`);
+  return `<div class="o-lam o-chon" id="chon-hoi-${di}-${i}">
+      ${cac.map(x => `<button class="nut-chon"
+        data-hoi="${esc(x)}" onclick="chonCauHoi(${di},${i},this)">${esc(x)}</button>`).join("")}
+    </div>`;
+}
+
+function chonCauHoi(di, i, nut) {
+  const d = (S.duLieuUnit?.mini_story || [])[di]?.dat_cau_hoi?.[i];
+  if (!d) return;
+  const hop = $(`#chon-hoi-${di}-${i}`);
+  if (hop.classList.contains("da-lam")) return;
+  hop.classList.add("da-lam");
+  const dung = chuanCauHoi(nut.dataset.hoi) === chuanCauHoi(d.cau_hoi);
+  hop.querySelectorAll(".nut-chon").forEach(b => {
+    b.disabled = true;
+    if (chuanCauHoi(b.dataset.hoi) === chuanCauHoi(d.cau_hoi)) b.classList.add("dung");
+    else if (b === nut) b.classList.add("sai");
+  });
+  $(`#kq-dat-${di}-${i}`).innerHTML = dung
+    ? `<span class="dung">✓ Đúng.</span>${nutLoa(d.cau_hoi)}`
+    : `<span class="sai">✗ Câu đúng là: <b>${esc(d.cau_hoi)}</b></span>${nutLoa(d.cau_hoi)}`;
 }
 
 /* --- chuỗi hỏi-đáp: hỏi → chờ bạn nói → đáp --- */
@@ -1368,11 +1630,276 @@ function kiemDatHoi(di, i) {
   const nhan = [d.cau_hoi, ...(d.chap_nhan || [])].map(chuanCauHoi);
   const o = $(`#kq-dat-${di}-${i}`);
   if (!cuaToi) { o.innerHTML = `<span class="mo">Chưa nhập câu hỏi.</span>`; return; }
+  /* Khớp nguyên văn một trong các bản chấp nhận thì chắc chắn đúng. Không
+     khớp thì CHƯA chắc sai: "Where's Lan?" và "Where is Lan?" là một câu.
+     So thêm phần lõi (bỏ dạng rút gọn và từ rỗng) để bắt các trường hợp đó,
+     nhưng chỉ dám gọi là "gần đúng" — máy không hiểu câu, nói chắc là nói ẩu. */
   const dung = nhan.includes(cuaToi);
+  const loi = x => chuanCauHoi(x).replace(/'s\b/g, " is").replace(/'re\b/g, " are")
+    .replace(/n't\b/g, " not").split(" ").filter(w => w && !TU_RONG.has(w)).sort().join(" ");
+  const gan = !dung && [d.cau_hoi, ...(d.chap_nhan || [])].some(x => loi(x) === loi(cuaToi));
   o.innerHTML = dung
     ? `<span class="dung">✓ Đúng.</span>`
-    : `<span class="sai">✗ Chưa khớp.</span> <span class="mo">Đáp án mẫu:</span>
-       <b>${esc(d.cau_hoi)}</b>${nutLoa(d.cau_hoi)}`;
+    : gan
+      ? `<span class="gan">≈ Sát rồi — cùng ý, khác cách nói.</span>
+         <span class="mo">Mẫu:</span> <b>${esc(d.cau_hoi)}</b>${nutLoa(d.cau_hoi)}`
+      : `<span class="sai">✗ Chưa khớp.</span> <span class="mo">Đáp án mẫu:</span>
+         <b>${esc(d.cau_hoi)}</b>${nutLoa(d.cau_hoi)}`;
+}
+
+/* ================= THÌ TRONG TIẾNG ANH =================
+   Chất liệu ở đây từng nằm trong tab Truyện: mỗi mini-story kèm ba bản kể lại
+   ở thì khác. Đọc bốn bản liền nhau thì mạch truyện gãy, câu nghe như máy —
+   nên chuyển hẳn sang đây, nơi bốn bản nằm CẠNH NHAU theo từng câu.
+   Cùng một dữ liệu, đổi chỗ đặt là đổi hẳn công dụng: ở kia nó phá truyện,
+   ở đây nó là bảng đối chiếu tốt nhất có thể có. */
+let duLieuThi = null;
+let theThi = localStorage.getItem("theThi") || "bang";
+let thiDaHoc = new Set();
+let truyenThi = +(localStorage.getItem("truyenThi") || 0);
+
+function napThiDaHoc() {
+  try {
+    const d = JSON.parse(localStorage.getItem("thiXong__" + (HS?.id || "mac_dinh")));
+    thiDaHoc = new Set(Array.isArray(d) ? d : []);
+  } catch (e) { thiDaHoc = new Set(); }
+}
+
+const luuThiDaHoc = () =>
+  localStorage.setItem("thiXong__" + (HS?.id || "mac_dinh"), JSON.stringify([...thiDaHoc]));
+
+function batTatThiXong(ma) {
+  thiDaHoc.has(ma) ? thiDaHoc.delete(ma) : thiDaHoc.add(ma);
+  luuThiDaHoc();
+  veThi();
+}
+
+async function moThi() {
+  dungPhat();
+  S.tab = "thi";
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "thi"));
+  if (!duLieuThi) {
+    $("#thi").innerHTML = `<div class="trong">Đang nạp…</div>`;
+    duLieuThi = await (await fetch("/api/thi")).json();
+  }
+  napThiDaHoc();
+  veThi();
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
+function doiTheThi(v) {
+  theThi = v;
+  localStorage.setItem("theThi", v);
+  veThi();
+}
+
+const thanhTheThi = () => `
+  <div class="hop-tab hop-tab-vien">
+    ${[["bang", "Bảng thì"], ["so-cau", "So câu"], ["luyen", "Luyện đổi thì"]]
+      .map(([v, t]) => `<button class="${theThi === v ? "chon" : ""}"
+        onclick="doiTheThi('${v}')">${t}</button>`).join("")}
+  </div>`;
+
+/* ---------- thẻ 1: bảng 8 thì ---------- */
+const NHOM_THI = {
+  hien_tai: "Hiện tại", qua_khu: "Quá khứ",
+  hoan_thanh: "Hoàn thành", tuong_lai: "Tương lai",
+};
+
+function veBangThi() {
+  let h = `<div class="the">
+      <h3 style="margin-top:0">Vì sao thì là chỗ vướng riêng của người Việt</h3>
+      <div>Tiếng Việt không chia động từ. "Đi" là "đi" ở mọi thời điểm; thời gian
+        nằm ở trạng từ (hôm qua, ngày mai) hoặc ở ba hư từ <b>đã / đang / sẽ</b> —
+        mà ba hư từ này còn lược được khi câu đã rõ lúc nào.</div>
+      <div style="margin-top:8px">Mang nguyên phản xạ đó sang tiếng Anh thì ra
+        <i>He go to school</i>, <i>Yesterday I go</i>, <i>I have gone last year</i>.
+        Không phải quên quy tắc — là tai chưa thấy thiếu gì cả. Cách chữa nhanh
+        nhất không phải học thuộc bảng, mà là NGHE cùng một câu ở nhiều thì cho
+        đến khi đuôi <i>-ed</i> và <i>have</i> tự bật ra.</div>
+    </div>`;
+
+  const theoNhom = {};
+  duLieuThi.thi.forEach(t => (theoNhom[t.nhom] ||= []).push(t));
+
+  Object.entries(theoNhom).forEach(([nh, ds]) => {
+    const xong = ds.filter(t => thiDaHoc.has(t.ma)).length;
+    h += `<div class="ten-nhom-thi">${NHOM_THI[nh] || nh}
+        <span class="mo">${xong}/${ds.length}</span></div>`;
+    ds.forEach(t => {
+      const daXong = thiDaHoc.has(t.ma);
+      macDinhKhoi(`thi/${t.ma}`, true);
+      h += khoi(`thi/${t.ma}`, t.ten, `
+        <div class="cong-thuc">
+          <div><span class="nhan-ct">Khẳng định</span><b>${esc(t.cong_thuc)}</b></div>
+          <div><span class="nhan-ct">Phủ định</span><b>${esc(t.phu_dinh)}</b></div>
+          <div><span class="nhan-ct">Nghi vấn</span><b>${esc(t.hoi)}</b></div>
+        </div>
+        <h4>Dùng khi nào</h4>
+        <ul class="ds-cham">${t.dung_khi.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+        <h4>Dấu hiệu nhận biết</h4>
+        <div class="ds-dau-hieu">${t.dau_hieu.map(x =>
+          `<span class="tu-dau-hieu">${esc(x)}</span>`).join("")}</div>
+        <h4>Bẫy của người Việt</h4>
+        <div class="canh-bao">${esc(t.bay).replace(/\n/g, "<br>")}</div>
+        <h4>Tự kiểm — không cần thầy</h4>
+        <div class="tu-kiem">${esc(t.tu_kiem)}</div>
+        <h4>Ví dụ</h4>
+        <div class="ds-vd-thi">${t.vi_du.map(v => `
+          <div class="vd-thi">
+            <div class="hang"><span class="en">${esc(v.en)}</span>${nutLoa(v.en)}</div>
+            <div class="vi">${esc(v.vi)}</div>
+          </div>`).join("")}</div>
+        <button class="nut-xong ${daXong ? "da-xong" : ""}" style="margin-top:12px"
+          onclick="batTatThiXong('${t.ma}')">
+          ${daXong ? "✓ Đã nắm" : "Đánh dấu đã nắm"}</button>`,
+        t.ten_en, daXong);
+    });
+  });
+  return h;
+}
+
+/* ---------- thẻ 2: so cùng một câu ở bốn thì ----------
+   Tô đậm đúng chữ đã đổi. Đây là toàn bộ giá trị của màn này: bốn câu xếp
+   chồng mà không đánh dấu thì mắt vẫn trượt qua, đọc xong không nhớ đã đổi gì. */
+function chuKhac(goc, moi) {
+  const a = String(goc).split(/(\s+)/), b = String(moi).split(/(\s+)/);
+  const sach = w => w.toLowerCase().replace(/[.,!?;:]/g, "");
+  /* LCS trên mảng từ. Truyện dài nhất ~30 từ nên bảng 30×30 là không đáng kể,
+     đổi lại đánh dấu đúng cả khi câu dài thêm chữ (will, have) chứ không lệch
+     nhịp như khi so từng vị trí một. */
+  const n = a.length, m = b.length;
+  const d = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
+  for (let i = n - 1; i >= 0; i--)
+    for (let j = m - 1; j >= 0; j--)
+      d[i][j] = sach(a[i]) === sach(b[j])
+        ? d[i + 1][j + 1] + 1 : Math.max(d[i + 1][j], d[i][j + 1]);
+  let i = 0, j = 0, ra = "";
+  while (j < m) {
+    if (i < n && sach(a[i]) === sach(b[j])) { ra += esc(b[j]); i++; j++; }
+    else if (i < n && d[i + 1][j] >= d[i][j + 1]) i++;
+    else { ra += `<mark>${esc(b[j])}</mark>`; j++; }
+  }
+  return ra;
+}
+
+function doiTruyenThi(v) {
+  truyenThi = +v;
+  localStorage.setItem("truyenThi", truyenThi);
+  veThi();
+}
+
+function veSoCau() {
+  const ds = duLieuThi.truyen;
+  if (!ds.length) return `<div class="trong">Chưa có dữ liệu truyện.</div>`;
+  const t = ds[Math.min(truyenThi, ds.length - 1)];
+  const cot = duLieuThi.cot.filter(c => c.ma === "ht" || t.co.includes(c.ma));
+
+  return `<div class="the">
+      <h3 style="margin-top:0">Cùng một câu, đổi thì thì đổi những gì</h3>
+      <div>Mỗi hàng là MỘT câu của truyện, viết lại ở từng thì. Chữ được tô là
+        chữ đã đổi so với hiện tại đơn — nhìn cột dọc là thấy quy luật, không
+        phải học thuộc bảng chia động từ.</div>
+      <label style="margin-top:10px">Chọn truyện
+        <select onchange="doiTruyenThi(this.value)">
+          ${ds.map((x, i) => `<option value="${i}" ${i === truyenThi ? "selected" : ""}
+            >Unit ${x.unit} — ${esc(x.ten)}</option>`).join("")}
+        </select>
+      </label>
+    </div>
+    <div class="cuon-ngang">
+      <table class="bang-thi">
+        <thead><tr>${cot.map(c => `<th>${esc(c.ten)}</th>`).join("")}</tr></thead>
+        <tbody>${t.cau.map(h => `<tr>
+          ${cot.map(c => {
+            const cau = h[c.ma];
+            if (!cau) return `<td class="trong-o">—</td>`;
+            return `<td>
+              <div class="hang-o">
+                <span class="en">${c.ma === "ht" ? esc(cau) : chuKhac(h.ht, cau)}</span>
+                ${nutLoa(cau)}
+              </div>
+              ${c.ma === "ht" && h.vi ? `<div class="vi">${esc(h.vi)}</div>` : ""}
+            </td>`;
+          }).join("")}
+        </tr>`).join("")}</tbody>
+      </table>
+    </div>`;
+}
+
+/* ---------- thẻ 3: luyện đổi thì ----------
+   Chọn đáp án chứ không gõ. Gõ lại cả câu dài 12 chữ thì cái sai chủ yếu là
+   lỗi đánh máy, không phải lỗi thì — chấm kiểu đó vừa oan vừa không dạy được
+   gì. Bốn lựa chọn là bốn bản THẬT của chính câu đó, nên nhiễu không phải câu
+   bịa: chọn nhầm nghĩa là thật sự chưa phân biệt được hai thì. */
+let cauLuyen = null;
+
+function bocCauLuyen() {
+  const ds = duLieuThi.truyen.filter(t => t.co.length >= 2);
+  if (!ds.length) return null;
+  for (let thu = 0; thu < 40; thu++) {
+    const t = ds[Math.floor(Math.random() * ds.length)];
+    const h = t.cau[Math.floor(Math.random() * t.cau.length)];
+    const co = duLieuThi.cot.filter(c => c.ma !== "ht" && h[c.ma]);
+    if (!co.length) continue;
+    const dich = co[Math.floor(Math.random() * co.length)];
+    const cac = [h.ht, ...duLieuThi.cot.filter(c => c.ma !== "ht" && h[c.ma]).map(c => h[c.ma])];
+    const chon = [...new Set(cac)].sort(() => Math.random() - 0.5);
+    if (chon.length < 2) continue;
+    return { goc: h.ht, vi: h.vi || "", dichTen: dich.ten, dap: h[dich.ma], chon,
+             unit: t.unit, ten: t.ten };
+  }
+  return null;
+}
+
+function cauLuyenMoi() {
+  cauLuyen = bocCauLuyen();
+  veThi();
+}
+
+function chonLuyen(k) {
+  if (!cauLuyen || cauLuyen.daChon != null) return;
+  cauLuyen.daChon = k;
+  veThi();
+  doc(cauLuyen.chon[k]);
+}
+
+function veLuyen() {
+  if (!cauLuyen) cauLuyen = bocCauLuyen();
+  if (!cauLuyen) return `<div class="trong">Chưa có dữ liệu để luyện.</div>`;
+  const c = cauLuyen;
+  const xong = c.daChon != null;
+  return `<div class="the">
+      <h3 style="margin-top:0">Đổi câu này sang <b>${esc(c.dichTen)}</b></h3>
+      <div class="hang" style="margin:10px 0">
+        <span class="cau-anh" style="font-size:19px">${esc(c.goc)}</span>${nutLoa(c.goc)}
+      </div>
+      ${c.vi ? `<div class="vi">${esc(c.vi)}</div>` : ""}
+      <div class="ds-chon-thi">${c.chon.map((x, k) => {
+        const dung = x === c.dap;
+        const lop = !xong ? "" : dung ? "dung" : (k === c.daChon ? "sai" : "mo-di");
+        return `<button class="o-chon-thi ${lop}" onclick="chonLuyen(${k})"
+            ${xong ? "disabled" : ""}>${xong && x !== c.goc ? chuKhac(c.goc, x) : esc(x)}</button>`;
+      }).join("")}</div>
+      ${xong ? `<div class="${c.chon[c.daChon] === c.dap ? "dung" : "sai"}" style="margin-top:10px">
+          ${c.chon[c.daChon] === c.dap ? "✓ Đúng." : "✗ Chưa đúng — câu được tô là đáp án."}
+          <span class="mo">Unit ${c.unit} — ${esc(c.ten)}</span>
+        </div>` : ""}
+      <button class="chinh" style="margin-top:12px" onclick="cauLuyenMoi()">Câu khác →</button>
+    </div>`;
+}
+
+function veThi() {
+  if (!duLieuThi) return;
+  $("#thi").innerHTML = `<div class="the-mo-dau">
+      <h2>Thì trong tiếng Anh</h2>
+      <div class="mo">8 thì cần cho IELTS 6.0–6.5, kèm 150 truyện được kể lại ở
+        nhiều thì để nghe ra khác biệt chứ không phải học thuộc.</div>
+    </div>` + thanhTheThi()
+    + (theThi === "bang" ? veBangThi()
+      : theThi === "so-cau" ? veSoCau() : veLuyen());
 }
 
 /* ================= HỘI THOẠI ================= */
@@ -2037,6 +2564,7 @@ function veRail(keo = false) {
   let h = nhomRail("nhom/tong-quan", "Tổng quan",
     don("\u25a4", "Tổng quan", "tong-quan", "veMenu()") +
     don("\u0250", "Phát âm", "ipa", "moIPA()") +
+    don("\u23f1", "Thì trong tiếng Anh", "thi", "moThi()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
     don("\u270e", "Sổ lỗi", "so-loi", "chuyenTab('so-loi')"));
 
@@ -2993,12 +3521,24 @@ async function xoaHoSo() {
   $("#co-chu").value = CD.coChu;
   $("#hien-dich").checked = CD.hienDich;
   $("#danh-dau-level").checked = CD.danhDau;
-  $("#doc-thoi").checked = CD.docTho;
+  $("#doc-thoi").checked = $("#cd-doc-tho").checked = CD.docTho;
   $$("input[name=che-do]").forEach(r => r.onchange = e => { CD.cheDo = e.target.value; veLaiTrangDoc(); });
   $("#co-chu").oninput = e => { CD.coChu = +e.target.value; $$(".cau-doc .than").forEach(x => x.style.fontSize = CD.coChu + "px"); };
   $("#hien-dich").onchange = e => { CD.hienDich = e.target.checked; veLaiTrangDoc(); };
   $("#danh-dau-level").onchange = e => { CD.danhDau = e.target.checked; veLaiTrangDoc(); };
-  $("#doc-thoi").onchange = e => { CD.docTho = e.target.checked; veLaiTrangDoc(); };
+  /* Công tắc "đọc thô" có mặt ở HAI nơi: nút Aa trên thanh phát (chỉnh nhanh
+     khi đang đọc) và Cài đặt → Hiển thị (chỗ người ta đi tìm khi không thấy
+     nó đâu). Cùng ghi vào CD.docTho và soi gương nhau, không thì bật ở đây
+     mà ô kia vẫn tắt, nhìn như app quên mất lựa chọn. */
+  const datDocTho = v => {
+    CD.docTho = v;
+    localStorage.setItem("docTho", v ? "1" : "0");
+    $("#doc-thoi").checked = $("#cd-doc-tho").checked = v;
+    veLaiTrangDoc();
+    if (S.tab === "mau-cau") hienCauHienTai();
+  };
+  $("#doc-thoi").onchange = e => datDocTho(e.target.checked);
+  $("#cd-doc-tho").onchange = e => datDocTho(e.target.checked);
 
   /* chạm ra ngoài hộp là đóng — trên điện thoại nút "Xong" nằm dưới đáy,
      phải cuộn cả bảng mới bấm được */
@@ -3038,6 +3578,11 @@ async function xoaHoSo() {
 
   napGiong();
   $("#cd-giong").onchange = e => { S.giong = dsGiong.find(v => v.name === e.target.value); doc("Hello, this is your new voice."); };
+  const oTach = $("#cd-doc-tach");
+  if (oTach) {
+    oTach.checked = docTachBat();
+    oTach.onchange = e => localStorage.setItem("docTach", e.target.checked ? "1" : "0");
+  }
   $("#cd-toc-do").oninput = e => datTocDo(e.target.value);
   datTocDo(S.tocDo);   // đồng bộ nhãn + nút ngay khi mở app
   $$("#cai-dat .hop-tab button").forEach(b =>

@@ -420,14 +420,15 @@ button.chinh:disabled{opacity:.5; cursor:default}
 }
 .hop-chan .mo{flex:1; font-size:13px}
 /* Màn hình thấp — laptop 14" (768px) và tablet nằm ngang. Bóp sân khấu để
-   cả màn Mẫu câu lọt một trang: bớt đệm, bớt cỡ chữ, giấu dòng "đọc thô"
-   (dòng phụ trợ, phiên âm IPA ngay trên đã đủ). Màn cao hơn giữ nguyên. */
+   cả màn Mẫu câu lọt một trang: bớt đệm, bớt cỡ chữ. Màn cao hơn giữ nguyên.
+   KHÔNG giấu dòng "đọc thô" ở đây nữa — giấu theo chiều cao màn là quyết định
+   thay người dùng, mà họ không có chỗ nào bật lại. Ai thấy chật thì tắt ở
+   Cài đặt → Hiển thị. */
 @media (max-height:820px){
   /* Sân khấu đã bị bóp ở đây nên chừa lại ít hơn cho danh sách câu */
   .ds-cau{max-height:max(160px, calc(100dvh - var(--cao-header,56px) - 490px))}
   .san-khau{padding:11px 16px; gap:4px}
   .san-khau .cau-anh{font-size:20px}
-  .san-khau .tho{display:none}
   .san-khau .pa-noi, .san-khau .nghia{font-size:14px}
   /* ! Chi de margin-top o day thi margin-bottom cua luat goc VAN GIU (14px).
      Dung ghi margin viet tat o day - se xoa mat khoang duoi va hang nut lai
@@ -1095,4 +1096,112 @@ li{margin:5px 0; line-height:1.6}
 
 @media (prefers-reduced-motion: reduce) {
   #bar-phat { transition: none; }
+}
+
+/* ============ MỤC THÌ ============ */
+/* Thanh thẻ ở màn Phát âm dùng style inline; ở đây gom lại thành lớp. */
+.hop-tab-vien{
+  border:1px solid var(--vien); border-radius:9px;
+  margin-bottom:14px; background:var(--the);
+}
+
+.ten-nhom-thi{
+  font-size:12px; font-weight:700; letter-spacing:.05em; text-transform:uppercase;
+  color:var(--chu-nhat); margin:16px 0 7px; display:flex; gap:8px; align-items:baseline;
+}
+.ten-nhom-thi .mo{font-size:11.5px; letter-spacing:0; text-transform:none}
+
+/* Ba công thức xếp thành cột nhãn - nội dung: mắt quét dọc một nhịp là thấy
+   cả ba dạng, thay vì đọc ba câu văn xuôi rời nhau. */
+.cong-thuc{
+  display:grid; gap:6px; margin:4px 0 12px; padding:11px 13px;
+  background:var(--chinh-nhat); border-radius:9px;
+}
+.cong-thuc > div{display:flex; gap:10px; align-items:baseline; flex-wrap:wrap}
+.cong-thuc b{font-family:ui-monospace,Consolas,monospace; font-size:13.5px; color:var(--chinh)}
+.nhan-ct{
+  flex:0 0 84px; font-size:11.5px; color:var(--chu-nhat);
+}
+#thi h4{margin:14px 0 6px; font-size:13.5px}
+.ds-cham{margin:0; padding-left:19px; font-size:13.5px; line-height:1.65}
+.ds-cham li{margin-bottom:3px}
+.ds-dau-hieu{display:flex; flex-wrap:wrap; gap:6px}
+.tu-dau-hieu{
+  padding:3px 9px; border-radius:20px; font-size:12.5px;
+  background:var(--vien); color:var(--chu-nhat);
+}
+.ds-vd-thi{display:grid; gap:9px}
+.vd-thi{padding-left:11px; border-left:3px solid var(--vien)}
+.vd-thi .en{font-weight:600}
+.vd-thi .vi{font-size:13px; color:var(--chu-nhat)}
+
+/* Bảng so câu. Bốn cột câu tiếng Anh không thể co vừa màn hẹp, nên cuộn NGANG
+   trong khung riêng — cả trang cuộn ngang là hỏng mọi màn khác. */
+.cuon-ngang{overflow-x:auto; -webkit-overflow-scrolling:touch}
+.bang-thi{border-collapse:collapse; width:100%; min-width:680px}
+.bang-thi th{
+  position:sticky; top:0; z-index:1;
+  background:var(--the); border-bottom:2px solid var(--vien);
+  padding:9px 11px; text-align:left; font-size:12px; letter-spacing:.03em;
+  text-transform:uppercase; color:var(--chu-nhat); white-space:nowrap;
+}
+.bang-thi td{
+  vertical-align:top; padding:10px 11px; font-size:13.5px; line-height:1.5;
+  border-bottom:1px solid var(--vien); min-width:170px;
+}
+.bang-thi td.trong-o{color:var(--chu-nhat); text-align:center}
+.bang-thi .hang-o{display:flex; gap:6px; align-items:flex-start}
+.bang-thi .hang-o .loa{flex:0 0 auto; opacity:.5}
+.bang-thi .hang-o .loa:hover{opacity:1}
+.bang-thi .vi{font-size:12.5px; color:var(--chu-nhat); margin-top:4px}
+/* Chữ đã đổi so với hiện tại đơn. Nền nhạt chứ không đỏ chói: cả bảng có hàng
+   chục dấu, tô mạnh thì thành bảng nhấp nháy không đọc được. */
+.bang-thi mark, .o-chon-thi mark{
+  background:var(--chinh-nhat); color:var(--chinh);
+  font-weight:700; border-radius:3px; padding:0 2px;
+}
+
+/* Luyện đổi thì */
+.ds-chon-thi{display:grid; gap:8px; margin-top:14px}
+.o-chon-thi{
+  text-align:left; padding:12px 14px; border-radius:10px; font-size:14px;
+  line-height:1.5; border:1px solid var(--vien); background:var(--the); color:var(--chu);
+}
+.o-chon-thi:hover:not(:disabled){border-color:var(--chinh); background:var(--chinh-nhat)}
+.o-chon-thi.dung{border-color:var(--dung); background:#e8f6ef}
+.o-chon-thi.sai{border-color:var(--sai); background:#fbeae7}
+.o-chon-thi.mo-di{opacity:.45}
+@media (prefers-color-scheme: dark){
+  .o-chon-thi.dung{background:#16302a}
+  .o-chon-thi.sai{background:#331d1a}
+}
+
+/* Mảnh đang được đọc ở chế độ "đọc tách". Chỉ tô nền, không đổi cỡ chữ —
+   chữ nhảy cỡ giữa câu thì cả dòng giật theo, mắt mất chỗ đang nhìn. */
+.san-khau .cau-anh .w.dang-manh{
+  background:var(--chinh-nhat); color:var(--chinh);
+  border-radius:4px; box-shadow:0 0 0 2px var(--chinh-nhat);
+}
+
+/* ---------- ô làm bài trong mini-story ---------- */
+.o-lam{display:flex; flex-wrap:wrap; gap:6px; margin-top:7px; width:100%}
+.o-lam input[type=text]{flex:1 1 200px; min-width:0}
+.o-chon{display:grid; gap:6px}
+.nut-chon{
+  text-align:left; padding:9px 12px; border-radius:8px; font-size:13.5px;
+  border:1px solid var(--vien); background:var(--the); color:var(--chu);
+  line-height:1.45;
+}
+.nut-chon:hover:not(:disabled){border-color:var(--chinh); background:var(--chinh-nhat)}
+.nut-chon.dung{border-color:var(--dung); background:#e8f6ef; font-weight:600}
+.nut-chon.sai{border-color:var(--sai); background:#fbeae7}
+.nut-chon:disabled{opacity:1}
+.o-chon.da-lam .nut-chon:not(.dung):not(.sai){opacity:.45}
+.kq-dap{flex:1 1 100%; font-size:13px; margin-top:2px}
+/* Mức giữa: máy chỉ đối chiếu được từ khoá nên không dám nói chắc đúng hay
+   sai. Màu riêng để người học biết đây là "tự đối chiếu đi", không phải điểm. */
+.gan{color:var(--vang); font-weight:600}
+@media (prefers-color-scheme: dark){
+  .nut-chon.dung{background:#16302a}
+  .nut-chon.sai{background:#331d1a}
 }
