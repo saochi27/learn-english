@@ -543,8 +543,13 @@ async function nopBaiTap(soUnit) {
     </div>`;
 
   if (kq.dat) await datTrangThai(soUnit, "bai_tap", "xong");
-  const nut = $("#bai-tap .nut-xong");
-  if (nut && kq.dat) { nut.classList.add("da-xong"); nut.textContent = "✓ Đã hoàn thành"; }
+  if (kq.dat) {
+    $$("#bai-tap .nhom-nut-muc .nut-xong").forEach(nut => {
+      nut.classList.add("da-xong");
+      nut.setAttribute("aria-pressed", "true");
+      nut.title = "Đã hoàn thành — bấm để bỏ đánh dấu";
+    });
+  }
   $("#ket-qua-bt").scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
