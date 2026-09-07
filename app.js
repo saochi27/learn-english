@@ -335,8 +335,21 @@ async function traTu(tu, el) {
     <div class="nghia">${esc(d.nghia || "")}</div>`;
   datChoTraTu(el);
   $("#tra-tu").classList.remove("an");
+  henTatTraTu();
   doc(d.tu);
 }
+
+/* Tự tắt sau khoảng một giây.
+   Hộp chỉ có ba dòng ngắn, liếc là đọc xong; để nó nằm lại thì che mất câu
+   đang đọc và phải bấm ✕ sau mỗi lần tra một từ.
+   Rê chuột hoặc chạm vào hộp thì huỷ hẹn — lúc đó người học đang đọc kỹ hoặc
+   sắp bấm nút loa, tắt ngang là bực. */
+let henTraTu = null;
+function henTatTraTu() {
+  clearTimeout(henTraTu);
+  henTraTu = setTimeout(dongTraTu, 1000);
+}
+function giuTraTu() { clearTimeout(henTraTu); }
 
 /* Đặt hộp tra từ NGAY DƯỚI chữ vừa chạm, trên màn hẹp.
    Hộp vốn neo ở góc phải dưới. Trên tablet chỗ đó trùng với thanh tìm kiếm
@@ -365,7 +378,10 @@ function datChoTraTu(el) {
   h.style.left = x + "px";
   h.style.top = y + "px";
 }
-const dongTraTu = () => $("#tra-tu").classList.add("an");
+function dongTraTu() {
+  clearTimeout(henTraTu);
+  $("#tra-tu").classList.add("an");
+}
 
 /* ================= KHỐI THU GỌN =================
    Một kiểu khối dùng cho MỌI màn học. Trước đây mỗi màn đổ hết ra một mạch:
@@ -1031,25 +1047,65 @@ function dongDoc(id, en, pa, dich, vai) {
 
 /* Cả đoạn: văn xuôi liền mạch, một nút loa cho cả bài, bản dịch gộp bên
    dưới. Vẫn giữ id từng câu để phát cả bài tô sáng đúng câu đang đọc. */
+/* Chia câu thành CÁC ĐOẠN thay vì một khối liền.
+   Một bài 9 câu đổ ra thành tảng chữ 12 dòng thì mắt không có chỗ nghỉ, đọc
+   xong không nhớ mạch. Sách nào cũng xuống dòng.
+
+   Hai luật:
+   - LỜI THOẠI đứng riêng một dòng, gom theo LƯỢT NÓI chứ không theo câu: một
+     người nói ba câu liền thì đó vẫn là một lượt, tách ra ba dòng là làm như
+     có ba người đang nói.
+   - Phần kể chuyện gom 3 câu một đoạn. Con số chọn theo độ dài câu của app:
+     câu 8-12 chữ thì 3 câu vừa đúng 2-3 dòng trên điện thoại. */
+const RE_NHAY = /["\u201c\u201d]/;
+/* Dấu hiệu MỞ một lượt nói mới: tên người đứng trước dấu hai chấm, hoặc một
+   động từ dẫn thoại (says, asks, replies…) đứng trước dấu nháy. */
+const RE_LUOT_MOI = /^\s*[A-Z][\w'’]*\s*:|\b(says?|said|asks?|asked|repl(?:y|ies|ied)|answers?|answered|shouts?|shouted|adds?|added|tells?|told|whispers?|whispered)\b[^"\u201c]*["\u201c]/i;
+
+function nhomDoan(cac) {
+  const chu = c => String(c.en ?? c);
+  const ra = [];
+  let ke = [];          // đoạn kể đang gom
+  let luot = null;      // lượt thoại đang gom
+
+  const xaKe = () => { if (ke.length) { ra.push({ thoai: false, cau: ke }); ke = []; } };
+  const xaLuot = () => { if (luot) { ra.push({ thoai: true, cau: luot }); luot = null; } };
+
+  cac.forEach((c, i) => {
+    const co = { c, i };
+    if (RE_NHAY.test(chu(c))) {
+      xaKe();
+      // Câu có dấu hiệu mở lượt mới thì đóng lượt cũ lại; không thì nói tiếp.
+      if (!luot || RE_LUOT_MOI.test(chu(c))) { xaLuot(); luot = [co]; }
+      else luot.push(co);
+      return;
+    }
+    xaLuot();
+    ke.push(co);
+    if (ke.length >= 3) xaKe();
+  });
+  xaLuot();
+  xaKe();
+  return ra;
+}
+
 function khoiDoan(tienTo, cac) {
   const hienEn = CD.cheDo !== "pa";
-  const cauEn = cac.map((c, i) => {
+  const mot = ({ c, i }) => {
     const en = c.en ?? c;
     return `<span class="cau-trong-doan" id="${tienTo}${i}"
       data-en="${esc(en)}" data-vai="${esc(c.vai || "")}"
       onclick="docCau('${tienTo}${i}')">${hienEn ? tuCoMau(en) : esc(c.pa?.ipa_noi || "")}</span>`;
-  }).join(" ");
-  const dich = cac.map(c => c.vi || c.dich || "").filter(Boolean).join(" ");
-  return `<div class="doan-van" style="font-size:${CD.coChu}px">${cauEn}</div>
-    ${CD.hienDich && dich ? `<div class="doan-dich">${esc(dich)}</div>` : ""}`;
+  };
+  /* Bản dịch đi theo TỪNG ĐOẠN, không gộp cả bài xuống cuối: gộp thì phải tự
+     dò xem câu tiếng Việt nào ứng với câu tiếng Anh nào. */
+  return nhomDoan(cac).map(nhom => {
+    const dich = nhom.cau.map(({ c }) => c.vi || c.dich || "").filter(Boolean).join(" ");
+    return `<div class="doan-van ${nhom.thoai ? "loi-thoai" : ""}"
+        style="font-size:${CD.coChu}px">${nhom.cau.map(mot).join(" ")}</div>
+      ${CD.hienDich && dich ? `<div class="doan-dich">${esc(dich)}</div>` : ""}`;
+  }).join("");
 }
-
-/* Lấy câu để đọc từ một phần tử, dùng cho CẢ HAI kiểu hiển thị.
-   Kiểu "từng câu" bọc nội dung trong .than, kiểu "cả đoạn" đặt thẳng data-en
-   lên chính câu. Trước đây hai chỗ phát đều gọi el.querySelector(".than") rồi
-   đọc dataset của nó — ở kiểu cả đoạn thì đó là null, ném TypeError và tắt
-   tiếng hoàn toàn: bấm phát không kêu, chạm câu cũng không kêu. */
-const cauDeDoc = el => el?.querySelector(".than") || el;
 
 function docCau(id) {
   const el = document.getElementById(id);

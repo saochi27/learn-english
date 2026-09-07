@@ -1441,3 +1441,24 @@ li{margin:5px 0; line-height:1.6}
 .cau-co:last-child{border-bottom:0}
 .cau-co .en{font-weight:600; font-size:14px}
 .cau-co .mo{font-size:12px; color:var(--chu-nhat); margin-top:2px}
+
+/* Hộp tra từ neo dưới chữ vừa chạm (màn hẹp).
+   Phải gỡ CẢ right lẫn bottom: luật mobile đặt right:10px; bottom:10px để hộp
+   trải hết bề ngang khi neo ở góc; giữ nguyên thì hộp bị kéo giãn từ chỗ neo
+   xuống tận đáy màn, che gần hết bài đọc.
+   width:max-content để hộp ôm sát nội dung — ba dòng ngắn thì chỉ bé bằng ba
+   dòng ngắn. */
+.the-tra.neo-tu{
+  right:auto; bottom:auto;
+  width:max-content; max-width:min(300px, calc(100vw - 20px));
+  padding:8px 28px 9px 12px;
+}
+.the-tra.neo-tu .tu-anh{font-size:15px}
+.the-tra.neo-tu .pa,
+.the-tra.neo-tu .nghia{font-size:13px}
+.the-tra.neo-tu .dong{top:1px; right:4px; font-size:16px}
+
+/* Đoạn văn tách rời nhau, lời thoại thụt vào cho thấy ai đang nói. */
+.doan-van + .doan-van{margin-top:12px}
+.doan-dich + .doan-van{margin-top:14px}
+.doan-van.loi-thoai{padding-left:12px; border-left:2px solid var(--vien)}

@@ -99,7 +99,9 @@
 </div>
 
 <!-- bảng tra từ, hiện khi chạm vào 1 từ -->
-<div id="tra-tu" class="the-tra an">
+<div id="tra-tu" class="the-tra an"
+     onpointerenter="giuTraTu()" onpointerdown="giuTraTu()"
+     onpointerleave="henTatTraTu()">
   <button class="dong" onclick="dongTraTu()">×</button>
   <div id="tra-tu-noi-dung"></div>
 </div>
