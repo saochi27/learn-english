@@ -993,10 +993,12 @@ function veLaiTrangDoc() {
 
 /* tô từ theo cấp độ: nhìn là biết từ nào đã học ở level nào, từ nào còn lạ */
 function tuCoMau(cau) {
-  return esc(cau).replace(/[A-Za-z']+/g, w => {
-    const info = bangTuLevel[w.toLowerCase()];
+  return esc(cau).replace(/&[a-z]+;|[A-Za-z']+/g, m => {
+    if (m[0] === "&") return m;
+    const info = bangTuLevel[m.toLowerCase()];
     const lop = CD.danhDau ? (info ? `lv${info.level}` : "chua-hoc") : "";
-    return `<span class="w ${lop}" onclick="traTu('${w}', this)">${w}</span>`;
+    return `<span class="w ${lop}"
+      onclick="traTu('${m.replace(/'/g, "\'")}', this)">${m}</span>`;
   });
 }
 
