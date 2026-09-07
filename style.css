@@ -1370,3 +1370,54 @@ li{margin:5px 0; line-height:1.6}
 .the-truyen .cham{width:7px; height:7px; border-radius:50%; flex:0 0 auto}
 .the-truyen.da-doc .noi .ten{color:var(--chu-nhat)}
 .the-truyen .xong{flex:0 0 auto; color:var(--dung); font-weight:700}
+
+/* ---------- mục lục truyện của unit ---------- */
+.muc-luc-truyen{border:1px solid var(--vien); border-radius:10px;
+  background:var(--the); overflow:hidden}
+.dong-truyen{
+  width:100%; text-align:left; border:0; background:none; color:var(--chu);
+  display:flex; align-items:center; gap:11px; padding:11px 13px;
+  border-bottom:1px solid var(--vien);
+}
+.dong-truyen:last-child{border-bottom:0}
+.dong-truyen:hover{background:color-mix(in srgb, var(--mau-tl) 10%, transparent)}
+/* Số thứ tự như mục lục chương sách: biết mình đang ở bài thứ mấy trong unit,
+   và quay lại đúng chỗ hôm sau. */
+.dong-truyen .so{
+  flex:0 0 auto; width:26px; font-size:12px; font-weight:700;
+  color:var(--chu-nhat); font-variant-numeric:tabular-nums;
+}
+.dong-truyen .noi{flex:1; min-width:0; display:grid; gap:2px}
+.dong-truyen .noi .ten{font-size:14px; font-weight:600}
+.dong-truyen.da-doc .noi .ten{color:var(--chu-nhat); font-weight:500}
+.dong-truyen .noi .mo{font-size:11.5px; color:var(--chu-nhat);
+  display:flex; align-items:center; gap:5px}
+.dong-truyen .cham{width:7px; height:7px; border-radius:50%; flex:0 0 auto}
+.dong-truyen .tick{flex:0 0 auto; color:var(--chu-nhat); font-size:16px}
+.dong-truyen.da-doc .tick{color:var(--dung); font-weight:700}
+
+/* ---------- màn đọc một truyện ---------- */
+.dau-truyen{
+  display:flex; align-items:center; gap:10px; margin-bottom:12px;
+  padding:10px 12px; border-radius:10px;
+  background:var(--the); border:1px solid var(--vien);
+  border-left:4px solid var(--mau-tl);
+}
+.dau-truyen .tieu{flex:1; min-width:0; font-weight:700; font-size:15px;
+  overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.dau-truyen .nhan{flex:0 0 auto}
+.cuoi-truyen{
+  display:flex; gap:9px; flex-wrap:wrap; align-items:center;
+  margin-top:16px; padding-top:14px; border-top:1px solid var(--vien);
+}
+/* Đọc xong thì bước kế là làm bài — để nút đó nổi hơn nút đánh dấu. */
+.cuoi-truyen .chinh.to{flex:0 0 auto}
+.chuyen-truyen{
+  display:flex; justify-content:space-between; gap:9px;
+  margin-top:18px; padding-top:14px; border-top:1px solid var(--vien);
+}
+.chuyen-truyen button{max-width:48%; overflow:hidden; text-overflow:ellipsis;
+  white-space:nowrap}
+@media (max-width:640px){
+  .dau-truyen .nhan{display:none}
+}
