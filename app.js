@@ -2963,19 +2963,17 @@ function veMenu() {
   const tiep = mucDangDo();
   const pt = Math.round(tt.xong / tt.tong * 100);
 
-  let h = `<div class="the-mo-dau">
-      <h2>Học tiếng Anh — IELTS</h2>
-      <div class="mo">${S.muc_luc.length} unit · Trẻ em → level 4 · tương đương A0 → B2</div>
+  let h = `<div class="the-mo-dau gon">
       <div class="thanh-tong">
-        <div class="so-lieu">
-          <span><b>${pt}%</b> hoàn thành</span>
-          <span><b>${tt.xong}</b> / ${tt.tong} mục đã xong</span>
-          <span><b>${tt.dang}</b> đang học</span>
-          <span><b>${tt.unitXong}</b> / ${S.muc_luc.length} unit xong trọn vẹn</span>
-        </div>
         <div class="vach">
           <i class="xong" style="width:${pt}%"></i>
           <i class="dang" style="width:${Math.round(tt.dang / tt.tong * 100)}%"></i>
+        </div>
+        <div class="so-lieu">
+          <span><b>${pt}%</b> hoàn thành</span>
+          <span><b>${tt.xong}</b>/${tt.tong} mục</span>
+          <span><b>${tt.dang}</b> đang học</span>
+          <span><b>${tt.unitXong}</b>/${S.muc_luc.length} unit xong</span>
         </div>
       </div>
       ${tiep ? `<button class="chinh to" onclick="moMuc(${tiep.so},'${tiep.tab}')">
