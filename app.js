@@ -208,12 +208,26 @@ const DOI_DIA_DANH = {
   "Sa Pa": "Sah Pah", "Ninh Binh": "Ning Bing",
   "Hue": "Hway", "Pho": "Fuh", "Tet": "Tet",
   "Banh mi": "Bang mee", "Ao dai": "Ow zai",
+  // "My Dinh" phải nằm ở bảng ĐỊA DANH chứ không tách ra: để nguyên thì "My"
+  // bị đọc thành từ sở hữu "my".
+  "Binh Duong": "Bing Zoong", "My Dinh": "Mee Ding", "Le Loi": "Lay Loy",
 };
 const DOI_TEN_DOC = {
   Hoa: "Hwah", Linh: "Ling", Minh: "Ming", Chi: "Chee", Thao: "Tao",
   Huong: "Hoong", Ngoc: "Ngock", Phuong: "Foong", Tuan: "Twan", Nga: "Ngah",
   Quang: "Kwang", Trang: "Chang", Yen: "Yenn", Hanh: "Hahn", Duc: "Dook",
   Loan: "Lwan", Nhung: "Nyoong", Oanh: "Wahn", Xuan: "Swan", Vinh: "Ving",
+  // Họ và tên đệm. Trước đây bảng chỉ có TÊN GỌI nên "Tran Minh Duc" ra
+  // "Tran Minh Dook" — sửa được mỗi chữ cuối, hai chữ đầu vẫn đọc kiểu Anh.
+  // Giọng Anh đọc "Le" thành /lə/, "Thi" thành /θiː/, "Tran" thành /træn/.
+  // KHÔNG thêm "Do", "Ho", "Anh": "Do" là trợ động từ, xuất hiện 422 lần
+  // trong giáo trình; "Ho" nằm trong "Ho Chi Minh" đã được bảng địa danh xử
+  // lý trước; "Anh" là chữ "tiếng Anh" trong phần dịch.
+  "Nguyen": "Nwen", "Tran": "Chun", "Le": "Lay", "Pham": "Fam",
+  "Hoang": "Hwang", "Huynh": "Hwing", "Phan": "Fan", "Vu": "Voo",
+  "Vo": "Vaw", "Dang": "Dahng", "Bui": "Booy", "Ngo": "Ngaw",
+  "Ly": "Lee", "Van": "Vahn", "Thi": "Tee", "Doan": "Zwan",
+  "Truong": "Chwong", "Dinh": "Ding",
 };
 /* Cụm dài thay trước cụm ngắn: "Ho Chi Minh" phải khớp trước "Ho". */
 const RE_DIA_DANH = new RegExp(
@@ -755,26 +769,81 @@ function sangManh(m) {
   for (let i = m.tu0; i < m.tu1 && i < w.length; i++) w[i].classList.add("dang-manh");
 }
 
-/* Một lượt "mổ xẻ": đọc đúng -> đọc từng mảnh -> đọc đúng.
+let phienTach = 0;
+let mocTach = null;
+
+/* Dữ liệu chế độ đọc tách: mỗi câu một BẢN THU RIÊNG, các mảnh cách nhau bằng
+   dấu phẩy nên khoảng ngắt do chính giọng đọc tạo ra.
+     mocTach[câu] = { f: tên file, m: [giây bắt đầu từng mảnh] }
+   Mảng m chỉ dùng để tô sáng mảnh đang đọc; thiếu nó thì audio vẫn chạy đúng.
+
+   Vì sao không tua trong file câu gốc như bản trước: mốc thời gian của
+   edge-tts đếm trên văn bản ĐÃ VIẾT LẠI cho giọng đọc ("Hanoi" -> "Ha Noy"
+   thành hai từ), nên 232/7.893 câu lệch số từ, rơi về giọng máy và nghe như
+   file hỏng. Cắt bằng dấu phẩy thì không phải căn mốc gì cả, lại được máy đọc
+   tự ngân dài chữ trước dấu phẩy — nhịp tự nhiên hơn hẳn cắt bằng tay. */
+async function napMocTu() {
+  if (mocTach) return mocTach;
+  try {
+    mocTach = (await (await fetch("/api/moc_tu")).json()).cau || {};
+  } catch (e) { mocTach = {}; }
+  return mocTach;
+}
+
+/* Một lượt "mổ xẻ": đọc đúng -> đọc tách -> đọc đúng.
    Hai lượt đọc đúng kẹp hai đầu là có chủ ý: nghe trọn câu trước để biết đích
-   đến, mổ ra xem từng mảnh, rồi nghe lại trọn câu để ráp lại. Chỉ mổ không
-   ráp thì học xong vẫn nói rời từng chữ. */
+   đến, nghe tách để thấy từng mảnh, rồi nghe lại trọn câu để ráp lại. Chỉ mổ
+   không ráp thì học xong vẫn nói rời từng chữ. */
 function docTachCau(c, xong) {
   const p = S.phatMauCau;
-  const ds = manhCau(c).filter(m => (m.chu || m) !== "");
-  const nghi = 260;
-  const doc1 = (i) => {
-    if (!p.dang) return;
-    if (i >= ds.length) {
+  const en = (c.en || "").trim();
+  const ten = S.dungAudioSan && banDoAudio?.cau?.[`${en}|tach`];
+  if (!ten) return doc(c.en, { xong });   // chưa có bản tách thì đọc thường
+
+  const nghiBien = 500;
+  const phien = ++phienTach;
+  const con = () => phien === phienTach && p.dang;
+
+  const phatTach = () => {
+    if (!con()) return;
+    const a = new Audio((S.cauHinh?.goc_audio || "audio/") + ten);
+    a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true;
+    a.playbackRate = S.tocDo;
+    dangPhat = a;
+
+    const ds = manhCau(c);
+    const moc = (mocTach && mocTach[en] && mocTach[en].m) || [];
+    const sang = [];
+    let hetGio = null, daXong = false;
+
+    const dungHan = () => {
+      if (daXong) return;
+      daXong = true;
+      clearTimeout(hetGio);
+      sang.forEach(clearTimeout);
       sangManh(null);
-      hen = setTimeout(() => p.dang && doc(c.en, { xong }), nghi + 140);
-      return;
-    }
-    const m = ds[i];
-    sangManh(m);
-    doc(m.chu ?? m, { xong: () => { if (p.dang) hen = setTimeout(() => doc1(i + 1), nghi); } });
+      if (!con()) return;
+      hen = setTimeout(() => con() && doc(c.en, { xong }), nghiBien);
+    };
+    a.onended = dungHan;
+    a.onerror = dungHan;
+    a.onloadedmetadata = () => {
+      /* Tô sáng theo mốc từng mảnh. Không có mốc thì bỏ hẳn phần này — audio
+         vẫn đúng, chỉ là chữ không sáng theo. */
+      if (moc.length === ds.length) {
+        ds.forEach((m, k) => sang.push(setTimeout(
+          () => con() && sangManh(m), moc[k] * 1000 / (S.tocDo || 1))));
+      }
+      a.play().catch(dungHan);
+      /* Chốt an toàn: onended có lúc không bắn (khoá máy, chuyển tab). Mất
+         một sự kiện là cả câu đứng, không sang câu kế. */
+      hetGio = setTimeout(dungHan,
+        ((a.duration || 12) * 1000 / (S.tocDo || 1)) + 1500);
+    };
+    a.load();
   };
-  doc(c.en, { xong: () => { if (p.dang) hen = setTimeout(() => doc1(0), nghi + 140); } });
+
+  doc(c.en, { xong: () => { if (con()) hen = setTimeout(phatTach, nghiBien); } });
 }
 
 function chayCau() {
@@ -812,6 +881,7 @@ function chayCau() {
 
 function nhayCau(d) {
   const p = S.phatMauCau;
+  phienTach++;                 // bỏ chuỗi đọc tách đang dở của câu cũ
   clearTimeout(hen); speechSynthesis.cancel();
   p.i = (p.i + d + p.danhSach.length) % p.danhSach.length;
   hienCauHienTai();
@@ -819,6 +889,7 @@ function nhayCau(d) {
 }
 const docLaiCau = () => doc(S.phatMauCau.danhSach[S.phatMauCau.i]?.en);
 const docTachBat = () => localStorage.getItem("docTach") === "1";
+if (localStorage.getItem("docTach") === "1") napMocTu();
 
 /* ================= TRÌNH ĐỌC (dùng chung cho Truyện & Hội thoại) =================
    Học theo cách HelloChinese trình bày bài đọc:
@@ -1162,6 +1233,7 @@ function dungPhat() {
 }
 
 const chuThichMau = () => `<div class="chu-thich-mau">
+  <span><i class="o-mau" style="background:#7fc8d8"></i>Trẻ em</span>
   ${[0, 1, 2, 3, 4].map(l => `<span><i class="o-mau" style="background:${["#4ec99a", "#5aa9f0", "#b39ae8", "#e0b64a", "#f07a6d"][l]}"></i>Level ${l}</span>`).join("")}
   <span><i class="o-mau" style="background:var(--chu-nhat)"></i>chưa có trong giáo trình</span></div>`;
 
@@ -1937,7 +2009,7 @@ async function veDeThi(soUnit) {
   }
   const de = await r.json();
   let h = `<div class="dong-ho" id="dong-ho">--:--</div>
-    <h2>Đề thi — Unit ${soUnit}</h2>
+    <h2>${esc(de.ten || `Đề thi — Unit ${soUnit}`)}</h2>
     <div class="mo">${de.cau_hoi?.length || 0} câu · ${de.phut || 20} phút</div>
     <button class="chinh" id="nut-bat-dau" onclick="batDauThi()">Bắt đầu</button>
     <div id="khu-de" style="margin-top:14px; display:none"></div>`;
@@ -2266,7 +2338,7 @@ function chonPhamViOnTap(tk) {
   const ds = [
     ["xong", `Unit đã hoàn thành (${tk.so_unit_xong ?? 0})`],
     ["mo", `Unit đang học (${tk.so_unit_mo ?? 0})`],
-    ["tat_ca", "Tất cả 50 unit"],
+    ["tat_ca", `Tất cả ${S.muc_luc.length} unit`],
   ];
   return `<label class="hang" style="gap:8px; margin-bottom:8px">
       <span class="mo">Phạm vi</span>
@@ -2572,7 +2644,9 @@ function veRail(keo = false) {
   const theoLevel = {};
   S.muc_luc.forEach(m => (theoLevel[m.level] ||= { ten: m.ten_level, ds: [] }).ds.push(m));
   let hLevel = "";
-  Object.entries(theoLevel).forEach(([so_lv, lv]) => {
+  Object.entries(theoLevel)
+    .sort((a, b) => (+a[0]) - (+b[0]))
+    .forEach(([so_lv, lv]) => {
     const id = "lv/" + so_lv, gap = S.railGap.has(id);
     const xong = lv.ds.filter(m => soMucXong(m.so) === SO_MUC).length;
     hLevel += `<div class="rail-nhom ${gap ? "thu-gon" : ""}">
@@ -2772,7 +2846,7 @@ function veMenu() {
 
   let h = `<div class="the-mo-dau">
       <h2>Học tiếng Anh — IELTS</h2>
-      <div class="mo">50 unit · level 0 → 4 · tương đương A0 → B2</div>
+      <div class="mo">${S.muc_luc.length} unit · Trẻ em → level 4 · tương đương A0 → B2</div>
       <div class="thanh-tong">
         <div class="so-lieu">
           <span><b>${pt}%</b> hoàn thành</span>
@@ -2788,14 +2862,16 @@ function veMenu() {
       ${tiep ? `<button class="chinh to" onclick="moMuc(${tiep.so},'${tiep.tab}')">
           ${tiep.tt === "dang" ? "Học tiếp" : "Bắt đầu"}: Unit ${tiep.so} — ${esc(tiep.ten)}
           <span class="nho-hon">${TEN_MUC[tiep.tab]}</span></button>`
-        : `<div class="the" style="margin-top:12px">Xong toàn bộ 50 unit. Giờ là lúc
-             quay lại tab Ôn tập và các đề thi.</div>`}
+        : `<div class="the" style="margin-top:12px">Xong toàn bộ ${S.muc_luc.length} unit.
+             Giờ là lúc quay lại tab Ôn tập và các đề thi.</div>`}
     </div>`;
 
   const theoLevel = {};
   S.muc_luc.forEach(m => (theoLevel[m.level] ||= { ten: m.ten_level, ds: [] }).ds.push(m));
   h += `<h3>Các cấp độ</h3><div class="luoi-level">`;
-  h += Object.values(theoLevel).map(lv => {
+  h += Object.entries(theoLevel)
+    .sort((a, b) => (+a[0]) - (+b[0]))
+    .map(([, lv]) => {
     const tongLv = lv.ds.length * SO_MUC;
     const xongLv = lv.ds.reduce((a, m) => a + soMucXong(m.so), 0);
     const p = Math.round(xongLv / tongLv * 100);
@@ -3581,7 +3657,10 @@ async function xoaHoSo() {
   const oTach = $("#cd-doc-tach");
   if (oTach) {
     oTach.checked = docTachBat();
-    oTach.onchange = e => localStorage.setItem("docTach", e.target.checked ? "1" : "0");
+    oTach.onchange = e => {
+      localStorage.setItem("docTach", e.target.checked ? "1" : "0");
+      if (e.target.checked) napMocTu();
+    };
   }
   $("#cd-toc-do").oninput = e => datTocDo(e.target.value);
   datTocDo(S.tocDo);   // đồng bộ nhãn + nút ngay khi mở app

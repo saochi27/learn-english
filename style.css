@@ -797,6 +797,7 @@ button.chinh.to .nho-hon{
 .danh-dau-cau.bat{color:var(--vang)}
 
 /* từ được tô theo cấp độ đã học — nhìn là biết từ nào còn lạ */
+.w.lv-1{border-bottom:2px solid #7fc8d8}
 .w.lv0{border-bottom:2px solid #4ec99a}
 .w.lv1{border-bottom:2px solid #5aa9f0}
 .w.lv2{border-bottom:2px solid #b39ae8}
