@@ -1097,19 +1097,27 @@ function khoiDoan(tienTo, cac) {
     ${CD.hienDich && dich ? `<div class="doan-dich">${esc(dich)}</div>` : ""}`;
 }
 
+/* Lấy câu để đọc từ một phần tử, dùng cho CẢ HAI kiểu hiển thị.
+   Kiểu "từng câu" bọc nội dung trong .than, kiểu "cả đoạn" đặt thẳng data-en
+   lên chính câu. Trước đây hai chỗ phát đều gọi el.querySelector(".than") rồi
+   đọc dataset của nó — ở kiểu cả đoạn thì đó là null, ném TypeError và tắt
+   tiếng hoàn toàn: bấm phát không kêu, chạm câu cũng không kêu. */
+const cauDeDoc = el => el?.querySelector(".than") || el;
+
 function docCau(id) {
   const el = document.getElementById(id);
   if (!el) return;
   $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
   el.classList.add("dang-doc");
-  const than = el.querySelector(".than");
+  const than = cauDeDoc(el);
+  if (!than?.dataset?.en) return;
   doc(than.dataset.en, { vai: than.dataset.vai });
 }
 
 function danhDauCau(id, nut) {
   nut.classList.toggle("bat");
   const kho = JSON.parse(localStorage.getItem("danhDauCau") || "[]");
-  const en = document.getElementById(id)?.querySelector(".than")?.dataset.en;
+  const en = cauDeDoc(document.getElementById(id))?.dataset?.en;
   if (nut.classList.contains("bat")) kho.push({ unit: S.unit, en });
   localStorage.setItem("danhDauCau", JSON.stringify(kho));
 }
@@ -1209,7 +1217,8 @@ function phatCaBai(tienTo) {
     xoaSangCau();
     el.classList.add("dang-doc");
     el.scrollIntoView({ block: "center", behavior: "smooth" });
-    const than = el.querySelector(".than");
+    const than = cauDeDoc(el);
+    if (!than?.dataset?.en) { i++; return setTimeout(tiep, 0); }
     doc(than.dataset.en, {
       vai: than.dataset.vai,
       xong: () => { i++; setTimeout(tiep, 450); },

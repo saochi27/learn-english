@@ -2,7 +2,7 @@
    Chiến lược: mạng trước, thất bại thì lấy bản đã lưu (network-first).
    Chọn cách này chứ không phải cache-first, để mỗi lần bạn cập nhật nội dung
    trên GitHub thì thiết bị nhận bản mới ngay khi có mạng. */
-const TEN = "hoc-tieng-anh-abfd543d81";
+const TEN = "hoc-tieng-anh-3f312e990c";
 self.addEventListener("install", e => self.skipWaiting());
 self.addEventListener("activate", e => e.waitUntil(
   caches.keys().then(ks => Promise.all(ks.filter(k => k !== TEN).map(k => caches.delete(k))))
