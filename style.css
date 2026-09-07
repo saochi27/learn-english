@@ -901,8 +901,6 @@ textarea{
 }
 .mic.dang-ghi{background:var(--sai); color:#fff; animation:nhay 1s infinite}
 @keyframes nhay{50%{opacity:.55}}
-.kq-giong{margin-top:8px}
-.kq-giong table{font-size:12.5px}
 
 ul{margin:6px 0; padding-left:22px}
 li{margin:5px 0; line-height:1.6}
@@ -953,6 +951,7 @@ li{margin:5px 0; line-height:1.6}
   .cau-hoi select{width:100%}
   button.chinh, button.phu{min-height:44px; padding:10px 16px}
   .loa{font-size:19px; padding:6px 9px; min-width:38px}
+  .cau-doc .loa.nho{font-size:15px; padding:4px 5px; min-width:28px}
 
   /* trình đọc */
   .san-khau{padding:14px 12px}
@@ -1421,3 +1420,24 @@ li{margin:5px 0; line-height:1.6}
 @media (max-width:640px){
   .dau-truyen .nhan{display:none}
 }
+
+/* ---------- dòng câu gọn hơn trên màn hẹp ----------
+   Bỏ nút micro (chấm phát âm cần Praat + Python, bản tĩnh không có backend)
+   nên dòng còn hai nút. Trên điện thoại mỗi nút chiếm khoảng 32px chiều
+   ngang — với câu 6-7 chữ thì phần chữ bị bóp còn hơn một nửa dòng và câu
+   nào cũng gãy làm ba. */
+.cau-doc .loa.nho{font-size:15px; padding:1px 4px; line-height:1}
+.cau-doc .danh-dau-cau{font-size:13px; padding:1px 3px; opacity:.5}
+.cau-doc .danh-dau-cau:hover,
+.cau-doc .danh-dau-cau.bat{opacity:1}
+@media (max-width:640px){
+  .cau-doc{padding:9px 6px; gap:6px}
+  .cau-doc .loa.nho{font-size:14px; padding:0 3px}
+  .cau-doc .danh-dau-cau{font-size:12px; padding:0 2px}
+}
+
+/* Câu đã cắm cờ, hiện ở Sổ lỗi */
+.cau-co{gap:9px; padding:8px 0; border-bottom:1px solid var(--vien)}
+.cau-co:last-child{border-bottom:0}
+.cau-co .en{font-weight:600; font-size:14px}
+.cau-co .mo{font-size:12px; color:var(--chu-nhat); margin-top:2px}

@@ -985,61 +985,6 @@ function tuCoMau(cau) {
   });
 }
 
-/* ================= GHI ÂM & CHẤM PHÁT ÂM =================
-   So nhịp và cao độ giọng bạn với giọng mẫu bằng Praat (chạy offline).
-   So bằng semitone tương đối, không so Hz tuyệt đối — hai giọng cao thấp khác
-   nhau thì so Hz là vô nghĩa. */
-let mayGhi = null, dangGhiId = null, cacKhuc = [];
-
-async function ghiAm(id, cau) {
-  if (dangGhiId === id) return dungGhiAm();
-  if (dangGhiId) dungGhiAm();
-
-  let stream;
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-  } catch (e) {
-    return alert("Không truy cập được micro. Cho phép quyền micro rồi thử lại.");
-  }
-
-  cacKhuc = [];
-  mayGhi = new MediaRecorder(stream);
-  mayGhi.ondataavailable = e => cacKhuc.push(e.data);
-  mayGhi.onstop = async () => {
-    stream.getTracks().forEach(t => t.stop());
-    const blob = new Blob(cacKhuc, { type: "audio/webm" });
-    const b64 = await new Promise(r => {
-      const fr = new FileReader(); fr.onloadend = () => r(fr.result); fr.readAsDataURL(blob);
-    });
-    veKetQuaGiong(id, "<span class='mo'>Đang phân tích…</span>");
-    const kq = await (await fetch("/api/cham_giong", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ audio: b64, cau, unit: S.unit }),
-    })).json();
-    veKetQuaGiong(id, kq.loi ? `<span class="sai">${esc(kq.loi)}</span>` : veBangGiong(kq));
-  };
-  mayGhi.start();
-  dangGhiId = id;
-  const nut = document.querySelector(`#${id} .mic`);
-  if (nut) { nut.textContent = "⏹"; nut.classList.add("dang-ghi"); }
-  veKetQuaGiong(id, `<span class="sai">● Đang ghi… bấm ⏹ để dừng</span>`);
-}
-
-function dungGhiAm() {
-  if (!mayGhi) return;
-  try { mayGhi.stop(); } catch (e) { }
-  const nut = document.querySelector(`#${dangGhiId} .mic`);
-  if (nut) { nut.textContent = "🎤"; nut.classList.remove("dang-ghi"); }
-  mayGhi = null; dangGhiId = null;
-}
-
-function veKetQuaGiong(id, html) {
-  const el = document.getElementById(id);
-  if (!el) return;
-  let o = el.querySelector(".kq-giong");
-  if (!o) { o = document.createElement("div"); o.className = "kq-giong"; el.querySelector(".than").appendChild(o); }
-  o.innerHTML = html;
-}
 
 const TEN_DO = {
   do_rong_cao_do_st: "Độ rộng cao độ (lên xuống giọng)",
@@ -1068,9 +1013,8 @@ function dongDoc(id, en, pa, dich, vai) {
   const hienEn = CD.cheDo !== "pa";
   const hienPa = CD.cheDo !== "en";
   return `<div class="cau-doc" id="${id}">
-      <button class="loa" onclick="docCau('${id}')" title="Nghe câu này">🔊</button>
-      <button class="loa mic" onclick="ghiAm('${id}',${JSON.stringify(en).replace(/"/g, "&quot;")})"
-        title="Ghi âm rồi so với giọng mẫu">🎤</button>
+      <button class="loa nho" onclick="docCau('${id}')" title="Nghe câu này"
+        aria-label="Nghe câu này">\u25b8</button>
       <div class="than" style="font-size:${CD.coChu}px" data-en="${esc(en)}" data-vai="${esc(vai || '')}">
         ${vai ? `<span class="vai">${esc(vai)}:</span> ` : ""}
         ${hienEn ? `<span class="cau-anh" style="font-size:inherit">${tuCoMau(en)}</span>` : ""}
@@ -1078,7 +1022,10 @@ function dongDoc(id, en, pa, dich, vai) {
         ${hienPa && CD.docTho && pa?.tho_noi ? `<div class="tho">${esc(pa.tho_noi)}</div>` : ""}
         ${CD.hienDich && dich ? `<div class="dich">${esc(dich)}</div>` : ""}
       </div>
-      <button class="danh-dau-cau" onclick="danhDauCau('${id}',this)" title="Đánh dấu">🔖</button>
+      <button class="danh-dau-cau ${daCamCo(en) ? "bat" : ""}"
+        onclick="danhDauCau('${id}',this)"
+        title="Đánh dấu câu này để xem lại ở Sổ lỗi"
+        aria-label="Đánh dấu để xem lại">\u2691</button>
     </div>`;
 }
 
@@ -1114,12 +1061,49 @@ function docCau(id) {
   doc(than.dataset.en, { vai: than.dataset.vai });
 }
 
+/* Cờ đánh dấu câu — để dành xem lại ở Sổ lỗi.
+   Trước đây bấm cờ chỉ ghi {unit, en} vào localStorage rồi thôi: không màn
+   nào đọc ra, bấm bao nhiêu cũng không thấy lại được ở đâu. Nay ghi thêm chỗ
+   câu đó nằm (mục nào, tên bài) để quay lại đúng chỗ, và bấm lần nữa là gỡ. */
+function khoCamCo() {
+  try {
+    const d = JSON.parse(localStorage.getItem("danhDauCau") || "[]");
+    return Array.isArray(d) ? d.filter(x => x && x.en) : [];
+  } catch (e) { return []; }
+}
+const daCamCo = en => khoCamCo().some(x => x.en === en);
+
 function danhDauCau(id, nut) {
-  nut.classList.toggle("bat");
-  const kho = JSON.parse(localStorage.getItem("danhDauCau") || "[]");
   const en = cauDeDoc(document.getElementById(id))?.dataset?.en;
-  if (nut.classList.contains("bat")) kho.push({ unit: S.unit, en });
+  if (!en) return;
+  let kho = khoCamCo();
+  const co = kho.some(x => x.en === en);
+  if (co) {
+    kho = kho.filter(x => x.en !== en);
+  } else {
+    const t = truyenDangDoc;
+    kho.push({
+      unit: S.unit, en,
+      tab: S.tab,
+      idx: S.tab === "mot-truyen" && t ? t.idx : null,
+      ten: S.tab === "mot-truyen" && t
+        ? (dsTruyenCuaUnit(t.unit)[t.idx] || {}).ten || "" : "",
+      luc: Date.now(),
+    });
+  }
+  nut.classList.toggle("bat", !co);
   localStorage.setItem("danhDauCau", JSON.stringify(kho));
+}
+
+function xoaCamCo(en) {
+  localStorage.setItem("danhDauCau",
+    JSON.stringify(khoCamCo().filter(x => x.en !== en)));
+  veSoLoi();
+}
+
+function moCauCamCo(x) {
+  if (x.tab === "mot-truyen" && x.idx != null) return moMotTruyen(x.unit, x.idx);
+  return moUnit(x.unit);
 }
 
 /* ================= giữ màn hình sáng khi đang phát =================
@@ -3017,7 +3001,25 @@ function ketThucOnTap() {
 async function veSoLoi() {
   const d = await (await fetch("/api/tien_do")).json();
   const l = d.loi;
+  /* Câu tự đánh dấu đứng ĐẦU Sổ lỗi: đây là thứ người học chủ động cắm cờ
+     vì thấy khó, khác với lỗi máy tự ghi khi chấm bài. Chủ động thì đáng xem
+     lại trước. */
+  const co = khoCamCo().slice().sort((a, b) => (b.luc || 0) - (a.luc || 0));
   $("#so-loi").innerHTML = `<h2>Sổ lỗi</h2>
+    <h3>Câu bạn đã cắm cờ ${co.length ? `(${co.length})` : ""}</h3>
+    <div class="the">${co.length
+      ? co.map(x => `<div class="cau-co hang" style="align-items:flex-start">
+          <button class="loa" onclick="doc(${JSON.stringify(x.en).replace(/"/g, "&quot;")})"
+            title="Nghe">🔊</button>
+          <div style="flex:1; min-width:0">
+            <div class="en">${esc(x.en)}</div>
+            <div class="mo">Unit ${x.unit}${x.ten ? " · " + esc(x.ten) : ""}</div>
+          </div>
+          <button class="phu" onclick='moCauCamCo(${JSON.stringify(x)})'>Mở</button>
+          <button class="phu" onclick='xoaCamCo(${JSON.stringify(x.en)})'>Gỡ cờ</button>
+        </div>`).join("")
+      : '<span class="mo">Chưa cắm cờ câu nào. Bấm ⚑ ở cuối một câu khi đọc để '
+        + 'để dành xem lại.</span>'}</div>
     <div class="the hang" style="align-items:center">
       <b style="margin-right:auto">Tổng số lỗi đã ghi: ${l.tong_loi}</b>
       ${l.tong_loi ? `<button class="phu" onclick="xoaLoi({tat_ca:true})">Xoá tất cả</button>` : ""}
