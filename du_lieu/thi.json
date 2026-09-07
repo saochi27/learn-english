@@ -39,7 +39,15 @@
      "vi": "Anh ấy sống gần đây phải không?"
     }
    ],
-   "co_truyen": true
+   "co_truyen": true,
+   "truc": [
+    {
+     "loai": "lap",
+     "tu": -9,
+     "den": 9,
+     "nhan": "lặp đi lặp lại, lúc nào cũng đúng"
+    }
+   ]
   },
   {
    "ma": "hien_tai_tiep",
@@ -80,7 +88,15 @@
      "vi": "Bạn đang làm gì vậy?"
     }
    ],
-   "co_truyen": false
+   "co_truyen": false,
+   "truc": [
+    {
+     "loai": "khoang",
+     "tu": -2.5,
+     "den": 2.5,
+     "nhan": "đang diễn ra quanh lúc nói"
+    }
+   ]
   },
   {
    "ma": "qua_khu_don",
@@ -118,7 +134,14 @@
      "vi": "Bạn làm xong báo cáo chưa?"
     }
    ],
-   "co_truyen": true
+   "co_truyen": true,
+   "truc": [
+    {
+     "loai": "diem",
+     "tai": -6,
+     "nhan": "xong hẳn, có mốc rõ"
+    }
+   ]
   },
   {
    "ma": "qua_khu_tiep",
@@ -155,7 +178,21 @@
      "vi": "9 giờ tối qua bạn đang làm gì?"
     }
    ],
-   "co_truyen": false
+   "co_truyen": false,
+   "truc": [
+    {
+     "loai": "khoang",
+     "tu": -8,
+     "den": -2,
+     "nhan": "việc dài làm nền"
+    },
+    {
+     "loai": "diem",
+     "tai": -5,
+     "nhan": "việc ngắn chen vào",
+     "phu": true
+    }
+   ]
   },
   {
    "ma": "hien_tai_hoan_thanh",
@@ -196,7 +233,15 @@
      "vi": "Bạn từng ăn phở chưa?"
     }
    ],
-   "co_truyen": true
+   "co_truyen": true,
+   "truc": [
+    {
+     "loai": "khoang",
+     "tu": -8,
+     "den": 0,
+     "nhan": "bắt đầu trong quá khứ, còn dính tới bây giờ"
+    }
+   ]
   },
   {
    "ma": "qua_khu_hoan_thanh",
@@ -234,7 +279,20 @@
      "vi": "Trước hôm đó bạn từng gặp cô ấy chưa?"
     }
    ],
-   "co_truyen": false
+   "co_truyen": false,
+   "truc": [
+    {
+     "loai": "diem",
+     "tai": -8,
+     "nhan": "việc xảy ra TRƯỚC"
+    },
+    {
+     "loai": "diem",
+     "tai": -3,
+     "nhan": "mốc quá khứ",
+     "phu": true
+    }
+   ]
   },
   {
    "ma": "tuong_lai_don",
@@ -272,7 +330,14 @@
      "vi": "Tối nay bạn có ở nhà không?"
     }
    ],
-   "co_truyen": true
+   "co_truyen": true,
+   "truc": [
+    {
+     "loai": "diem",
+     "tai": 6,
+     "nhan": "quyết ngay lúc nói"
+    }
+   ]
   },
   {
    "ma": "tuong_lai_gan",
@@ -308,7 +373,25 @@
      "vi": "Bạn định nói với cô ấy à?"
     }
    ],
-   "co_truyen": false
+   "co_truyen": false,
+   "truc": [
+    {
+     "loai": "diem",
+     "tai": 0,
+     "nhan": "đã tính từ trước",
+     "phu": true
+    },
+    {
+     "loai": "diem",
+     "tai": 5,
+     "nhan": "việc sẽ xảy ra"
+    },
+    {
+     "loai": "noi",
+     "tu": 0,
+     "den": 5
+    }
+   ]
   }
  ],
  "cot": [
@@ -10485,6 +10568,330 @@
      "tl": "She will drink a cup of cold tea and will feel at peace.",
      "htht": "She has drunk a cup of cold tea and has felt at peace.",
      "vi": "Cô uống một tách trà nguội và cảm thấy bình yên."
+    }
+   ]
+  }
+ ],
+ "so_sanh": [
+  {
+   "ma": "qkd_htht",
+   "ten": "Quá khứ đơn ↔ Hiện tại hoàn thành",
+   "muc": "nang",
+   "cau_hoi": "Câu có MỐC THỜI GIAN ĐÃ ĐÓNG không?",
+   "vi_sao": "Đây là cặp nhầm nhiều nhất, và lỗi không nằm ở ngữ pháp mà nằm ở tiếng Việt: một chữ \"đã\" phủ lên cả hai thì. \"Tôi đã xem phim đó\" và \"Tôi đã xem phim đó tuần trước\" chỉ khác nhau ở cụm chỉ thời gian, nhưng sang tiếng Anh là hai thì khác hẳn.",
+   "cot": [
+    {
+     "thi": "Quá khứ đơn",
+     "khi": "Có mốc đã đóng: yesterday, last week, in 2019, two days ago",
+     "cau": "I saw that film last week.",
+     "vi": "Tôi xem phim đó tuần trước.",
+     "giai": "\"last week\" đã khép lại — không còn dính gì tới hiện tại."
+    },
+    {
+     "thi": "Hiện tại hoàn thành",
+     "khi": "Không nói lúc nào, hoặc còn kéo dài: ever, never, already, since, for",
+     "cau": "I have seen that film.",
+     "vi": "Tôi từng xem phim đó rồi.",
+     "giai": "Điều quan trọng là BÂY GIỜ tôi đã biết phim đó, chứ không phải xem lúc nào."
+    }
+   ],
+   "bay": "I have seen that film **last week**. ✗ — có mốc đã đóng thì KHÔNG bao giờ dùng hiện tại hoàn thành.",
+   "meo": "Thấy yesterday / last / ago / in + năm → quá khứ đơn, khỏi nghĩ thêm.",
+   "bai_tap": [
+    {
+     "de": "I ____ (visit) Da Nang last summer.",
+     "dap_an": "visited",
+     "chon": [
+      "visited",
+      "have visited"
+     ]
+    },
+    {
+     "de": "I ____ (be) to Da Nang three times.",
+     "dap_an": "have been",
+     "chon": [
+      "was",
+      "have been"
+     ]
+    },
+    {
+     "de": "She ____ (finish) her homework already.",
+     "dap_an": "has finished",
+     "chon": [
+      "finished",
+      "has finished"
+     ]
+    },
+    {
+     "de": "We ____ (meet) in 2019.",
+     "dap_an": "met",
+     "chon": [
+      "met",
+      "have met"
+     ]
+    }
+   ]
+  },
+  {
+   "ma": "htd_htt",
+   "ten": "Hiện tại đơn ↔ Hiện tại tiếp diễn",
+   "muc": "vua",
+   "cau_hoi": "Việc này đúng NÓI CHUNG, hay đang xảy ra LÚC NÀY?",
+   "vi_sao": "Tiếng Việt dùng \"đang\" cho việc đang diễn ra, nhưng \"đang\" cũng hay bị lược đi. Ngược lại, nhiều người học lại thêm \"đang\" vào chỗ không cần, thành ra dùng tiếp diễn cho cả thói quen.",
+   "cot": [
+    {
+     "thi": "Hiện tại đơn",
+     "khi": "Thói quen, sự thật, lịch cố định",
+     "cau": "She works at a bank.",
+     "vi": "Cô ấy làm việc ở ngân hàng.",
+     "giai": "Nghề của cô ấy — đúng cả năm nay, không chỉ hôm nay."
+    },
+    {
+     "thi": "Hiện tại tiếp diễn",
+     "khi": "Đang xảy ra lúc nói, hoặc giai đoạn tạm thời",
+     "cau": "She is working from home this week.",
+     "vi": "Tuần này cô ấy làm ở nhà.",
+     "giai": "Chỉ tuần này thôi — tạm thời, không phải lệ thường."
+    }
+   ],
+   "bay": "Động từ TRẠNG THÁI không dùng tiếp diễn: like, love, want, need, know, understand, believe, remember, have (sở hữu).\nI am liking this song. ✗ → I like this song. ✓",
+   "meo": "Thử thêm \"ngay lúc này\" vào câu. Nghe vô lý thì dùng hiện tại đơn.",
+   "bai_tap": [
+    {
+     "de": "Listen! The baby ____ (cry).",
+     "dap_an": "is crying",
+     "chon": [
+      "cries",
+      "is crying"
+     ]
+    },
+    {
+     "de": "My father ____ (drink) coffee every morning.",
+     "dap_an": "drinks",
+     "chon": [
+      "drinks",
+      "is drinking"
+     ]
+    },
+    {
+     "de": "I ____ (know) the answer.",
+     "dap_an": "know",
+     "chon": [
+      "know",
+      "am knowing"
+     ]
+    },
+    {
+     "de": "We ____ (stay) with my aunt this month.",
+     "dap_an": "are staying",
+     "chon": [
+      "stay",
+      "are staying"
+     ]
+    }
+   ]
+  },
+  {
+   "ma": "qkd_qkt",
+   "ten": "Quá khứ đơn ↔ Quá khứ tiếp diễn",
+   "muc": "vua",
+   "cau_hoi": "Việc nào DÀI làm nền, việc nào NGẮN chen vào?",
+   "vi_sao": "Hai thì này hay bị đảo vai. Đảo rồi thì câu vẫn đúng ngữ pháp nhưng kể ngược câu chuyện — người nghe hiểu sai hẳn việc nào xảy ra trước.",
+   "cot": [
+    {
+     "thi": "Quá khứ tiếp diễn",
+     "khi": "Việc DÀI đang diễn ra thì bị cắt ngang",
+     "cau": "I was cooking dinner.",
+     "vi": "Tôi đang nấu bữa tối.",
+     "giai": "Một đoạn thời gian, chưa xong."
+    },
+    {
+     "thi": "Quá khứ đơn",
+     "khi": "Việc NGẮN chen vào giữa",
+     "cau": "…when the phone rang.",
+     "vi": "…thì chuông điện thoại reo.",
+     "giai": "Một khoảnh khắc, cắt ngang việc đang làm."
+    }
+   ],
+   "bay": "I cooked dinner when the phone **was ringing**. ✗ — câu này thành ra cú điện thoại kéo dài còn bữa tối nấu trong một khoảnh khắc.",
+   "meo": "Vẽ một đường thẳng cho việc dài, một dấu X cắt ngang cho việc ngắn. Đường thẳng là V-ing, dấu X là V2.",
+   "bai_tap": [
+    {
+     "de": "She ____ (watch) TV when I came home.",
+     "dap_an": "was watching",
+     "chon": [
+      "watched",
+      "was watching"
+     ]
+    },
+    {
+     "de": "While we ____ (walk), it started to rain.",
+     "dap_an": "were walking",
+     "chon": [
+      "walked",
+      "were walking"
+     ]
+    },
+    {
+     "de": "The lights ____ (go) out during the film.",
+     "dap_an": "went",
+     "chon": [
+      "went",
+      "were going"
+     ]
+    }
+   ]
+  },
+  {
+   "ma": "htht_qkht",
+   "ten": "Hiện tại hoàn thành ↔ Quá khứ hoàn thành",
+   "muc": "vua",
+   "cau_hoi": "Mốc để so là BÂY GIỜ hay một MỐC QUÁ KHỨ?",
+   "vi_sao": "Cả hai đều là \"đã xong trước một mốc\". Khác nhau ở chỗ mốc đó nằm đâu: hiện tại hoàn thành so với bây giờ, quá khứ hoàn thành so với một thời điểm trong quá khứ.",
+   "cot": [
+    {
+     "thi": "Hiện tại hoàn thành",
+     "khi": "So với BÂY GIỜ",
+     "cau": "I have finished my report.",
+     "vi": "Tôi làm xong báo cáo rồi.",
+     "giai": "Xong trước lúc này — bây giờ đã có báo cáo."
+    },
+    {
+     "thi": "Quá khứ hoàn thành",
+     "khi": "So với một mốc quá khứ khác",
+     "cau": "I had finished my report before she arrived.",
+     "vi": "Tôi đã làm xong báo cáo trước khi cô ấy đến.",
+     "giai": "Xong trước LÚC CÔ ẤY ĐẾN, chứ không phải trước bây giờ."
+    }
+   ],
+   "bay": "Đừng dùng quá khứ hoàn thành khi chỉ có MỘT mốc quá khứ. Kể chuyện đúng thứ tự thì quá khứ đơn là đủ: I woke up, ate breakfast and went to work.",
+   "meo": "Đếm số mốc quá khứ trong câu. Chỉ một mốc thì không có gì để xảy ra trước — dùng had là thừa.",
+   "bai_tap": [
+    {
+     "de": "When I got to the station, the train ____ (leave).",
+     "dap_an": "had left",
+     "chon": [
+      "left",
+      "had left"
+     ]
+    },
+    {
+     "de": "I ____ (not/see) him since last year.",
+     "dap_an": "have not seen",
+     "chon": [
+      "did not see",
+      "have not seen"
+     ]
+    },
+    {
+     "de": "She told me she ____ (lose) her keys the day before.",
+     "dap_an": "had lost",
+     "chon": [
+      "lost",
+      "had lost"
+     ]
+    }
+   ]
+  },
+  {
+   "ma": "will_going",
+   "ten": "will ↔ be going to",
+   "muc": "vua",
+   "cau_hoi": "Bạn nghĩ ra chuyện này LÚC NÀO?",
+   "vi_sao": "Tiếng Việt chỉ có một chữ \"sẽ\" cho cả hai, nên hai cấu trúc bị dùng lẫn lộn. Người bản ngữ phân biệt rất rõ, và dùng sai thì câu nghe hơi lạ chứ không sai ngữ pháp — kiểu lỗi khó tự phát hiện nhất.",
+   "cot": [
+    {
+     "thi": "will",
+     "khi": "Quyết định NGAY lúc nói",
+     "cau": "The phone is ringing. I will get it.",
+     "vi": "Chuông reo kìa. Để tôi nghe cho.",
+     "giai": "Vừa nghe chuông mới quyết định — không tính trước."
+    },
+    {
+     "thi": "be going to",
+     "khi": "Đã ĐỊNH từ trước",
+     "cau": "I am going to visit my grandmother this weekend.",
+     "vi": "Cuối tuần này tôi định về thăm bà.",
+     "giai": "Đã lên kế hoạch từ trước lúc nói."
+    }
+   ],
+   "bay": "Bạn hỏi \"cuối tuần làm gì?\" mà trả lời \"I will visit my grandmother\" thì nghe như vừa nghĩ ra lúc đó. Đã định trước phải là **I am going to visit**.",
+   "meo": "Có bằng chứng trước mắt cũng dùng going to: Look at those clouds — it **is going to** rain.",
+   "bai_tap": [
+    {
+     "de": "A: We have no bread. B: Really? I ____ buy some.",
+     "dap_an": "will",
+     "chon": [
+      "will",
+      "am going to"
+     ]
+    },
+    {
+     "de": "I have my ticket. I ____ fly to Hanoi tomorrow.",
+     "dap_an": "am going to",
+     "chon": [
+      "will",
+      "am going to"
+     ]
+    },
+    {
+     "de": "Look at the sky! It ____ rain.",
+     "dap_an": "is going to",
+     "chon": [
+      "will",
+      "is going to"
+     ]
+    }
+   ]
+  },
+  {
+   "ma": "menh_de_tg",
+   "ten": "Mệnh đề thời gian: hiện tại ↔ will",
+   "muc": "nang",
+   "cau_hoi": "Vế này có when / before / after / as soon as không?",
+   "vi_sao": "Lỗi này gần như ai cũng mắc vì nó ngược với trực giác: cả câu nói về tương lai, nhưng vế chỉ thời gian lại phải dùng HIỆN TẠI.",
+   "cot": [
+    {
+     "thi": "Vế thời gian → hiện tại",
+     "khi": "Sau when, before, after, as soon as, until",
+     "cau": "When I arrive,",
+     "vi": "Khi tôi tới nơi,",
+     "giai": "Dù việc này chưa xảy ra, vẫn dùng hiện tại đơn."
+    },
+    {
+     "thi": "Vế chính → will",
+     "khi": "Vế còn lại của câu",
+     "cau": "…I will call you.",
+     "vi": "…tôi sẽ gọi cho bạn.",
+     "giai": "Chỉ vế này mới mang will."
+    }
+   ],
+   "bay": "When I **will arrive**, I will call you. ✗ — tìm thấy will nằm cùng vế với when là gần như chắc chắn sai.",
+   "meo": "Quét câu tìm when / before / after / as soon as / until. Vế nào chứa chúng thì bỏ will đi.",
+   "bai_tap": [
+    {
+     "de": "I will text you as soon as I ____ (get) home.",
+     "dap_an": "get",
+     "chon": [
+      "get",
+      "will get"
+     ]
+    },
+    {
+     "de": "We ____ (start) dinner when everyone arrives.",
+     "dap_an": "will start",
+     "chon": [
+      "start",
+      "will start"
+     ]
+    },
+    {
+     "de": "Wait here until the rain ____ (stop).",
+     "dap_an": "stops",
+     "chon": [
+      "stops",
+      "will stop"
+     ]
     }
    ]
   }

@@ -1769,7 +1769,8 @@ function doiTheThi(v) {
 
 const thanhTheThi = () => `
   <div class="hop-tab hop-tab-vien">
-    ${[["bang", "Bảng thì"], ["so-cau", "So câu"], ["luyen", "Luyện đổi thì"]]
+    ${[["bang", "Bảng thì"], ["de-nham", "Dễ nhầm"],
+       ["so-cau", "So câu"], ["luyen", "Luyện đổi thì"]]
       .map(([v, t]) => `<button class="${theThi === v ? "chon" : ""}"
         onclick="doiTheThi('${v}')">${t}</button>`).join("")}
   </div>`;
@@ -1804,6 +1805,7 @@ function veBangThi() {
       const daXong = thiDaHoc.has(t.ma);
       macDinhKhoi(`thi/${t.ma}`, true);
       h += khoi(`thi/${t.ma}`, t.ten, `
+        ${veTruc(t.truc)}
         <div class="cong-thuc">
           <div><span class="nhan-ct">Khẳng định</span><b>${esc(t.cong_thuc)}</b></div>
           <div><span class="nhan-ct">Phủ định</span><b>${esc(t.phu_dinh)}</b></div>
@@ -1831,6 +1833,122 @@ function veBangThi() {
     });
   });
   return h;
+}
+
+/* ---------- trục thời gian ----------
+   "Thì" trong tiếng Việt chính là "thời gian", mà thời gian thì vẽ ra được.
+   Mỗi thẻ có một trục từ quá khứ xa qua BÂY GIỜ tới tương lai xa, đánh dấu
+   đúng vùng của thì đó. Nhìn hình một giây là biết thì này nằm ở đâu — nhanh
+   hơn đọc ba dòng định nghĩa, và đúng với cách người ta thật sự nghĩ về thời
+   gian: một đường thẳng có mốc "bây giờ" ở giữa. */
+const X_TRUC = v => 160 + v * 13.6;
+
+function veTruc(ds) {
+  if (!ds || !ds.length) return "";
+  const nhan = [];
+  let h = `<svg class="truc-tg" viewBox="0 0 320 78" role="img"
+      aria-label="Trục thời gian: vị trí của thì này so với hiện tại">
+    <line x1="12" y1="52" x2="308" y2="52" class="tr-truc"/>
+    <polygon points="308,52 300,49 300,55" class="tr-mui"/>
+    <line x1="${X_TRUC(0)}" y1="20" x2="${X_TRUC(0)}" y2="66" class="tr-nay"/>
+    <text x="${X_TRUC(0)}" y="76" class="tr-chu-nay">BÂY GIỜ</text>
+    <text x="14" y="76" class="tr-chu-phu">quá khứ</text>
+    <text x="306" y="76" class="tr-chu-phu tr-phai">tương lai</text>`;
+
+  ds.forEach(m => {
+    const mo = m.phu ? " tr-phu" : "";
+    if (m.loai === "diem") {
+      h += `<circle cx="${X_TRUC(m.tai)}" cy="52" r="6" class="tr-diem${mo}"/>`;
+      if (m.nhan) nhan.push([m.tai, m.nhan, m.phu]);
+    } else if (m.loai === "khoang") {
+      const x = X_TRUC(m.tu), w = X_TRUC(m.den) - x;
+      h += `<rect x="${x}" y="46" width="${w}" height="12" rx="6"
+              class="tr-khoang${mo}"/>`;
+      if (m.nhan) nhan.push([(m.tu + m.den) / 2, m.nhan, m.phu]);
+    } else if (m.loai === "lap") {
+      for (let v = m.tu; v <= m.den; v += 3)
+        h += `<circle cx="${X_TRUC(v)}" cy="52" r="4" class="tr-diem${mo}"/>`;
+      if (m.nhan) nhan.push([0, m.nhan, m.phu]);
+    } else if (m.loai === "noi") {
+      h += `<path d="M ${X_TRUC(m.tu)} 40 Q ${X_TRUC((m.tu + m.den) / 2)} 24
+              ${X_TRUC(m.den)} 40" class="tr-noi"/>`;
+    }
+  });
+  h += `</svg>`;
+
+  /* Chú thích để DƯỚI hình, không nhét vào trong SVG: chữ trong SVG không tự
+     xuống dòng, nhãn dài một chút là tràn ra ngoài khung. */
+  h += `<div class="chu-truc">${nhan.map(([v, t, phu]) =>
+    `<span class="${phu ? "phu" : ""}">${v < -0.5 ? "◀" : v > 0.5 ? "▶" : "●"}
+       ${esc(t)}</span>`).join("")}</div>`;
+  return `<div class="hop-truc">${h}</div>`;
+}
+
+/* ---------- thẻ: các cặp thì dễ nhầm ----------
+   Học riêng từng thì thì thì nào cũng có vẻ rõ ràng; chỉ khi hai thì đứng
+   cạnh nhau mới lộ ra chỗ thật sự khó. Mỗi cặp mở đầu bằng MỘT câu hỏi tự
+   phân biệt — lúc đang viết thì cần một câu hỏi trả lời được trong hai giây,
+   không phải một đoạn định nghĩa. */
+function veDeNham() {
+  const ds = duLieuThi.so_sanh || [];
+  if (!ds.length) return `<div class="trong">Chưa có dữ liệu.</div>`;
+  let h = `<div class="the">
+      <h3 style="margin-top:0">Hai thì đứng cạnh nhau mới thấy chỗ khó</h3>
+      <div>Mỗi cặp dưới đây bắt đầu bằng một câu hỏi. Trả lời được câu hỏi đó
+        là chọn đúng thì — không cần nhớ định nghĩa.</div>
+    </div>`;
+
+  ds.forEach((c, i) => {
+    macDinhKhoi(`nham/${c.ma}`, i > 0);
+    h += khoi(`nham/${c.ma}`, c.ten, `
+      <div class="cau-phan-biet">
+        <span class="nhan-hoi">Tự hỏi</span>${esc(c.cau_hoi)}
+      </div>
+      <div class="mo" style="margin:10px 0">${esc(c.vi_sao)}</div>
+      <div class="luoi-so-thi">
+        ${c.cot.map(x => `<div class="o-so-thi">
+            <div class="ten-thi">${esc(x.thi)}</div>
+            <div class="khi">${esc(x.khi)}</div>
+            <div class="hang"><span class="en">${esc(x.cau)}</span>${nutLoa(x.cau)}</div>
+            <div class="vi">${esc(x.vi)}</div>
+            <div class="giai">${esc(x.giai)}</div>
+          </div>`).join("")}
+      </div>
+      <h4>Bẫy</h4>
+      <div class="canh-bao">${mdSangHtml(c.bay)}</div>
+      <h4>Mẹo phân biệt</h4>
+      <div class="tu-kiem">${mdSangHtml(c.meo)}</div>
+      <h4>Thử ngay</h4>
+      <div class="ds-thu-nham">${c.bai_tap.map((b, k) => `
+        <div class="mot-thu" id="nham-${c.ma}-${k}">
+          <div class="de">${esc(b.de)}</div>
+          <div class="hang" style="gap:6px; flex-wrap:wrap">
+            ${b.chon.map(x => `<button class="nut-chon" data-dap="${esc(x)}"
+                onclick="chonNham('${c.ma}',${k},this)">${esc(x)}</button>`).join("")}
+          </div>
+          <div class="kq" id="kq-nham-${c.ma}-${k}"></div>
+        </div>`).join("")}</div>`,
+      `${c.bai_tap.length} câu`, c.muc === "nang" ? null : undefined);
+  });
+  return h;
+}
+
+function chonNham(ma, k, nut) {
+  const c = (duLieuThi.so_sanh || []).find(x => x.ma === ma);
+  const b = c?.bai_tap?.[k];
+  if (!b) return;
+  const hop = nut.closest(".mot-thu");
+  if (hop.classList.contains("da-lam")) return;
+  hop.classList.add("da-lam");
+  const dung = nut.dataset.dap === b.dap_an;
+  hop.querySelectorAll(".nut-chon").forEach(x => {
+    x.disabled = true;
+    if (x.dataset.dap === b.dap_an) x.classList.add("dung");
+    else if (x === nut) x.classList.add("sai");
+  });
+  $(`#kq-nham-${ma}-${k}`).innerHTML = dung
+    ? `<span class="dung">✓ Đúng.</span>`
+    : `<span class="sai">✗ Đáp án: <b>${esc(b.dap_an)}</b></span>`;
 }
 
 /* ---------- thẻ 2: so cùng một câu ở bốn thì ----------
@@ -1971,6 +2089,7 @@ function veThi() {
         nhiều thì để nghe ra khác biệt chứ không phải học thuộc.</div>
     </div>` + thanhTheThi()
     + (theThi === "bang" ? veBangThi()
+      : theThi === "de-nham" ? veDeNham()
       : theThi === "so-cau" ? veSoCau() : veLuyen());
 }
 
@@ -2634,7 +2753,7 @@ function veRail(keo = false) {
 
   /* --- 1. Tổng quan --- */
   let h = nhomRail("nhom/tong-quan", "Tổng quan",
-    don("\u25a4", "Tổng quan", "tong-quan", "veMenu()") +
+    don("\u2302", "Tổng quan", "tong-quan", "veMenu()") +
     don("\u0250", "Phát âm", "ipa", "moIPA()") +
     don("\u23f1", "Thì trong tiếng Anh", "thi", "moThi()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +

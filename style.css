@@ -1206,3 +1206,73 @@ li{margin:5px 0; line-height:1.6}
   .nut-chon.dung{background:#16302a}
   .nut-chon.sai{background:#331d1a}
 }
+
+/* ---------- nút nhà trên thanh đầu ---------- */
+#nut-nha{
+  flex:0 0 auto; width:34px; height:34px; padding:0; border-radius:9px;
+  font-size:18px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+}
+.thuong-hieu{cursor:pointer}
+.thuong-hieu:hover b{color:var(--chinh)}
+
+/* ---------- trục thời gian của mỗi thì ---------- */
+.hop-truc{
+  margin:2px 0 14px; padding:10px 12px 6px;
+  background:var(--the); border:1px solid var(--vien); border-radius:10px;
+}
+.truc-tg{display:block; width:100%; height:auto; max-height:96px}
+.tr-truc{stroke:var(--vien); stroke-width:2}
+.tr-mui{fill:var(--vien)}
+/* Vạch BÂY GIỜ là mốc để so mọi thứ khác, nên vẽ nét đứt và tô màu chính —
+   nhìn vào hình phải thấy nó trước, rồi mới thấy thì nằm bên nào. */
+.tr-nay{stroke:var(--chinh); stroke-width:2; stroke-dasharray:4 4}
+.tr-chu-nay{
+  fill:var(--chinh); font-size:10.5px; font-weight:700;
+  text-anchor:middle; letter-spacing:.04em;
+}
+.tr-chu-phu{fill:var(--chu-nhat); font-size:10px}
+.tr-chu-phu.tr-phai{text-anchor:end}
+.tr-diem{fill:var(--chinh)}
+.tr-khoang{fill:var(--chinh); opacity:.75}
+.tr-noi{fill:none; stroke:var(--chinh); stroke-width:1.5; stroke-dasharray:3 3}
+/* Mốc phụ (việc chen vào, mốc để so) vẽ mờ hơn để không tranh chỗ với mốc
+   chính của thì đang học. */
+.tr-diem.tr-phu, .tr-khoang.tr-phu{fill:var(--chu-nhat); opacity:.45}
+.chu-truc{
+  display:flex; flex-wrap:wrap; gap:4px 14px; margin-top:4px;
+  font-size:12px; color:var(--chu-nhat);
+}
+.chu-truc .phu{opacity:.65}
+
+/* ---------- cặp thì dễ nhầm ---------- */
+.cau-phan-biet{
+  display:flex; gap:9px; align-items:baseline; flex-wrap:wrap;
+  padding:11px 13px; border-radius:9px; margin-top:4px;
+  background:var(--chinh-nhat); color:var(--chinh);
+  font-weight:600; font-size:14.5px;
+}
+.nhan-hoi{
+  flex:0 0 auto; font-size:11px; font-weight:700; letter-spacing:.05em;
+  text-transform:uppercase; opacity:.75;
+}
+/* Hai thì nằm CẠNH NHAU trên màn rộng — đặt trên dưới thì mắt phải nhớ vế
+   trên trong lúc đọc vế dưới, mất hẳn tác dụng của việc so sánh. */
+.luoi-so-thi{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:6px 0}
+@media (max-width:640px){ .luoi-so-thi{grid-template-columns:1fr} }
+.o-so-thi{
+  padding:11px 13px; border:1px solid var(--vien); border-radius:10px;
+  background:var(--the);
+}
+.o-so-thi .ten-thi{font-weight:700; font-size:13.5px; color:var(--chinh)}
+.o-so-thi .khi{font-size:12px; color:var(--chu-nhat); margin:2px 0 8px}
+.o-so-thi .en{font-weight:600}
+.o-so-thi .vi{font-size:13px; color:var(--chu-nhat); margin-top:2px}
+.o-so-thi .giai{font-size:12.5px; margin-top:7px; padding-left:9px;
+  border-left:2px solid var(--vien)}
+.ds-thu-nham{display:grid; gap:10px}
+.mot-thu{padding:10px 0; border-bottom:1px solid var(--vien)}
+.mot-thu:last-child{border-bottom:0}
+.mot-thu .de{font-size:14px; margin-bottom:7px}
+.mot-thu .kq{font-size:13px; margin-top:6px}
+.mot-thu.da-lam .nut-chon:not(.dung):not(.sai){opacity:.45}

@@ -22,7 +22,11 @@
 <header class="dinh-tren">
   <button id="nut-rail" class="phu chi-hep" onclick="batTatRail()"
           aria-label="Mở tiến trình khoá học" aria-expanded="false">☰</button>
-  <div class="thuong-hieu">
+  <button id="nut-nha" class="phu" onclick="veMenu()"
+          title="Về màn chính" aria-label="Về màn chính">⌂</button>
+  <div class="thuong-hieu" onclick="veMenu()" role="button" tabindex="0"
+       title="Về màn chính"
+       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();veMenu()}">
     <b>Học tiếng Anh</b><span class="nho" id="tien-do-tong">IELTS · 50 unit</span>
   </div>
 </header>
