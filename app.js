@@ -461,7 +461,10 @@ function veBaiHoc(u) {
           ${$("#hien-nghia").checked ? `<span class="nghia">${esc(t.nghia)}</span>` : ""}
           ${t.bien_the?.length ? `<span class="mo">(${t.bien_the.map(esc).join(" / ")})</span>` : ""}
         </div>
-        ${t.vi_du ? `<div class="vi-du-tu">${khoiCau(t.vi_du, t.vi_du_pa, "", { gon: true })}</div>` : ""}
+        ${/* Nghĩa của câu ví dụ trước đây bị bỏ trống dù dữ liệu có sẵn, nên
+              câu ví dụ hiện ra không kèm nghĩa. Vẫn theo công tắc "hiện nghĩa"
+              trong Cài đặt như mọi chỗ khác. */""}
+        ${t.vi_du ? `<div class="vi-du-tu">${khoiCau(t.vi_du, t.vi_du_pa, t.vi_du_nghia || "", { gon: true })}</div>` : ""}
       </div>`).join("") + `</div>`;
     h += khoi("bai-hoc/tu-vung", "Từ vựng", noi, `${u.tu_vung.length} từ`);
   }
