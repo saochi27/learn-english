@@ -90,7 +90,19 @@
     if (uv.includes(t)) return true;
     const td = goRutGon(t), uvd = uv.map(goRutGon);
     if (uvd.includes(td)) return true;
-    return uvd.includes(td.replace(/^(a|an|the)\s+/, ""));
+    if (uvd.includes(td.replace(/^(a|an|the)\s+/, ""))) return true;
+    /* Hai ô trống, một ô nhập: đáp án ghi "does...like". Không ai gõ ba dấu
+       chấm — chấp nhận khi các từ của đáp án xuất hiện đúng thứ tự trong câu
+       trả lời. Phải khớp y hệt dung_khong() bên server.py, lệch một bên là
+       cùng một câu mà bản tĩnh và bản chạy máy chấm khác nhau. */
+    const tuToi = td.match(/[\w’']+/g) || [];
+    return uvd.some(x => {
+      if (!x.includes("...") && !x.includes("…")) return false;
+      const can = x.match(/[\w’']+/g) || [];
+      let i = 0;
+      for (const w of tuToi) if (i < can.length && w === can[i]) i++;
+      return can.length > 0 && i === can.length;
+    });
   }
 
   function chamBai(bai) {
