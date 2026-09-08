@@ -514,6 +514,23 @@ function mdSangHtml(s) {
    Làm hết -> bấm Nộp bài -> máy chấm, chỉ ra câu sai kèm đáp án đúng, và TỰ
    ghi câu sai vào Sổ lỗi. Người học không thể tự biết mình sai chỗ nào, nên
    việc phát hiện lỗi phải do máy làm. */
+/* Đề bài đọc lên nghe được, không đọc ký hiệu trên giấy.
+   Đề viết cho MẮT: "213 → ____", "watch →", "I ____ a student."
+   Đưa nguyên chuỗi cho máy đọc thì nó phát ra "hai trăm mười ba mũi tên phải
+   gạch dưới gạch dưới" — nghe xong không biết câu hỏi gì.
+   - Chỗ trống đọc thành một quãng lặng ngắn (dấu phẩy), không đọc "blank":
+     câu điền từ mà chêm chữ "blank" vào giữa thì mất hẳn nhịp câu.
+   - Mũi tên là ký hiệu trình bày, bỏ hẳn.
+   - Ghi chú trong ngoặc như "(usually)" giữ lại vì nó là phần của yêu cầu. */
+const deDeDoc = de => String(de || "")
+  .replace(/[→⇒➔➜]/g, " ")
+  .replace(/_{2,}/g, ", ")
+  .replace(/\s*,\s*,\s*/g, ", ")
+  .replace(/\s+/g, " ")
+  .replace(/\s+([.,?!])/g, "$1")
+  .replace(/^[\s,]+|[\s,]+$/g, "")
+  .trim();
+
 function veBaiTap(u) {
   const el = $("#bai-tap");
   if (!u.bai_tap?.length) { el.innerHTML = `<div class="trong">Unit này chưa có bài tập trong giáo trình.</div>`; return; }
@@ -529,7 +546,7 @@ function veBaiTap(u) {
   u.bai_tap.forEach(n => {
     h += `<h3>${esc(n.ma)}. ${esc(n.ten)}</h3><div class="the">`;
     h += n.cau_hoi.map(c => `<div class="cau-hoi" id="oc-${u.so}-${c.so}">
-        <div>${c.so}. ${cauCoTuChamDuoc(c.de)} ${nutLoa(c.de.replace(/_+/g, " blank "))}</div>
+        <div>${c.so}. ${cauCoTuChamDuoc(c.de)} ${nutLoa(deDeDoc(c.de))}</div>
         <div class="hang" style="margin-top:6px">
           <input type="text" placeholder="Câu trả lời của bạn" id="bt-${u.so}-${c.so}"
             onkeydown="if(event.key==='Enter')chuyenO(${u.so},${c.so})">
