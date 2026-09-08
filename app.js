@@ -521,7 +521,7 @@ function veBaiTap(u) {
   const tongCau = u.bai_tap.reduce((s, n) => s + n.cau_hoi.length, 0);
   const coDapAn = u.bai_tap.reduce((s, n) => s + n.cau_hoi.filter(c => c.dap_an).length, 0);
 
-  let h = `<h2>Bài tập — Unit ${u.so}</h2>
+  let h = `<h2>Bài tập — Unit ${nhanUnit(u.so)}</h2>
     <div class="mo">${tongCau} câu · ${coDapAn} câu chấm tự động được</div>
     ${coDapAn < tongCau ? `<div class="canh-bao">${tongCau - coDapAn} câu là dạng viết/nói tự do —
       sổ đáp án chỉ ghi gợi ý nên máy không chấm, bạn tự đối chiếu.</div>` : ""}`;
@@ -766,7 +766,7 @@ function veBarPhat() {
     <button class="bp-chu" onclick="moMuc(${p.unitDangPhat || S.unit}, 'mau-cau')"
       title="Mở lại màn hình Mẫu câu">
       <span class="bp-ten">${esc(c?.en || "")}</span>
-      <span class="bp-mo">Unit ${p.unitDangPhat || S.unit} · câu ${p.i + 1}/${p.danhSach.length}</span>
+      <span class="bp-mo">Unit ${nhanUnit(p.unitDangPhat || S.unit)} · câu ${p.i + 1}/${p.danhSach.length}</span>
     </button>
     <button class="bp-nut" onclick="dungPhat()" title="Tắt hẳn" aria-label="Tắt hẳn">✕</button>`;
 }
@@ -1422,7 +1422,7 @@ function veMotTruyen() {
       <span class="tieu">${ten}</span>
       <span class="nhan">${esc(tl.ten)}</span>
       <button class="nut-dh" onclick="moUnit(${t.unit})"
-        title="Về Unit ${t.unit}" aria-label="Về Unit ${t.unit}">↑</button>
+        title="Về Unit ${nhanUnit(t.unit)}" aria-label="Về Unit ${nhanUnit(t.unit)}">↑</button>
     </div>
     <div class="hop-tab hop-tab-vien">
       <button class="${t.che_do === "doc" ? "chon" : ""}" onclick="doiCheDoTruyen('doc')">
@@ -2159,7 +2159,7 @@ function veSoCau() {
       <label style="margin-top:10px">Chọn truyện
         <select onchange="doiTruyenThi(this.value)">
           ${ds.map((x, i) => `<option value="${i}" ${i === truyenThi ? "selected" : ""}
-            >Unit ${x.unit} — ${esc(x.ten)}</option>`).join("")}
+            >Unit ${nhanUnit(x.unit)} — ${esc(x.ten)}</option>`).join("")}
         </select>
       </label>
     </div>
@@ -2239,7 +2239,7 @@ function veLuyen() {
       }).join("")}</div>
       ${xong ? `<div class="${c.chon[c.daChon] === c.dap ? "dung" : "sai"}" style="margin-top:10px">
           ${c.chon[c.daChon] === c.dap ? "✓ Đúng." : "✗ Chưa đúng — câu được tô là đáp án."}
-          <span class="mo">Unit ${c.unit} — ${esc(c.ten)}</span>
+          <span class="mo">Unit ${nhanUnit(c.unit)} — ${esc(c.ten)}</span>
         </div>` : ""}
       <button class="chinh" style="margin-top:12px" onclick="cauLuyenMoi()">Câu khác →</button>
     </div>`;
@@ -2341,7 +2341,7 @@ function theTruyen(t, ml) {
         <span class="ten">${esc(t.ten.replace(/^(Truyện|Mini-story)\s*[—-]\s*/, ""))}</span>
         <span class="mo">
           <i class="cham" style="background:${tl.mau}"></i>${esc(tl.ten)}
-          · ${t.so_cau || 0} câu · Unit ${t.unit}
+          · ${t.so_cau || 0} câu · Unit ${nhanUnit(t.unit)}
         </span>
       </span>
       ${daDoc(t) ? `<span class="xong">✓</span>` : ""}
@@ -2388,7 +2388,7 @@ function veThuVien() {
         <span class="noi">
           <span class="ten">${esc(tiep.ten.replace(/^(Truyện|Mini-story)\s*[—-]\s*/, ""))}</span>
           <span class="mo">${esc(tlCua(tiep.the_loai).ten)} · ${tiep.so_cau || 0} câu
-            · Unit ${tiep.unit} — ${esc((ml[tiep.unit] || {}).ten || "")}</span>
+            · Unit ${nhanUnit(tiep.unit)} — ${esc((ml[tiep.unit] || {}).ten || "")}</span>
         </span>
         <span class="mui">›</span>
       </button>`;
@@ -2444,7 +2444,7 @@ function veThuVien() {
     const xong = cac.filter(daDoc).length;
     h += `<div class="nhom-tv">
         <button class="dau-tv" onclick="moUnit(${so})">
-          <span class="ten">Unit ${so} — ${esc(m.ten || "")}</span>
+          <span class="ten">Unit ${nhanUnit(so)} — ${esc(m.ten || "")}</span>
           <span class="mo">${esc(m.ten_level || "")} · ${xong}/${cac.length} đã đọc</span>
         </button>
         ${cac.map(t => theTruyen(t, ml)).join("")}
@@ -2459,7 +2459,7 @@ function veHoiThoai(u) {
   const el = $("#hoi-thoai");
   const ds = u.hoi_thoai || [];
   if (!ds.length) {
-    el.innerHTML = `<div class="trong">Unit ${u.so} không có hội thoại.</div>`;
+    el.innerHTML = `<div class="trong">Unit ${nhanUnit(u.so)} không có hội thoại.</div>`;
     return;
   }
   let h = "";
@@ -2489,7 +2489,7 @@ async function veDeThi(soUnit) {
   }
   const de = await r.json();
   let h = `<div class="dong-ho" id="dong-ho">--:--</div>
-    <h2>${esc(de.ten || `Đề thi — Unit ${soUnit}`)}</h2>
+    <h2>${esc(de.ten || `Đề thi — Unit ${nhanUnit(soUnit)}`)}</h2>
     <div class="mo">${de.cau_hoi?.length || 0} câu · ${de.phut || 20} phút</div>
     <button class="chinh" id="nut-bat-dau" onclick="batDauThi()">Bắt đầu</button>
     <div id="khu-de" style="margin-top:14px; display:none"></div>`;
@@ -2788,8 +2788,8 @@ async function veOnTap(unitRieng = null) {
 
   if (!OT.the.length) {
     el.innerHTML = dau + `<div class="trong">${
-      unitRieng ? `Unit ${unitRieng} chưa có thẻ nào đến hạn hôm nay.`
-        : onTapUnit ? `Unit ${onTapUnit} không còn thẻ nào đến hạn.`
+      unitRieng ? `Unit ${nhanUnit(unitRieng)} chưa có thẻ nào đến hạn hôm nay.`
+        : onTapUnit ? `Unit ${nhanUnit(onTapUnit)} không còn thẻ nào đến hạn.`
         : "Hôm nay không còn thẻ nào đến hạn."}<br>
       <span class="mo">${loiKhuyenOnTap(tk, unitRieng)}</span></div>`;
     return;
@@ -2837,7 +2837,7 @@ function chonUnitOnTap(tk) {
       <span class="mo">Ôn unit</span>
       <select onchange="doiUnitOnTap(this.value)" style="flex:1; min-width:0">
         <option value="0" ${!onTapUnit ? "selected" : ""}>Trộn mọi unit trong phạm vi (${mo.length})</option>
-        ${mo.map(so => `<option value="${so}" ${onTapUnit === so ? "selected" : ""}>Unit ${so} — ${esc(ten(so))}</option>`).join("")}
+        ${mo.map(so => `<option value="${so}" ${onTapUnit === so ? "selected" : ""}>Unit ${nhanUnit(so)} — ${esc(ten(so))}</option>`).join("")}
       </select>
     </label>`;
 }
@@ -2885,7 +2885,7 @@ function veThe() {
 
   $("#khu-the").innerHTML = `
     <div class="san-khau">
-      <div class="mo">Thẻ ${OT.i + 1}/${OT.the.length} · Unit ${t.unit} ·
+      <div class="mo">Thẻ ${OT.i + 1}/${OT.the.length} · Unit ${nhanUnit(t.unit)} ·
         ${esc(t.ten_loai)} ${t.moi ? "· <b>thẻ mới</b>" : `· bậc ${t.lan}/6`}</div>
       ${than}
       <div id="phan-hoi"></div>
@@ -2993,7 +2993,7 @@ async function veSoLoi() {
             title="Nghe">🔊</button>
           <div style="flex:1; min-width:0">
             <div class="en">${esc(x.en)}</div>
-            <div class="mo">Unit ${x.unit}${x.ten ? " · " + esc(x.ten) : ""}</div>
+            <div class="mo">Unit ${nhanUnit(x.unit)}${x.ten ? " · " + esc(x.ten) : ""}</div>
           </div>
           <button class="phu" onclick='moCauCamCo(${JSON.stringify(x)})'>Mở</button>
           <button class="phu" onclick='xoaCamCo(${JSON.stringify(x.en)})'>Gỡ cờ</button>
@@ -3007,7 +3007,7 @@ async function veSoLoi() {
     <h3>Unit sai nhiều nhất</h3>
     <div class="the">${l.theo_unit.length
       ? l.theo_unit.map(([u, n]) => `<div class="hang" style="align-items:center; padding:4px 0">
-          <span style="margin-right:auto">Unit ${u}: <b>${n}</b> lỗi</span>
+          <span style="margin-right:auto">Unit ${nhanUnit(u)}: <b>${n}</b> lỗi</span>
           <button class="phu" onclick="xoaLoi({unit:${u}})">Xoá lỗi unit này</button>
         </div>`).join("")
       : '<span class="mo">Chưa có dữ liệu.</span>'}</div>
@@ -3019,7 +3019,7 @@ async function veSoLoi() {
     <div class="the">${l.nhom?.length
       ? l.nhom.map(g => `<div class="cau-hoi hang" style="align-items:flex-start">
           <div style="flex:1; min-width:0">
-            <div class="mo">Unit ${g.unit} · ${esc(g.loai)}
+            <div class="mo">Unit ${nhanUnit(g.unit)} · ${esc(g.loai)}
               ${g.so_lan > 1 ? `· <b class="sai">sai ${g.so_lan} lần</b>` : ""}</div>
             <div>${esc(g.de)}</div>
             <div>Bạn từng trả lời: <span class="sai">${g.da_tra_loi.map(esc).join(" · ")}</span></div>
@@ -3111,6 +3111,15 @@ function capNhatTienDoTong() {
    riêng. Học xong Bài học unit 5 mà muốn làm Bài tập unit 5 thì phải quay ra
    danh sách, đổi tab, cuộn tìm lại unit 5 — ba thao tác cho một việc lẽ ra
    không cần thao tác nào. Giờ 6 mục nằm ngay dưới tên unit. */
+/* Số unit HIỂN THỊ. Level Trẻ em đánh số 101-112 trong dữ liệu để không đẩy
+   lệch tiến độ của 50 unit cũ (xem nguon/soan_tre_em.py), nhưng "Unit 101"
+   hiện trên màn thì vô nghĩa — nó không phải bài thứ 101 của ai cả. Hiện
+   thành C01…C12, C là Children.
+   Chỉ đổi chỗ HIỂN THỊ; khoá dữ liệu, tên file và tiến độ vẫn là 101-112.
+   Tên hàm KHÔNG đặt là soUnit: nhiều hàm đã có tham số tên đó, đặt trùng là
+   bị che rồi gọi nhầm một con số như gọi hàm. */
+const nhanUnit = so => (+so >= 101 ? "C" + String(+so - 100).padStart(2, "0") : String(so));
+
 const TEN_MUC = {
   "bai-hoc": "Bài học", "bai-tap": "Bài tập", "mau-cau": "Mẫu câu",
   "hoi-thoai": "Hội thoại", "de-thi": "Đề thi",
@@ -3166,7 +3175,7 @@ function veRail(keo = false) {
         return `<div class="rail-unit ${mo ? "mo" : ""} ${S.unit === m.so ? "dang" : ""}">
           <button class="rail-dau ${dangXemUnit ? "chon" : ""}" onclick="batTatUnit(${m.so})" aria-expanded="${mo}">
             <span class="tick ${het ? "du" : k ? "phan" : ""}">${het ? "\u2713" : ""}</span>
-            <span class="ten">${m.so}. ${esc(m.ten)}</span>
+            <span class="ten">${nhanUnit(m.so)}. ${esc(m.ten)}</span>
             <span class="dem">${k}/${SO_MUC}</span>
             <span class="mui">\u203a</span>
           </button>
@@ -3333,10 +3342,18 @@ function phuDeTheoTab(tab, m) {
    Màn mở đầu kiểu trang chủ khoá học: đang đứng ở đâu, còn bao nhiêu, và một
    nút đi thẳng vào mục dở dang gần nhất. */
 function mucDangDo() {
-  for (const m of S.muc_luc)
+  /* Bắt đầu dò TỪ UNIT ĐANG HỌC rồi mới vòng về đầu.
+     Dò từ đầu danh sách thì Trẻ em (đứng trước Level 0) luôn còn dở, nên
+     người lớn học tới unit 30 mở app ra vẫn thấy gợi ý "Học tiếp: Unit C01".
+     Vòng lại đầu ở cuối vòng lặp để không bỏ sót unit nào. */
+  const n = S.muc_luc.length;
+  const bd = Math.max(0, S.muc_luc.findIndex(m => m.so === S.unit));
+  for (let k = 0; k < n; k++) {
+    const m = S.muc_luc[(bd + k) % n];
     for (const tab of Object.keys(MUC))
       if (trangThai(m.so, MUC[tab]) !== "xong")
         return { so: m.so, tab, ten: m.ten, tt: trangThai(m.so, MUC[tab]) };
+  }
   return null;
 }
 
@@ -3361,7 +3378,7 @@ function veMenu() {
         </div>
       </div>
       ${tiep ? `<button class="chinh to" onclick="moMuc(${tiep.so},'${tiep.tab}')">
-          ${tiep.tt === "dang" ? "Học tiếp" : "Bắt đầu"}: Unit ${tiep.so} — ${esc(tiep.ten)}
+          ${tiep.tt === "dang" ? "Học tiếp" : "Bắt đầu"}: Unit ${nhanUnit(tiep.so)} — ${esc(tiep.ten)}
           <span class="nho-hon">${TEN_MUC[tiep.tab]}</span></button>`
         : `<div class="the" style="margin-top:12px">Xong toàn bộ ${S.muc_luc.length} unit.
              Giờ là lúc quay lại tab Ôn tập và các đề thi.</div>`}
@@ -3378,7 +3395,7 @@ function veMenu() {
     const p = Math.round(xongLv / tongLv * 100);
     return `<button class="the-level" onclick="moLevel(${lv.ds[0].level})">
         <span class="ten">${esc(lv.ten)}</span>
-        <span class="mo">Unit ${lv.ds[0].so}–${lv.ds[lv.ds.length - 1].so} · ${lv.ds.length} unit</span>
+        <span class="mo">Unit ${nhanUnit(lv.ds[0].so)}–${nhanUnit(lv.ds[lv.ds.length - 1].so)} · ${lv.ds.length} unit</span>
         <span class="vach"><i class="xong" style="width:${p}%"></i></span>
         <span class="mo">${p}% · ${xongLv}/${tongLv} mục</span>
       </button>`;
@@ -3719,7 +3736,7 @@ async function moOnTapUnit(so) {
   await veOnTap(so);
   el.prepend(Object.assign(document.createElement("div"), {
     className: "dau-chi-tiet",
-    innerHTML: `<span class="tieu">Unit ${so} — ${esc(m.ten || "")}</span>
+    innerHTML: `<span class="tieu">Unit ${nhanUnit(so)} — ${esc(m.ten || "")}</span>
       <span class="nhan">Ôn tập</span>
       <button class="nut-xong" onclick="moUnit(${so})">← Về unit</button>`,
   }));
@@ -3750,7 +3767,7 @@ function veManLevel(lv) {
         <div class="vach"><i class="xong" style="width:${pt}%"></i></div>
       </div>
       ${tiep ? `<button class="chinh to" onclick="moUnit(${tiep.so})">
-          Học tiếp <span class="nho-hon">Unit ${tiep.so} — ${esc(tiep.ten)}</span></button>`
+          Học tiếp <span class="nho-hon">Unit ${nhanUnit(tiep.so)} — ${esc(tiep.ten)}</span></button>`
         : `<div class="the" style="margin-top:12px">Xong trọn vẹn cấp độ này.</div>`}
     </div>
 
@@ -3760,7 +3777,7 @@ function veManLevel(lv) {
       return `<button class="o-muc ${tt}" onclick="moUnit(${m.so})">
           <span class="tick ${het ? "du" : k ? "phan" : ""}">${het ? "\u2713" : ""}</span>
           <span class="noi">
-            <span class="ten">Unit ${m.so} — ${esc(m.ten)}</span>
+            <span class="ten">Unit ${nhanUnit(m.so)} — ${esc(m.ten)}</span>
             <span class="phu-de">${k}/${SO_MUC} mục · ${m.so_tu} từ · ${m.so_cau_hoi} câu hỏi</span>
           </span>
           <span class="dau">\u203a</span>
@@ -3799,12 +3816,16 @@ function veManUnit(so) {
   const m = S.muc_luc.find(x => x.so === so) || {};
   const xong = soMucXong(so), pt = Math.round(xong / SO_MUC * 100);
   const tiep = Object.keys(MUC).find(t => trangThai(so, MUC[t]) !== "xong");
-  const truoc = S.muc_luc.filter(x => x.so < so).pop();
-  const sau = S.muc_luc.find(x => x.so > so);
+  /* Trước/sau theo THỨ TỰ TRONG GIÁO TRÌNH, không so con số.
+     muc_luc xếp Trẻ em (101-112) trước rồi mới tới 1-50, nên so bằng con số
+     thì đứng ở unit 2 bấm "sau" ra unit 101 — nhảy ngược về level Trẻ em. */
+  const vt = S.muc_luc.findIndex(x => x.so === so);
+  const truoc = vt > 0 ? S.muc_luc[vt - 1] : null;
+  const sau = vt >= 0 ? S.muc_luc[vt + 1] : null;
 
   let h = `<div class="the-mo-dau">
       <div class="mo">${esc(m.ten_level || "")}</div>
-      <h2>Unit ${so} — ${esc(m.ten || "")}</h2>
+      <h2>Unit ${nhanUnit(so)} — ${esc(m.ten || "")}</h2>
       <div class="thanh-tong">
         <div class="so-lieu">
           <span><b>${xong}</b> / ${SO_MUC} mục đã xong</span>
@@ -3817,7 +3838,7 @@ function veManUnit(so) {
              ${trangThai(so, MUC[tiep]) === "dang" ? "Học tiếp" : "Bắt đầu"}
              <span class="nho-hon">${TEN_MUC[tiep]}</span></button>`
         : `<div class="the" style="margin-top:12px">Xong trọn vẹn unit này.
-             ${sau ? `Sang <b>Unit ${sau.so} — ${esc(sau.ten)}</b> được rồi.` : ""}</div>`}
+             ${sau ? `Sang <b>Unit ${nhanUnit(sau.so)} — ${esc(sau.ten)}</b> được rồi.` : ""}</div>`}
     </div>
 
     <div class="ds-muc-unit">` + Object.keys(MUC).map(tab => {
@@ -3842,9 +3863,9 @@ function veManUnit(so) {
     </button>
 
     <div class="dieu-huong-unit">
-      ${truoc ? `<button class="phu" onclick="moUnit(${truoc.so})">\u2039 Unit ${truoc.so}</button>` : "<span></span>"}
+      ${truoc ? `<button class="phu" onclick="moUnit(${truoc.so})">\u2039 Unit ${nhanUnit(truoc.so)}</button>` : "<span></span>"}
       <button class="phu" onclick="moLevel(${m.level})">${esc(m.ten_level || "Cấp độ")}</button>
-      ${sau ? `<button class="phu" onclick="moUnit(${sau.so})">Unit ${sau.so} \u203a</button>` : "<span></span>"}
+      ${sau ? `<button class="phu" onclick="moUnit(${sau.so})">Unit ${nhanUnit(sau.so)} \u203a</button>` : "<span></span>"}
     </div>`;
 
   $("#man-unit").innerHTML = h;
@@ -3884,7 +3905,7 @@ function gan_dau_chi_tiet(tab, so, muc) {
   div.className = "dau-chi-tiet";
   div.innerHTML = `
     <button class="tieu duong-dan" onclick="moUnit(${so})"
-      title="Về danh sách mục của Unit ${so}">Unit ${so} — ${esc(m.ten || "")}</button>
+      title="Về danh sách mục của Unit ${nhanUnit(so)}">Unit ${nhanUnit(so)} — ${esc(m.ten || "")}</button>
     <button class="nhan duong-dan" onclick="moLevel(${m.level ?? 0})"
       title="Về ${esc(m.ten_level || "level")}">${esc(m.ten_level || "")}</button>
     ${nutXong(so, muc, daXong)}`;
@@ -3934,7 +3955,7 @@ function nhomNutMuc(so, muc, daXong) {
      muốn quay ra danh sách mục của unit phải mò sang menu trái, mà trên điện
      thoại menu trái đang thu gọn. */
   return `<div class="nhom-nut-muc">
-      <button class="nut-dh" title="Về Unit ${so}" aria-label="Về Unit ${so}"
+      <button class="nut-dh" title="Về Unit ${nhanUnit(so)}" aria-label="Về Unit ${nhanUnit(so)}"
         onclick="moUnit(${so})">\u2191</button>
       ${nut(truoc, "\u2190", truoc
         ? `Mục trước: unit ${truoc.so} — ${TEN_MUC[truoc.tab]}` : "")}
