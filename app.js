@@ -211,6 +211,13 @@ const DOI_DIA_DANH = {
   // "My Dinh" phải nằm ở bảng ĐỊA DANH chứ không tách ra: để nguyên thì "My"
   // bị đọc thành từ sở hữu "my".
   "Binh Duong": "Bing Zoong", "My Dinh": "Mee Ding", "Le Loi": "Lay Loy",
+  // Món ăn và địa danh còn lại trong giáo trình. Không có ở đây thì giọng Anh
+  // đánh vần từng chữ: "banh mi" nghe ra "ban em ai".
+  "Sapa": "Sah Pah", "Ben Thanh": "Ben Tahn", "Hoan Kiem": "Hwan Kee-em",
+  "Ha Long": "Hah Long", "Halong": "Hah Long",
+  "com tam": "kum tum", "bun cha": "boon chah", "bun bo": "boon baw",
+  "banh xeo": "bang say-oh", "banh chung": "bang choong",
+  "goi cuon": "goy kwon", "cha ca": "chah kah", "nuoc mam": "nook mahm",
 };
 const DOI_TEN_DOC = {
   Hoa: "Hwah", Linh: "Ling", Minh: "Ming", Chi: "Chee", Thao: "Tao",
@@ -229,16 +236,25 @@ const DOI_TEN_DOC = {
   "Ly": "Lee", "Van": "Vahn", "Thi": "Tee", "Doan": "Zwan",
   "Truong": "Chwong", "Dinh": "Ding",
 };
-/* Cụm dài thay trước cụm ngắn: "Ho Chi Minh" phải khớp trước "Ho". */
+/* Cụm dài thay trước cụm ngắn: "Ho Chi Minh" phải khớp trước "Ho".
+
+   Hai điều bắt buộc, phải khớp y hệt _RE_DIA_DANH bên tao_audio.py:
+     \b hai đầu — thiếu thì "Pho" ăn vào giữa "Photography" -> "Fuhtography".
+     cờ "i"     — bảng ghi hoa ("Banh mi") mà trong câu viết thường
+                  ("banh mi"); bỏ qua hoa/thường thì 131 chỗ không được thay,
+                  giọng Anh đánh vần từng chữ cái, "banh mi" nghe ra
+                  "ban em ai". */
 const RE_DIA_DANH = new RegExp(
-  Object.keys(DOI_DIA_DANH).sort((a, b) => b.length - a.length)
-    .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|"), "g");
+  "\\b(?:" + Object.keys(DOI_DIA_DANH).sort((a, b) => b.length - a.length)
+    .map(k => k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|") + ")\\b", "gi");
+const DIA_DANH_THUONG = Object.fromEntries(
+  Object.entries(DOI_DIA_DANH).map(([k, v]) => [k.toLowerCase(), v]));
 
 const chuanGiongDoc = t =>
   String(t)
     // địa danh TRƯỚC: để tên người chạy trước thì "Ho Chi Minh" đã bị đổi
     // "Minh" thành "Ming", cụm không còn khớp nữa
-    .replace(RE_DIA_DANH, w => DOI_DIA_DANH[w])
+    .replace(RE_DIA_DANH, w => DIA_DANH_THUONG[w.toLowerCase()])
     .replace(/\b[A-Z][a-z]{1,6}\b/g, w => DOI_TEN_DOC[w] || w);
 
 function docBangMay(text, tocDo, xong, vai, xoay) {
