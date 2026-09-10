@@ -537,11 +537,15 @@ function theDanNguPhap(u) {
   const van = [u.bang_ngu_phap, u.luu_y, u.meo]
     .map(x => (typeof x === "string" ? x : JSON.stringify(x || ""))).join(" ")
     .toLowerCase();
-  const hop = ds.filter(b => van.includes(b.ten.toLowerCase().split(" ")[0] + " ")
-                          || van.includes(b.ten.toLowerCase()));
+  // Khớp TOÀN BỘ tên bài, không khớp chữ đầu. Khớp chữ đầu thì "Câu phủ định",
+  // "Câu hỏi Wh-", "Câu dài" đều trúng bất kỳ unit nào có chữ "câu" — unit 5
+  // hiện ra 6 bài và thẻ dẫn mất hết tác dụng chỉ đường.
+  const hop = ds.filter(b => van.includes(b.ten.toLowerCase()));
   if (!hop.length) return "";
+  // Nhiều quá thì cũng như không: giữ tối đa 3 bài sát nhất.
+  const gon = hop.slice(0, 3);
   return `<div class="dan-np">Chưa rõ các chữ này nghĩa là gì?
-      ${hop.map(b => `<a href="#" onclick="moNguPhap('${b.ma}');return false">${esc(b.ten)}</a>`)
+      ${gon.map(b => `<a href="#" onclick="moNguPhap('${b.ma}');return false">${esc(b.ten)}</a>`)
         .join(" · ")}</div>`;
 }
 

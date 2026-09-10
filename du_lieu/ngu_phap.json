@@ -10,7 +10,11 @@
   "TDT": "trợ động từ",
   "TH": "từ hỏi",
   "LT": "liên từ",
-  "O2": "tân ngữ thứ hai"
+  "O2": "tân ngữ thứ hai",
+  "VE": "vế câu",
+  "MDQH": "mệnh đề quan hệ",
+  "VN": "vị ngữ",
+  "BN": "bổ ngữ"
  },
  "ten_chang": {
   "A": "Chặng A — nhận mặt từ loại",
@@ -112,9 +116,9 @@
      "ghi_chu": "“a” đứng trước cả cụm “new student”, không phải trước “student”"
     },
     {
-     "en": "My sister works in a bank.",
-     "vi": "Chị tôi làm ở ngân hàng.",
-     "ghi_chu": "bank là danh từ đếm được số ít nên bắt buộc có “a”"
+     "en": "He is an engineer.",
+     "vi": "Anh ấy là kỹ sư.",
+     "ghi_chu": "“an” vì engineer bắt đầu bằng âm nguyên âm /e/"
     }
    ],
    "rap_cau": [
@@ -415,9 +419,9 @@
      "ghi_chu": "at — một điểm hẹn cụ thể"
     },
     {
-     "en": "My sister works in a bank.",
-     "vi": "Chị tôi làm ở ngân hàng.",
-     "ghi_chu": "in — bên trong một toà nhà/tổ chức"
+     "en": "Her husband is at work now.",
+     "vi": "Chồng cô ấy đang ở chỗ làm.",
+     "ghi_chu": "at work — “at” chỉ một điểm, ở đây là chỗ làm"
     }
    ],
    "rap_cau": [
@@ -563,15 +567,15 @@
      "manh": [
       {
        "tu": "I like coffee",
-       "vai": "S"
+       "vai": "VE"
       },
       {
        "tu": "but",
-       "vai": "V"
+       "vai": "LT"
       },
       {
        "tu": "she likes tea",
-       "vai": "O"
+       "vai": "VE"
       }
      ],
      "vi": "Tôi thích cà phê nhưng cô ấy thích trà."
@@ -580,15 +584,15 @@
      "manh": [
       {
        "tu": "It rained",
-       "vai": "S"
+       "vai": "VE"
       },
       {
        "tu": "so",
-       "vai": "V"
+       "vai": "LT"
       },
       {
        "tu": "I stayed home",
-       "vai": "O"
+       "vai": "VE"
       }
      ],
      "vi": "Trời mưa nên tôi ở nhà."
@@ -612,9 +616,9 @@
    },
    "vi_du": [
     {
-     "en": "My sister works in a bank.",
-     "vi": "Chị tôi làm ở ngân hàng.",
-     "ghi_chu": "S = my sister · V = works · phần sau là cụm giới từ, không phải tân ngữ"
+     "en": "My father likes iced coffee.",
+     "vi": "Bố tôi thích uống cà phê đá.",
+     "ghi_chu": "S = my father · V = likes · O = iced coffee"
     },
     {
      "en": "My aunt has three children.",
@@ -692,9 +696,9 @@
      "ghi_chu": "very hard đứng sau động từ works"
     },
     {
-     "en": "This is Tuan, a new student.",
-     "vi": "Đây là Tuấn, một học sinh mới.",
-     "ghi_chu": "new đứng trước student"
+     "en": "My parents buy fresh vegetables every day.",
+     "vi": "Bố mẹ tôi mua rau tươi mỗi ngày.",
+     "ghi_chu": "cụm thời gian “every day” đứng CUỐI câu"
     }
    ],
    "rap_cau": [
@@ -770,9 +774,9 @@
      "ghi_chu": "doesn’t + work (dạng gốc, không có s)"
     },
     {
-     "en": "I like coffee but I don't like tea.",
-     "vi": "Tôi thích cà phê nhưng không thích trà.",
-     "ghi_chu": "don't + like — chủ ngữ I nên dùng don't"
+     "en": "I don't like tea.",
+     "vi": "Tôi không thích trà.",
+     "ghi_chu": "don't + like (dạng gốc) — chủ ngữ I nên dùng don't"
     },
     {
      "en": "It is cold in the morning.",
@@ -896,7 +900,7 @@
       },
       {
        "tu": "here",
-       "vai": "GT"
+       "vai": "TrT"
       }
      ],
      "vi": "Anh ấy có làm ở đây không?"
@@ -999,9 +1003,9 @@
    },
    "vi_du": [
     {
-     "en": "I like coffee but I don't like tea.",
-     "vi": "Tôi thích cà phê nhưng không thích trà.",
-     "ghi_chu": "hai câu hoàn chỉnh nối bằng but"
+     "en": "My uncle buys fresh fruit for us.",
+     "vi": "Chú tôi mua hoa quả tươi cho chúng tôi.",
+     "ghi_chu": "một vế đơn — thêm “and my aunt cooks it” là thành câu dài"
     },
     {
      "en": "I stayed home because it rained.",
@@ -1009,9 +1013,9 @@
      "ghi_chu": "because mở đầu vế lý do"
     },
     {
-     "en": "This is Tuan, a new student.",
-     "vi": "Đây là Tuấn, một học sinh mới.",
-     "ghi_chu": "cách gắn thêm mô tả gọn nhất: dấu phẩy rồi cụm danh từ"
+     "en": "My teacher is from Can Tho.",
+     "vi": "Thầy giáo của tôi đến từ Cần Thơ.",
+     "ghi_chu": "một vế đơn — gắn “who teaches English” vào sau “teacher” là thành câu dài"
     }
    ],
    "rap_cau": [
@@ -1022,16 +1026,12 @@
        "vai": "S"
       },
       {
-       "tu": "who",
-       "vai": "LT"
-      },
-      {
-       "tu": "works here",
-       "vai": "V"
+       "tu": "who works here",
+       "vai": "MDQH"
       },
       {
        "tu": "is my boss",
-       "vai": "O"
+       "vai": "VN"
       }
      ],
      "vi": "Người đàn ông làm ở đây là sếp tôi."
@@ -1040,7 +1040,7 @@
      "manh": [
       {
        "tu": "I work in a bank",
-       "vai": "S"
+       "vai": "VE"
       },
       {
        "tu": "and",
@@ -1048,7 +1048,7 @@
       },
       {
        "tu": "she works in a hospital",
-       "vai": "O"
+       "vai": "VE"
       }
      ],
      "vi": "Tôi làm ở ngân hàng còn cô ấy làm ở bệnh viện."
@@ -1073,9 +1073,9 @@
    },
    "vi_du": [
     {
-     "en": "Would you like tea or coffee?",
-     "vi": "Bạn muốn trà hay cà phê?",
-     "ghi_chu": "would like — sau nó là danh từ nên chưa cần to; có động từ thì thành “would like to drink”"
+     "en": "I would like to book a room.",
+     "vi": "Tôi muốn đặt một phòng.",
+     "ghi_chu": "would like to + book — đây mới là khuôn to V; “would like” + danh từ thì không cần to"
     },
     {
      "en": "I want to book a room, please.",
@@ -1100,12 +1100,8 @@
        "vai": "V"
       },
       {
-       "tu": "to go",
+       "tu": "to go home",
        "vai": "O"
-      },
-      {
-       "tu": "home",
-       "vai": "GT"
       }
      ],
      "vi": "Tôi muốn về nhà."
@@ -1177,12 +1173,8 @@
        "vai": "V"
       },
       {
-       "tu": "reading",
+       "tu": "reading books",
        "vai": "O"
-      },
-      {
-       "tu": "books",
-       "vai": "O2"
       }
      ],
      "vi": "Tôi thích đọc sách."
@@ -1194,12 +1186,12 @@
        "vai": "S"
       },
       {
-       "tu": "is good at",
+       "tu": "is",
        "vai": "V"
       },
       {
-       "tu": "cooking",
-       "vai": "O"
+       "tu": "good at cooking",
+       "vai": "BN"
       }
      ],
      "vi": "Cô ấy nấu ăn giỏi."
@@ -1256,7 +1248,7 @@
       },
       {
        "tu": "to help",
-       "vai": "O2"
+       "vai": "BN"
       }
      ],
      "vi": "Tôi nhờ anh ấy giúp."
@@ -1277,7 +1269,7 @@
       },
       {
        "tu": "to wait",
-       "vai": "O2"
+       "vai": "BN"
       }
      ],
      "vi": "Cô ấy bảo tôi đợi."
