@@ -300,7 +300,11 @@ const nutTocDo = () => `<button class="nut-tron phu2 ct-toc" onclick="xoayTocDo(
     title="Tốc độ đọc ${nhanTocDo(S.tocDo)} — bấm để đổi"
     aria-label="Tốc độ đọc">${nhanTocDo(S.tocDo)}</button>`;
 
-const nutLoa = t => `<button class="loa" onclick="doc(${JSON.stringify(t).replace(/"/g, "&quot;")})" title="Nghe">🔊</button>`;
+/* Không có gì để đọc thì KHÔNG vẽ nút. Trước đây nút vẫn hiện ở đề bài viết
+   bằng tiếng Việt, bấm vào là giọng Anh đánh vần ra âm vô nghĩa. */
+const nutLoa = t => (String(t || "").trim()
+  ? `<button class="loa" onclick="doc(${JSON.stringify(t).replace(/"/g, "&quot;")})" title="Nghe">🔊</button>`
+  : "");
 
 /* ================= hiển thị câu (chạm từng từ) ================= */
 /* Bọc từng từ vào <span> để chạm tra nghĩa.
@@ -541,14 +545,25 @@ function mdSangHtml(s) {
      câu điền từ mà chêm chữ "blank" vào giữa thì mất hẳn nhịp câu.
    - Mũi tên là ký hiệu trình bày, bỏ hẳn.
    - Ghi chú trong ngoặc như "(usually)" giữ lại vì nó là phần của yêu cầu. */
-const deDeDoc = de => String(de || "")
-  .replace(/[→⇒➔➜]/g, " ")
-  .replace(/_{2,}/g, ", ")
-  .replace(/\s*,\s*,\s*/g, ", ")
-  .replace(/\s+/g, " ")
-  .replace(/\s+([.,?!])/g, "$1")
-  .replace(/^[\s,]+|[\s,]+$/g, "")
-  .trim();
+const CO_DAU_VIET = /[ăâđêôơưáàảãạắằẳẵặấầẩẫậéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i;
+
+const deDeDoc = de => {
+  let s = String(de || "")
+    .replace(/[→⇒➔➜]/g, " ")
+    .replace(/_{2,}/g, ", ")
+    // Chú thích tiếng Việt trong ngoặc — "(của tôi)", "(lịch sự)" — là lời
+    // dặn cho người đọc, không phải phần câu tiếng Anh cần nghe.
+    .replace(/\([^)]*\)/g, m => (CO_DAU_VIET.test(m) ? " " : m))
+    .replace(/\s*,\s*,\s*/g, ", ")
+    .replace(/\s+/g, " ")
+    .replace(/\s+([.,?!])/g, "$1")
+    .replace(/^[\s,]+|[\s,]+$/g, "")
+    .trim();
+  // Đề bài dịch ("Anh trai tôi làm kỹ sư.") viết hoàn toàn bằng tiếng Việt.
+  // Đưa cho giọng Anh thì nó đánh vần ra âm vô nghĩa. Trả chuỗi rỗng để
+  // nutLoa() không vẽ nút — không có gì để nghe thì đừng mời bấm.
+  return CO_DAU_VIET.test(s) ? "" : s;
+};
 
 function veBaiTap(u) {
   const el = $("#bai-tap");
@@ -609,8 +624,14 @@ async function nopBaiTap(soUnit) {
     const inp = $(`#bt-${soUnit}-${r.so}`);
     if (!o) return;
     if (r.khong_cham_duoc) { o.innerHTML = `<span class="mo">tự đối chiếu</span>`; return; }
+    // Nút loa ở ĐÁP ÁN, không phải ở đề. Bài "Dịch sang tiếng Anh" có đề
+    // tiếng Việt (không đọc được) còn đáp án là câu tiếng Anh đúng — đó mới
+    // là thứ đáng nghe, và trước đây không nghe được.
     if (r.dung) { o.innerHTML = `<span class="dung">✓ đúng</span>`; }
-    else { o.innerHTML = `<span class="sai">✗ đáp án: ${esc(r.dap_an)}</span>`; }
+    else {
+      o.innerHTML = `<span class="sai">✗ đáp án: ${esc(r.dap_an)}</span>`
+        + nutLoa(deDeDoc(r.dap_an));
+    }
     if (inp) inp.disabled = true;
   });
 
