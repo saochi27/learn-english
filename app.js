@@ -2411,11 +2411,14 @@ function veNguPhap() {
     <div class="mo">${ds.length} bài · ${
       dsRapCau().length} câu ráp · ${thongKeNP().thuoc} câu đã thuộc</div>
     <div class="hop-tab hop-tab-vien">
-      ${[["bai-hoc", "Bài học"], ["rap-cau", "Ráp câu"], ["on", "Ôn hôm nay"]]
+      ${[["bai-hoc", "Bài học"], ["tra-dt", "Tra động từ"],
+          ["noi-y", "Nói ý này"], ["rap-cau", "Ráp câu"], ["on", "Ôn hôm nay"]]
         .map(([v, t]) => `<button class="${theNP === v ? "chon" : ""}"
           onclick="doiTheNP('${v}')">${t}</button>`).join("")}
     </div>
     ${theNP === "bai-hoc" ? veBaiNP(ds)
+      : theNP === "tra-dt" ? veTraDT()
+      : theNP === "noi-y" ? veNoiY()
       : theNP === "rap-cau" ? veRapCau() : veOnNP()}`;
   // Phải nạp SAU khi đã gắn HTML: thẻ <script> chèn qua innerHTML không chạy,
   // nên gọi thẳng ở đây thay vì nhúng vào chuỗi.
@@ -2468,6 +2471,82 @@ function veBaiNP(ds) {
           }).filter(Boolean).join(" · ")}</div>` : ""}
       </div>`, `${b.vi_du.length} ví dụ`,
       npDaHoc.has(b.ma))).join("")).join("");
+}
+
+/* ---------- thẻ: TRA ĐỘNG TỪ ----------
+   Chặng A–C dạy theo KHUÔN ("V + sb + sth là gì"). Bảng này đi chiều ngược:
+   cầm sẵn một từ, hỏi nó đi được với những khuôn nào. Đây là chiều người học
+   thật sự cần — biết "read nghĩa là đọc" rồi vẫn không biết viết "đọc cho ai
+   nghe" ra sao. */
+let timNP = "";
+
+function locTimNP(e) {
+  timNP = e.target.value.trim().toLowerCase();
+  const d = $("#np-ket-qua");
+  if (d) d.innerHTML = theNP === "tra-dt" ? dsTraDT() : dsNoiY();
+}
+
+const oTim = ph => `<input type="text" class="np-tim" placeholder="${ph}"
+    value="${esc(timNP)}" oninput="locTimNP(event)">`;
+
+function veTraDT() {
+  return `<div class="the" style="margin-bottom:12px">
+      <b>Cầm sẵn một động từ, tra xem nó đi với những khuôn nào</b>
+      <div style="margin-top:6px">Biết nghĩa chưa đủ để dùng được. “read” là
+        “đọc”, nhưng <i>đọc cho ai nghe</i> phải viết <b>read sb sth</b> — không
+        có bảng này thì không đoán ra.</div>
+      <div style="margin-top:10px">${oTim("Gõ động từ hoặc nghĩa tiếng Việt…")}</div>
+    </div><div id="np-ket-qua">${dsTraDT()}</div>`;
+}
+
+function dsTraDT() {
+  const ds = (duLieuNP?.dong_tu || []).filter(x =>
+    !timNP || x.tu.toLowerCase().includes(timNP) || x.nghia.toLowerCase().includes(timNP));
+  if (!ds.length) return `<div class="trong">Không có động từ nào khớp “${esc(timNP)}”.</div>`;
+  return ds.map(x => `<div class="the np-dt">
+      <div class="np-dt-dau"><b class="tu-anh">${esc(x.tu)}</b>${nutLoa(x.tu)}
+        <span class="mo">${esc(x.nghia)}</span></div>
+      ${x.mau.map(m => `<div class="np-mau">
+          <div class="np-ct">${mdDong(m.ct)}</div>
+          <div class="mo">${esc(m.nghia)}</div>
+          <div class="hang"><span class="en">${esc(m.en)}</span>${nutLoa(m.en)}</div>
+          <div class="nghia">${esc(m.vi)}</div>
+        </div>`).join("")}
+      ${x.bay ? `<div class="np-bay" style="margin-top:10px">
+        <div class="np-bay-dau">⚠ Dễ sai</div><div>${mdSangHtml(x.bay)}</div></div>` : ""}
+    </div>`).join("");
+}
+
+/* ---------- thẻ: NÓI Ý NÀY ----------
+   Chiều ngược lại nữa: trong đầu đã có Ý muốn nói, chỉ thiếu cách nói ra.
+   Tra bằng TIẾNG VIỆT — "để trở nên", "chỉ vừa đủ để" — vì đó là thứ người
+   học có sẵn trong đầu. */
+function veNoiY() {
+  return `<div class="the" style="margin-bottom:12px">
+      <b>Trong đầu đã có ý, chỉ thiếu cách nói ra</b>
+      <div style="margin-top:6px">Gõ ý bằng tiếng Việt — “để trở nên”, “chỉ vừa
+        đủ để”, “càng… càng” — để tìm cấu trúc tiếng Anh tương ứng.</div>
+      <div style="margin-top:10px">${oTim("Gõ ý muốn nói bằng tiếng Việt…")}</div>
+    </div><div id="np-ket-qua">${dsNoiY()}</div>`;
+}
+
+function dsNoiY() {
+  const ds = (duLieuNP?.y_muon_noi || []).filter(x =>
+    !timNP || x.y.toLowerCase().includes(timNP)
+          || x.ct.toLowerCase().includes(timNP)
+          || x.vi_du.some(v => v.vi.toLowerCase().includes(timNP)));
+  if (!ds.length) return `<div class="trong">Không có cấu trúc nào khớp “${esc(timNP)}”.</div>`;
+  return ds.map(x => `<div class="the np-y">
+      <div class="np-y-dau">${esc(x.y)}</div>
+      <div class="np-ct np-ct-lon">${mdDong(x.ct)}</div>
+      <div style="margin-top:8px">${mdSangHtml(x.giai_thich)}</div>
+      ${x.vi_du.map(v => `<div class="np-vd">
+          <div class="hang"><span class="en">${esc(v.en)}</span>${nutLoa(v.en)}</div>
+          <div class="nghia">${esc(v.vi)}</div>
+        </div>`).join("")}
+      ${x.bay ? `<div class="np-bay" style="margin-top:10px">
+        <div class="np-bay-dau">⚠ Dễ sai</div><div>${mdSangHtml(x.bay)}</div></div>` : ""}
+    </div>`).join("");
 }
 
 /* ---------- thẻ 3: ôn hôm nay ---------- */

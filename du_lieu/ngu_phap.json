@@ -1522,5 +1522,807 @@
     "dong_tu"
    ]
   }
+ ],
+ "dong_tu": [
+  {
+   "tu": "read",
+   "nghia": "đọc",
+   "bay": "read có hai cách đọc: hiện tại /riːd/, quá khứ /red/ — viết giống hệt nhau nên phải nhìn câu mới biết.",
+   "mau": [
+    {
+     "ct": "read + sth",
+     "nghia": "đọc cái gì",
+     "en": "I read a book.",
+     "vi": "Tôi đọc một quyển sách."
+    },
+    {
+     "ct": "read + sb + sth",
+     "nghia": "đọc cái gì CHO ai nghe",
+     "en": "He read her a story.",
+     "vi": "Anh ấy đọc cho cô ấy một câu chuyện."
+    },
+    {
+     "ct": "read + sth + to sb",
+     "nghia": "cũng nghĩa trên, đảo thứ tự thì phải thêm “to”",
+     "en": "He read a story to her.",
+     "vi": "Anh ấy đọc một câu chuyện cho cô ấy."
+    },
+    {
+     "ct": "read about + sth",
+     "nghia": "đọc VỀ chủ đề gì",
+     "en": "I read about Vietnam.",
+     "vi": "Tôi đọc về Việt Nam."
+    }
+   ]
+  },
+  {
+   "tu": "give",
+   "nghia": "cho, đưa",
+   "bay": "❌ She gave a book me — vật đứng trước thì bắt buộc có “to”.",
+   "mau": [
+    {
+     "ct": "give + sb + sth",
+     "nghia": "đưa ai cái gì",
+     "en": "She gave me a book.",
+     "vi": "Cô ấy đưa tôi một quyển sách."
+    },
+    {
+     "ct": "give + sth + to sb",
+     "nghia": "đảo thứ tự thì phải thêm “to”",
+     "en": "She gave a book to me.",
+     "vi": "Cô ấy đưa một quyển sách cho tôi."
+    }
+   ]
+  },
+  {
+   "tu": "tell",
+   "nghia": "kể, bảo",
+   "bay": "tell LUÔN có người đi ngay sau. Nói chung chung thì dùng “say”: ❌ He told that… → ✅ He **said** that…",
+   "mau": [
+    {
+     "ct": "tell + sb + sth",
+     "nghia": "kể cho ai điều gì",
+     "en": "She told me the news.",
+     "vi": "Cô ấy kể cho tôi tin đó."
+    },
+    {
+     "ct": "tell + sb + to V",
+     "nghia": "bảo ai làm gì",
+     "en": "She told me to wait.",
+     "vi": "Cô ấy bảo tôi đợi."
+    }
+   ]
+  },
+  {
+   "tu": "say",
+   "nghia": "nói",
+   "bay": "❌ He said me → ✅ He said **to** me. Ngược lại “tell” thì KHÔNG có to.",
+   "mau": [
+    {
+     "ct": "say + sth",
+     "nghia": "nói điều gì",
+     "en": "He said the truth.",
+     "vi": "Anh ấy nói sự thật."
+    },
+    {
+     "ct": "say + to sb",
+     "nghia": "nói VỚI ai — phải có “to”",
+     "en": "He said to me.",
+     "vi": "Anh ấy nói với tôi."
+    }
+   ]
+  },
+  {
+   "tu": "want",
+   "nghia": "muốn",
+   "bay": "❌ I want that you come → ✅ I want **you to** come.",
+   "mau": [
+    {
+     "ct": "want + sth",
+     "nghia": "muốn cái gì",
+     "en": "I want a coffee.",
+     "vi": "Tôi muốn một ly cà phê."
+    },
+    {
+     "ct": "want + to V",
+     "nghia": "muốn TỰ MÌNH làm gì",
+     "en": "I want to go home.",
+     "vi": "Tôi muốn về nhà."
+    },
+    {
+     "ct": "want + sb + to V",
+     "nghia": "muốn NGƯỜI KHÁC làm gì",
+     "en": "I want you to come.",
+     "vi": "Tôi muốn bạn tới."
+    }
+   ]
+  },
+  {
+   "tu": "ask",
+   "nghia": "hỏi, nhờ",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "ask + sb",
+     "nghia": "hỏi ai",
+     "en": "I asked the teacher.",
+     "vi": "Tôi hỏi cô giáo."
+    },
+    {
+     "ct": "ask + sb + to V",
+     "nghia": "nhờ ai làm gì",
+     "en": "I asked him to help me.",
+     "vi": "Tôi nhờ anh ấy giúp tôi."
+    },
+    {
+     "ct": "ask sb for + sth",
+     "nghia": "xin ai cái gì",
+     "en": "She asked me for help.",
+     "vi": "Cô ấy nhờ tôi giúp."
+    },
+    {
+     "ct": "ask about + sth",
+     "nghia": "hỏi về chuyện gì",
+     "en": "He asked about the job.",
+     "vi": "Anh ấy hỏi về công việc."
+    }
+   ]
+  },
+  {
+   "tu": "make",
+   "nghia": "làm ra, khiến cho",
+   "bay": "make là một trong số ít động từ KHÔNG dùng “to” ở sau người: ❌ It makes me **to** feel happy → ✅ It makes me feel happy.",
+   "mau": [
+    {
+     "ct": "make + sth",
+     "nghia": "làm ra cái gì",
+     "en": "She makes great banh mi.",
+     "vi": "Cô ấy làm bánh mì rất ngon."
+    },
+    {
+     "ct": "make + sb + V",
+     "nghia": "khiến ai làm gì — KHÔNG có “to”",
+     "en": "It makes me happy.",
+     "vi": "Điều đó khiến tôi vui."
+    },
+    {
+     "ct": "make + sb + sth",
+     "nghia": "làm cái gì cho ai",
+     "en": "She made me a cake.",
+     "vi": "Cô ấy làm cho tôi một cái bánh."
+    }
+   ]
+  },
+  {
+   "tu": "take",
+   "nghia": "lấy, mất (thời gian)",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "take + sth",
+     "nghia": "lấy, cầm",
+     "en": "I take a taxi.",
+     "vi": "Tôi đi taxi."
+    },
+    {
+     "ct": "it takes + sb + time + to V",
+     "nghia": "ai đó mất bao lâu để làm gì",
+     "en": "It takes me twenty minutes to go to work.",
+     "vi": "Tôi mất hai mươi phút để đi làm."
+    },
+    {
+     "ct": "take care of + sb/sth",
+     "nghia": "chăm sóc",
+     "en": "She takes care of her mother.",
+     "vi": "Cô ấy chăm sóc mẹ."
+    }
+   ]
+  },
+  {
+   "tu": "get",
+   "nghia": "lấy, trở nên, đến",
+   "bay": "“get + tính từ” là cách nói TRỞ NÊN thông dụng nhất trong hội thoại, tự nhiên hơn “become”.",
+   "mau": [
+    {
+     "ct": "get + sth",
+     "nghia": "lấy được, nhận được",
+     "en": "I got a new job.",
+     "vi": "Tôi có việc mới."
+    },
+    {
+     "ct": "get + tính từ",
+     "nghia": "TRỞ NÊN thế nào",
+     "en": "It gets cold in winter.",
+     "vi": "Mùa đông trời trở lạnh."
+    },
+    {
+     "ct": "get to + nơi chốn",
+     "nghia": "đến được đâu",
+     "en": "How do I get to the bus stop?",
+     "vi": "Tôi đến trạm xe buýt bằng cách nào?"
+    },
+    {
+     "ct": "get up / get on / get off",
+     "nghia": "cụm động từ: dậy / lên xe / xuống xe",
+     "en": "I get up at six.",
+     "vi": "Tôi dậy lúc sáu giờ."
+    }
+   ]
+  },
+  {
+   "tu": "go",
+   "nghia": "đi",
+   "bay": "❌ go to home / go to there → ✅ go **home**, go **there** (không có to).",
+   "mau": [
+    {
+     "ct": "go to + nơi chốn",
+     "nghia": "đi tới đâu",
+     "en": "I go to work at seven.",
+     "vi": "Tôi đi làm lúc bảy giờ."
+    },
+    {
+     "ct": "go + V-ing",
+     "nghia": "đi làm hoạt động gì",
+     "en": "I go shopping at the weekend.",
+     "vi": "Cuối tuần tôi đi mua sắm."
+    },
+    {
+     "ct": "be going to + V",
+     "nghia": "sắp làm gì (đã định trước)",
+     "en": "I am going to visit my parents.",
+     "vi": "Tôi sẽ về thăm bố mẹ."
+    }
+   ]
+  },
+  {
+   "tu": "listen",
+   "nghia": "nghe",
+   "bay": "❌ listen music → ✅ listen **to** music. So với “hear” thì không cần to: I hear a noise.",
+   "mau": [
+    {
+     "ct": "listen to + sth/sb",
+     "nghia": "nghe cái gì — LUÔN có “to”",
+     "en": "I listen to music.",
+     "vi": "Tôi nghe nhạc."
+    }
+   ]
+  },
+  {
+   "tu": "look",
+   "nghia": "nhìn",
+   "bay": "Đổi giới từ là đổi hẳn nghĩa: look **at** = nhìn, look **for** = tìm, look **after** = chăm sóc.",
+   "mau": [
+    {
+     "ct": "look at + sth",
+     "nghia": "nhìn vào cái gì",
+     "en": "Look at this photo.",
+     "vi": "Nhìn bức ảnh này này."
+    },
+    {
+     "ct": "look for + sth",
+     "nghia": "TÌM cái gì",
+     "en": "I'm looking for my keys.",
+     "vi": "Tôi đang tìm chìa khóa."
+    },
+    {
+     "ct": "look after + sb",
+     "nghia": "trông nom ai",
+     "en": "She looks after her son.",
+     "vi": "Cô ấy trông con trai."
+    },
+    {
+     "ct": "look like + sb/sth",
+     "nghia": "trông giống",
+     "en": "He looks like his father.",
+     "vi": "Anh ấy trông giống bố."
+    }
+   ]
+  },
+  {
+   "tu": "wait",
+   "nghia": "đợi",
+   "bay": "❌ wait the bus → ✅ wait **for** the bus.",
+   "mau": [
+    {
+     "ct": "wait for + sb/sth",
+     "nghia": "đợi ai, đợi cái gì",
+     "en": "I waited for the bus.",
+     "vi": "Tôi đợi xe buýt."
+    }
+   ]
+  },
+  {
+   "tu": "help",
+   "nghia": "giúp",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "help + sb",
+     "nghia": "giúp ai",
+     "en": "She helps us.",
+     "vi": "Cô ấy giúp chúng tôi."
+    },
+    {
+     "ct": "help + sb + (to) V",
+     "nghia": "giúp ai làm gì — “to” có cũng được, bỏ cũng được",
+     "en": "She helped me carry the bag.",
+     "vi": "Cô ấy giúp tôi xách túi."
+    }
+   ]
+  },
+  {
+   "tu": "like",
+   "nghia": "thích",
+   "bay": "“I like” = thích nói chung · “I would like” = muốn ngay bây giờ. Vào quán phải nói “I'd like a coffee”, không phải “I like a coffee”.",
+   "mau": [
+    {
+     "ct": "like + sth",
+     "nghia": "thích cái gì",
+     "en": "I like coffee.",
+     "vi": "Tôi thích cà phê."
+    },
+    {
+     "ct": "like + V-ing",
+     "nghia": "thích làm gì (nói chung)",
+     "en": "I like reading.",
+     "vi": "Tôi thích đọc sách."
+    },
+    {
+     "ct": "would like + to V",
+     "nghia": "muốn — lịch sự hơn “want”",
+     "en": "I would like to book a room.",
+     "vi": "Tôi muốn đặt một phòng."
+    }
+   ]
+  },
+  {
+   "tu": "need",
+   "nghia": "cần",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "need + sth",
+     "nghia": "cần cái gì",
+     "en": "I need help.",
+     "vi": "Tôi cần giúp đỡ."
+    },
+    {
+     "ct": "need + to V",
+     "nghia": "cần làm gì",
+     "en": "She needs to work tomorrow.",
+     "vi": "Cô ấy cần làm việc ngày mai."
+    }
+   ]
+  },
+  {
+   "tu": "think",
+   "nghia": "nghĩ",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "think + (that) + mệnh đề",
+     "nghia": "nghĩ rằng",
+     "en": "I think he is right.",
+     "vi": "Tôi nghĩ anh ấy đúng."
+    },
+    {
+     "ct": "think about + sth",
+     "nghia": "nghĩ VỀ chuyện gì",
+     "en": "I'm thinking about it.",
+     "vi": "Tôi đang nghĩ về chuyện đó."
+    },
+    {
+     "ct": "think of + sth",
+     "nghia": "nghĩ ra, nhớ ra",
+     "en": "I can't think of his name.",
+     "vi": "Tôi không nhớ ra tên anh ấy."
+    }
+   ]
+  },
+  {
+   "tu": "depend",
+   "nghia": "tùy thuộc",
+   "bay": "Trả lời ngắn là “It depends.” — không bao giờ nói trống “Depend.”",
+   "mau": [
+    {
+     "ct": "depend on + sth/sb",
+     "nghia": "tùy vào cái gì — LUÔN “on”",
+     "en": "It depends on the weather.",
+     "vi": "Cái đó tùy thời tiết."
+    }
+   ]
+  },
+  {
+   "tu": "belong",
+   "nghia": "thuộc về",
+   "bay": "Không dùng ở dạng tiếp diễn: ❌ is belonging to → ✅ belongs to.",
+   "mau": [
+    {
+     "ct": "belong to + sb",
+     "nghia": "là của ai — LUÔN “to”",
+     "en": "This book belongs to me.",
+     "vi": "Quyển sách này là của tôi."
+    }
+   ]
+  },
+  {
+   "tu": "enjoy",
+   "nghia": "thích, tận hưởng",
+   "bay": "❌ I enjoy to read → ✅ I enjoy **reading**.",
+   "mau": [
+    {
+     "ct": "enjoy + sth",
+     "nghia": "thích cái gì",
+     "en": "I enjoy the weekend.",
+     "vi": "Tôi thích cuối tuần."
+    },
+    {
+     "ct": "enjoy + V-ing",
+     "nghia": "thích làm gì — KHÔNG dùng “to”",
+     "en": "I enjoy reading books.",
+     "vi": "Tôi thích đọc sách."
+    }
+   ]
+  },
+  {
+   "tu": "stop",
+   "nghia": "dừng",
+   "bay": "Đây là cặp đổi nghĩa hoàn toàn tùy dạng đi sau — hiếm nhưng rất dễ nhầm.",
+   "mau": [
+    {
+     "ct": "stop + V-ing",
+     "nghia": "NGỪNG HẲN việc đang làm",
+     "en": "He stopped smoking.",
+     "vi": "Anh ấy bỏ thuốc."
+    },
+    {
+     "ct": "stop + to V",
+     "nghia": "DỪNG LẠI ĐỂ làm việc khác",
+     "en": "He stopped to smoke.",
+     "vi": "Anh ấy dừng lại để hút thuốc."
+    }
+   ]
+  },
+  {
+   "tu": "work",
+   "nghia": "làm việc",
+   "bay": "",
+   "mau": [
+    {
+     "ct": "work + at/in/for + nơi",
+     "nghia": "làm ở đâu",
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng."
+    },
+    {
+     "ct": "work as + nghề",
+     "nghia": "làm nghề gì",
+     "en": "He works as a driver.",
+     "vi": "Anh ấy làm tài xế."
+    },
+    {
+     "ct": "work on + sth",
+     "nghia": "đang làm dở việc gì",
+     "en": "I'm working on a report.",
+     "vi": "Tôi đang làm một báo cáo."
+    }
+   ]
+  },
+  {
+   "tu": "arrive",
+   "nghia": "đến nơi",
+   "bay": "❌ arrive **to** → không bao giờ dùng “to” với arrive.",
+   "mau": [
+    {
+     "ct": "arrive at + nơi nhỏ",
+     "nghia": "đến sân bay, bến, tòa nhà",
+     "en": "We arrived at the airport.",
+     "vi": "Chúng tôi tới sân bay."
+    },
+    {
+     "ct": "arrive in + nơi lớn",
+     "nghia": "đến thành phố, đất nước",
+     "en": "We arrived in Hanoi.",
+     "vi": "Chúng tôi tới Hà Nội."
+    }
+   ]
+  },
+  {
+   "tu": "spend",
+   "nghia": "tiêu, dành",
+   "bay": "❌ spend time **to study** → ✅ spend time **studying**.",
+   "mau": [
+    {
+     "ct": "spend + tiền + on + sth",
+     "nghia": "tiêu tiền vào cái gì",
+     "en": "I spend a lot on books.",
+     "vi": "Tôi tiêu nhiều tiền vào sách."
+    },
+    {
+     "ct": "spend + thời gian + V-ing",
+     "nghia": "dành thời gian làm gì",
+     "en": "I spend two hours studying.",
+     "vi": "Tôi dành hai tiếng để học."
+    }
+   ]
+  }
+ ],
+ "y_muon_noi": [
+  {
+   "y": "để (làm gì)",
+   "ct": "to + V",
+   "giai_thich": "Cách nói mục đích ngắn nhất và hay dùng nhất. Chỉ cần “to” rồi động từ dạng gốc.",
+   "bay": "❌ I go to work **for** earn money → sai. “for” chỉ đi với danh từ (for money), còn động từ thì dùng “to”.",
+   "vi_du": [
+    {
+     "en": "I go to work to earn money.",
+     "vi": "Tôi đi làm để kiếm tiền."
+    },
+    {
+     "en": "She studies hard to pass the exam.",
+     "vi": "Cô ấy học chăm để thi đỗ."
+    }
+   ]
+  },
+  {
+   "y": "để trở nên (thế nào)",
+   "ct": "to become / to get + tính từ",
+   "giai_thich": "**get + tính từ** là cách nói hằng ngày, **become** trang trọng hơn và hay dùng với danh từ nghề nghiệp.",
+   "bay": "❌ to become strong**er person** → become đi với danh từ (become a doctor) hoặc tính từ (become strong), không trộn.",
+   "vi_du": [
+    {
+     "en": "She studies hard to become a doctor.",
+     "vi": "Cô ấy học chăm để trở thành bác sĩ."
+    },
+    {
+     "en": "Exercise to get stronger.",
+     "vi": "Tập luyện để khỏe hơn."
+    },
+    {
+     "en": "It is getting cold.",
+     "vi": "Trời đang trở lạnh."
+    }
+   ]
+  },
+  {
+   "y": "chỉ vừa đủ để",
+   "ct": "enough + to V  ·  enough + danh từ + to V",
+   "giai_thich": "**enough** đứng SAU tính từ nhưng TRƯỚC danh từ — đây là chỗ hay sai.",
+   "bay": "❌ enough old → ✅ old **enough** (sau tính từ)\n❌ money enough → ✅ **enough** money (trước danh từ)",
+   "vi_du": [
+    {
+     "en": "He is old enough to drive.",
+     "vi": "Anh ấy đủ tuổi để lái xe."
+    },
+    {
+     "en": "I have enough money to buy it.",
+     "vi": "Tôi có đủ tiền để mua nó."
+    },
+    {
+     "en": "She speaks English well enough to work here.",
+     "vi": "Cô ấy nói tiếng Anh đủ giỏi để làm ở đây."
+    }
+   ]
+  },
+  {
+   "y": "quá … đến mức không thể",
+   "ct": "too + tính từ + to V",
+   "giai_thich": "“too” luôn mang nghĩa XẤU — quá mức nên không làm được. Đừng dùng “too” để khen.",
+   "bay": "❌ This coffee is too good → nghe như đang chê. Khen thì dùng **very** good hoặc **so** good.",
+   "vi_du": [
+    {
+     "en": "It is too hot to go out.",
+     "vi": "Trời nóng quá không ra ngoài được."
+    },
+    {
+     "en": "He is too young to drive.",
+     "vi": "Anh ấy còn quá nhỏ để lái xe."
+    }
+   ]
+  },
+  {
+   "y": "càng … càng …",
+   "ct": "the + so sánh hơn, the + so sánh hơn",
+   "giai_thich": "Hai vế đều bắt đầu bằng “the”, ngăn nhau bằng dấu phẩy.",
+   "bay": "",
+   "vi_du": [
+    {
+     "en": "The more you practise, the better you get.",
+     "vi": "Càng luyện nhiều càng giỏi."
+    },
+    {
+     "en": "The older I get, the less I sleep.",
+     "vi": "Càng lớn tuổi tôi càng ngủ ít."
+    }
+   ]
+  },
+  {
+   "y": "không những … mà còn …",
+   "ct": "not only … but also …",
+   "giai_thich": "Hai thứ đứng sau “not only” và “but also” phải CÙNG LOẠI — cùng là tính từ, hoặc cùng là danh từ, hoặc cùng là động từ.",
+   "bay": "❌ not only smart but also **a kind person** → hai vế lệch loại.",
+   "vi_du": [
+    {
+     "en": "She is not only smart but also kind.",
+     "vi": "Cô ấy không những thông minh mà còn tốt bụng."
+    },
+    {
+     "en": "He not only works but also studies.",
+     "vi": "Anh ấy không những đi làm mà còn đi học."
+    }
+   ]
+  },
+  {
+   "y": "thà … còn hơn",
+   "ct": "would rather + V + than + V",
+   "giai_thich": "Cả hai động từ đều ở dạng GỐC, không “to”.",
+   "bay": "❌ would rather **to** stay → ✅ would rather stay.",
+   "vi_du": [
+    {
+     "en": "I would rather stay home than go out.",
+     "vi": "Tôi thà ở nhà còn hơn ra ngoài."
+    },
+    {
+     "en": "She would rather walk than take a taxi.",
+     "vi": "Cô ấy thà đi bộ còn hơn đi taxi."
+    }
+   ]
+  },
+  {
+   "y": "đáng lẽ ra (đã nên)",
+   "ct": "should have + V3",
+   "giai_thich": "Nói về việc ĐÃ KHÔNG làm trong quá khứ và bây giờ tiếc.",
+   "bay": "Phân biệt: **should** + V = lời khuyên bây giờ · **should have** + V3 = tiếc về chuyện đã rồi.",
+   "vi_du": [
+    {
+     "en": "I should have studied harder.",
+     "vi": "Đáng lẽ tôi nên học chăm hơn."
+    },
+    {
+     "en": "You should have told me.",
+     "vi": "Đáng lẽ bạn nên nói với tôi."
+    }
+   ]
+  },
+  {
+   "y": "nếu … thì …",
+   "ct": "If + hiện tại, will + V  ·  If + quá khứ, would + V",
+   "giai_thich": "**Loại 1** — chuyện có thể xảy ra thật: *If it rains, I will stay home.*\n**Loại 2** — chuyện giả định, không có thật: *If I had money, I would travel.*",
+   "bay": "❌ If it **will** rain → vế “if” không bao giờ có will.",
+   "vi_du": [
+    {
+     "en": "If it rains tomorrow, we will cancel the trip.",
+     "vi": "Nếu mai mưa thì chúng ta huỷ chuyến đi."
+    },
+    {
+     "en": "If I spoke Japanese, I would work in Tokyo.",
+     "vi": "Nếu tôi biết tiếng Nhật thì tôi đã làm ở Tokyo."
+    }
+   ]
+  },
+  {
+   "y": "dùng để làm gì",
+   "ct": "be used to + V-ing  ·  be used for + V-ing  ·  used to + V",
+   "giai_thich": "Ba cụm nhìn giống nhau nhưng khác hẳn nghĩa:\n- **used to + V** — TRƯỚC KIA hay làm, giờ không nữa\n- **be used to + V-ing** — ĐÃ QUEN với việc gì\n- **be used for + V-ing** — được dùng ĐỂ làm gì",
+   "bay": "Đây là ba cụm dễ lẫn nhất trong tiếng Anh. Nhìn có “be” hay không, và sau đó là V hay V-ing.",
+   "vi_du": [
+    {
+     "en": "I used to smoke.",
+     "vi": "Trước kia tôi hay hút thuốc."
+    },
+    {
+     "en": "I am used to getting up early.",
+     "vi": "Tôi đã quen dậy sớm."
+    },
+    {
+     "en": "This app is used for learning English.",
+     "vi": "App này dùng để học tiếng Anh."
+    }
+   ]
+  },
+  {
+   "y": "có vẻ như, hình như",
+   "ct": "seem + tính từ  ·  seem to + V  ·  It seems that …",
+   "giai_thich": "Cách nói giảm nhẹ, rất hay dùng trong IELTS Writing để tránh khẳng định quá chắc.",
+   "bay": "",
+   "vi_du": [
+    {
+     "en": "She seems tired.",
+     "vi": "Cô ấy có vẻ mệt."
+    },
+    {
+     "en": "He seems to know the answer.",
+     "vi": "Anh ấy có vẻ biết câu trả lời."
+    },
+    {
+     "en": "It seems that prices are rising.",
+     "vi": "Có vẻ như giá đang tăng."
+    }
+   ]
+  },
+  {
+   "y": "mất bao lâu để làm gì",
+   "ct": "It takes + sb + thời gian + to V",
+   "giai_thich": "Chủ ngữ luôn là “It”, không phải người.",
+   "bay": "❌ I take twenty minutes to go to work → ✅ **It takes me** twenty minutes…",
+   "vi_du": [
+    {
+     "en": "It takes me twenty minutes to go to work.",
+     "vi": "Tôi mất hai mươi phút để đi làm."
+    },
+    {
+     "en": "It took her two years to finish the course.",
+     "vi": "Cô ấy mất hai năm để học xong khoá đó."
+    }
+   ]
+  },
+  {
+   "y": "thay vì",
+   "ct": "instead of + V-ing / danh từ",
+   "giai_thich": "Sau “of” luôn là danh từ hoặc V-ing, không bao giờ là động từ gốc.",
+   "bay": "❌ instead of **take** a taxi → ✅ instead of **taking** a taxi.",
+   "vi_du": [
+    {
+     "en": "I walked instead of taking a taxi.",
+     "vi": "Tôi đi bộ thay vì đi taxi."
+    },
+    {
+     "en": "Drink water instead of soft drinks.",
+     "vi": "Uống nước thay vì nước ngọt."
+    }
+   ]
+  },
+  {
+   "y": "mặc dù",
+   "ct": "although / though + mệnh đề  ·  despite / in spite of + danh từ",
+   "giai_thich": "Chọn theo cái đứng SAU: cả một mệnh đề thì dùng although, chỉ một cụm danh từ thì dùng despite.",
+   "bay": "❌ Despite it was raining → ✅ **Although** it was raining, hoặc **Despite the rain**.\nVà tiếng Anh KHÔNG dùng “but” ở vế sau: ❌ Although it rained, **but** we went out.",
+   "vi_du": [
+    {
+     "en": "Although it was raining, we went out.",
+     "vi": "Mặc dù trời mưa, chúng tôi vẫn ra ngoài."
+    },
+    {
+     "en": "Despite the rain, we went out.",
+     "vi": "Mặc dù trời mưa, chúng tôi vẫn ra ngoài."
+    }
+   ]
+  },
+  {
+   "y": "nhờ ai làm gì",
+   "ct": "have / get + sth + V3  ·  ask sb to V",
+   "giai_thich": "Khi việc do NGƯỜI KHÁC làm hộ mình.",
+   "bay": "*I cut my hair* nghĩa là TỰ TAY cắt. Muốn nói đi tiệm thì phải *have my hair cut*.",
+   "vi_du": [
+    {
+     "en": "I had my hair cut.",
+     "vi": "Tôi đi cắt tóc (thợ cắt cho tôi)."
+    },
+    {
+     "en": "She got her phone repaired.",
+     "vi": "Cô ấy mang điện thoại đi sửa."
+    },
+    {
+     "en": "I asked him to help me.",
+     "vi": "Tôi nhờ anh ấy giúp tôi."
+    }
+   ]
+  },
+  {
+   "y": "càng ngày càng",
+   "ct": "be + getting + so sánh hơn  ·  more and more + tính từ",
+   "giai_thich": "Diễn tả xu hướng đang thay đổi dần.",
+   "bay": "",
+   "vi_du": [
+    {
+     "en": "It is getting hotter.",
+     "vi": "Trời càng ngày càng nóng."
+    },
+    {
+     "en": "Cities are becoming more and more crowded.",
+     "vi": "Các thành phố ngày càng đông đúc."
+    }
+   ]
+  }
  ]
 }

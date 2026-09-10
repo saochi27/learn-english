@@ -1494,3 +1494,21 @@ li{margin:5px 0; line-height:1.6}
 /* Dải số liệu ôn tập */
 .np-dau-on{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;font-size:15px}
 @media (prefers-color-scheme:dark){ .np-chang{color:#9ca3af} }
+/* Tra động từ · Nói ý này */
+.np-tim{width:100%;padding:9px 12px;font-size:15px;border-radius:8px;
+  border:1px solid var(--vien,#d1d5db)}
+.np-dt-dau{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding-bottom:8px;border-bottom:1px solid var(--vien,#e5e7eb)}
+.np-dt-dau .tu-anh{font-size:19px}
+.np-mau{padding:10px 0;border-bottom:1px solid var(--vien,#f3f4f6)}
+.np-mau:last-child{border-bottom:0}
+/* Công thức là thứ mắt phải bắt được trước tiên nên cho chữ máy và nền riêng */
+.np-ct{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;
+  background:#f3f4f6;border-radius:5px;padding:3px 8px;display:inline-block}
+.np-ct-lon{font-size:16px;margin-top:4px}
+.np-y-dau{font-size:17px;font-weight:600}
+.np-y .np-vd{border-top:0;border-bottom:1px solid var(--vien,#f3f4f6)}
+@media (prefers-color-scheme:dark){
+  .np-ct{background:#1f2937}
+  .np-tim{background:#111827;color:#e5e7eb}
+}
