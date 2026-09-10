@@ -6,7 +6,16 @@
   "TT": "tính từ",
   "TrT": "trạng từ",
   "GT": "cụm giới từ",
-  "MT": "mạo từ"
+  "MT": "mạo từ",
+  "TDT": "trợ động từ",
+  "TH": "từ hỏi",
+  "LT": "liên từ",
+  "O2": "tân ngữ thứ hai"
+ },
+ "ten_chang": {
+  "A": "Chặng A — nhận mặt từ loại",
+  "B": "Chặng B — trật tự câu",
+  "C": "Chặng C — mẫu động từ"
  },
  "bai": [
   {
@@ -586,6 +595,930 @@
     }
    ],
    "lien_quan": [
+    "dong_tu"
+   ]
+  },
+  {
+   "ma": "svo",
+   "chang": "B",
+   "so": 9,
+   "ten": "Bộ xương S + V + O",
+   "ten_en": "Word order",
+   "mot_cau": "Mọi câu tiếng Anh đều dựng trên một khung: AI + LÀM GÌ + CÁI GÌ.",
+   "giai_thich": "Đây là bài quan trọng nhất trong cả mục. Nắm được khung này thì tự đặt được câu, không nắm thì mãi phải nhớ nguyên câu.\n\n**S (chủ ngữ)** — ai/cái gì thực hiện\n**V (động từ)** — làm gì\n**O (tân ngữ)** — làm lên cái gì\n\n| S | V | O |\n|---|---|---|\n| My brother | reads | a book |\n| She | likes | coffee |\n| We | study | English |\n\n**Thứ tự này gần như không được đổi.** Tiếng Việt đổi chỗ vẫn hiểu được (*Cà phê tôi thích*), tiếng Anh đổi chỗ là đổi nghĩa:\n\n- *The dog bites the man.* — chó cắn người\n- *The man bites the dog.* — người cắn chó\n\nCùng ba từ, đổi chỗ là đổi hẳn ai làm gì.\n\n**Không phải động từ nào cũng cần O.** *I sleep.* · *She works.* — đủ câu rồi, không cần tân ngữ.",
+   "bay": {
+    "tieu_de": "Tiếng Việt dựa vào ngữ cảnh, tiếng Anh dựa vào VỊ TRÍ",
+    "noi_dung": "Tiếng Việt hiểu được nhờ ngữ cảnh nên trật tự lỏng. Tiếng Anh không có dấu hiệu nào khác ngoài VỊ TRÍ, nên vị trí chính là nghĩa.\n\nKhi bí không biết đặt câu thế nào, hãy tự hỏi ba câu theo đúng thứ tự này:\n\n1. **Ai?** → đặt đầu tiên\n2. **Làm gì?** → đặt ngay sau\n3. **Làm lên cái gì?** → đặt cuối\n\nBa câu hỏi này giải quyết được phần lớn câu bạn muốn nói."
+   },
+   "vi_du": [
+    {
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng.",
+     "ghi_chu": "S = my sister · V = works · phần sau là cụm giới từ, không phải tân ngữ"
+    },
+    {
+     "en": "My aunt has three children.",
+     "vi": "Cô tôi có ba đứa con.",
+     "ghi_chu": "S = my aunt · V = has · O = three children"
+    },
+    {
+     "en": "I like coffee but I don't like tea.",
+     "vi": "Tôi thích cà phê nhưng không thích trà.",
+     "ghi_chu": "hai bộ khung S+V+O nối bằng “but”"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "likes",
+       "vai": "V"
+      },
+      {
+       "tu": "coffee",
+       "vai": "O"
+      }
+     ],
+     "vi": "Cô ấy thích cà phê."
+    },
+    {
+     "manh": [
+      {
+       "tu": "We",
+       "vai": "S"
+      },
+      {
+       "tu": "study",
+       "vai": "V"
+      },
+      {
+       "tu": "English",
+       "vai": "O"
+      }
+     ],
+     "vi": "Chúng tôi học tiếng Anh."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu",
+    "dong_tu"
+   ]
+  },
+  {
+   "ma": "cho_dung",
+   "chang": "B",
+   "so": 10,
+   "ten": "Chỗ đứng của các thành phần phụ",
+   "ten_en": "Position",
+   "mot_cau": "Tính từ, trạng từ và cụm giới từ mỗi thứ có chỗ riêng — đặt sai chỗ là câu nghe sai ngay dù đúng từ.",
+   "giai_thich": "Sau khi có khung S + V + O, các phần phụ chèn vào theo luật:\n\n**Tính từ** → ngay TRƯỚC danh từ nó mô tả\n*a **new** phone* · *my **old** house*\n\n**Trạng từ tần suất** (always, usually, often, never) → TRƯỚC động từ thường, SAU động từ be\n*I **always** drink coffee.* · *She **is always** busy.*\n\n**Trạng từ cách thức** (well, slowly, hard) → SAU động từ, hoặc sau tân ngữ nếu có\n*He speaks English **well**.* (không phải *speaks well English*)\n\n**Cụm giới từ nơi chốn và thời gian** → CUỐI CÂU, và nơi chốn đứng trước thời gian\n*I work **in a bank** **every day**.*\n\nThứ tự đầy đủ hay dùng nhất:\n**S + trạng từ tần suất + V + O + nơi chốn + thời gian**",
+   "bay": {
+    "tieu_de": "Tiếng Việt cho phép đảo, tiếng Anh thì không",
+    "noi_dung": "Tiếng Việt nói được *Hôm qua tôi đi Hà Nội* lẫn *Tôi đi Hà Nội hôm qua*. Tiếng Anh cũng đảo được cụm thời gian ra đầu câu, NHƯNG các phần khác thì không:\n\n- ❌ He speaks well English. → ✅ He speaks English **well**.\n- ❌ I drink always coffee. → ✅ I **always** drink coffee.\n- ❌ a phone new → ✅ **a new phone**\n\nNhớ một câu: **tính từ trước danh từ, trạng từ sau động từ, nơi chốn và thời gian ở cuối.**"
+   },
+   "vi_du": [
+    {
+     "en": "I usually get up at six.",
+     "vi": "Tôi thường dậy lúc sáu giờ.",
+     "ghi_chu": "usually trước động từ · at six là thời gian, đứng cuối"
+    },
+    {
+     "en": "He works very hard.",
+     "vi": "Anh ấy làm việc rất chăm.",
+     "ghi_chu": "very hard đứng sau động từ works"
+    },
+    {
+     "en": "This is Tuan, a new student.",
+     "vi": "Đây là Tuấn, một học sinh mới.",
+     "ghi_chu": "new đứng trước student"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "always",
+       "vai": "TrT"
+      },
+      {
+       "tu": "drink",
+       "vai": "V"
+      },
+      {
+       "tu": "coffee",
+       "vai": "O"
+      },
+      {
+       "tu": "in the morning",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Tôi luôn uống cà phê vào buổi sáng."
+    },
+    {
+     "manh": [
+      {
+       "tu": "He",
+       "vai": "S"
+      },
+      {
+       "tu": "speaks",
+       "vai": "V"
+      },
+      {
+       "tu": "English",
+       "vai": "O"
+      },
+      {
+       "tu": "well",
+       "vai": "TrT"
+      }
+     ],
+     "vi": "Anh ấy nói tiếng Anh giỏi."
+    }
+   ],
+   "lien_quan": [
+    "tinh_tu",
+    "trang_tu",
+    "svo"
+   ]
+  },
+  {
+   "ma": "phu_dinh",
+   "chang": "B",
+   "so": 11,
+   "ten": "Câu phủ định",
+   "ten_en": "Negative",
+   "mot_cau": "Muốn nói KHÔNG thì phải mượn một trợ động từ — không chỉ thêm chữ “not” vào là xong.",
+   "giai_thich": "Tiếng Anh chia làm hai trường hợp, phải phân biệt trước khi làm gì khác:\n\n**1. Câu có “be” (am/is/are) → thêm NOT ngay sau be**\n*She **is** happy.* → *She **is not** happy.* (= isn't)\n\n**2. Câu có động từ thường → mượn DO/DOES/DID**\n*I **work** here.* → *I **do not work** here.* (= don't)\n*He **works** here.* → *He **does not work** here.*\n\n**Quy tắc vàng:** khi đã có do/does/did thì động từ chính TRỞ VỀ DẠNG GỐC, không thêm -s, không chia quá khứ:\n- ❌ He doesn't works. → ✅ He doesn't **work**.\n- ❌ She didn't went. → ✅ She didn't **go**.\n\nChữ “s” hay dấu quá khứ đã nhảy sang does/did rồi, để lại ở động từ chính nữa là thừa.",
+   "bay": {
+    "tieu_de": "Tiếng Việt chỉ cần thêm “không”, tiếng Anh phải mượn từ",
+    "noi_dung": "Tiếng Việt: *tôi làm* → *tôi **không** làm*. Chỉ chèn một chữ, động từ y nguyên.\n\nTiếng Anh phải lôi ra một trợ động từ chẳng có nghĩa gì, chỉ để mang chữ not:\n\n- Tôi không làm ở đây → I **do not** work here.\n- Anh ấy không thích cà phê → He **does not** like coffee.\n\nĐây là chỗ người Việt hay quên hẳn do/does:\n- ❌ I not work here. → ✅ I **don't** work here."
+   },
+   "vi_du": [
+    {
+     "en": "She doesn’t work on Sundays.",
+     "vi": "Cô ấy không làm việc vào Chủ nhật.",
+     "ghi_chu": "doesn’t + work (dạng gốc, không có s)"
+    },
+    {
+     "en": "I like coffee but I don't like tea.",
+     "vi": "Tôi thích cà phê nhưng không thích trà.",
+     "ghi_chu": "don't + like — chủ ngữ I nên dùng don't"
+    },
+    {
+     "en": "It is cold in the morning.",
+     "vi": "Buổi sáng trời lạnh.",
+     "ghi_chu": "câu này có “is” — muốn phủ định chỉ cần “is not”, không mượn do"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "does not",
+       "vai": "TDT"
+      },
+      {
+       "tu": "work",
+       "vai": "V"
+      },
+      {
+       "tu": "on Sundays",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Cô ấy không làm việc vào Chủ nhật."
+    },
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "do not",
+       "vai": "TDT"
+      },
+      {
+       "tu": "like",
+       "vai": "V"
+      },
+      {
+       "tu": "tea",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi không thích trà."
+    }
+   ],
+   "lien_quan": [
+    "dong_tu",
+    "svo"
+   ]
+  },
+  {
+   "ma": "hoi_yes_no",
+   "chang": "B",
+   "so": 12,
+   "ten": "Câu hỏi Yes/No",
+   "ten_en": "Yes-No question",
+   "mot_cau": "Muốn hỏi câu trả lời được bằng có/không thì ĐẢO trợ động từ lên đầu.",
+   "giai_thich": "Cũng hai trường hợp như câu phủ định:\n\n**1. Câu có “be” → đảo be lên đầu**\n*She **is** a teacher.* → ***Is** she a teacher?*\n\n**2. Động từ thường → mượn Do/Does/Did đặt lên đầu**\n*You **like** coffee.* → ***Do** you like coffee?*\n*He **works** here.* → ***Does** he work here?*\n\nVẫn quy tắc vàng: có Do/Does/Did rồi thì động từ chính **về dạng gốc**\n- ❌ Does he works here? → ✅ Does he **work** here?\n\n**Trả lời ngắn** dùng lại chính trợ động từ đó:\n*Do you like coffee?* → *Yes, I **do**.* / *No, I **don't**.*\n*Is she a teacher?* → *Yes, she **is**.* / *No, she **isn't**.*",
+   "bay": {
+    "tieu_de": "Tiếng Việt thêm chữ ở cuối, tiếng Anh đảo cả trật tự",
+    "noi_dung": "Tiếng Việt hỏi bằng cách thêm *không / à / hả* vào cuối, trật tự câu giữ nguyên: *Bạn thích cà phê **không**?*\n\nTiếng Anh phải ĐẢO — đưa trợ động từ ra trước chủ ngữ. Người Việt hay giữ nguyên trật tự rồi lên giọng cuối câu, nghe ra vẫn hiểu nhưng là sai ngữ pháp:\n\n- ❌ You like coffee? → ✅ **Do you** like coffee?\n- ❌ She is teacher? → ✅ **Is she** a teacher?"
+   },
+   "vi_du": [
+    {
+     "en": "Do you like your job?",
+     "vi": "Bạn có thích công việc của mình không?",
+     "ghi_chu": "Do đứng đầu · like giữ dạng gốc"
+    },
+    {
+     "en": "Are you from Hanoi?",
+     "vi": "Bạn đến từ Hà Nội à?",
+     "ghi_chu": "câu có be nên đảo thẳng “are” lên đầu, không mượn do"
+    },
+    {
+     "en": "Have you ever eaten pho?",
+     "vi": "Bạn đã từng ăn phở chưa?",
+     "ghi_chu": "have đóng vai trợ động từ nên chính nó đảo lên đầu"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "Do",
+       "vai": "TDT"
+      },
+      {
+       "tu": "you",
+       "vai": "S"
+      },
+      {
+       "tu": "like",
+       "vai": "V"
+      },
+      {
+       "tu": "coffee",
+       "vai": "O"
+      }
+     ],
+     "vi": "Bạn có thích cà phê không?"
+    },
+    {
+     "manh": [
+      {
+       "tu": "Does",
+       "vai": "TDT"
+      },
+      {
+       "tu": "he",
+       "vai": "S"
+      },
+      {
+       "tu": "work",
+       "vai": "V"
+      },
+      {
+       "tu": "here",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Anh ấy có làm ở đây không?"
+    }
+   ],
+   "lien_quan": [
+    "phu_dinh",
+    "svo"
+   ]
+  },
+  {
+   "ma": "hoi_wh",
+   "chang": "B",
+   "so": 13,
+   "ten": "Câu hỏi Wh-",
+   "ten_en": "Wh- question",
+   "mot_cau": "Hỏi để lấy THÔNG TIN, không phải có/không. Chọn đúng từ hỏi rồi đặt nó lên đầu, phần còn lại giữ nguyên như câu hỏi Yes/No.",
+   "giai_thich": "**Chọn từ hỏi theo thứ bạn muốn biết:**\n\n| Từ hỏi | Hỏi về | Ví dụ |\n|---|---|---|\n| **who** | người, làm chủ ngữ | Who called you? |\n| **whom** | người, làm tân ngữ | Whom did you call? |\n| **what** | vật, việc | What do you do? |\n| **which** | chọn trong số có sẵn | Which car is yours? |\n| **where** | nơi chốn | Where do you live? |\n| **when** | thời gian | When does it start? |\n| **why** | lý do | Why are you late? |\n| **how** | cách thức | How do you go to work? |\n| **whose** | của ai | Whose book is this? |\n\n**Công thức:** `Từ hỏi + trợ động từ + S + V?`\n*Where **do you** live?* · *What **does she** want?*\n\n**Một ngoại lệ quan trọng:** khi WHO hỏi chính CHỦ NGỮ thì KHÔNG mượn do:\n- *Who **called** you?* (ai gọi bạn) — không phải *Who did call you*\n- *Whom **did** you **call**?* (bạn gọi ai) — có did vì who là tân ngữ\n\nMẹo phân biệt **who** và **whom**: thử trả lời. Trả lời là *he/she* thì dùng **who**; trả lời là *him/her* thì dùng **whom**.",
+   "bay": {
+    "tieu_de": "Tiếng Việt để từ hỏi ở CUỐI, tiếng Anh để ở ĐẦU",
+    "noi_dung": "Đây lại là một chỗ đảo ngược hoàn toàn:\n\n| Tiếng Việt | Tiếng Anh |\n|---|---|\n| Bạn sống **ở đâu**? | **Where** do you live? |\n| Bạn làm **nghề gì**? | **What** do you do? |\n| Bạn đi làm **bằng gì**? | **How** do you go to work? |\n\nNgười Việt hay dịch thẳng theo thứ tự tiếng mẹ đẻ:\n- ❌ You live where? → ✅ **Where do you** live?\n\nVà hay quên trợ động từ:\n- ❌ Where you live? → ✅ Where **do** you live?"
+   },
+   "vi_du": [
+    {
+     "en": "What do you do?",
+     "vi": "Bạn làm nghề gì?",
+     "ghi_chu": "What + do + you + do — chữ “do” thứ hai mới là động từ chính"
+    },
+    {
+     "en": "Where's the nearest bus stop?",
+     "vi": "Trạm xe buýt gần nhất ở đâu?",
+     "ghi_chu": "Where + is — câu có be nên không mượn do"
+    },
+    {
+     "en": "Excuse me, how do I get to the bus stop?",
+     "vi": "Xin lỗi, tôi đi đến trạm xe buýt bằng cách nào?",
+     "ghi_chu": "how + do + I + get — đúng công thức"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "Where",
+       "vai": "TH"
+      },
+      {
+       "tu": "do",
+       "vai": "TDT"
+      },
+      {
+       "tu": "you",
+       "vai": "S"
+      },
+      {
+       "tu": "live",
+       "vai": "V"
+      }
+     ],
+     "vi": "Bạn sống ở đâu?"
+    },
+    {
+     "manh": [
+      {
+       "tu": "What",
+       "vai": "TH"
+      },
+      {
+       "tu": "does",
+       "vai": "TDT"
+      },
+      {
+       "tu": "she",
+       "vai": "S"
+      },
+      {
+       "tu": "want",
+       "vai": "V"
+      }
+     ],
+     "vi": "Cô ấy muốn gì?"
+    }
+   ],
+   "lien_quan": [
+    "hoi_yes_no",
+    "dai_tu"
+   ]
+  },
+  {
+   "ma": "cau_dai",
+   "chang": "B",
+   "so": 14,
+   "ten": "Câu dài",
+   "ten_en": "Longer sentences",
+   "mot_cau": "Ghép nhiều khung S+V+O lại bằng liên từ, hoặc gắn thêm mô tả bằng who / which / that.",
+   "giai_thich": "**Cách 1 — nối hai câu bằng liên từ**\n*I work in a bank.* + *My sister works in a hospital.*\n→ *I work in a bank **and** my sister works in a hospital.*\n\n**Cách 2 — mệnh đề quan hệ: gắn thêm mô tả vào một danh từ**\nDùng khi muốn nói rõ “người nào / cái nào”:\n\n- **who** — cho NGƯỜI: *The man **who** works here is my boss.*\n- **which** — cho VẬT: *The book **which** I bought was expensive.*\n- **that** — dùng được cho cả hai, thân mật hơn\n\nCách dựng: đặt who/which NGAY SAU danh từ cần mô tả, rồi viết tiếp một câu về danh từ đó.\n\n*The man* + *(người đó) works here* → *The man **who** works here*",
+   "bay": {
+    "tieu_de": "Đừng lặp lại chủ ngữ sau who/which",
+    "noi_dung": "Tiếng Việt nói *Người đàn ông mà **ông ấy** làm ở đây* — vẫn hiểu. Tiếng Anh thì who ĐÃ THAY cho chủ ngữ rồi, viết thêm là thừa:\n\n- ❌ The man who **he** works here is my boss.\n- ✅ The man who works here is my boss.\n- ❌ The book which I bought **it** was expensive.\n- ✅ The book which I bought was expensive.\n\nĐây là lỗi rất phổ biến vì nó dịch thẳng từ cấu trúc tiếng Việt."
+   },
+   "vi_du": [
+    {
+     "en": "I like coffee but I don't like tea.",
+     "vi": "Tôi thích cà phê nhưng không thích trà.",
+     "ghi_chu": "hai câu hoàn chỉnh nối bằng but"
+    },
+    {
+     "en": "I stayed home because it rained.",
+     "vi": "Tôi ở nhà vì trời mưa.",
+     "ghi_chu": "because mở đầu vế lý do"
+    },
+    {
+     "en": "This is Tuan, a new student.",
+     "vi": "Đây là Tuấn, một học sinh mới.",
+     "ghi_chu": "cách gắn thêm mô tả gọn nhất: dấu phẩy rồi cụm danh từ"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "The man",
+       "vai": "S"
+      },
+      {
+       "tu": "who",
+       "vai": "LT"
+      },
+      {
+       "tu": "works here",
+       "vai": "V"
+      },
+      {
+       "tu": "is my boss",
+       "vai": "O"
+      }
+     ],
+     "vi": "Người đàn ông làm ở đây là sếp tôi."
+    },
+    {
+     "manh": [
+      {
+       "tu": "I work in a bank",
+       "vai": "S"
+      },
+      {
+       "tu": "and",
+       "vai": "LT"
+      },
+      {
+       "tu": "she works in a hospital",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi làm ở ngân hàng còn cô ấy làm ở bệnh viện."
+    }
+   ],
+   "lien_quan": [
+    "lien_tu",
+    "svo"
+   ]
+  },
+  {
+   "ma": "v_to_v",
+   "chang": "C",
+   "so": 15,
+   "ten": "V + to V",
+   "ten_en": "Verb + to-infinitive",
+   "mot_cau": "Một số động từ đòi động từ đi sau phải có chữ “to”: want **to** go, need **to** work.",
+   "giai_thich": "Sau các động từ này, động từ thứ hai luôn ở dạng **to + V gốc**:\n\n**want · need · decide · hope · plan · promise · try · learn · would like · forget · agree**\n\n- *I **want to go** home.*\n- *She **needs to work** tomorrow.*\n- *We **decided to stay** at home.*\n\n**Động từ thứ hai KHÔNG chia** — chỉ động từ đầu chia:\n- *He **wants to go**.* (wants có s, go thì không)\n- *She **wanted to go**.* (wanted quá khứ, go vẫn dạng gốc)",
+   "bay": {
+    "tieu_de": "Tiếng Việt ghép thẳng hai động từ, tiếng Anh cần “to”",
+    "noi_dung": "Tiếng Việt nói *tôi muốn đi* — hai động từ dính liền nhau, không có gì ở giữa. Người Việt vì thế hay bỏ mất chữ to:\n\n- ❌ I want go home. → ✅ I want **to** go home.\n- ❌ She needs work. → ✅ She needs **to** work.\n\nVà hay chia luôn động từ thứ hai:\n- ❌ He wants to goes. → ✅ He wants to **go**."
+   },
+   "vi_du": [
+    {
+     "en": "Would you like tea or coffee?",
+     "vi": "Bạn muốn trà hay cà phê?",
+     "ghi_chu": "would like — sau nó là danh từ nên chưa cần to; có động từ thì thành “would like to drink”"
+    },
+    {
+     "en": "I want to book a room, please.",
+     "vi": "Tôi muốn đặt một phòng.",
+     "ghi_chu": "want to + book (dạng gốc)"
+    },
+    {
+     "en": "We decided to stay home.",
+     "vi": "Chúng tôi quyết định ở nhà.",
+     "ghi_chu": "decided to + stay — decided chia quá khứ, stay giữ gốc"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "want",
+       "vai": "V"
+      },
+      {
+       "tu": "to go",
+       "vai": "O"
+      },
+      {
+       "tu": "home",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Tôi muốn về nhà."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "needs",
+       "vai": "V"
+      },
+      {
+       "tu": "to work",
+       "vai": "O"
+      },
+      {
+       "tu": "tomorrow",
+       "vai": "TrT"
+      }
+     ],
+     "vi": "Cô ấy cần làm việc vào ngày mai."
+    }
+   ],
+   "lien_quan": [
+    "dong_tu"
+   ]
+  },
+  {
+   "ma": "v_ving",
+   "chang": "C",
+   "so": 16,
+   "ten": "V + V-ing",
+   "ten_en": "Verb + gerund",
+   "mot_cau": "Một số động từ khác lại đòi động từ đi sau ở dạng **-ing**: enjoy read**ing**, finish work**ing**.",
+   "giai_thich": "Sau các động từ này, động từ thứ hai thêm **-ing**:\n\n**enjoy · finish · avoid · mind · practise · suggest · keep · stop · like · love · hate**\n\n- *I **enjoy reading** books.*\n- *She **finished working** at six.*\n\n**Cũng dùng -ing sau GIỚI TỪ** — luật này rất chắc:\n- *She is good **at cooking**.* (không phải *at cook*)\n- *Thank you **for helping** me.*\n\n**like / love / hate** dùng được cả hai dạng, nghĩa gần như nhau:\n*I like reading.* = *I like to read.*\n\nCòn **want, need, decide** thì CHỈ dùng to V, không dùng -ing.",
+   "bay": {
+    "tieu_de": "Không có luật suy ra được — phải nhớ theo từng động từ",
+    "noi_dung": "Tiếng Việt không phân biệt hai kiểu này, nên không có gì để bắt chước. Cách duy nhất là nhớ động từ nào đi với dạng nào.\n\n| Đi với **to V** | Đi với **V-ing** |\n|---|---|\n| want, need, decide | enjoy, finish, avoid |\n| hope, plan, promise | mind, practise, suggest |\n| learn, agree, try | keep, stop |\n\nMột mẹo nhỏ giúp nhớ: sau **giới từ** thì LUÔN là -ing (*good at cooking*, *before going*, *instead of waiting*)."
+   },
+   "vi_du": [
+    {
+     "en": "He is good at playing football.",
+     "vi": "Anh ấy chơi bóng đá giỏi.",
+     "ghi_chu": "sau giới từ “at” là playing, không phải play"
+    },
+    {
+     "en": "I enjoy reading books.",
+     "vi": "Tôi thích đọc sách.",
+     "ghi_chu": "enjoy + reading, không phải enjoy to read"
+    },
+    {
+     "en": "She finished working at six.",
+     "vi": "Cô ấy làm xong lúc sáu giờ.",
+     "ghi_chu": "finish + working"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "enjoy",
+       "vai": "V"
+      },
+      {
+       "tu": "reading",
+       "vai": "O"
+      },
+      {
+       "tu": "books",
+       "vai": "O2"
+      }
+     ],
+     "vi": "Tôi thích đọc sách."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "is good at",
+       "vai": "V"
+      },
+      {
+       "tu": "cooking",
+       "vai": "O"
+      }
+     ],
+     "vi": "Cô ấy nấu ăn giỏi."
+    }
+   ],
+   "lien_quan": [
+    "v_to_v",
+    "gioi_tu"
+   ]
+  },
+  {
+   "ma": "v_sb_to_v",
+   "chang": "C",
+   "so": 17,
+   "ten": "V + sb + to V",
+   "ten_en": "Verb + object + to-infinitive",
+   "mot_cau": "Bảo AI ĐÓ làm gì: ask **sb** to do, tell **sb** to do.",
+   "giai_thich": "Khi hành động thứ hai do NGƯỜI KHÁC làm, chèn người đó vào giữa:\n\n**`V + người + to + V`**\n\n**ask · tell · want · advise · allow · remind · invite · expect**\n\n- *I **asked him to help** me.* — tôi nhờ anh ấy giúp\n- *She **told me to wait**.* — cô ấy bảo tôi đợi\n- *I **want you to come**.* — tôi muốn bạn tới\n\nSo sánh để thấy rõ ai làm gì:\n- *I want **to** go.* — TÔI đi\n- *I want **you to** go.* — BẠN đi\n\nNgười đứng giữa dùng dạng **tân ngữ**: me, him, her, us, them — không phải I, he, she.",
+   "bay": {
+    "tieu_de": "Tiếng Việt không chèn người vào giữa như vậy",
+    "noi_dung": "Tiếng Việt nói *Tôi muốn bạn đến* — hai vế khá rời. Tiếng Anh gói chặt thành một khối: *I want **you to** come.*\n\nHai lỗi hay gặp:\n- ❌ I want that you come. → ✅ I want **you to** come.\n- ❌ She told to me wait. → ✅ She told **me to** wait.\n\nVà nhớ dùng dạng tân ngữ:\n- ❌ I asked **he** to help. → ✅ I asked **him** to help."
+   },
+   "vi_du": [
+    {
+     "en": "She helps us.",
+     "vi": "Cô ấy giúp chúng tôi.",
+     "ghi_chu": "us là dạng tân ngữ — chính dạng dùng khi chèn người vào giữa"
+    },
+    {
+     "en": "I asked him to help me.",
+     "vi": "Tôi nhờ anh ấy giúp tôi.",
+     "ghi_chu": "asked + him + to help"
+    },
+    {
+     "en": "She told me to wait.",
+     "vi": "Cô ấy bảo tôi đợi.",
+     "ghi_chu": "told + me + to wait"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "asked",
+       "vai": "V"
+      },
+      {
+       "tu": "him",
+       "vai": "O"
+      },
+      {
+       "tu": "to help",
+       "vai": "O2"
+      }
+     ],
+     "vi": "Tôi nhờ anh ấy giúp."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "told",
+       "vai": "V"
+      },
+      {
+       "tu": "me",
+       "vai": "O"
+      },
+      {
+       "tu": "to wait",
+       "vai": "O2"
+      }
+     ],
+     "vi": "Cô ấy bảo tôi đợi."
+    }
+   ],
+   "lien_quan": [
+    "dai_tu",
+    "v_to_v"
+   ]
+  },
+  {
+   "ma": "v_sb_sth",
+   "chang": "C",
+   "so": 18,
+   "ten": "V + sb + sth",
+   "ten_en": "Verb + two objects",
+   "mot_cau": "Đưa CÁI GÌ cho AI: give **me** **a book**, read **her** **a story**.",
+   "giai_thich": "Một số động từ nhận HAI tân ngữ cùng lúc — người nhận đứng trước, vật đứng sau:\n\n**`V + người + vật`**\n\n**give · send · show · tell · buy · read · teach · lend · offer · bring**\n\n- *She **gave me a book**.*\n- *He **read her a story**.*\n- *I **bought my sister a phone**.*\n\n**Cách viết thứ hai** — đảo vật lên trước, thêm **to** hoặc **for**:\n- *She gave **a book to me**.*\n- *I bought **a phone for my sister**.*\n\nDùng **to** khi trao thứ gì đó (give, send, show, read, tell, lend), dùng **for** khi làm hộ ai (buy, make, cook, find).\n\nHai cách nghĩa như nhau, nhưng **thứ tự phải theo đúng một trong hai khuôn** — không trộn lẫn được.",
+   "bay": {
+    "tieu_de": "Trộn hai khuôn là lỗi rất hay gặp",
+    "noi_dung": "Tiếng Việt nói *Cô ấy đưa tôi quyển sách* và *Cô ấy đưa quyển sách cho tôi* — cả hai đều xuôi. Tiếng Anh cũng có hai cách, nhưng cách thứ hai BẮT BUỘC có to/for:\n\n- ✅ She gave **me a book**.\n- ✅ She gave **a book to me**.\n- ❌ She gave a book me.  (thiếu to)\n- ❌ She gave to me a book.  (thừa to)\n\nNhớ: **người trước thì không có to · vật trước thì phải có to.**"
+   },
+   "vi_du": [
+    {
+     "en": "My brother gives me five hundred thousand dong.",
+     "vi": "Anh trai tôi cho tôi năm trăm nghìn đồng.",
+     "ghi_chu": "gives + me (người) + five hundred thousand dong (vật)"
+    },
+    {
+     "en": "My uncle gives my brother twenty thousand dong.",
+     "vi": "Chú tôi cho anh trai tôi hai mươi nghìn đồng.",
+     "ghi_chu": "cùng khuôn: người trước, vật sau"
+    },
+    {
+     "en": "Can you lend me your helmet for an hour?",
+     "vi": "Bạn cho tôi mượn mũ bảo hiểm một tiếng được không?",
+     "ghi_chu": "lend + me + your helmet"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "gave",
+       "vai": "V"
+      },
+      {
+       "tu": "me",
+       "vai": "O"
+      },
+      {
+       "tu": "a book",
+       "vai": "O2"
+      }
+     ],
+     "vi": "Cô ấy đưa tôi một quyển sách."
+    },
+    {
+     "manh": [
+      {
+       "tu": "He",
+       "vai": "S"
+      },
+      {
+       "tu": "read",
+       "vai": "V"
+      },
+      {
+       "tu": "her",
+       "vai": "O"
+      },
+      {
+       "tu": "a story",
+       "vai": "O2"
+      }
+     ],
+     "vi": "Anh ấy đọc cho cô ấy một câu chuyện."
+    }
+   ],
+   "lien_quan": [
+    "dai_tu",
+    "svo"
+   ]
+  },
+  {
+   "ma": "v_gioi_tu",
+   "chang": "C",
+   "so": 19,
+   "ten": "V + giới từ cố định",
+   "ten_en": "Verb + preposition",
+   "mot_cau": "Một số động từ dính chặt với một giới từ, đổi là sai: belong **to**, listen **to**, depend **on**.",
+   "giai_thich": "Đây là chuyện của TỪNG ĐỘNG TỪ, không suy ra được. Nhóm hay dùng nhất:\n\n| Động từ | Giới từ | Ví dụ |\n|---|---|---|\n| belong | **to** | This book belongs **to** me. |\n| listen | **to** | I listen **to** music. |\n| look | **at** | Look **at** this photo. |\n| look for | **for** | I'm looking **for** my keys. |\n| wait | **for** | I waited **for** the bus. |\n| depend | **on** | It depends **on** the weather. |\n| think | **about** | I'm thinking **about** it. |\n| talk | **to / about** | Talk **to** him **about** it. |\n| arrive | **at / in** | We arrived **at** the airport. |\n| apply | **for** | She applied **for** the job. |\n\nNhớ: sau giới từ thì động từ (nếu có) luôn ở dạng **-ing** — *think about **going***.",
+   "bay": {
+    "tieu_de": "Giới từ tiếng Việt không khớp một-một với tiếng Anh",
+    "noi_dung": "Người Việt hay dịch thẳng giới từ từ tiếng mẹ đẻ, và sai:\n\n- *nghe nhạc* → ❌ listen music → ✅ listen **to** music\n- *đợi xe buýt* → ❌ wait the bus → ✅ wait **for** the bus\n- *nhìn bức ảnh* → ❌ look this photo → ✅ look **at** this photo\n\nNgược lại, vài động từ tiếng Anh KHÔNG cần giới từ dù tiếng Việt có:\n- *thảo luận về việc đó* → ❌ discuss about it → ✅ **discuss** it\n- *gọi cho tôi* → ❌ call to me → ✅ **call** me\n\nCách học duy nhất là học nguyên CỤM, đừng học rời từng chữ."
+   },
+   "vi_du": [
+    {
+     "en": "It depends on the weather.",
+     "vi": "Cái đó tùy thời tiết.",
+     "ghi_chu": "depend luôn đi với on"
+    },
+    {
+     "en": "Look at this photo.",
+     "vi": "Nhìn bức ảnh này này.",
+     "ghi_chu": "look + at, không phải look không"
+    },
+    {
+     "en": "I'm looking for my keys.",
+     "vi": "Tôi đang tìm chìa khóa.",
+     "ghi_chu": "look for = tìm — khác hẳn look at = nhìn"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "This book",
+       "vai": "S"
+      },
+      {
+       "tu": "belongs",
+       "vai": "V"
+      },
+      {
+       "tu": "to",
+       "vai": "GT"
+      },
+      {
+       "tu": "me",
+       "vai": "O"
+      }
+     ],
+     "vi": "Quyển sách này là của tôi."
+    },
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "listen",
+       "vai": "V"
+      },
+      {
+       "tu": "to",
+       "vai": "GT"
+      },
+      {
+       "tu": "music",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi nghe nhạc."
+    }
+   ],
+   "lien_quan": [
+    "gioi_tu",
+    "v_ving"
+   ]
+  },
+  {
+   "ma": "tuong_lai",
+   "chang": "C",
+   "so": 20,
+   "ten": "be going to / will",
+   "ten_en": "Talking about the future",
+   "mot_cau": "Hai cách nói về tương lai, khác nhau ở chỗ bạn đã ĐỊNH TRƯỚC hay vừa nghĩ ra.",
+   "giai_thich": "**be going to + V** — việc đã định trước, hoặc có dấu hiệu rõ ràng\n- *I **am going to visit** my parents.* (đã lên kế hoạch)\n- *Look at those clouds — it **is going to rain**.* (nhìn thấy dấu hiệu)\n\n**will + V** — quyết định ngay lúc nói, lời hứa, dự đoán\n- *The phone is ringing. I **will get** it.* (vừa quyết định)\n- *I **will help** you.* (hứa)\n\nSo sánh trực tiếp:\n- *A: We need milk.* — *B: I **will buy** some.* (vừa nghĩ ra)\n- *I **am going to buy** milk after work.* (đã định từ trước)\n\nCả hai đều dùng **động từ dạng gốc** ở sau, không chia.",
+   "bay": {
+    "tieu_de": "Tiếng Việt chỉ có một chữ “sẽ” cho cả hai",
+    "noi_dung": "Tiếng Việt dùng *sẽ* cho mọi trường hợp tương lai, nên người Việt hay dùng **will** cho tất cả. Nghe vẫn hiểu, nhưng người bản xứ nhận ra ngay là không tự nhiên:\n\n| Tình huống | Nên dùng |\n|---|---|\n| Kế hoạch đã định | be going to |\n| Vừa quyết định lúc nói | will |\n| Có dấu hiệu nhìn thấy được | be going to |\n| Hứa hẹn | will |\n\n- Tôi sẽ đi Hà Nội tuần sau (đã đặt vé) → I'm **going to** go to Hanoi next week.\n- Được, tôi sẽ giúp bạn → OK, I **will** help you."
+   },
+   "vi_du": [
+    {
+     "en": "I’m going to visit my parents in Hai Phong.",
+     "vi": "Tôi sẽ về thăm bố mẹ ở Hải Phòng.",
+     "ghi_chu": "going to — đã lên kế hoạch, có nói thêm là đã đặt vé"
+    },
+    {
+     "en": "See you tomorrow.",
+     "vi": "Hẹn gặp bạn ngày mai.",
+     "ghi_chu": "nói về tương lai mà không cần will — dùng hiện tại cho lịch hẹn"
+    },
+    {
+     "en": "I hope to see you again soon.",
+     "vi": "Tôi mong sớm gặp lại bạn.",
+     "ghi_chu": "hope to + V — một cách nói tương lai khác"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "am going to",
+       "vai": "TDT"
+      },
+      {
+       "tu": "visit",
+       "vai": "V"
+      },
+      {
+       "tu": "my parents",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi sẽ về thăm bố mẹ."
+    },
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "will",
+       "vai": "TDT"
+      },
+      {
+       "tu": "help",
+       "vai": "V"
+      },
+      {
+       "tu": "you",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi sẽ giúp bạn."
+    }
+   ],
+   "lien_quan": [
+    "v_to_v",
     "dong_tu"
    ]
   }

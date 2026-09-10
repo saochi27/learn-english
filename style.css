@@ -1488,3 +1488,9 @@ li{margin:5px 0; line-height:1.6}
   .dan-np{background:#172554;border-color:#1e40af}
   .dan-np a{color:#93c5fd}
 }
+/* Tiêu đề chặng trong mục Ngữ pháp */
+.np-chang{margin:20px 0 8px;font-size:15px;color:#6b7280;
+  text-transform:uppercase;letter-spacing:.04em}
+/* Dải số liệu ôn tập */
+.np-dau-on{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;font-size:15px}
+@media (prefers-color-scheme:dark){ .np-chang{color:#9ca3af} }

@@ -2389,6 +2389,7 @@ async function moNguPhap(ma) {
     duLieuNP = await (await fetch("/api/ngu_phap")).json();
   }
   if (ma) { baiNP = ma; theNP = "bai-hoc"; localStorage.setItem("baiNP", ma); }
+  napNPDaHoc();
   veNguPhap();
   veRail();
   dongRail();
@@ -2407,27 +2408,33 @@ function veNguPhap() {
   const ds = duLieuNP?.bai || [];
   $("#ngu-phap").innerHTML = `
     <h2>Ngữ pháp — cách dựng câu</h2>
-    <div class="mo">Chặng A: nhận mặt từ loại · ${ds.length} bài</div>
+    <div class="mo">${ds.length} bài · ${
+      dsRapCau().length} câu ráp · ${thongKeNP().thuoc} câu đã thuộc</div>
     <div class="hop-tab hop-tab-vien">
-      ${[["bai-hoc", "Bài học"], ["rap-cau", "Ráp câu"]]
+      ${[["bai-hoc", "Bài học"], ["rap-cau", "Ráp câu"], ["on", "Ôn hôm nay"]]
         .map(([v, t]) => `<button class="${theNP === v ? "chon" : ""}"
           onclick="doiTheNP('${v}')">${t}</button>`).join("")}
     </div>
-    ${theNP === "bai-hoc" ? veBaiNP(ds) : veRapCau()}`;
+    ${theNP === "bai-hoc" ? veBaiNP(ds)
+      : theNP === "rap-cau" ? veRapCau() : veOnNP()}`;
   // Phải nạp SAU khi đã gắn HTML: thẻ <script> chèn qua innerHTML không chạy,
   // nên gọi thẳng ở đây thay vì nhúng vào chuỗi.
-  if (theNP === "rap-cau") napRap();
+  if (theNP === "rap-cau" || theNP === "on") napRap(theNP === "on");
 }
 
 /* ---------- thẻ 1: các bài giảng ---------- */
 function veBaiNP(ds) {
+  const chang = {};
+  ds.forEach(b => (chang[b.chang] ||= []).push(b));
   return `<div class="the" style="margin-bottom:12px">
       <b>Vì sao học thuộc câu mà vẫn không tự đặt được câu</b>
       <div style="margin-top:6px">Nhớ nguyên câu thì chỉ dùng lại được đúng câu đó.
         Muốn tự đặt câu mới, phải biết mỗi từ đóng VAI gì — ai làm, làm gì, làm cái gì —
         rồi xếp đúng thứ tự tiếng Anh. Tám bài dưới đây dạy cách nhận ra từng vai.</div>
     </div>` +
-    ds.map(b => khoi(`ngu-phap/${b.ma}`, `${b.so}. ${b.ten}`, `
+    Object.entries(chang).map(([c, cac]) => `<h3 class="np-chang">${
+      esc(duLieuNP.ten_chang?.[c] || c)}</h3>` +
+    cac.map(b => khoi(`ngu-phap/${b.ma}`, `${b.so}. ${b.ten}`, `
       <div id="np-${b.ma}">
         <div class="mo" style="margin-bottom:8px">${esc(b.ten_en)}</div>
         <div class="np-mot-cau">${mdDong(b.mot_cau)}</div>
@@ -2445,12 +2452,81 @@ function veBaiNP(ds) {
             <div class="mo">${mdDong(v.ghi_chu)}</div>
           </div>`).join("")}
 
+        <div class="hang" style="margin-top:14px">
+          <button class="${npDaHoc.has(b.ma) ? "phu" : "chinh"}"
+            onclick="batTatNPXong('${b.ma}')">
+            ${npDaHoc.has(b.ma) ? "✓ Đã học xong — bỏ đánh dấu" : "Đã học xong"}</button>
+          <span class="mo">${npDaHoc.has(b.ma)
+            ? "Các câu của bài này đang nằm trong lịch ôn."
+            : "Đánh dấu để đưa các câu của bài vào lịch ôn hằng ngày."}</span>
+        </div>
+
         ${b.lien_quan?.length ? `<div class="mo" style="margin-top:12px">Xem thêm:
           ${b.lien_quan.map(m => {
             const k = (duLieuNP.bai || []).find(x => x.ma === m);
             return k ? `<a href="#" onclick="moNguPhap('${m}');return false">${esc(k.ten)}</a>` : "";
           }).filter(Boolean).join(" · ")}</div>` : ""}
-      </div>`, `${b.vi_du.length} ví dụ`)).join("");
+      </div>`, `${b.vi_du.length} ví dụ`,
+      npDaHoc.has(b.ma))).join("")).join("");
+}
+
+/* ---------- thẻ 3: ôn hôm nay ---------- */
+/* Kiến thức chỉ thành phản xạ khi được gọi ra lại nhiều lần, cách quãng dần.
+   Thẻ này lấy đúng những câu ĐẾN HẠN theo lịch 1-3-7-16-35-90, thay vì bắt
+   người học tự nhớ hôm nay nên ôn bài nào. */
+function veOnNP() {
+  const tk = thongKeNP();
+  if (!tk.tong) {
+    return `<div class="the"><b>Chưa có gì để ôn</b>
+      <div style="margin-top:6px">Mở một bài ở thẻ <b>Bài học</b>, đọc xong bấm
+        <b>Đã học xong</b>. Từ hôm sau các câu của bài đó sẽ xuất hiện ở đây theo
+        lịch ôn ngắt quãng.</div></div>`;
+  }
+  const cac = theNPDenHan();
+  return `<div class="the" style="margin-bottom:12px">
+      <div class="np-dau-on">
+        <span><b>${tk.den_han}</b> câu đến hạn</span>
+        <span><b>${tk.dang_hoc}</b> đang nhớ dần</span>
+        <span><b>${tk.thuoc}</b> đã thuộc</span>
+        <span class="mo">trên ${tk.tong} câu của các bài đã học</span>
+      </div>
+      <div class="mo" style="margin-top:8px">Lịch ôn: 1 → 3 → 7 → 16 → 35 → 90 ngày.
+        Dựng đúng thì lần sau gặp lại xa hơn; dựng sai thì mai gặp lại.</div>
+    </div>` +
+    (cac.length
+      ? cac.map((r, k) => theMotRap(r, k)).join("")
+      : `<div class="the"><b>Hôm nay ôn xong rồi.</b>
+          <div style="margin-top:6px">Muốn luyện thêm thì sang thẻ
+            <b>Ráp câu</b> — ở đó có đủ ${tk.tong} câu, làm bao nhiêu cũng được
+            mà không ảnh hưởng lịch ôn.</div></div>`);
+}
+
+/* Một ô ráp câu. Tách riêng để thẻ "Ráp câu" và thẻ "Ôn hôm nay" dùng chung
+   một khuôn — hai bên vẽ khác nhau thì sửa một chỗ là quên chỗ kia. */
+function theMotRap(r, k) {
+  return `<div class="the np-rap" id="rap-${k}">
+      <div class="mo">${esc(r.bai)}${r.moi ? " · câu mới" : r.lan ? ` · bậc ${r.lan}/6` : ""}</div>
+      <div class="np-de">${esc(r.vi)}</div>
+      <div class="np-o" id="rap-o-${k}"></div>
+      <div class="np-manh" id="rap-manh-${k}"></div>
+      <div class="hang" style="margin-top:8px">
+        <button class="phu" onclick="kiemRap(${k})">Kiểm tra</button>
+        <button class="phu" onclick="xoaRap(${k})">Xoá</button>
+        <span id="rap-kq-${k}"></span>
+      </div>
+    </div>`;
+}
+
+/* Cập nhật con số trên đầu ngay sau khi trả lời, khỏi phải vẽ lại cả trang —
+   vẽ lại thì mất chỗ đang cuộn và các câu đang làm dở bị xoá. */
+function capNhatDauOnNP() {
+  const d = $(".np-dau-on");
+  if (!d) return;
+  const tk = thongKeNP();
+  d.innerHTML = `<span><b>${tk.den_han}</b> câu đến hạn</span>
+      <span><b>${tk.dang_hoc}</b> đang nhớ dần</span>
+      <span><b>${tk.thuoc}</b> đã thuộc</span>
+      <span class="mo">trên ${tk.tong} câu của các bài đã học</span>`;
 }
 
 /* ---------- thẻ 2: ráp câu ---------- */
@@ -2470,29 +2546,19 @@ function dsRapCau() {
 function veRapCau() {
   const cac = dsRapCau();
   if (!cac.length) return `<div class="trong">Chưa có bài ráp câu.</div>`;
-
   return `<div class="the" style="margin-bottom:12px">
       <b>Cách làm</b>
       <div style="margin-top:6px">Bấm các mảnh theo đúng thứ tự để thành câu tiếng Anh.
-        Bấm nhầm thì bấm lại vào mảnh đó để bỏ ra.</div>
-    </div>` +
-    cac.map((r, k) => `<div class="the np-rap" id="rap-${k}">
-        <div class="mo">${esc(r.bai)}</div>
-        <div class="np-de">${esc(r.vi)}</div>
-        <div class="np-o" id="rap-o-${k}"></div>
-        <div class="np-manh" id="rap-manh-${k}"></div>
-        <div class="hang" style="margin-top:8px">
-          <button class="phu" onclick="kiemRap(${k})">Kiểm tra</button>
-          <button class="phu" onclick="xoaRap(${k})">Xoá</button>
-          <span id="rap-kq-${k}"></span>
-        </div>
-      </div>`).join("");
+        Bấm nhầm thì bấm lại vào mảnh đó để bỏ ra. Ở đây làm bao nhiêu cũng được,
+        không ảnh hưởng lịch ôn — muốn ôn đúng lịch thì sang thẻ <b>Ôn hôm nay</b>.</div>
+    </div>` + cac.map((r, k) => theMotRap(r, k)).join("");
 }
 
 let rapDuLieu = [];
 
-function napRap() {
-  rapDuLieu = dsRapCau().map(r => ({ ...r, chon: [] }));
+function napRap(chiDenHan = false) {
+  // Thẻ "Ôn hôm nay" chỉ lấy câu ĐẾN HẠN; thẻ "Ráp câu" lấy hết để luyện thêm.
+  rapDuLieu = (chiDenHan ? theNPDenHan() : dsRapCau()).map(r => ({ ...r, chon: [] }));
   rapDuLieu.forEach((r, k) => {
     // Xáo một lần lúc nạp, không xáo lại mỗi lần vẽ: mảnh nhảy chỗ giữa chừng
     // thì đang bấm dở bị lạc.
@@ -2537,6 +2603,8 @@ function kiemRap(k) {
   const cauDung = r.manh.map(m => m.tu).join(" ");
   if (r.chon.every((x, i) => x === dung[i])) {
     o.innerHTML = `<span class="dung">✓ Đúng.</span>${nutLoa(cauDung)}`;
+    // Ghi vào lịch ôn ngắt quãng: đúng thì lên bậc, lần sau gặp lại xa hơn.
+    if (r.khoa) { traLoiNP(r.khoa, true); capNhatDauOnNP(); }
     return;
   }
   // Chỉ ra vai đầu tiên đặt sai chỗ — nói tên vai chứ không nói tên từ, để
@@ -2546,6 +2614,90 @@ function kiemRap(k) {
   const vaiDung = duLieuNP.vai?.[r.manh[dung[vt]].vai] || "phần khác";
   o.innerHTML = `<span class="sai">✗ Vị trí ${vt + 1} phải là <b>${esc(vaiDung)}</b>,
       bạn đang đặt <b>${esc(vaiSai)}</b>.</span>`;
+  // Sai thì về bậc 0 — mai gặp lại. Nhớ mặt quy tắc chưa đủ, phải dựng lại
+  // được câu mới tính là nhớ thật.
+  if (r.khoa) { traLoiNP(r.khoa, false); capNhatDauOnNP(); }
+}
+
+/* ---------- ÔN TẬP NGỮ PHÁP (lặp ngắt quãng) ----------
+   Vì sao viết ở đây chứ không thêm vào on_tap.py:
+     Hệ ôn tập từ vựng có HAI bản — Python cho bản chạy máy, JS port cho bản
+     web tĩnh. Thêm ngữ pháp vào cả hai là lại phải giữ hai nơi khớp nhau, mà
+     lệch một chút là cùng một thẻ hai bản lên lịch khác nhau. Ngữ pháp chỉ
+     cần localStorage nên viết một bản chạy trong app, cả hai môi trường dùng
+     chung.
+
+   Cùng lịch với từ vựng: 1 → 3 → 7 → 16 → 35 → 90 ngày. Đúng thì lên bậc,
+   sai thì về bậc 0 — biết mặt quy tắc không đủ, phải dựng lại được câu sau
+   một tháng mới tính là nhớ thật. */
+const LICH_NP = [1, 3, 7, 16, 35, 90];
+
+const khoaOnNP = () => "onNguPhap__" + (HS?.id || "mac_dinh");
+
+function docOnNP() {
+  try { return JSON.parse(localStorage.getItem(khoaOnNP())) || {}; }
+  catch (e) { return {}; }
+}
+const ghiOnNP = d => localStorage.setItem(khoaOnNP(), JSON.stringify(d));
+
+const homNay = () => new Date().toISOString().slice(0, 10);
+const congNgay = n => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
+
+/* Thẻ ngữ pháp đến hạn hôm nay.
+   CHỈ lấy bài đã đánh dấu học xong — ôn quy tắc chưa đọc bao giờ thì chỉ là
+   đoán mò, đúng cái bẫy học vẹt đang muốn tránh. */
+function theNPDenHan(gioiHan = 8) {
+  const bang = docOnNP();
+  const hn = homNay();
+  const quaHan = [], moi = [];
+  dsRapCau().forEach((r, i) => {
+    if (!npDaHoc.has(r.ma)) return;
+    const k = `np:${r.ma}:${r.chi_so}`;
+    const tt = bang[k];
+    if (!tt) moi.push({ ...r, khoa: k, lan: 0, moi: true });
+    else if (tt.lan < LICH_NP.length && tt.ngay_tiep <= hn)
+      quaHan.push({ ...r, khoa: k, lan: tt.lan, moi: false });
+  });
+  // Quá hạn luôn được ưu tiên: để dồn thì mất hẳn tác dụng của lịch ôn.
+  return [...quaHan, ...moi].slice(0, gioiHan);
+}
+
+function traLoiNP(khoa, dung) {
+  const d = docOnNP();
+  const tt = d[khoa] || { lan: 0 };
+  tt.lan = dung ? Math.min(tt.lan + 1, LICH_NP.length) : 0;
+  tt.ngay_tiep = congNgay(dung ? LICH_NP[Math.min(tt.lan, LICH_NP.length) - 1] || 90 : 1);
+  d[khoa] = tt;
+  ghiOnNP(d);
+}
+
+function thongKeNP() {
+  const bang = docOnNP();
+  const tong = dsRapCau().filter(r => npDaHoc.has(r.ma)).length;
+  let thuoc = 0, dangHoc = 0;
+  Object.values(bang).forEach(t => {
+    if (t.lan >= LICH_NP.length) thuoc++; else if (t.lan > 0) dangHoc++;
+  });
+  return { tong, thuoc, dang_hoc: dangHoc, den_han: theNPDenHan(99).length };
+}
+
+/* ---------- đánh dấu bài ngữ pháp đã học ---------- */
+let npDaHoc = new Set();
+
+function napNPDaHoc() {
+  try {
+    const d = JSON.parse(localStorage.getItem("npXong__" + (HS?.id || "mac_dinh")));
+    npDaHoc = new Set(Array.isArray(d) ? d : []);
+  } catch (e) { npDaHoc = new Set(); }
+}
+
+const luuNPDaHoc = () =>
+  localStorage.setItem("npXong__" + (HS?.id || "mac_dinh"), JSON.stringify([...npDaHoc]));
+
+function batTatNPXong(ma) {
+  npDaHoc.has(ma) ? npDaHoc.delete(ma) : npDaHoc.add(ma);
+  luuNPDaHoc();
+  veNguPhap();
 }
 
 /* ================= THƯ VIỆN TRUYỆN =================
