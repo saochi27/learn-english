@@ -1437,3 +1437,54 @@ li{margin:5px 0; line-height:1.6}
 .doan-van + .doan-van{margin-top:12px}
 .doan-dich + .doan-van{margin-top:14px}
 .doan-van.loi-thoai{padding-left:12px; border-left:2px solid var(--vien)}
+
+/* ================= NGỮ PHÁP ================= */
+/* Câu định nghĩa một dòng — thứ người học cần thấy trước mọi thứ khác. */
+.np-mot-cau{font-size:16px;font-weight:600;line-height:1.5;
+  border-left:3px solid #2563eb;padding:8px 12px;background:#eff6ff;border-radius:0 6px 6px 0}
+
+/* Khối "bẫy": chỗ tiếng Anh khác tiếng Việt. Tô riêng vì đây là phần người
+   học phải dừng lại đọc kỹ — lướt qua là mắc đúng lỗi vừa cảnh báo. */
+.np-bay{margin-top:14px;border:1px solid #fcd34d;background:#fffbeb;
+  border-radius:8px;padding:10px 12px}
+.np-bay-dau{font-weight:700;color:#92400e;margin-bottom:6px}
+
+.np-vd{border-top:1px solid var(--vien,#e5e7eb);padding:8px 0}
+.np-vd .en{font-size:15px}
+.np-vd .nghia{color:#4b5563;font-size:14px}
+.np-vd .mo{font-size:13px;margin-top:2px}
+
+/* Bảng đối chiếu Việt–Anh. Cuộn ngang riêng để trên điện thoại bảng không
+   đẩy cả trang rộng ra. */
+.cuon-ngang{overflow-x:auto;margin:8px 0}
+.bang-np{border-collapse:collapse;font-size:14px;min-width:100%}
+.bang-np th,.bang-np td{border:1px solid var(--vien,#e5e7eb);padding:6px 10px;text-align:left}
+.bang-np th{background:#f3f4f6;font-weight:600}
+
+/* Ráp câu */
+.np-de{font-size:16px;margin:6px 0 10px}
+.np-o{min-height:40px;border:2px dashed var(--vien,#d1d5db);border-radius:8px;
+  padding:8px 10px;font-size:16px;line-height:1.9}
+.np-o-tu{background:#dbeafe;border-radius:5px;padding:2px 7px}
+.np-manh{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.np-mieng{border:1px solid var(--vien,#d1d5db);background:#fff;border-radius:8px;
+  padding:7px 12px;font-size:15px;cursor:pointer}
+.np-mieng:hover{border-color:#2563eb}
+.np-mieng.da-chon{opacity:.35;pointer-events:none}
+
+@media (prefers-color-scheme:dark){
+  .np-mot-cau{background:#1e293b}
+  .np-bay{background:#292524;border-color:#a16207}
+  .np-bay-dau{color:#fbbf24}
+  .bang-np th{background:#1f2937}
+  .np-o-tu{background:#1e3a8a}
+  .np-mieng{background:#111827}
+}
+/* Thẻ dẫn từ bài học sang mục Ngữ pháp */
+.dan-np{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;
+  padding:8px 12px;margin-bottom:12px;font-size:14px}
+.dan-np a{color:#1d4ed8;font-weight:600}
+@media (prefers-color-scheme:dark){
+  .dan-np{background:#172554;border-color:#1e40af}
+  .dan-np a{color:#93c5fd}
+}

@@ -512,7 +512,8 @@ function veBaiHoc(u) {
         b.bang.map(r => `<tr>${cot.map(c => `<td>${esc(r[c])}</td>`).join("")}</tr>`).join("")
       }</table></div>`;
     }).join("");
-    h += khoi("bai-hoc/ngu-phap", "Bảng ngữ pháp", noi, `${bang.length} bảng`);
+    h += khoi("bai-hoc/ngu-phap", "Bảng ngữ pháp",
+      theDanNguPhap(u) + noi, `${bang.length} bảng`);
   }
 
   [["phat_am", "Phát âm"], ["luu_y", "Lưu ý & điểm dễ nhầm"], ["meo", "Mẹo ghi nhớ"]]
@@ -524,13 +525,60 @@ function veBaiHoc(u) {
   el.innerHTML = h;
 }
 
-/* markdown rất tối giản: đậm, nghiêng, xuống dòng, gạch đầu dòng */
+/* Thẻ dẫn từ bài học sang mục Ngữ pháp — nửa còn lại của link hai chiều.
+
+   Unit dùng chữ "danh từ", "mạo từ", "tính từ" như thể người học đã biết
+   chúng là gì. Ai chưa biết thì mắc ở đúng chỗ đó mà không có đường tra.
+   Dò theo TÊN của từng bài ngữ pháp xuất hiện trong nội dung unit, nên thêm
+   bài mới vào ngu_phap.json là link tự có, không phải khai báo thêm ở đây. */
+function theDanNguPhap(u) {
+  const ds = duLieuNP?.bai || [];
+  if (!ds.length) return "";        // chưa nạp mục Ngữ pháp thì thôi, không chặn
+  const van = [u.bang_ngu_phap, u.luu_y, u.meo]
+    .map(x => (typeof x === "string" ? x : JSON.stringify(x || ""))).join(" ")
+    .toLowerCase();
+  const hop = ds.filter(b => van.includes(b.ten.toLowerCase().split(" ")[0] + " ")
+                          || van.includes(b.ten.toLowerCase()));
+  if (!hop.length) return "";
+  return `<div class="dan-np">Chưa rõ các chữ này nghĩa là gì?
+      ${hop.map(b => `<a href="#" onclick="moNguPhap('${b.ma}');return false">${esc(b.ten)}</a>`)
+        .join(" · ")}</div>`;
+}
+
+/* markdown rất tối giản: đậm, nghiêng, xuống dòng, gạch đầu dòng, BẢNG.
+
+   Bảng cần cho phần Ngữ pháp: gần như mọi điểm ngữ pháp đều dạy bằng cách đặt
+   tiếng Việt cạnh tiếng Anh, mà so sánh hai cột thì bảng đọc dễ hơn hẳn văn
+   xuôi. Xử lý bảng TRƯỚC rồi mới tới các luật khác, vì bước cuối đổi \n thành
+   <br> sẽ phá mất cấu trúc dòng của bảng. */
 function mdSangHtml(s) {
+  const dong = String(s || "").split("\n");
+  const ra = [];
+  for (let i = 0; i < dong.length; i++) {
+    // Một bảng = dòng tiêu đề + dòng |---| + các dòng dữ liệu.
+    if (/^\s*\|.*\|\s*$/.test(dong[i]) && /^\s*\|[\s|:-]+\|\s*$/.test(dong[i + 1] || "")) {
+      const o = d => d.trim().replace(/^\||\|$/g, "").split("|").map(x => x.trim());
+      const dau = o(dong[i]);
+      let j = i + 2;
+      const than = [];
+      while (j < dong.length && /^\s*\|.*\|\s*$/.test(dong[j])) than.push(o(dong[j++]));
+      ra.push(`<div class="cuon-ngang"><table class="bang-np">
+          <thead><tr>${dau.map(x => `<th>${mdDong(x)}</th>`).join("")}</tr></thead>
+          <tbody>${than.map(h => `<tr>${h.map(x => `<td>${mdDong(x)}</td>`).join("")}</tr>`).join("")}</tbody>
+        </table></div>`);
+      i = j - 1;
+      continue;
+    }
+    ra.push(mdDong(dong[i].replace(/^\s*[-*]\s+(.*)$/, "• $1")) + "\n");
+  }
+  return ra.join("").replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+}
+
+/* Định dạng trong MỘT dòng. Tách riêng để ô bảng dùng lại được. */
+function mdDong(s) {
   return esc(s)
-    .replace(/^\s*[-*]\s+(.*)$/gm, "• $1")
     .replace(/\*\*(.+?)\*\*/g, "<b>$1</b>")
-    .replace(/(?<!\*)\*(?!\*)(.+?)\*(?!\*)/g, "<i>$1</i>")
-    .replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+    .replace(/(?<!\*)\*(?!\*)(.+?)\*(?!\*)/g, "<i>$1</i>");
 }
 
 /* ================= BÀI TẬP =================
@@ -2314,6 +2362,192 @@ function veThi() {
       : theThi === "so-cau" ? veSoCau() : veLuyen());
 }
 
+/* ================= NGỮ PHÁP — CÁCH DỰNG CÂU =================
+   Vì sao tách thành mục riêng, không nhét vào từng unit:
+     Giáo trình DÙNG các chữ "danh từ", "động từ", "chủ ngữ" 261 lần nhưng
+     chưa lần nào ĐỊNH NGHĨA chúng. Người học vì thế thuộc câu mẫu mà không
+     dựng được câu mới. Đây là kiến thức NỀN, cần trước unit 1 và phải tra lại
+     được bất cứ lúc nào — rải ra 50 unit thì muốn xem lại "mạo từ a/an/the"
+     không biết tìm ở đâu. Mục Thì trước đây cũng vướng đúng chuyện này và
+     tách riêng thì mới học được.
+
+   Hai thẻ:
+     Bài học — giảng khái niệm, kèm bẫy riêng của người Việt
+     Ráp câu — cho các mảnh rời, tự xếp thành câu. Đây là phần chữa học vẹt:
+               nhớ cả câu thì gặp câu mới là chịu, còn ráp được thì tự đặt
+               được câu chưa từng thấy. */
+let duLieuNP = null;
+let theNP = localStorage.getItem("theNP") || "bai-hoc";
+let baiNP = localStorage.getItem("baiNP") || "";
+
+async function moNguPhap(ma) {
+  dungPhat();
+  S.tab = "ngu-phap";
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "ngu-phap"));
+  if (!duLieuNP) {
+    $("#ngu-phap").innerHTML = `<div class="trong">Đang nạp…</div>`;
+    duLieuNP = await (await fetch("/api/ngu_phap")).json();
+  }
+  if (ma) { baiNP = ma; theNP = "bai-hoc"; localStorage.setItem("baiNP", ma); }
+  veNguPhap();
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+  // Mở thẳng tới bài được trỏ sang từ unit, nếu không người học phải tự dò.
+  if (ma) setTimeout(() => $(`#np-${ma}`)?.scrollIntoView({ block: "start" }), 60);
+}
+
+function doiTheNP(v) {
+  theNP = v;
+  localStorage.setItem("theNP", v);
+  veNguPhap();
+}
+
+function veNguPhap() {
+  const ds = duLieuNP?.bai || [];
+  $("#ngu-phap").innerHTML = `
+    <h2>Ngữ pháp — cách dựng câu</h2>
+    <div class="mo">Chặng A: nhận mặt từ loại · ${ds.length} bài</div>
+    <div class="hop-tab hop-tab-vien">
+      ${[["bai-hoc", "Bài học"], ["rap-cau", "Ráp câu"]]
+        .map(([v, t]) => `<button class="${theNP === v ? "chon" : ""}"
+          onclick="doiTheNP('${v}')">${t}</button>`).join("")}
+    </div>
+    ${theNP === "bai-hoc" ? veBaiNP(ds) : veRapCau()}`;
+  // Phải nạp SAU khi đã gắn HTML: thẻ <script> chèn qua innerHTML không chạy,
+  // nên gọi thẳng ở đây thay vì nhúng vào chuỗi.
+  if (theNP === "rap-cau") napRap();
+}
+
+/* ---------- thẻ 1: các bài giảng ---------- */
+function veBaiNP(ds) {
+  return `<div class="the" style="margin-bottom:12px">
+      <b>Vì sao học thuộc câu mà vẫn không tự đặt được câu</b>
+      <div style="margin-top:6px">Nhớ nguyên câu thì chỉ dùng lại được đúng câu đó.
+        Muốn tự đặt câu mới, phải biết mỗi từ đóng VAI gì — ai làm, làm gì, làm cái gì —
+        rồi xếp đúng thứ tự tiếng Anh. Tám bài dưới đây dạy cách nhận ra từng vai.</div>
+    </div>` +
+    ds.map(b => khoi(`ngu-phap/${b.ma}`, `${b.so}. ${b.ten}`, `
+      <div id="np-${b.ma}">
+        <div class="mo" style="margin-bottom:8px">${esc(b.ten_en)}</div>
+        <div class="np-mot-cau">${mdDong(b.mot_cau)}</div>
+        <div style="margin-top:10px">${mdSangHtml(b.giai_thich)}</div>
+
+        <div class="np-bay">
+          <div class="np-bay-dau">⚠ ${esc(b.bay.tieu_de)}</div>
+          <div>${mdSangHtml(b.bay.noi_dung)}</div>
+        </div>
+
+        <h4 style="margin:14px 0 6px">Ví dụ trong bài đã học</h4>
+        ${b.vi_du.map(v => `<div class="np-vd">
+            <div class="hang"><span class="en">${esc(v.en)}</span>${nutLoa(v.en)}</div>
+            <div class="nghia">${esc(v.vi)}</div>
+            <div class="mo">${mdDong(v.ghi_chu)}</div>
+          </div>`).join("")}
+
+        ${b.lien_quan?.length ? `<div class="mo" style="margin-top:12px">Xem thêm:
+          ${b.lien_quan.map(m => {
+            const k = (duLieuNP.bai || []).find(x => x.ma === m);
+            return k ? `<a href="#" onclick="moNguPhap('${m}');return false">${esc(k.ten)}</a>` : "";
+          }).filter(Boolean).join(" · ")}</div>` : ""}
+      </div>`, `${b.vi_du.length} ví dụ`)).join("");
+}
+
+/* ---------- thẻ 2: ráp câu ---------- */
+/* Câu đúng CHÍNH LÀ thứ tự mảnh trong dữ liệu; hiển thị thì xáo lên. Chấm
+   xong không chỉ báo đúng/sai mà nói rõ SAI Ở VAI NÀO — "bạn đang để tân ngữ
+   trước động từ" — vì đó mới là thứ dùng lại được ở câu sau. */
+/* Danh sách bài ráp câu dựng lại mỗi lần vẽ, nên gom vào một hàm để cả lúc vẽ
+   lẫn lúc nạp đều dùng CHUNG một thứ tự — hai bên lệch nhau là bấm mảnh của
+   câu này lại rơi vào câu khác. */
+function dsRapCau() {
+  const cac = [];
+  (duLieuNP?.bai || []).forEach(b => (b.rap_cau || []).forEach((r, i) =>
+    cac.push({ bai: b.ten, ma: b.ma, chi_so: i, ...r })));
+  return cac;
+}
+
+function veRapCau() {
+  const cac = dsRapCau();
+  if (!cac.length) return `<div class="trong">Chưa có bài ráp câu.</div>`;
+
+  return `<div class="the" style="margin-bottom:12px">
+      <b>Cách làm</b>
+      <div style="margin-top:6px">Bấm các mảnh theo đúng thứ tự để thành câu tiếng Anh.
+        Bấm nhầm thì bấm lại vào mảnh đó để bỏ ra.</div>
+    </div>` +
+    cac.map((r, k) => `<div class="the np-rap" id="rap-${k}">
+        <div class="mo">${esc(r.bai)}</div>
+        <div class="np-de">${esc(r.vi)}</div>
+        <div class="np-o" id="rap-o-${k}"></div>
+        <div class="np-manh" id="rap-manh-${k}"></div>
+        <div class="hang" style="margin-top:8px">
+          <button class="phu" onclick="kiemRap(${k})">Kiểm tra</button>
+          <button class="phu" onclick="xoaRap(${k})">Xoá</button>
+          <span id="rap-kq-${k}"></span>
+        </div>
+      </div>`).join("");
+}
+
+let rapDuLieu = [];
+
+function napRap() {
+  rapDuLieu = dsRapCau().map(r => ({ ...r, chon: [] }));
+  rapDuLieu.forEach((r, k) => {
+    // Xáo một lần lúc nạp, không xáo lại mỗi lần vẽ: mảnh nhảy chỗ giữa chừng
+    // thì đang bấm dở bị lạc.
+    r.xao = r.manh.map((m, i) => i).sort(() => Math.random() - 0.5);
+    veMotRap(k);
+  });
+}
+
+function veMotRap(k) {
+  const r = rapDuLieu[k];
+  if (!r) return;
+  $(`#rap-manh-${k}`).innerHTML = r.xao.map(i =>
+    `<button class="np-mieng ${r.chon.includes(i) ? "da-chon" : ""}"
+       onclick="chonMieng(${k},${i})">${esc(r.manh[i].tu)}</button>`).join("");
+  $(`#rap-o-${k}`).innerHTML = r.chon.length
+    ? r.chon.map(i => `<span class="np-o-tu">${esc(r.manh[i].tu)}</span>`).join(" ")
+    : `<span class="mo">Bấm các mảnh bên dưới…</span>`;
+}
+
+function chonMieng(k, i) {
+  const r = rapDuLieu[k];
+  const vt = r.chon.indexOf(i);
+  if (vt >= 0) r.chon.splice(vt, 1); else r.chon.push(i);
+  $(`#rap-kq-${k}`).innerHTML = "";
+  veMotRap(k);
+}
+
+function xoaRap(k) {
+  rapDuLieu[k].chon = [];
+  $(`#rap-kq-${k}`).innerHTML = "";
+  veMotRap(k);
+}
+
+function kiemRap(k) {
+  const r = rapDuLieu[k];
+  const o = $(`#rap-kq-${k}`);
+  if (r.chon.length < r.manh.length) {
+    o.innerHTML = `<span class="mo">Còn thiếu ${r.manh.length - r.chon.length} mảnh.</span>`;
+    return;
+  }
+  const dung = r.manh.map((_, i) => i);
+  const cauDung = r.manh.map(m => m.tu).join(" ");
+  if (r.chon.every((x, i) => x === dung[i])) {
+    o.innerHTML = `<span class="dung">✓ Đúng.</span>${nutLoa(cauDung)}`;
+    return;
+  }
+  // Chỉ ra vai đầu tiên đặt sai chỗ — nói tên vai chứ không nói tên từ, để
+  // lần sau gặp từ khác cùng vai vẫn áp dụng được.
+  const vt = r.chon.findIndex((x, i) => x !== dung[i]);
+  const vaiSai = duLieuNP.vai?.[r.manh[r.chon[vt]].vai] || "phần này";
+  const vaiDung = duLieuNP.vai?.[r.manh[dung[vt]].vai] || "phần khác";
+  o.innerHTML = `<span class="sai">✗ Vị trí ${vt + 1} phải là <b>${esc(vaiDung)}</b>,
+      bạn đang đặt <b>${esc(vaiSai)}</b>.</span>`;
+}
+
 /* ================= THƯ VIỆN TRUYỆN =================
    Bố cục học theo thư viện truyện của HelloChinese, giữ lại đúng phần hợp
    với app này:
@@ -3205,6 +3439,9 @@ function veRail(keo = false) {
   let h = nhomRail("nhom/tong-quan", "Tổng quan",
     don("\u2302", "Tổng quan", "tong-quan", "veMenu()") +
     don("\u0250", "Phát âm", "ipa", "moIPA()") +
+    // Ngữ pháp đứng NGAY SAU Phát âm và TRƯỚC Thì: nó là tầng nền, phải
+    // nhận ra được từ loại đã rồi mới bàn tới chuyện chia thì.
+    don("\u25a4", "Ngữ pháp", "ngu-phap", "moNguPhap()", "cách dựng câu") +
     don("\u23f1", "Thì trong tiếng Anh", "thi", "moThi()") +
     don("\u25e7", "Truyện", "thu-vien", "moThuVien()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
@@ -4169,6 +4406,10 @@ async function xoaHoSo() {
   S.cauHinh = await (await fetch("/api/cau_hinh")).json();
   S.muc_luc = await (await fetch("/api/muc_luc")).json();
   bangTuLevel = await (await fetch("/api/tu_theo_level")).json();
+  // Nạp sẵn mục Ngữ pháp (21 KB): thẻ dẫn trong bài học cần nó NGAY LÚC VẼ.
+  // Chờ tới khi người học bấm vào mục Ngữ pháp thì bài học đã lỡ vẽ thiếu
+  // thẻ dẫn rồi, mà đó chính là chỗ họ đang mắc.
+  try { duLieuNP = await (await fetch("/api/ngu_phap")).json(); } catch (e) { }
 
   // nạp lại cài đặt trình đọc đã lưu
   document.querySelector(`input[name=che-do][value="${CD.cheDo}"]`).checked = true;

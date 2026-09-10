@@ -274,6 +274,7 @@
     if (duong === "/api/muc_luc") return json(await tai("du_lieu/muc_luc.json"));
     if (duong === "/api/ipa") return json(await tai("du_lieu/ipa.json"));
     if (duong === "/api/thi") return json(await tai("du_lieu/thi.json"));
+    if (duong === "/api/ngu_phap") return json(await tai("du_lieu/ngu_phap.json"));
     if (duong === "/api/moc_tu") return json(await tai("du_lieu/moc_tu.json"));
     if (duong === "/api/danh_sach_doc") return json(await tai("du_lieu/danh_sach_doc.json"));
     if (duong === "/api/tu_theo_level") return json(TU_LEVEL);

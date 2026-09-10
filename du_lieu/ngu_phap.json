@@ -1,0 +1,593 @@
+{
+ "vai": {
+  "S": "chủ ngữ",
+  "V": "động từ",
+  "O": "tân ngữ",
+  "TT": "tính từ",
+  "TrT": "trạng từ",
+  "GT": "cụm giới từ",
+  "MT": "mạo từ"
+ },
+ "bai": [
+  {
+   "ma": "danh_tu",
+   "chang": "A",
+   "so": 1,
+   "ten": "Danh từ",
+   "ten_en": "Noun",
+   "mot_cau": "Từ chỉ người, vật, việc, nơi chốn — thứ bạn đặt được chữ “a” hoặc “the” ở trước.",
+   "giai_thich": "Danh từ là thứ bạn có thể ĐẾM hoặc CHỈ TAY vào được: *brother*, *bank*, *coffee*, *Hanoi*, *job*.\n\n**Cách nhận ra nhanh:** thử đặt *a / an / the* ở trước. Được thì gần như chắc chắn đó là danh từ.\n\n- *a **brother*** ✔ → brother là danh từ\n- *a **works*** ✘ → works không phải danh từ (nó là động từ)\n\n**Danh từ đếm được và không đếm được.** Đếm được thì thêm **-s** khi có nhiều: *one book → two book**s***. Không đếm được thì không bao giờ thêm -s: *water*, *money*, *rice*, *information*.",
+   "bay": {
+    "tieu_de": "Tiếng Việt không đổi hình dạng từ, tiếng Anh có",
+    "noi_dung": "Tiếng Việt nói *hai quyển sách* — chữ “sách” giữ nguyên, số lượng nằm ở chữ “hai”. Tiếng Anh bắt CHÍNH DANH TỪ đổi: *two book**s***.\n\n- ❌ I have two book. → ✅ I have two book**s**.\n- ❌ She has three child. → ✅ She has three child**ren**.\n\nĐây là lỗi người Việt mắc nhiều nhất, vì tiếng mẹ đẻ không có cơ chế này để bắt chước."
+   },
+   "vi_du": [
+    {
+     "en": "My aunt has three children.",
+     "vi": "Cô tôi có ba đứa con.",
+     "ghi_chu": "aunt và children đều là danh từ · children là số nhiều bất quy tắc của child"
+    },
+    {
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng.",
+     "ghi_chu": "sister và bank là danh từ · “a bank” có mạo từ đứng trước"
+    },
+    {
+     "en": "I live in District 1.",
+     "vi": "Tôi sống ở Quận 1.",
+     "ghi_chu": "District là danh từ riêng nên viết hoa và không cần “a”"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "My brother",
+       "vai": "S"
+      },
+      {
+       "tu": "has",
+       "vai": "V"
+      },
+      {
+       "tu": "two cats",
+       "vai": "O"
+      }
+     ],
+     "vi": "Anh trai tôi có hai con mèo."
+    },
+    {
+     "manh": [
+      {
+       "tu": "The teacher",
+       "vai": "S"
+      },
+      {
+       "tu": "reads",
+       "vai": "V"
+      },
+      {
+       "tu": "a book",
+       "vai": "O"
+      }
+     ],
+     "vi": "Cô giáo đọc một quyển sách."
+    }
+   ],
+   "lien_quan": [
+    "mao_tu",
+    "tinh_tu"
+   ]
+  },
+  {
+   "ma": "mao_tu",
+   "chang": "A",
+   "so": 2,
+   "ten": "Mạo từ a / an / the",
+   "ten_en": "Article",
+   "mot_cau": "Chữ nhỏ đứng trước danh từ để cho biết đang nói tới MỘT cái nào đó chưa xác định, hay ĐÚNG cái mà cả hai đều biết.",
+   "giai_thich": "**a / an** = một cái nào đó, người nghe chưa biết là cái nào.\n**the** = đúng cái đó, cả người nói lẫn người nghe đều biết.\n\n- *I need **a** pen.* — cây bút nào cũng được\n- *Give me **the** pen.* — cây bút cụ thể kia kìa\n\n**a hay an?** Nghe ÂM đầu, không nhìn chữ cái:\n- âm phụ âm → **a**: *a book, a university* (u đọc /juː/ nên vẫn “a”)\n- âm nguyên âm → **an**: *an apple, an hour* (h câm nên vẫn “an”)\n\n**Không dùng mạo từ** với danh từ số nhiều nói chung (*I like cat**s***), danh từ không đếm được (*I drink water*), và tên riêng (*I live in Hanoi*).",
+   "bay": {
+    "tieu_de": "Tiếng Việt KHÔNG CÓ mạo từ — đây là bẫy số một",
+    "noi_dung": "Tiếng Việt nói *Tôi là sinh viên*, không có chữ nào tương ứng với “a”. Nên người Việt bỏ quên mạo từ theo phản xạ:\n\n- ❌ I am student. → ✅ I am **a** student.\n- ❌ She is teacher. → ✅ She is **a** teacher.\n- ❌ He works in bank. → ✅ He works in **a** bank.\n\nQuy tắc cứu nguy: danh từ ĐẾM ĐƯỢC và SỐ ÍT thì gần như luôn phải có *a / an / the / my / this…* đứng trước. Đứng trơ trọi một mình là sai."
+   },
+   "vi_du": [
+    {
+     "en": "She is an office worker.",
+     "vi": "Cô ấy là nhân viên văn phòng.",
+     "ghi_chu": "“an” vì office bắt đầu bằng âm nguyên âm /ɒ/"
+    },
+    {
+     "en": "This is Tuan, a new student.",
+     "vi": "Đây là Tuấn, một học sinh mới.",
+     "ghi_chu": "“a” đứng trước cả cụm “new student”, không phải trước “student”"
+    },
+    {
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng.",
+     "ghi_chu": "bank là danh từ đếm được số ít nên bắt buộc có “a”"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "am",
+       "vai": "V"
+      },
+      {
+       "tu": "a",
+       "vai": "MT"
+      },
+      {
+       "tu": "student",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi là sinh viên."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "is",
+       "vai": "V"
+      },
+      {
+       "tu": "an",
+       "vai": "MT"
+      },
+      {
+       "tu": "engineer",
+       "vai": "O"
+      }
+     ],
+     "vi": "Cô ấy là kỹ sư."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu"
+   ]
+  },
+  {
+   "ma": "dong_tu",
+   "chang": "A",
+   "so": 3,
+   "ten": "Động từ",
+   "ten_en": "Verb",
+   "mot_cau": "Từ chỉ hành động hoặc trạng thái — phần cho biết chủ ngữ LÀM GÌ hoặc THÌ LÀ GÌ.",
+   "giai_thich": "Mỗi câu tiếng Anh phải có ÍT NHẤT MỘT động từ. Không có động từ thì chưa phải câu.\n\nCó hai loại phải phân biệt ngay:\n\n**1. Động từ thường** — chỉ hành động: *work, eat, read, go, like*\n- *I **work** in a bank.*\n\n**2. Động từ “be”** — am / is / are — chỉ trạng thái, nghĩa là “thì, là, ở”\n- *I **am** a student.* · *She **is** happy.* · *They **are** here.*\n\n**Không được dùng cả hai cùng lúc** khi chỉ có một hành động:\n- ❌ I am work in a bank. → ✅ I **work** in a bank.",
+   "bay": {
+    "tieu_de": "Tiếng Việt động từ không đổi, tiếng Anh đổi theo chủ ngữ",
+    "noi_dung": "Tiếng Việt: *tôi làm, anh ấy làm, họ làm* — chữ “làm” y nguyên. Tiếng Anh bắt động từ đổi theo chủ ngữ:\n\n| Chủ ngữ | Động từ |\n|---|---|\n| I / You / We / They | work |\n| He / She / It | work**s** |\n\n- ❌ He work in a bank. → ✅ He work**s** in a bank.\n\nVà động từ “be” đổi nhiều hơn nữa: I **am**, he **is**, they **are**."
+   },
+   "vi_du": [
+    {
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng.",
+     "ghi_chu": "works — thêm s vì chủ ngữ là “my sister” (tương đương she)"
+    },
+    {
+     "en": "She is an office worker.",
+     "vi": "Cô ấy là nhân viên văn phòng.",
+     "ghi_chu": "is — động từ “be”, không phải hành động mà là trạng thái"
+    },
+    {
+     "en": "He looks like his father.",
+     "vi": "Anh ấy trông giống bố.",
+     "ghi_chu": "looks — thêm s vì chủ ngữ là he"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "My father",
+       "vai": "S"
+      },
+      {
+       "tu": "works",
+       "vai": "V"
+      },
+      {
+       "tu": "in a hospital",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Bố tôi làm ở bệnh viện."
+    },
+    {
+     "manh": [
+      {
+       "tu": "They",
+       "vai": "S"
+      },
+      {
+       "tu": "are",
+       "vai": "V"
+      },
+      {
+       "tu": "my friends",
+       "vai": "O"
+      }
+     ],
+     "vi": "Họ là bạn tôi."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu",
+    "tinh_tu"
+   ]
+  },
+  {
+   "ma": "tinh_tu",
+   "chang": "A",
+   "so": 4,
+   "ten": "Tính từ",
+   "ten_en": "Adjective",
+   "mot_cau": "Từ mô tả danh từ — cho biết người/vật đó THẾ NÀO.",
+   "giai_thich": "Tính từ trả lời câu hỏi “thế nào?”: *big, new, happy, expensive, busy*.\n\nNó đứng được ở hai chỗ:\n\n**1. NGAY TRƯỚC danh từ** — *a **new** student*, *a **big** house*\n**2. SAU động từ “be”** — *She is **happy**.* · *The book is **expensive**.*\n\nTính từ tiếng Anh **không bao giờ thêm -s** dù danh từ số nhiều:\n- ❌ two news books → ✅ two **new** books",
+   "bay": {
+    "tieu_de": "Tiếng Việt để tính từ SAU danh từ, tiếng Anh để TRƯỚC",
+    "noi_dung": "Đây là chỗ đảo ngược hoàn toàn, và là lỗi bạn sẽ mắc nhiều nhất khi tự đặt câu:\n\n| Tiếng Việt | Tiếng Anh |\n|---|---|\n| xe **đỏ** | **a red** car |\n| nhà **to** | **a big** house |\n| học sinh **mới** | **a new** student |\n\n- ❌ a car red → ✅ **a red car**\n\nCứ dịch từng chữ theo thứ tự tiếng Việt là sai ngay. Phải đảo lại: **mạo từ + tính từ + danh từ**."
+   },
+   "vi_du": [
+    {
+     "en": "This is Tuan, a new student.",
+     "vi": "Đây là Tuấn, một học sinh mới.",
+     "ghi_chu": "new đứng TRƯỚC student — ngược với “học sinh mới”"
+    },
+    {
+     "en": "Have a nice day.",
+     "vi": "Chúc một ngày tốt lành.",
+     "ghi_chu": "nice trước day — ngược với “ngày tốt lành”"
+    },
+    {
+     "en": "Goodbye, have a good weekend!",
+     "vi": "Tạm biệt, chúc bạn cuối tuần vui vẻ!",
+     "ghi_chu": "good trước weekend"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "have",
+       "vai": "V"
+      },
+      {
+       "tu": "a",
+       "vai": "MT"
+      },
+      {
+       "tu": "new",
+       "vai": "TT"
+      },
+      {
+       "tu": "phone",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi có một cái điện thoại mới."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "is",
+       "vai": "V"
+      },
+      {
+       "tu": "very busy",
+       "vai": "TT"
+      }
+     ],
+     "vi": "Cô ấy rất bận."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu",
+    "trang_tu"
+   ]
+  },
+  {
+   "ma": "trang_tu",
+   "chang": "A",
+   "so": 5,
+   "ten": "Trạng từ",
+   "ten_en": "Adverb",
+   "mot_cau": "Từ mô tả ĐỘNG TỪ — cho biết hành động diễn ra thế nào, khi nào, ở mức nào.",
+   "giai_thich": "Tính từ mô tả danh từ, còn trạng từ mô tả động từ. So sánh:\n\n- *She is a **slow** driver.* — slow mô tả “driver” (danh từ) → tính từ\n- *She drives **slowly**.* — slowly mô tả “drives” (động từ) → trạng từ\n\n**Cách tạo:** phần lớn là tính từ + **-ly**: slow → slow**ly**, quick → quick**ly**, careful → careful**ly**.\nNgoại lệ hay gặp: good → **well**, fast → **fast** (không đổi).\n\n**Trạng từ tần suất** (always, usually, often, sometimes, never) đứng **TRƯỚC động từ thường** nhưng **SAU động từ be**:\n- *I **always** go to work at 7.*\n- *She **is always** busy.*",
+   "bay": {
+    "tieu_de": "Tiếng Việt dùng chung một từ, tiếng Anh tách đôi",
+    "noi_dung": "Tiếng Việt nói *nhanh* cho cả hai: “xe **nhanh**” và “chạy **nhanh**”. Tiếng Anh bắt dùng hai từ khác nhau:\n\n- xe nhanh → a **fast** car (tính từ)\n- chạy nhanh → run **fast** (trạng từ)\n- lái cẩn thận → drive **carefully**, KHÔNG phải drive careful\n\n- ❌ He speaks English good. → ✅ He speaks English **well**."
+   },
+   "vi_du": [
+    {
+     "en": "I usually get up at six.",
+     "vi": "Tôi thường dậy lúc sáu giờ.",
+     "ghi_chu": "usually đứng TRƯỚC động từ thường “get up”"
+    },
+    {
+     "en": "She is always late.",
+     "vi": "Cô ấy lúc nào cũng muộn.",
+     "ghi_chu": "always đứng SAU động từ be “is”"
+    },
+    {
+     "en": "He works very hard.",
+     "vi": "Anh ấy làm việc rất chăm.",
+     "ghi_chu": "hard là trạng từ, đứng sau động từ"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "always",
+       "vai": "TrT"
+      },
+      {
+       "tu": "drink",
+       "vai": "V"
+      },
+      {
+       "tu": "coffee",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi luôn uống cà phê."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "speaks",
+       "vai": "V"
+      },
+      {
+       "tu": "English",
+       "vai": "O"
+      },
+      {
+       "tu": "well",
+       "vai": "TrT"
+      }
+     ],
+     "vi": "Cô ấy nói tiếng Anh giỏi."
+    }
+   ],
+   "lien_quan": [
+    "tinh_tu",
+    "dong_tu"
+   ]
+  },
+  {
+   "ma": "gioi_tu",
+   "chang": "A",
+   "so": 6,
+   "ten": "Giới từ",
+   "ten_en": "Preposition",
+   "mot_cau": "Từ nhỏ đứng trước danh từ để chỉ nơi chốn, thời gian hoặc quan hệ: in, on, at, to, for, with.",
+   "giai_thich": "**Chỉ NƠI CHỐN — theo độ lớn, từ rộng tới hẹp:**\n- **in** — bên trong một không gian: *in Hanoi, in a bank, in the room*\n- **on** — trên một bề mặt: *on the table, on the wall, on the bus*\n- **at** — một điểm cụ thể: *at home, at school, at the bus stop*\n\n**Chỉ THỜI GIAN — cũng từ rộng tới hẹp:**\n- **in** — tháng, năm, mùa: *in May, in 2026, in the morning*\n- **on** — thứ, ngày: *on Monday, on 3rd May*\n- **at** — giờ cụ thể: *at 7 o'clock, at noon, at night*\n\nMẹo nhớ: **in** rộng nhất → **on** hẹp hơn → **at** một điểm.",
+   "bay": {
+    "tieu_de": "Một chữ “ở” của tiếng Việt tách thành ba chữ tiếng Anh",
+    "noi_dung": "Tiếng Việt dùng “ở” cho tất cả: *ở Hà Nội, ở bàn, ở nhà, ở 7 giờ*. Tiếng Anh bắt chọn đúng một trong ba:\n\n| Tiếng Việt | Tiếng Anh |\n|---|---|\n| ở Hà Nội | **in** Hanoi |\n| ở trên bàn | **on** the table |\n| ở nhà | **at** home |\n| lúc 7 giờ | **at** 7 o'clock |\n\nKhông có cách suy ra từ tiếng Việt — phải học theo cụm và nghe nhiều cho quen tai."
+   },
+   "vi_du": [
+    {
+     "en": "I live in District 1.",
+     "vi": "Tôi sống ở Quận 1.",
+     "ghi_chu": "in — bên trong một khu vực"
+    },
+    {
+     "en": "See you at the coffee shop!",
+     "vi": "Hẹn gặp bạn ở quán cà phê nhé!",
+     "ghi_chu": "at — một điểm hẹn cụ thể"
+    },
+    {
+     "en": "My sister works in a bank.",
+     "vi": "Chị tôi làm ở ngân hàng.",
+     "ghi_chu": "in — bên trong một toà nhà/tổ chức"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "live",
+       "vai": "V"
+      },
+      {
+       "tu": "in Hanoi",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Tôi sống ở Hà Nội."
+    },
+    {
+     "manh": [
+      {
+       "tu": "The meeting",
+       "vai": "S"
+      },
+      {
+       "tu": "is",
+       "vai": "V"
+      },
+      {
+       "tu": "at three o'clock",
+       "vai": "GT"
+      }
+     ],
+     "vi": "Cuộc họp lúc ba giờ."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu"
+   ]
+  },
+  {
+   "ma": "dai_tu",
+   "chang": "A",
+   "so": 7,
+   "ten": "Đại từ",
+   "ten_en": "Pronoun",
+   "mot_cau": "Từ thay cho danh từ để khỏi lặp lại: I, me, my, mine.",
+   "giai_thich": "Cùng một người nhưng đứng ở vai khác nhau thì dùng chữ khác nhau. Đây là bảng phải thuộc:\n\n| Làm chủ ngữ | Làm tân ngữ | Sở hữu + danh từ | Sở hữu đứng một mình |\n|---|---|---|---|\n| I | me | my | mine |\n| you | you | your | yours |\n| he | him | his | his |\n| she | her | her | hers |\n| we | us | our | ours |\n| they | them | their | theirs |\n\n- ***I** call **him**.* — I làm chủ ngữ, him làm tân ngữ\n- *This is **my** book.* — my đi kèm danh từ\n- *This book is **mine**.* — mine đứng một mình, không có danh từ sau",
+   "bay": {
+    "tieu_de": "Tiếng Việt một chữ “tôi” cho mọi vai",
+    "noi_dung": "Tiếng Việt: *tôi gọi anh ấy* và *anh ấy gọi tôi* — chữ “tôi” y nguyên. Tiếng Anh đổi hẳn chữ tuỳ vai:\n\n- *Tôi gọi anh ấy* → **I** call **him**.\n- *Anh ấy gọi tôi* → **He** calls **me**.\n\n- ❌ Me call him. → ✅ **I** call him.\n- ❌ He calls I. → ✅ He calls **me**.\n\nQuy tắc: đứng TRƯỚC động từ thì dùng cột chủ ngữ, đứng SAU động từ thì dùng cột tân ngữ."
+   },
+   "vi_du": [
+    {
+     "en": "He looks like his father.",
+     "vi": "Anh ấy trông giống bố.",
+     "ghi_chu": "He làm chủ ngữ · his là sở hữu đi kèm danh từ “father”"
+    },
+    {
+     "en": "She looks like her mother.",
+     "vi": "Cô ấy trông giống mẹ.",
+     "ghi_chu": "She chủ ngữ · her sở hữu"
+    },
+    {
+     "en": "It's nice to meet you at last.",
+     "vi": "Cuối cùng cũng được gặp bạn.",
+     "ghi_chu": "you làm tân ngữ của “meet”"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I",
+       "vai": "S"
+      },
+      {
+       "tu": "call",
+       "vai": "V"
+      },
+      {
+       "tu": "him",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi gọi anh ấy."
+    },
+    {
+     "manh": [
+      {
+       "tu": "She",
+       "vai": "S"
+      },
+      {
+       "tu": "helps",
+       "vai": "V"
+      },
+      {
+       "tu": "us",
+       "vai": "O"
+      }
+     ],
+     "vi": "Cô ấy giúp chúng tôi."
+    }
+   ],
+   "lien_quan": [
+    "danh_tu"
+   ]
+  },
+  {
+   "ma": "lien_tu",
+   "chang": "A",
+   "so": 8,
+   "ten": "Liên từ",
+   "ten_en": "Conjunction",
+   "mot_cau": "Từ nối hai phần của câu lại: and, but, or, so, because.",
+   "giai_thich": "Liên từ là thứ cho phép bạn đi từ câu ngắn sang câu dài.\n\n- **and** — thêm vào: *I work in a bank **and** my sister works in a hospital.*\n- **but** — trái ngược: *I like coffee **but** I don't like tea.*\n- **or** — chọn một: *Tea **or** coffee?*\n- **so** — vì thế (KẾT QUẢ đứng sau): *It was late, **so** I went home.*\n- **because** — bởi vì (LÝ DO đứng sau): *I went home **because** it was late.*\n\n**so** và **because** cùng nói về một chuyện nhưng đảo thứ tự: cái nào đứng sau nó thì cái đó là lý do hay kết quả.",
+   "bay": {
+    "tieu_de": "Tiếng Việt cho phép “vì… nên…”, tiếng Anh chỉ chọn một",
+    "noi_dung": "Tiếng Việt nói được *Vì trời mưa nên tôi ở nhà* — dùng cả hai chữ. Tiếng Anh chỉ được dùng MỘT:\n\n- ❌ Because it rained, so I stayed home.\n- ✅ **Because** it rained, I stayed home.\n- ✅ It rained, **so** I stayed home.\n\nĐây là lỗi rất đặc trưng của người Việt vì nó dịch thẳng từ cấu trúc tiếng mẹ đẻ."
+   },
+   "vi_du": [
+    {
+     "en": "I like coffee but I don't like tea.",
+     "vi": "Tôi thích cà phê nhưng không thích trà.",
+     "ghi_chu": "but nối hai vế trái ngược"
+    },
+    {
+     "en": "Would you like tea or coffee?",
+     "vi": "Bạn muốn trà hay cà phê?",
+     "ghi_chu": "or để chọn một trong hai"
+    },
+    {
+     "en": "I stayed home because it rained.",
+     "vi": "Tôi ở nhà vì trời mưa.",
+     "ghi_chu": "because — phần sau nó là LÝ DO"
+    }
+   ],
+   "rap_cau": [
+    {
+     "manh": [
+      {
+       "tu": "I like coffee",
+       "vai": "S"
+      },
+      {
+       "tu": "but",
+       "vai": "V"
+      },
+      {
+       "tu": "she likes tea",
+       "vai": "O"
+      }
+     ],
+     "vi": "Tôi thích cà phê nhưng cô ấy thích trà."
+    },
+    {
+     "manh": [
+      {
+       "tu": "It rained",
+       "vai": "S"
+      },
+      {
+       "tu": "so",
+       "vai": "V"
+      },
+      {
+       "tu": "I stayed home",
+       "vai": "O"
+      }
+     ],
+     "vi": "Trời mưa nên tôi ở nhà."
+    }
+   ],
+   "lien_quan": [
+    "dong_tu"
+   ]
+  }
+ ]
+}
