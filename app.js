@@ -516,6 +516,15 @@ function veBaiHoc(u) {
       theDanNguPhap(u) + noi, `${bang.length} bảng`);
   }
 
+  // Lời giảng tiếng Việt của tập 4-5: trước đây lọt vào thư viện Truyện, nay
+  // hiện đúng chỗ — trong bài học.
+  if (u.huong_dan?.length) {
+    const noi = u.huong_dan.map(x =>
+      `<h4>${esc(x.ten)}</h4><div>${mdSangHtml(x.noi_dung)}</div>`).join("");
+    h += khoi("bai-hoc/huong-dan", "Hướng dẫn & giải thích",
+              `<div class="the">${noi}</div>`, `${u.huong_dan.length} mục`);
+  }
+
   [["phat_am", "Phát âm"], ["luu_y", "Lưu ý & điểm dễ nhầm"], ["meo", "Mẹo ghi nhớ"]]
     .forEach(([k, ten]) => {
       if (!u[k]) return;
