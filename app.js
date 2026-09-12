@@ -617,6 +617,63 @@ const deDeDoc = de => {
   return CO_DAU_VIET.test(s) ? "" : s;
 };
 
+/* Tên có hậu tố "BaiTap" vì màn Đề thi đã có một oTraLoi() khác. Hai hàm
+   cùng tên trong cùng file thì bản khai báo SAU ghi đè bản trước, và lỗi này
+   không báo gì — chỉ thấy giao diện vẫn hiện kiểu cũ.
+
+   Ba dạng trả lời, chọn theo chính câu hỏi.
+
+   Vì sao không để tất cả cùng gõ: một ý tiếng Việt dịch ra tiếng Anh có rất
+   nhiều câu đúng. Sổ lỗi cho thấy hậu quả — "Tôi có hai em gái." bị chấm sai
+   5 lần vì người học gõ "I've got two younger sisters" trong khi đáp án mẫu
+   ghi "I have…". Cả hai đều đúng tiếng Anh.
+
+     CHỌN         — đáp án là cả một câu, và sinh được phương án nhiễu tử tế.
+                    Nhiễu là lỗi người Việt thật (quên -s, thừa "be", sai a/an)
+                    nên chọn sai nghĩa là thật sự chưa phân biệt được.
+     GÕ MỘT PHẦN  — bài biến đổi câu (sửa lỗi, bị động, viết lại): cả câu dài
+                    nhưng chỉ MỘT chỗ là bài học, gõ lại toàn bộ chỉ đo tốc độ
+                    đánh máy.
+     GÕ           — đáp án 1-2 từ: chỉ có một cách viết đúng, gõ vào còn luyện
+                    được chính tả. */
+function oTraLoiBaiTap(soUnit, c) {
+  const id = `bt-${soUnit}-${c.so}`;
+  const kq = `<span id="kq-${soUnit}-${c.so}"></span>`;
+
+  if (c.lua_chon?.length) {
+    return `<div class="bt-chon" style="margin-top:6px">
+        ${c.lua_chon.map((x, i) => `<label class="bt-mot-chon">
+            <input type="radio" name="${id}" value="${esc(x)}"> <span>${esc(x)}</span>
+          </label>`).join("")}
+        <div style="margin-top:4px">${kq}</div>
+      </div>`;
+  }
+
+  if (c.go_mot_phan) {
+    return `<div style="margin-top:6px">
+        <div class="bt-khung">${esc(c.go_mot_phan.khung).replace("______",
+          `<input type="text" class="o-trong" id="${id}" placeholder="…"
+             onkeydown="if(event.key==='Enter')chuyenO(${soUnit},${c.so})">`)}</div>
+        <div style="margin-top:4px">${kq}</div>
+      </div>`;
+  }
+
+  return `<div class="hang" style="margin-top:6px">
+      <input type="text" placeholder="Câu trả lời của bạn" id="${id}"
+        onkeydown="if(event.key==='Enter')chuyenO(${soUnit},${c.so})">
+      ${kq}
+    </div>`;
+}
+
+/* Lấy câu trả lời, dù ô là kiểu gì. */
+function dapCuaToi(soUnit, c) {
+  const id = `bt-${soUnit}-${c.so}`;
+  if (c.lua_chon?.length) {
+    return document.querySelector(`input[name="${id}"]:checked`)?.value || "";
+  }
+  return $(`#${id}`)?.value || "";
+}
+
 function veBaiTap(u) {
   const el = $("#bai-tap");
   if (!u.bai_tap?.length) { el.innerHTML = `<div class="trong">Unit này chưa có bài tập trong giáo trình.</div>`; return; }
@@ -633,11 +690,7 @@ function veBaiTap(u) {
     h += `<h3>${esc(n.ma)}. ${esc(n.ten)}</h3><div class="the">`;
     h += n.cau_hoi.map(c => `<div class="cau-hoi" id="oc-${u.so}-${c.so}">
         <div>${c.so}. ${cauCoTuChamDuoc(c.de)} ${nutLoa(deDeDoc(c.de))}</div>
-        <div class="hang" style="margin-top:6px">
-          <input type="text" placeholder="Câu trả lời của bạn" id="bt-${u.so}-${c.so}"
-            onkeydown="if(event.key==='Enter')chuyenO(${u.so},${c.so})">
-          <span id="kq-${u.so}-${c.so}"></span>
-        </div>
+        ${oTraLoiBaiTap(u.so, c)}
       </div>`).join("");
     h += `</div>`;
   });
@@ -661,8 +714,12 @@ async function nopBaiTap(soUnit) {
   const u = S.duLieuUnit;
   const traLoi = [];
   u.bai_tap.forEach(n => n.cau_hoi.forEach(c => traLoi.push({
-    so: c.so, de: c.de, dap_an: c.dap_an || "", nhan: c.nhan || [],
-    cua_toi: $(`#bt-${soUnit}-${c.so}`)?.value || "",
+    so: c.so, de: c.de,
+    // Câu GÕ MỘT PHẦN chỉ chấm đúng phần cần gõ, không chấm cả câu — cả câu
+    // thì người học đâu có gõ.
+    dap_an: c.go_mot_phan ? c.go_mot_phan.can : (c.dap_an || ""),
+    nhan: c.go_mot_phan ? [c.go_mot_phan.can] : (c.nhan || []),
+    cua_toi: dapCuaToi(soUnit, c),
   })));
 
   const kq = await (await fetch("/api/nop_bai", {
@@ -685,6 +742,8 @@ async function nopBaiTap(soUnit) {
         + nutLoa(deDeDoc(r.dap_an));
     }
     if (inp) inp.disabled = true;
+    // Ô chọn cũng phải khoá, không thì nộp xong vẫn đổi được đáp án.
+    $$(`input[name="bt-${soUnit}-${r.so}"]`).forEach(x => { x.disabled = true; });
   });
 
   $("#nut-nop-bt").classList.add("an");
@@ -711,6 +770,7 @@ async function nopBaiTap(soUnit) {
 
 function lamLaiBaiTap(soUnit) {
   $$(`input[id^="bt-${soUnit}-"]`).forEach(x => { x.value = ""; x.disabled = false; });
+  $$(`input[name^="bt-${soUnit}-"]`).forEach(x => { x.checked = false; x.disabled = false; });
   $$(`[id^="kq-${soUnit}-"]`).forEach(x => x.innerHTML = "");
   $("#ket-qua-bt").innerHTML = "";
   $("#nut-nop-bt").classList.remove("an");
@@ -2783,6 +2843,163 @@ function batTatNPXong(ma) {
   veNguPhap();
 }
 
+/* ================= ÔN LẠI SỔ LỖI =================
+   Vì sao có phần này:
+     App ghi lại mọi câu làm sai — 55 câu tính tới lúc viết — rồi KHÔNG làm gì
+     với chúng. on_tap.py không có một dòng nào đọc sổ lỗi; màn hình Sổ lỗi
+     viết "tập trung học lại phần này" nhưng chỉ cho xem và xoá. Câu mình đã
+     sai là thứ đáng ôn nhất, mà lại là thứ duy nhất không bao giờ quay lại.
+
+   Vì sao viết ở app.js chứ không thêm vào on_tap.py:
+     Hệ ôn tập từ vựng có HAI bản — Python cho bản chạy máy, JS port trong
+     shim cho bản web. Thêm vào cả hai là phải giữ hai nơi khớp nhau. Lịch ôn
+     sổ lỗi chỉ cần localStorage nên một bản chạy được cho cả hai môi trường,
+     giống cách đã làm cho ngữ pháp.
+
+   Chấm bằng chamDap() có sẵn — ba mức đúng / gần đúng / sai. KHÔNG viết bản
+   so đáp án thứ ba. */
+
+const khoaOnLoi = () => "onSoLoi__" + (HS?.id || "mac_dinh");
+
+function docOnLoi() {
+  try { return JSON.parse(localStorage.getItem(khoaOnLoi())) || {}; }
+  catch (e) { return {}; }
+}
+const ghiOnLoi = d => localStorage.setItem(khoaOnLoi(), JSON.stringify(d));
+
+/* Khoá một câu lỗi: unit + đề. Không dùng thời điểm — cùng một câu sai ba lần
+   phải là MỘT thẻ ôn, không phải ba. */
+const khoaLoi = l => `loi:${l.unit}:${(l.de || "").slice(0, 60)}`;
+
+/* Câu sai đến hạn ôn hôm nay.
+   Câu CHƯA từng ôn thì đến hạn ngay — nó vừa sai xong, để càng lâu càng quên. */
+function loiDenHan(gioiHan = 10) {
+  const bang = docOnLoi();
+  const hn = homNay();
+  const ra = [];
+  for (const l of (S.soLoiGom || [])) {
+    const k = khoaLoi(l);
+    const tt = bang[k];
+    if (!tt) ra.push({ ...l, khoa: k, lan: 0, moi: true });
+    else if (tt.lan < LICH_NP.length && tt.ngay_tiep <= hn)
+      ra.push({ ...l, khoa: k, lan: tt.lan, moi: false });
+  }
+  // Câu sai NHIỀU LẦN lên trước: đó là chỗ chưa vào đầu thật.
+  ra.sort((a, b) => (b.so_lan || 1) - (a.so_lan || 1));
+  return ra.slice(0, gioiHan);
+}
+
+function traLoiOnLoi(khoa, dung) {
+  const d = docOnLoi();
+  const tt = d[khoa] || { lan: 0 };
+  tt.lan = dung ? Math.min(tt.lan + 1, LICH_NP.length) : 0;
+  tt.ngay_tiep = congNgay(dung ? (LICH_NP[tt.lan - 1] || 90) : 1);
+  d[khoa] = tt;
+  ghiOnLoi(d);
+}
+
+function thongKeOnLoi() {
+  const bang = docOnLoi();
+  const tong = (S.soLoiGom || []).length;
+  let thuoc = 0, dangHoc = 0;
+  Object.values(bang).forEach(t => {
+    if (t.lan >= LICH_NP.length) thuoc++; else if (t.lan > 0) dangHoc++;
+  });
+  return { tong, thuoc, dang_hoc: dangHoc, den_han: loiDenHan(999).length };
+}
+
+/* ---------- màn hình ---------- */
+let onLoiDS = [];
+
+async function moOnLoi() {
+  dungPhat();
+  S.tab = "on-loi";
+  $$(".trang").forEach(x => x.classList.toggle("hien", x.id === "on-loi"));
+  $("#on-loi").innerHTML = `<div class="trong">Đang nạp…</div>`;
+  const d = await (await fetch("/api/tien_do")).json();
+  // Dùng danh sách ĐÃ GOM NHÓM của server: cùng một câu sai nhiều lần chỉ là
+  // một thẻ, kèm số lần sai để xếp thứ tự ưu tiên.
+  S.soLoiGom = (d.loi?.nhom || []).map(x => ({
+    unit: x.unit, de: x.de, dap_an: x.dap_an,
+    so_lan: x.so_lan || 1, da_tra_loi: x.da_tra_loi || [],
+  }));
+  veOnLoi();
+  veRail();
+  dongRail();
+  window.scrollTo({ top: 0 });
+}
+
+function veOnLoi() {
+  const el = $("#on-loi");
+  if (!el) return;
+  const tk = thongKeOnLoi();
+  if (!tk.tong) {
+    el.innerHTML = `<h2>Ôn lại câu đã sai</h2>
+      <div class="the">Chưa có câu sai nào được ghi. Làm Bài tập hoặc Đề thi,
+        câu nào sai sẽ tự vào đây và quay lại theo lịch ôn.</div>`;
+    return;
+  }
+  onLoiDS = loiDenHan();
+  el.innerHTML = `<h2>Ôn lại câu đã sai</h2>
+    <div class="the" style="margin-bottom:12px">
+      <div class="np-dau-on" id="dau-on-loi">
+        <span><b>${tk.den_han}</b> câu đến hạn</span>
+        <span><b>${tk.dang_hoc}</b> đang nhớ dần</span>
+        <span><b>${tk.thuoc}</b> đã thuộc</span>
+        <span class="mo">trên ${tk.tong} câu từng sai</span>
+      </div>
+      <div class="mo" style="margin-top:8px">Câu sai nhiều lần được hỏi trước.
+        Trả lời đúng thì lần sau gặp lại xa hơn (1 → 3 → 7 → 16 → 35 → 90 ngày);
+        sai thì mai gặp lại.</div>
+    </div>` +
+    (onLoiDS.length
+      ? onLoiDS.map((l, k) => `<div class="the" id="ol-${k}">
+          <div class="mo">Unit ${nhanUnit(l.unit)}${
+            l.so_lan > 1 ? ` · đã sai ${l.so_lan} lần` : ""}${
+            l.moi ? " · lần ôn đầu" : ` · bậc ${l.lan}/6`}</div>
+          <div class="np-de">${esc(l.de)}</div>
+          <div class="hang" style="margin-top:8px">
+            <input type="text" id="ol-o-${k}" placeholder="Đáp án của bạn"
+              onkeydown="if(event.key==='Enter')kiemOnLoi(${k})">
+            <button class="phu" onclick="kiemOnLoi(${k})">Kiểm tra</button>
+          </div>
+          <div id="ol-kq-${k}" style="margin-top:6px"></div>
+        </div>`).join("")
+      : `<div class="the"><b>Hôm nay ôn xong rồi.</b>
+          <div style="margin-top:6px">Các câu còn lại chưa tới hạn.</div></div>`);
+}
+
+function kiemOnLoi(k) {
+  const l = onLoiDS[k];
+  const o = $(`#ol-kq-${k}`);
+  const cuaToi = $(`#ol-o-${k}`)?.value || "";
+  const kq = chamDap(cuaToi, l.dap_an);
+
+  if (kq.muc === "trong") { o.innerHTML = `<span class="mo">Chưa nhập gì.</span>`; return; }
+  if (kq.muc === "dung") {
+    o.innerHTML = `<span class="dung">✓ Đúng.</span> ${nutLoa(deDeDoc(l.dap_an))}`;
+    traLoiOnLoi(l.khoa, true);
+  } else if (kq.muc === "gan") {
+    // "Gần đúng" KHÔNG tính là thuộc: chamDap chỉ so từ khoá, câu thiếu chữ
+    // vẫn có thể sai nghĩa. Cho xem đáp án rồi hẹn lại ngày mai.
+    o.innerHTML = `<span class="sai">≈ Gần đúng${kq.vi ? " — " + esc(kq.vi) : ""}.</span>
+      <div>Đáp án: <b>${esc(l.dap_an)}</b> ${nutLoa(deDeDoc(l.dap_an))}</div>`;
+    traLoiOnLoi(l.khoa, false);
+  } else {
+    o.innerHTML = `<span class="sai">✗ ${kq.vi ? esc(kq.vi) + " " : ""}Đáp án:
+      <b>${esc(l.dap_an)}</b></span> ${nutLoa(deDeDoc(l.dap_an))}`;
+    traLoiOnLoi(l.khoa, false);
+  }
+  $(`#ol-o-${k}`).disabled = true;
+
+  const tk = thongKeOnLoi();
+  const d = $("#dau-on-loi");
+  if (d) d.innerHTML = `<span><b>${tk.den_han}</b> câu đến hạn</span>
+      <span><b>${tk.dang_hoc}</b> đang nhớ dần</span>
+      <span><b>${tk.thuoc}</b> đã thuộc</span>
+      <span class="mo">trên ${tk.tong} câu từng sai</span>`;
+}
+
 /* ================= THƯ VIỆN TRUYỆN =================
    Bố cục học theo thư viện truyện của HelloChinese, giữ lại đúng phần hợp
    với app này:
@@ -3680,6 +3897,10 @@ function veRail(keo = false) {
     don("\u23f1", "Thì trong tiếng Anh", "thi", "moThi()") +
     don("\u25e7", "Truyện", "thu-vien", "moThuVien()") +
     don("\u25f7", "Ôn tập hôm nay", "on-tap", "chuyenTab('on-tap')") +
+    // Sổ lỗi trước đây chỉ xem được. Mục này đưa chính những câu đã sai
+    // quay lại theo lịch ôn — thứ đáng ôn nhất mà trước giờ không bao giờ
+    // gặp lại.
+    don("\u21ba", "Ôn lại câu sai", "on-loi", "moOnLoi()") +
     don("\u270e", "Sổ lỗi", "so-loi", "chuyenTab('so-loi')"));
 
   /* --- 2. Bài học: level -> unit -> mục --- */
