@@ -667,11 +667,33 @@ function oTraLoiBaiTap(soUnit, c) {
       </div>`;
   }
 
+  /* Câu không có đáp án trong sổ (viết/nói tự do) thì một dòng input là sai
+     chỗ: đề bảo viết 40-50 từ mà ô chỉ vừa một dòng. Cho ô rộng, đếm từ, và
+     cho nhờ chấm — đây đúng là chỗ không có phản hồi nào trước giờ. */
+  if (!c.dap_an) {
+    const k = `bt-${soUnit}-${c.so}`;
+    KHO_VIET[k] = { bai: () => $(`#${id}`)?.value || "", de: c.de, unit: soUnit };
+    return `<div style="margin-top:6px">
+        <textarea id="${id}" rows="4" placeholder="Viết câu trả lời của bạn…"
+          oninput="demTuO(this,'dt-${k}')"></textarea>
+        <div class="mo" id="dt-${k}">0 từ</div>
+        <div class="dieu-khien" style="justify-content:flex-start">${nutChamViet(k)}</div>
+        ${kq}
+      </div>`;
+  }
+
   return `<div class="hang" style="margin-top:6px">
       <input type="text" placeholder="Câu trả lời của bạn" id="${id}"
         onkeydown="if(event.key==='Enter')chuyenO(${soUnit},${c.so})">
       ${kq}
     </div>`;
+}
+
+/* Đếm từ cho một ô bất kỳ. demTu() cũ ghi cứng vào #dem-tu nên chỉ dùng được
+   cho một ô duy nhất trên màn hình. */
+function demTuO(ta, idHien) {
+  const o = document.getElementById(idHien);
+  if (o) o.textContent = `${(ta.value.trim().match(/\S+/g) || []).length} từ`;
 }
 
 /* Lấy câu trả lời, dù ô là kiểu gì. */
@@ -693,7 +715,8 @@ function veBaiTap(u) {
   let h = `<h2>Bài tập — Unit ${nhanUnit(u.so)}</h2>
     <div class="mo">${tongCau} câu · ${coDapAn} câu chấm tự động được</div>
     ${coDapAn < tongCau ? `<div class="canh-bao">${tongCau - coDapAn} câu là dạng viết/nói tự do —
-      sổ đáp án chỉ ghi gợi ý nên máy không chấm, bạn tự đối chiếu.</div>` : ""}`;
+      sổ đáp án chỉ ghi gợi ý nên không có đáp án đúng/sai. Viết xong bấm
+      <b>Nhờ chấm &amp; nhận xét</b> ngay dưới câu đó để được sửa từng câu.</div>` : ""}`;
 
   u.bai_tap.forEach(n => {
     h += `<h3>${esc(n.ma)}. ${esc(n.ten)}</h3><div class="the">`;
@@ -3228,6 +3251,177 @@ function veHoiThoai(u) {
   el.innerHTML = h;
 }
 
+/* ================= NHỜ CHẤM BÀI VIẾT =================
+   Phần Writing/Speaking chiếm khoảng một phần tư điểm của 50 đề nhưng máy
+   không chấm được: viết xong rồi để đó. Đây là chỗ bù vào — Gemini đọc bài
+   và trả về nhận xét theo bốn tiêu chí IELTS, kèm sửa từng câu.
+
+   BAND Ở ĐÂY CHỈ ĐỂ THAM KHẢO. Cùng một bài chạy hai lần có thể lệch nửa
+   band, nên nó KHÔNG đi vào luật đạt/không đạt của unit và không được ghi
+   vào tiến độ. Thứ đáng tin là phần sửa câu: câu bạn viết -> câu đúng -> vì sao.
+*/
+let TT_CHAM = undefined;            // undefined = chưa hỏi, null = đang hỏi
+
+function luuMaCham(v) {
+  localStorage.setItem("maCham", (v || "").trim());
+  TT_CHAM = undefined;              // hỏi lại máy chủ với mã mới
+}
+
+/* Ô mã chấm chỉ có nghĩa ở bản web. Hỏi máy chủ rồi mới hiện, để bản chạy ở
+   nhà không bày ra một ô người dùng không bao giờ cần điền. */
+async function dungOMaCham() {
+  const o = $("#o-ma-cham");
+  if (!o) return;
+  const sd = await sanSangChamViet();
+  o.style.display = sd.qua_worker ? "block" : "none";
+  const i = $("#cd-ma-cham");
+  if (i) i.value = localStorage.getItem("maCham") || "";
+}
+
+async function sanSangChamViet() {
+  if (TT_CHAM !== undefined) return TT_CHAM;
+  TT_CHAM = null;
+  try { TT_CHAM = await (await fetch("/api/cham_viet")).json(); }
+  catch (e) { TT_CHAM = { co: false, vi_sao: "Không gọi được máy chủ." }; }
+  return TT_CHAM;
+}
+
+/* Nút vẽ ngay (không chờ mạng) rồi tự ẩn/đổi chữ khi biết có key hay không —
+   chờ hỏi xong mới vẽ thì lúc mở đề nút nhảy ra muộn, nhìn như lỗi. */
+function nutChamViet(khoa) {
+  return `<button class="chinh" id="nut-cham-${khoa}"
+      onclick="nhoChamViet('${khoa}')">Nhờ chấm &amp; nhận xét</button>
+    <div id="nx-${khoa}"></div>`;
+}
+
+async function nhoChamViet(khoa, chamLai = false) {
+  const nut = $(`#nut-cham-${khoa}`), o = $(`#nx-${khoa}`);
+  const n = KHO_VIET[khoa];
+  if (!n) return;
+  const bai = (typeof n.bai === "function" ? n.bai() : n.bai || "").trim();
+
+  const sd = await sanSangChamViet();
+  if (!sd.co) {
+    o.innerHTML = `<div class="canh-bao">${esc(sd.vi_sao || "Chưa bật chấm bài.")}</div>`;
+    return;
+  }
+  if (nut) { nut.disabled = true; nut.textContent = "Đang đọc bài của bạn…"; }
+  o.innerHTML = `<div class="mo" style="margin-top:8px">Gemini đang đọc — thường mất 10-30 giây.</div>`;
+
+  let kq;
+  try {
+    kq = await (await fetch("/api/cham_viet", {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        bai, de: n.de, unit: n.unit ?? S.unit, phan: n.phan || "",
+        level: n.level ?? S.duLieuUnit?.level ?? 0, cham_lai: chamLai,
+      }),
+    })).json();
+  } catch (e) { kq = { loi: "Mất kết nối tới máy chủ." }; }
+
+  if (nut) { nut.disabled = false; nut.textContent = "Nhờ chấm & nhận xét"; }
+  o.innerHTML = kq.loi ? `<div class="canh-bao">${esc(kq.loi)}</div>`
+    : veNhanXet(khoa, donNhanXet({ ...kq, bai }));
+  o.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* Chỗ lấy bài viết, theo khoá. Mỗi màn hình tự khai báo trước khi vẽ nút. */
+const KHO_VIET = {};
+
+const MAU_BAND = b => b == null ? "" : (b >= 6 ? "dung" : b >= 5 ? "" : "sai");
+
+const TEN_TIEU_CHI = {
+  TR: "Task Response — trả lời đúng và đủ đề",
+  CC: "Coherence & Cohesion — mạch lạc và liên kết",
+  LR: "Lexical Resource — vốn từ",
+  GRA: "Grammatical Range & Accuracy — ngữ pháp",
+};
+
+/* Dọn thứ Gemini trả về trước khi vẽ. Máy chủ (Python ở nhà) và Worker (bản
+   web) đều chuyển tiếp nguyên văn, chỉ dọn ở ĐÂY — một bản dùng cho cả hai.
+
+   Ba thứ phải chặn:
+   - band ngoài thang 0-9: vẽ ra là thanh tràn khỏi thẻ;
+   - tiêu chí trả về lộn xộn hoặc mã lạ;
+   - câu "của bạn" mà mô hình chép lại không đúng nguyên văn — người học dò
+     trong bài không thấy câu đó thì mất tin vào cả bảng nhận xét. */
+function donNhanXet(k) {
+  const band = x => {
+    const v = Math.round(parseFloat(x) * 2) / 2;
+    return Number.isFinite(v) ? Math.min(9, Math.max(0, v)) : null;
+  };
+  const goc = (k.bai || "").replace(/\s+/g, " ").toLowerCase();
+  const ma = Object.keys(TEN_TIEU_CHI);
+
+  return {
+    ...k,
+    band_chung: band(k.band_chung),
+    tom_tat: (k.tom_tat || "").trim(),
+    tieu_chi: (k.tieu_chi || [])
+      .map(t => ({ ...t, ma: (t.ma || "").toUpperCase() }))
+      .filter(t => ma.includes(t.ma))
+      .map(t => ({ ...t, ten: TEN_TIEU_CHI[t.ma], band: band(t.band) }))
+      .sort((a, b) => ma.indexOf(a.ma) - ma.indexOf(b.ma)),
+    sua_cau: (k.sua_cau || [])
+      .filter(c => (c.cua_ban || "").trim() && (c.sua_thanh || "").trim())
+      .map(c => ({ ...c, co_trong_bai: goc.includes(c.cua_ban.replace(/\s+/g, " ").toLowerCase()) }))
+      .slice(0, 12),
+    dung_tot: (k.dung_tot || []).filter(Boolean).slice(0, 3),
+    ban_sua: (k.ban_sua || "").trim(),
+    viec_tiep_theo: (k.viec_tiep_theo || []).filter(Boolean).slice(0, 3),
+  };
+}
+
+function veNhanXet(khoa, k) {
+  const tc = (k.tieu_chi || []).map(t => `<tr>
+      <td>${esc(t.ten || t.ma)}</td>
+      <td class="${MAU_BAND(t.band)}" style="white-space:nowrap"><b>${t.band ?? "—"}</b></td>
+      <td>${esc(t.nhan_xet)}<br><span class="mo">→ ${esc(t.lam_sao_len || "")}</span></td>
+    </tr>`).join("");
+
+  /* co_trong_bai = false: mô hình chép sai câu gốc. Vẫn hiện vì phần sửa
+     thường đúng, nhưng phải nói rõ, không thì người học dò trong bài không
+     thấy câu đó và mất tin vào cả bảng. */
+  const sua = (k.sua_cau || []).map(c => `<div class="cau-hoi">
+      <div class="sai" style="text-decoration:line-through">${esc(c.cua_ban)}</div>
+      <div class="dung"><b>${esc(c.sua_thanh)}</b> ${nutLoa(c.sua_thanh)}</div>
+      <div class="mo">${esc(c.loai || "")}${c.loai ? " · " : ""}${esc(c.vi_sao)}${
+        c.co_trong_bai === false ? ` · <i>máy chép lại câu gốc chưa khớp nguyên văn</i>` : ""}</div>
+    </div>`).join("");
+
+  return `<div class="the" style="border-color:var(--chinh); margin-top:10px">
+      <h3>Nhận xét ${k.tu_kho ? `<span class="mo">(bài này đã chấm trước đó)</span>` : ""}</h3>
+      <div>${esc(k.tom_tat || "")}</div>
+
+      <h3 style="margin-top:12px">Bốn tiêu chí IELTS
+        <span class="mo">— band ước lượng: ${k.band_chung ?? "—"}</span></h3>
+      <div class="canh-bao" style="margin:6px 0">Band do máy đoán, chỉ để biết mình
+        đang ở đâu — cùng một bài chấm hai lần có thể lệch nửa band. Nó KHÔNG tính
+        vào điểm đạt của unit. Phần đáng tin là bảng sửa câu bên dưới.</div>
+      <div class="cuon"><table><tr><th>Tiêu chí</th><th>Band</th><th>Nhận xét</th></tr>${tc}</table></div>
+
+      <h3 style="margin-top:12px">Sửa câu ${sua ? `<span class="mo">(${k.sua_cau.length} chỗ)</span>`
+        : `<span class="dung">— không thấy lỗi nào</span>`}</h3>
+      ${sua}
+
+      ${k.dung_tot?.length ? `<h3>Bạn làm tốt</h3>
+        <ul>${k.dung_tot.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+
+      ${k.ban_sua ? `<details style="margin-top:10px">
+        <summary class="mo" style="cursor:pointer">Xem bài của bạn sau khi sửa hết lỗi</summary>
+        <div class="doan-doc" style="margin-top:8px; font-size:16px">${cauCoTuChamDuoc(k.ban_sua)}</div>
+        <div class="mo">${nutLoa(k.ban_sua)} — vẫn là ý của bạn, chỉ sửa lỗi.</div>
+      </details>` : ""}
+
+      ${k.viec_tiep_theo?.length ? `<h3>Làm gì tiếp</h3>
+        <ul>${k.viec_tiep_theo.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+
+      <div class="dieu-khien" style="justify-content:flex-start; margin-top:10px">
+        <button class="phu" onclick="nhoChamViet('${khoa}', true)">Chấm lại</button>
+      </div>
+    </div>`;
+}
+
 /* ================= 5 · ĐỀ THI ================= */
 let dongHo = null;
 async function veDeThi(soUnit) {
@@ -3397,14 +3591,23 @@ function batDauThi() {
     const laWriting = /Writing/i.test(p.ten);
     const khoa = laWriting ? "writing" : "speaking";
     const mau = de.bai_mau?.[khoa];
+    if (laWriting) {
+      KHO_VIET[`de-${khoa}`] = {
+        bai: () => $(`#tuviet-${khoa}`)?.value || "",
+        // Đề đưa cho máy chấm là NGUYÊN VĂN đề, kể cả phần tiêu chí chấm của
+        // giáo trình — đó chính là thứ nó phải đối chiếu.
+        de: p.noi_dung, unit: S.unit, phan: p.ten, level: de.level,
+      };
+    }
     h += `<h3>${esc(p.ten)}</h3><div class="the">
         ${mdSangHtml(p.noi_dung)}
         ${laWriting ? `<textarea id="tuviet-${khoa}" rows="6" placeholder="Viết bài của bạn ở đây rồi mới mở bài mẫu…"
             oninput="demTu(this)"></textarea>
           <div class="mo" id="dem-tu">0 từ</div>` : ""}
         <div class="dieu-khien" style="justify-content:flex-start; margin-top:10px">
-          ${mau ? `<button class="chinh" onclick="moBaiMau('${khoa}')">Xem bài mẫu đạt điểm tối đa</button>`
-        : `<div class="canh-bao" style="margin:0">Unit này chưa có bài mẫu — hiện mới soạn cho Level 0 (unit 1–8).</div>`}
+          ${laWriting ? nutChamViet(`de-${khoa}`) : ""}
+          ${mau ? `<button class="phu" onclick="moBaiMau('${khoa}')">Xem bài mẫu đạt điểm tối đa</button>`
+        : (laWriting ? "" : `<div class="canh-bao" style="margin:0">Unit này chưa có bài mẫu — hiện mới soạn cho Level 0 (unit 1–8).</div>`)}
         </div>
         <div id="mau-${khoa}"></div>
       </div>`;
@@ -4766,6 +4969,7 @@ function moCaiDat() {
   if (o) o.innerHTML = chuThichMau();
   // dong_bo.js nạp sau app.js nên phải kiểm tra trước khi gọi
   if (typeof capNhatTrangThaiDongBo === "function") capNhatTrangThaiDongBo();
+  dungOMaCham();
 }
 
 /* Mở lại đúng thẻ vừa xem: chỉnh tốc độ đọc rồi đóng, lát sau mở ra chỉnh

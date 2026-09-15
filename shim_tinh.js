@@ -71,6 +71,7 @@
   const TEN_LOAI = { nghia: "Nhìn từ → chọn nghĩa", am: "Nghe → gõ lại từ", dung: "Điền từ vào câu" };
 
   let KHO = null, TU_LEVEL = null, BAN_DO_AUDIO;
+  let CAU_HINH = null;
   const tai = async p => (await fetch(p)).json();
 
   /* --- chuẩn hoá + so đáp án: port từ server.py --- */
@@ -315,6 +316,36 @@
       else sl.loi = sl.loi.filter(l => !(l.unit === body.unit_cua_loi && l.de === body.de && l.cua_toi === body.cua_toi));
       ghi(K.loi, sl); return json({ ok: true, con_lai: sl.loi.length });
     }
+    /* Chấm bài viết: bản tĩnh không có key Gemini (nhét vào đây là ai mở
+       DevTools cũng lấy được), nên đi vòng qua Worker. Worker giữ key dưới
+       dạng secret và tự chặn số lượt mỗi ngày. Xem nguon/dong_bo/worker.js. */
+    if (duong === "/api/cham_viet") {
+      if (!CAU_HINH) CAU_HINH = await tai("du_lieu/cau_hinh.json");
+      const nen = (CAU_HINH?.dong_bo?.url || "").replace(/\/+$/, "");
+      const maCham = localStorage.getItem("maCham") || "";
+      if (!nen) {
+        return json({ co: false, vi_sao: "Bản web chấm bài qua Cloudflare Worker, "
+          + "mà cau_hinh.json chưa khai báo dong_bo.url. Xem Hướng dẫn.txt, mục CHẤM BÀI VIẾT." });
+      }
+      if (opts?.method !== "POST") return json({ co: true, qua_worker: true });
+      try {
+        const r = await goc(nen + "/cham", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...body, ma_cham: maCham }),
+        });
+        const d = await r.json();
+        /* Worker cũ (chỉ có phần đồng bộ) trả 404 cho /cham. Nói thẳng phải
+           dán lại Worker, chứ báo "lỗi 404" thì không ai biết làm gì. */
+        if (r.status === 404) {
+          return json({ loi: "Worker đang chạy chưa có phần chấm bài. Dán lại "
+            + "nguon/dong_bo/worker.js rồi đặt secret GEMINI_KEY." });
+        }
+        return json(r.ok ? d : { loi: d.loi || `Worker trả lỗi ${r.status}.` });
+      } catch (e) {
+        return json({ loi: "Không gọi được Worker chấm bài: " + e.message });
+      }
+    }
+
     if (duong === "/api/cham_giong")
       return json({ loi: "Bản web không chấm được phát âm — phần này cần Praat chạy bằng Python. "
                        + "Ghi âm vẫn hoạt động để bạn tự nghe lại và so với giọng mẫu." });

@@ -151,6 +151,21 @@
           khác là hai máy dùng chung tiến độ. Tên và mật khẩu KHÔNG gửi đi đâu — máy tự
           băm thành khoá rồi mới gọi lên mạng. Dấu ⟳ là hồ sơ đã bật đồng bộ.</div>
         <div class="mo" id="db-trang-thai">Chưa bật cho hồ sơ này.</div>
+
+        <!-- Chỉ bản web cần: bản chạy ở nhà đọc thẳng key Gemini từ máy bạn,
+             còn bản web đi qua Worker nên phải có mã để người khác biết địa
+             chỉ Worker cũng không tiêu được quota của bạn. app.js tự ẩn khối
+             này khi đang chạy bản ở nhà. -->
+        <div id="o-ma-cham" style="display:none">
+          <hr>
+          <b>Chấm bài viết</b>
+          <label>Mã chấm bài
+            <input type="password" id="cd-ma-cham" placeholder="mã bạn đặt cho Worker"
+              onchange="luuMaCham(this.value)">
+          </label>
+          <div class="mo">Là giá trị bạn đặt bằng <code>wrangler secret put MA_CHAM</code>.
+            Nhập một lần, máy này nhớ. Bỏ trống nếu Worker của bạn không đặt mã.</div>
+        </div>
       </section>
 
       <!-- Ba công tắc này trước nằm ở góc phải thanh trên. Đưa vào đây cho
