@@ -322,18 +322,24 @@ function cauCoTuChamDuoc(cau) {
   });
 }
 
-/* gon=true: chỉ câu + nghĩa, bỏ ba dòng phiên âm. Dùng cho câu ví dụ nằm
-   TRONG mục từ vựng — ở đó ba dòng "Nói tự nhiên / Đọc thô / Đọc rõ từng từ"
-   làm mỗi từ cao thêm 70px, nhân 15 từ là hơn một nghìn pixel cuộn thêm mà
-   người học đang tra nghĩa chứ chưa luyện đọc. */
+/* gon=true: câu ví dụ nằm TRONG mục từ vựng. Ở đó CHỈ hiện phiên âm nối —
+   một dòng thay vì ba.
+
+   Trước đây gon bỏ sạch phiên âm, vì ba dòng "Nói tự nhiên / Đọc thô / Đọc rõ
+   từng từ" làm mỗi từ cao thêm 70px, nhân 15 từ là hơn một nghìn pixel cuộn
+   thêm. Nhưng bỏ sạch thì câu ví dụ — thứ đáng đọc thành tiếng nhất trong mục
+   từ vựng — lại là chỗ duy nhất không biết đọc thế nào. Nay giữ dòng NÓI TỰ
+   NHIÊN (thứ khác hẳn với việc ghép phiên âm từng từ: "of your" đọc liền thành
+   /əv jɔː/), bỏ dòng "Đọc rõ từng từ" vì phiên âm của chính từ đang học đã
+   nằm ngay dòng trên. Dòng đọc thô vẫn theo công tắc riêng của nó. */
 function khoiCau(en, pa, nghia, { lon = false, gon = false } = {}) {
-  const hienPa = $("#hien-pa")?.checked && !gon;
+  const hienPa = $("#hien-pa")?.checked;
   const hienNghia = $("#hien-nghia")?.checked;
   let h = `<div class="cau-anh">${cauCoTuChamDuoc(en)} ${nutLoa(en)}</div>`;
   if (pa && hienPa) {
-    if (pa.ipa_noi) h += `<div class="pa-noi">Nói tự nhiên: ${esc(pa.ipa_noi)}</div>`;
-    if (pa.tho_noi) h += `<div class="tho">Đọc thô: ${esc(pa.tho_noi)}</div>`;
-    if (pa.ipa_day_du && !lon) h += `<div class="pa">Đọc rõ từng từ: ${esc(pa.ipa_day_du)}</div>`;
+    if (pa.ipa_noi) h += `<div class="pa-noi">${gon ? "" : "Nói tự nhiên: "}${esc(pa.ipa_noi)}</div>`;
+    if (pa.tho_noi && (!gon || CD.docTho)) h += `<div class="tho">${gon ? "" : "Đọc thô: "}${esc(pa.tho_noi)}</div>`;
+    if (pa.ipa_day_du && !lon && !gon) h += `<div class="pa">Đọc rõ từng từ: ${esc(pa.ipa_day_du)}</div>`;
   }
   if (nghia && hienNghia) h += `<div class="nghia">${esc(nghia)}</div>`;
   return h;
