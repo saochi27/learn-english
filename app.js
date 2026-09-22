@@ -472,6 +472,24 @@ function batTatKhoi(id, nut) {
   nut.setAttribute("aria-expanded", String(dangGap));
 }
 
+/* Nhãn cho ô "(a / b)" bên cạnh từ.
+
+   Giáo trình gom ba thứ khác hẳn nhau vào một ô: từ đồng nghĩa (father/dad),
+   họ từ (analysis/analyse/analytical), và — trước đây — cả những từ chẳng
+   liên quan gì về hình thức (today/tomorrow/yesterday). Nhóm cuối nay đã
+   được tách thành từ riêng có nghĩa riêng ngay từ bộ tách giáo trình.
+
+   Hiện trần trụi "(dad)" cạnh "father" thì người học đọc thành "dad là dạng
+   chia của father" — sai. Nên nói thẳng đó là quan hệ gì. */
+function nhanBienThe(t) {
+  if (!t.bien_the?.length) return "";
+  const ten = { ho_tu: "cùng họ", dong_nghia: "còn gọi là" }[t.loai_bien_the];
+  const ds = t.bien_the.map(esc).join(" / ");
+  return ten
+    ? `<span class="mo">(${ten}: ${ds})</span>`
+    : `<span class="mo">(${ds})</span>`;
+}
+
 /* ================= 1 · BÀI HỌC ================= */
 function veBaiHoc(u) {
   const el = $("#bai-hoc");
@@ -485,7 +503,7 @@ function veBaiHoc(u) {
           <span class="tu-anh">${esc(t.tu)}</span>${nutLoa(t.tu)}
           ${$("#hien-pa").checked && t.ipa ? `<span class="pa">${esc(t.ipa)}</span>` : ""}
           ${$("#hien-nghia").checked ? `<span class="nghia">${esc(t.nghia)}</span>` : ""}
-          ${t.bien_the?.length ? `<span class="mo">(${t.bien_the.map(esc).join(" / ")})</span>` : ""}
+          ${nhanBienThe(t)}
         </div>
         ${/* Nghĩa của câu ví dụ trước đây bị bỏ trống dù dữ liệu có sẵn, nên
               câu ví dụ hiện ra không kèm nghĩa. Vẫn theo công tắc "hiện nghĩa"
