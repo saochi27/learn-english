@@ -1333,6 +1333,19 @@ function khoiDoan(tienTo, cac) {
   }).join("");
 }
 
+/* Lấy phần tử MANG dữ liệu câu, dù màn hình đang vẽ kiểu nào.
+
+   Kiểu "từng câu" bọc nội dung trong <div class="than" data-en=...>, kiểu
+   "cả đoạn" đặt thẳng data-en lên chính câu. Ba chỗ phát đều cần một trong
+   hai, nên hỏi qua đây.
+
+   Hàm này từng có (commit d0d4972, 07/09/2026, đúng để sửa lỗi mất tiếng),
+   rồi bị xoá ngay ở commit kế tiếp cùng ngày trong khi BA chỗ gọi vẫn còn.
+   Từ đó docCau() ném ReferenceError ngay dòng đầu: bấm phát ở Hội thoại,
+   Truyện, Mẫu câu đều im. node --check không bắt được vì gọi hàm không tồn
+   tại chỉ nổ lúc chạy. */
+const cauDeDoc = el => el?.querySelector?.(".than") || el;
+
 function docCau(id) {
   const el = document.getElementById(id);
   if (!el) return;
