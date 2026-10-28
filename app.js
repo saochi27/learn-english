@@ -906,7 +906,7 @@ function hienCauHienTai() {
     ${hienNghia && c.vi ? `<div class="nghia">${esc(c.vi)}</div>` : ""}`;
   $("#thanh-tien-trinh").style.width = ((p.i + 1) / p.danhSach.length * 100) + "%";
 
-  $$(".dong-cau").forEach(x => x.classList.remove("dang-doc"));
+  xoaDangDoc();
   const dong = $(`#dc-${p.i}`);
   if (dong) {
     dong.classList.add("dang-doc");
@@ -953,7 +953,7 @@ function dungPhatKhiChuyen() {
   if (CD.giuPhat && S.phatMauCau?.dang) {
     dungPhatBai = true;
     baiDangPhat = null;
-    $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+    xoaDangDoc();
     /* ! Ve bar SAU khi ham dieu huong ve xong man hinh moi. Goi ngay o day thi
        DOM va S.tab con la cua man hinh cu. */
     setTimeout(veBarPhat, 0);
@@ -1288,7 +1288,27 @@ const RE_NHAY = /["\u201c\u201d]/;
    động từ dẫn thoại (says, asks, replies…) đứng trước dấu nháy. */
 const RE_LUOT_MOI = /^\s*[A-Z][\w'’]*\s*:|\b(says?|said|asks?|asked|repl(?:y|ies|ied)|answers?|answered|shouts?|shouted|adds?|added|tells?|told|whispers?|whispered)\b[^"\u201c]*["\u201c]/i;
 
+/* Hội thoại có sẵn cột "vai" cho từng lượt nói — dùng thẳng, đừng đoán.
+
+   nhomDoan() bên dưới đoán người nói bằng dấu nháy và động từ dẫn thoại, vì
+   TRUYỆN không ghi ai đang nói. Hội thoại thì có: mỗi lượt là một bản ghi
+   kèm vai. Đưa nó qua đường đoán thì ba lượt của ba người bị gom vào một
+   dòng — "Excuse me, how much is this bag? It's thirty dollars. Thirty? Or
+   thirteen?" đọc ra như một người tự hỏi tự trả lời, mất hẳn nhịp đối đáp,
+   mà nhịp đó mới là thứ cần học ở mục này. */
+function nhomTheoVai(cac) {
+  const ra = [];
+  cac.forEach((c, i) => {
+    const cuoi = ra[ra.length - 1];
+    // Một người nói liền mấy câu thì vẫn là MỘT lượt.
+    if (cuoi && cuoi.vai === (c.vai || "")) cuoi.cau.push({ c, i });
+    else ra.push({ thoai: true, vai: c.vai || "", cau: [{ c, i }] });
+  });
+  return ra;
+}
+
 function nhomDoan(cac) {
+  if (cac.some(c => c && c.vai)) return nhomTheoVai(cac);
   const chu = c => String(c.en ?? c);
   const ra = [];
   let ke = [];          // đoạn kể đang gom
@@ -1328,7 +1348,9 @@ function khoiDoan(tienTo, cac) {
   return nhomDoan(cac).map(nhom => {
     const dich = nhom.cau.map(({ c }) => c.vi || c.dich || "").filter(Boolean).join(" ");
     return `<div class="doan-van ${nhom.thoai ? "loi-thoai" : ""}"
-        style="font-size:${CD.coChu}px">${nhom.cau.map(mot).join(" ")}</div>
+        style="font-size:${CD.coChu}px">${
+      nhom.vai ? `<span class="vai">${esc(nhom.vai)}:</span> ` : ""
+      }${nhom.cau.map(mot).join(" ")}</div>
       ${CD.hienDich && dich ? `<div class="doan-dich">${esc(dich)}</div>` : ""}`;
   }).join("");
 }
@@ -1349,7 +1371,7 @@ const cauDeDoc = el => el?.querySelector?.(".than") || el;
 function docCau(id) {
   const el = document.getElementById(id);
   if (!el) return;
-  $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+  xoaDangDoc();
   el.classList.add("dang-doc");
   const than = cauDeDoc(el);
   if (!than?.dataset?.en) return;
@@ -1453,7 +1475,17 @@ document.addEventListener("visibilitychange", () => {
 let dungPhatBai = true;
 let baiDangPhat = null;
 
-const xoaSangCau = () => $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+/* Gỡ dấu "đang đọc" ở MỌI kiểu hiển thị.
+
+   Trước đây mỗi chỗ tự viết $$(".cau-doc"), tức là chỉ gỡ được ở kiểu "từng
+   câu". Ở kiểu "cả đoạn" phần tử tên là .cau-trong-doan nên dấu cũ nằm lại,
+   đọc hết bài thì cả bài cùng sáng. Hỏi theo CHÍNH cái class cần gỡ thì
+   không phải nhớ màn hình nào đang vẽ kiểu gì. */
+function xoaDangDoc() {
+  $$(".dang-doc").forEach(x => x.classList.remove("dang-doc"));
+}
+
+const xoaSangCau = xoaDangDoc;
 
 /* danh sách tiền tố các bài đang hiển thị ở tab hiện tại, theo đúng thứ tự */
 function danhSachBai() {
@@ -1551,7 +1583,7 @@ function dungPhat() {
   dongBoNutPhatBai();
   speechSynthesis.cancel();
   if (dangPhat) { dangPhat.pause(); dangPhat = null; }
-  $$(".cau-doc").forEach(x => x.classList.remove("dang-doc"));
+  xoaDangDoc();
   dungMauCau_();          // ! thieu dong nay la loa van phat sau khi doi man hinh
   veBarPhat();
   thoiGiuManHinh();
@@ -2038,7 +2070,7 @@ let chuoiHoi = { dang: false, di: 0, i: 0 };
 function dungChuoiHoi() {
   chuoiHoi.dang = false;
   dungPhat();
-  $$(".mot-hoi").forEach(x => x.classList.remove("dang-doc"));
+  xoaDangDoc();
 }
 
 function chayChuoiHoi(di) {
@@ -2052,7 +2084,7 @@ function buocChuoi() {
   const ms = (S.duLieuUnit?.mini_story || [])[chuoiHoi.di];
   const q = ms?.hoi_dap?.[chuoiHoi.i];
   if (!q) return dungChuoiHoi();
-  $$(".mot-hoi").forEach(x => x.classList.remove("dang-doc"));
+  xoaDangDoc();
   const dong = $(`#hoi-${chuoiHoi.di}-${chuoiHoi.i}`);
   if (dong) {
     dong.classList.add("dang-doc");

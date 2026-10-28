@@ -1438,6 +1438,13 @@ li{margin:5px 0; line-height:1.6}
 .doan-dich + .doan-van{margin-top:14px}
 .doan-van.loi-thoai{padding-left:12px; border-left:2px solid var(--vien)}
 
+/* Câu máy đang đọc, ở kiểu "cả đoạn" và trong hội thoại.
+   Nền sáng thôi là đủ nhận ra mà không làm chữ nhảy chỗ — đổi cỡ chữ hay
+   thêm viền ở đây sẽ đẩy cả đoạn xô xuống mỗi lần sang câu mới. */
+.cau-trong-doan{border-radius:4px; padding:1px 2px; transition:background .15s}
+.cau-trong-doan.dang-doc{background:var(--chinh-nhat);
+  box-shadow:inset 0 -2px 0 var(--chinh)}
+
 /* ================= NGỮ PHÁP ================= */
 /* Câu định nghĩa một dòng — thứ người học cần thấy trước mọi thứ khác. */
 .np-mot-cau{font-size:16px;font-weight:600;line-height:1.5;
