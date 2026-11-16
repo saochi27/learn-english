@@ -161,6 +161,45 @@ function giongChoVai(vai) {
    thật hơn nhiều), không có thì dùng giọng máy của Windows. */
 let banDoAudio = null, dangPhat = null;
 
+/* MỘT thẻ audio duy nhất cho cả app, mở khoá ở cú chạm đầu tiên.
+
+   Điện thoại chỉ cho phát âm thanh khi có cú chạm, và nhớ trạng thái đó theo
+   TỪNG THẺ audio. App cũ tạo thẻ mới cho mỗi câu: thẻ đầu phát được vì ngay
+   sau cú chạm, thẻ thứ hai sinh ra bên trong onended nên bị chặn — và bị chặn
+   thì không ai gọi xong(), chuỗi Mẫu câu đứng im từ câu thứ hai.
+
+   Ngưỡng cho phép tính theo từng thiết bị, nên cùng một bản web mà tablet
+   chạy ngon còn điện thoại tịt. Đó chính là triệu chứng đã gặp.
+
+   Dùng lại một thẻ đã mở khoá thì mọi câu sau chỉ đổi src, không xin phép lại. */
+let theAudio = null, daMoKhoaAudio = false;
+
+function layTheAudio() {
+  if (!theAudio) {
+    theAudio = new Audio();
+    theAudio.preload = "auto";
+  }
+  return theAudio;
+}
+
+/* Gọi ở cú chạm/bấm phím ĐẦU TIÊN: phát một đoạn câm cực ngắn rồi dừng ngay.
+   Người dùng không nghe thấy gì, nhưng thẻ audio từ đó được phép phát. */
+function moKhoaAudio() {
+  if (daMoKhoaAudio) return;
+  daMoKhoaAudio = true;
+  const a = layTheAudio();
+  try {
+    a.muted = true;
+    a.src = "data:audio/mpeg;base64,/+MYxAAAAANIAAAAAExBTUUzLjk4LjIAAAAAAAAAAAAAAAA=";
+    const h = a.play();
+    if (h && h.then) h.then(() => { a.pause(); a.muted = false; })
+                      .catch(() => { a.muted = false; });
+    else { a.pause(); a.muted = false; }
+  } catch (e) { a.muted = false; }
+}
+["pointerdown", "touchstart", "keydown"].forEach(t =>
+  document.addEventListener(t, moKhoaAudio, { once: true, passive: true }));
+
 function doc(text, { tocDo, xong, cham, vai, xoay } = {}) {
   if (!text) return;
   speechSynthesis.cancel();
@@ -174,14 +213,17 @@ function doc(text, { tocDo, xong, cham, vai, xoay } = {}) {
        "/audio/..." là trỏ về gốc tên miền và hỏng.
        goc_audio khác rỗng = audio nằm ở tên miền khác (repo audio riêng), lúc
        đó dùng nguyên địa chỉ đầy đủ. */
-    const a = new Audio((S.cauHinh?.goc_audio || "audio/") + ten);
+    const a = layTheAudio();
+    a.src = (S.cauHinh?.goc_audio || "audio/") + ten;
     /* Trước đây mp3 luôn chạy 1.0 nên thanh "Tốc độ đọc" chỉ ăn vào giọng máy
        Windows — bật audio chất lượng cao là cài đặt như không có.
        preservesPitch: chậm lại mà không giữ cao độ thì giọng tụt xuống ồm ồm,
        nghe sai cả nguyên âm, luyện nghe theo đó là hỏng. */
     a.playbackRate = tocDo ?? S.tocDo;
     a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true;
-    if (xong) a.onended = xong;
+    /* Thẻ dùng lại nên PHẢI gỡ tay nghe của câu trước: không gỡ thì câu cũ
+       báo "xong" một lần nữa và chuỗi nhảy hai câu một lúc. */
+    a.onended = xong || null;
     a.onerror = () => docBangMay(text, tocDo, xong, vai, xoay);   // thiếu file thì quay về giọng máy
     dangPhat = a;
     a.play().catch(() => docBangMay(text, tocDo, xong, vai, xoay));
@@ -265,6 +307,18 @@ function docBangMay(text, tocDo, xong, vai, xoay) {
   u.rate = tocDo ?? S.tocDo;
   if (xong) u.onend = xong;
   speechSynthesis.speak(u);
+
+  /* Giọng máy trên điện thoại cũng cần cú chạm, và khi bị từ chối thì nó
+     KHÔNG báo lỗi — chỉ im. Không có chốt này thì onend không bao giờ bắn
+     và chuỗi Mẫu câu đứng tại câu đó, nút vẫn hiện "đang phát". */
+  if (xong) {
+    setTimeout(() => {
+      if (!speechSynthesis.speaking && !speechSynthesis.pending) {
+        u.onend = null;
+        xong();
+      }
+    }, 600);
+  }
 }
 /* ================= TỐC ĐỘ ĐỌC =================
    Một giá trị duy nhất cho cả app (S.tocDo), đổi được từ ba chỗ: thanh phát
@@ -1083,7 +1137,10 @@ function docTachCau(c, xong) {
 
   const phatTach = () => {
     if (!con()) return;
-    const a = new Audio((S.cauHinh?.goc_audio || "audio/") + ten);
+    /* Dùng chung thẻ đã mở khoá, như doc(). Tạo thẻ mới ở đây là rơi lại
+       đúng cái bẫy điện thoại chặn phát tự động. */
+    const a = layTheAudio();
+    a.src = (S.cauHinh?.goc_audio || "audio/") + ten;
     a.preservesPitch = a.mozPreservesPitch = a.webkitPreservesPitch = true;
     a.playbackRate = S.tocDo;
     dangPhat = a;
@@ -1148,9 +1205,21 @@ function chayCau() {
       else hen = setTimeout(() => { p.i = (p.i + 1) % p.danhSach.length; chayCau(); }, cho * 1000);
     };
     if (tach && lan === soLap) return docTachCau(c, sang);
+
+    /* Lưới an toàn: chỉ cho mỗi lượt đọc MỘT lần gọi sang(), và nếu quá thời
+       gian dự kiến mà chưa thấy tín hiệu đọc xong thì tự đi tiếp.
+
+       Mất tín hiệu là chuyện có thật trên điện thoại: khoá máy, chuyển tab,
+       trình duyệt từ chối phát, file hỏng. Trước đây mất một tín hiệu là
+       đứng hẳn, phải bấm lại từ đầu. */
+    let daSang = false;
+    const sangMotLan = () => { if (!daSang) { daSang = true; sang(); } };
+    const uoc = Math.max(2500, (c.en || "").split(/\s+/).length * 600);
+    const canh = setTimeout(sangMotLan, uoc / (S.tocDo || 1) + 3000);
+
     doc(c.en, {
       xoay: p.i,                 // mỗi câu một giọng, xoay vòng cho đỡ nhàm
-      xong: sang,
+      xong: () => { clearTimeout(canh); sangMotLan(); },
     });
   };
   mot();
@@ -1530,9 +1599,22 @@ function phatCaBai(tienTo) {
     el.scrollIntoView({ block: "center", behavior: "smooth" });
     const than = cauDeDoc(el);
     if (!than?.dataset?.en) { i++; return setTimeout(tiep, 0); }
-    doc(than.dataset.en, {
+    /* Lưới an toàn giống bên Mẫu câu: không có tín hiệu "đọc xong" thì vẫn
+       đi tiếp. Trên điện thoại, trình duyệt từ chối phát hoặc khoá máy giữa
+       chừng là mất tín hiệu, và trước đây mất một lần là cả bài đứng. */
+    let daTiep = false;
+    const sangCauKe = () => {
+      if (daTiep) return;
+      daTiep = true;
+      i++;
+      setTimeout(tiep, 450);
+    };
+    const en = than.dataset.en || "";
+    const canh = setTimeout(sangCauKe,
+      Math.max(2500, en.split(/\s+/).length * 600) / (S.tocDo || 1) + 3000);
+    doc(en, {
       vai: than.dataset.vai,
-      xong: () => { i++; setTimeout(tiep, 450); },
+      xong: () => { clearTimeout(canh); sangCauKe(); },
     });
   };
   tiep();
