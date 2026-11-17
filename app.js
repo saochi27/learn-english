@@ -937,7 +937,12 @@ async function veMauCau(soUnit) {
 
 function chonCau(i) {
   const p = S.phatMauCau;
-  clearTimeout(hen); speechSynthesis.cancel();
+  /* Phải bỏ cả chuỗi đọc tách đang dở VÀ tắt tiếng đang phát. Thiếu một
+     trong hai thì câu cũ đọc tiếp chồng lên câu vừa chọn. */
+  clearTimeout(hen);
+  phienCau++;
+  phienTach++;
+  dungTieng();
   p.i = i;
   hienCauHienTai();
   if (p.dang) chayCau(); else doc(p.danhSach[i].en);
@@ -970,6 +975,31 @@ function hienCauHienTai() {
 
 let hen = null;
 
+/* Số phiên của vòng phát Mẫu câu.
+
+   Mỗi lần người học đổi ý định phát (bấm dừng, bấm câu khác, nhảy câu) thì
+   tăng số này lên. Lời gọi lại đã hẹn từ phiên trước khi tới hạn sẽ thấy số
+   phiên không còn khớp và im lặng.
+
+   Không có nó thì lượt cũ vẫn tăng p.i rồi gọi chayCau() thêm lần nữa, thành
+   hai vòng lặp cùng chạy — đúng cái "phát song song hai luồng". */
+let phienCau = 0;
+
+/* Tắt MỌI nguồn tiếng, một chỗ duy nhất.
+
+   Có hai nguồn: giọng máy (speechSynthesis) và thẻ audio phát mp3. Trước đây
+   chỗ dừng chỉ gọi cancel() của giọng máy, nên bấm Dừng mà mp3 vẫn đọc nốt
+   câu — đo được: bấm dừng ở giây 1,45 thì 1,5 giây sau vẫn đang chạy ở 3,11. */
+function dungTieng() {
+  try { speechSynthesis.cancel(); } catch (e) { /* trình duyệt cũ */ }
+  if (theAudio) {
+    theAudio.onended = null;        // gỡ tay nghe trước khi pause, không thì
+    theAudio.onerror = null;        // nó còn kịp gọi lời gọi lại của câu cũ
+    try { theAudio.pause(); } catch (e) { /* chưa có src */ }
+  }
+  dangPhat = null;
+}
+
 /* ================= DỪNG HẲN VÒNG PHÁT MẪU CÂU =================
    ! Do thật 03/09/2026: đang ở màn hình Tổng quan mà loa vẫn phát.
      Nguyên nhân: dungPhat() cũ chỉ cancel speechSynthesis, KHÔNG tắt cờ
@@ -982,7 +1012,9 @@ function dungMauCau_() {
   if (!p) return;
   p.dang = false;
   clearTimeout(hen);
-  speechSynthesis.cancel();
+  phienCau++;
+  phienTach++;
+  dungTieng();
   capNhatNutPhat_();
 }
 
@@ -1060,7 +1092,9 @@ function batTatPhat() {
     chayCau();
   } else {
     clearTimeout(hen);
-    speechSynthesis.cancel();
+    phienCau++;                // vô hiệu hoá mọi lời gọi lại đang chờ
+    phienTach++;
+    dungTieng();               // dừng NGAY, kể cả mp3 đang đọc dở
     thoiGiuManHinh();
   }
   veBarPhat();
@@ -1191,18 +1225,26 @@ function chayCau() {
      la chung khong con -> phai co gia tri du phong, neu khong thi NaN. */
   const soLap = Math.max(1, +($("#cd-lap")?.value) || 2);
   const cho = Math.max(1, +($("#cd-cho")?.value) || 3);
+  /* Vòng phát này thuộc phiên nào. Mọi lời gọi lại bên dưới đều hỏi lại
+     trước khi làm gì — phiên cũ thì im. */
+  const phien = ++phienCau;
+  const con = () => phien === phienCau && p.dang;
   let lan = 0;
   /* Chỉ MỔ XẺ Ở LƯỢT CUỐI: câu nào cũng được nghe trọn vẹn, tự nhiên trước
      đã, tách ra là bước sau. Tách ngay từ lượt đầu thì chưa kịp có ấn tượng
      về câu đã bị cắt vụn. */
   const tach = docTachBat();
   const mot = () => {
-    if (!p.dang) return;
+    if (!con()) return;
     lan++;
     const sang = () => {
-      if (!p.dang) return;
+      if (!con()) return;
       if (lan < soLap) hen = setTimeout(mot, 700);
-      else hen = setTimeout(() => { p.i = (p.i + 1) % p.danhSach.length; chayCau(); }, cho * 1000);
+      else hen = setTimeout(() => {
+        if (!con()) return;
+        p.i = (p.i + 1) % p.danhSach.length;
+        chayCau();
+      }, cho * 1000);
     };
     if (tach && lan === soLap) return docTachCau(c, sang);
 
@@ -1213,7 +1255,11 @@ function chayCau() {
        trình duyệt từ chối phát, file hỏng. Trước đây mất một tín hiệu là
        đứng hẳn, phải bấm lại từ đầu. */
     let daSang = false;
-    const sangMotLan = () => { if (!daSang) { daSang = true; sang(); } };
+    const sangMotLan = () => {
+      if (daSang || !con()) return;
+      daSang = true;
+      sang();
+    };
     const uoc = Math.max(2500, (c.en || "").split(/\s+/).length * 600);
     const canh = setTimeout(sangMotLan, uoc / (S.tocDo || 1) + 3000);
 
@@ -1228,7 +1274,9 @@ function chayCau() {
 function nhayCau(d) {
   const p = S.phatMauCau;
   phienTach++;                 // bỏ chuỗi đọc tách đang dở của câu cũ
-  clearTimeout(hen); speechSynthesis.cancel();
+  phienCau++;                  // và vòng phát của câu cũ
+  clearTimeout(hen);
+  dungTieng();
   p.i = (p.i + d + p.danhSach.length) % p.danhSach.length;
   hienCauHienTai();
   if (p.dang) chayCau();
