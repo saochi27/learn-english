@@ -316,6 +316,8 @@ th{background:var(--chinh-nhat); color:var(--chinh); font-weight:600}
 }
 .loa-am:hover{opacity:1; background:var(--chinh-nhat)}
 .o-am{position:relative}
+/* Ô âm đang được đọc trong lượt chạy liên tục. */
+.o-am.dang-doc{background:var(--chinh-nhat); border-color:var(--chinh)}
 
 .vai{
   display:inline-block; min-width:26px; font-weight:700; color:var(--chinh);

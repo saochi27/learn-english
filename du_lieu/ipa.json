@@ -43,36 +43,67 @@
    "tu_kiem": "Đặt ngón tay dưới cằm: đọc /ɪ/ rồi /iː/ — cằm phải gần như không nhúc nhích, chỉ khác ở ĐỘ DÀI. Nếu bạn thấy môi kéo ngang ra là đang đọc thành /iː/.",
    "uu_tien": 1,
    "nham_voi": "iː",
+   "doc_am": "it",
    "vi_du": [
     {
-     "tu": "morning",
-     "ipa": "ˈmɔːnɪŋ",
-     "nghia": "buổi sáng",
-     "unit": 1
+     "tu": "bill",
+     "ipa": "bɪl",
+     "nghia": "hóa đơn",
+     "unit": 11
     },
     {
-     "tu": "evening",
-     "ipa": "ˈiːvnɪŋ",
-     "nghia": "buổi tối",
-     "unit": 1
+     "tu": "dish",
+     "ipa": "dɪʃ",
+     "nghia": "món ăn",
+     "unit": 11
     },
     {
-     "tu": "sister",
-     "ipa": "ˈsɪstə",
-     "nghia": "chị/em gái",
-     "unit": 2
+     "tu": "skim",
+     "ipa": "skɪm",
+     "nghia": "đọc lướt lấy ý chính",
+     "unit": 48
     },
     {
-     "tu": "expensive",
-     "ipa": "ɪkˈspensɪv",
-     "nghia": "đắt",
-     "unit": 3
+     "tu": "slim",
+     "ipa": "slɪm",
+     "nghia": "mảnh khảnh",
+     "unit": 19
     },
     {
-     "tu": "engineer",
-     "ipa": "ˌendʒɪˈnɪə",
-     "nghia": "kỹ sư",
-     "unit": 5
+     "tu": "wish",
+     "ipa": "wɪʃ",
+     "nghia": "ước",
+     "unit": 29
+    },
+    {
+     "tu": "since",
+     "ipa": "sɪns",
+     "nghia": "từ khi (mốc)",
+     "unit": 24
+    },
+    {
+     "tu": "skill",
+     "ipa": "skɪl",
+     "nghia": "kỹ năng",
+     "unit": 25
+    },
+    {
+     "tu": "thing",
+     "ipa": "θɪŋ",
+     "nghia": "đồ vật",
+     "unit": 6
+    },
+    {
+     "tu": "bridge",
+     "ipa": "brɪdʒ",
+     "nghia": "cầu",
+     "unit": 13
+    },
+    {
+     "tu": "fridge",
+     "ipa": "frɪdʒ",
+     "nghia": "tủ lạnh",
+     "unit": 10
     }
    ],
    "cap_toi_thieu": [
@@ -107,7 +138,56 @@
    "tu_kiem": "Soi gương: miệng mở vừa phải. Nếu mở rộng đến mức thấy hàm dưới hạ hẳn xuống thì đã thành /æ/.",
    "uu_tien": 2,
    "nham_voi": "æ",
+   "doc_am": "egg",
    "vi_du": [
+    {
+     "tu": "pen",
+     "ipa": "pen",
+     "nghia": "bút",
+     "unit": 6
+    },
+    {
+     "tu": "lend",
+     "ipa": "lend",
+     "nghia": "cho mượn",
+     "unit": 28
+    },
+    {
+     "tu": "rent",
+     "ipa": "rent",
+     "nghia": "thuê / tiền thuê",
+     "unit": 10
+    },
+    {
+     "tu": "rest",
+     "ipa": "rest",
+     "nghia": "nghỉ ngơi",
+     "unit": 20
+    },
+    {
+     "tu": "tend",
+     "ipa": "tend",
+     "nghia": "có xu hướng",
+     "unit": 45
+    },
+    {
+     "tu": "then",
+     "ipa": "ðen",
+     "nghia": "sau đó",
+     "unit": 15
+    },
+    {
+     "tu": "spend",
+     "ipa": "spend",
+     "nghia": "tiêu",
+     "unit": 28
+    },
+    {
+     "tu": "trend",
+     "ipa": "trend",
+     "nghia": "xu hướng",
+     "unit": 49
+    },
     {
      "tu": "friend",
      "ipa": "frend",
@@ -115,28 +195,10 @@
      "unit": 1
     },
     {
-     "tu": "welcome",
-     "ipa": "ˈwelkəm",
-     "nghia": "chào mừng",
-     "unit": 1
-    },
-    {
-     "tu": "expensive",
-     "ipa": "ɪkˈspensɪv",
-     "nghia": "đắt",
-     "unit": 3
-    },
-    {
-     "tu": "weekend",
-     "ipa": "ˌwiːkˈend",
-     "nghia": "cuối tuần",
-     "unit": 4
-    },
-    {
-     "tu": "engineer",
-     "ipa": "ˌendʒɪˈnɪə",
-     "nghia": "kỹ sư",
-     "unit": 5
+     "tu": "medicine",
+     "ipa": "ˈmedsn",
+     "nghia": "thuốc",
+     "unit": 20
     }
    ],
    "cap_toi_thieu": [
@@ -171,36 +233,67 @@
    "tu_kiem": "Đặt hai ngón tay dọc giữa hai hàm răng — /æ/ phải lọt được hai ngón. /e/ chỉ lọt một. Đây là cách chắc nhất để biết mình có mở đủ rộng chưa.",
    "uu_tien": 1,
    "nham_voi": "e",
+   "doc_am": "apple",
    "vi_du": [
     {
-     "tu": "family",
-     "ipa": "ˈfæməli",
-     "nghia": "gia đình",
-     "unit": 2
+     "tu": "bag",
+     "ipa": "bæɡ",
+     "nghia": "túi",
+     "unit": 6
     },
     {
-     "tu": "grandfather",
-     "ipa": "ˈɡrænfɑːðə",
-     "nghia": "ông",
-     "unit": 2
+     "tu": "band",
+     "ipa": "bænd",
+     "nghia": "thang điểm IELTS",
+     "unit": 50
     },
     {
-     "tu": "grandmother",
-     "ipa": "ˈɡrænmʌðə",
-     "nghia": "bà",
-     "unit": 2
+     "tu": "cash",
+     "ipa": "kæʃ",
+     "nghia": "tiền mặt",
+     "unit": 12
     },
     {
-     "tu": "married",
-     "ipa": "ˈmærid",
-     "nghia": "đã kết hôn",
-     "unit": 2
+     "tu": "flat",
+     "ipa": "flæt",
+     "nghia": "căn hộ",
+     "unit": 10
     },
     {
-     "tu": "salary",
-     "ipa": "ˈsæləri",
-     "nghia": "lương",
-     "unit": 5
+     "tu": "plan",
+     "ipa": "plæn",
+     "nghia": "kế hoạch",
+     "unit": 17
+    },
+    {
+     "tu": "scan",
+     "ipa": "skæn",
+     "nghia": "đọc quét tìm chi tiết",
+     "unit": 48
+    },
+    {
+     "tu": "brand",
+     "ipa": "brænd",
+     "nghia": "thương hiệu",
+     "unit": 12
+    },
+    {
+     "tu": "cancel",
+     "ipa": "ˈkænsl",
+     "nghia": "hủy",
+     "unit": 17
+    },
+    {
+     "tu": "tackle",
+     "ipa": "ˈtækl",
+     "nghia": "xử lý (thay cho “solve”)",
+     "unit": 41
+    },
+    {
+     "tu": "travel",
+     "ipa": "ˈtrævl",
+     "nghia": "đi lại, du lịch",
+     "unit": 15
     }
    ],
    "cap_toi_thieu": [
@@ -235,25 +328,8 @@
    "tu_kiem": "Thả lỏng hàm rồi kêu một tiếng ngạc nhiên ngắn — đó gần đúng /ʌ/. Nếu môi tròn lại là đang trượt sang /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɑː",
+   "doc_am": "up",
    "vi_du": [
-    {
-     "tu": "country",
-     "ipa": "ˈkʌntri",
-     "nghia": "đất nước",
-     "unit": 1
-    },
-    {
-     "tu": "mother",
-     "ipa": "ˈmʌðə",
-     "nghia": "mẹ",
-     "unit": 2
-    },
-    {
-     "tu": "brother",
-     "ipa": "ˈbrʌðə",
-     "nghia": "anh/em trai",
-     "unit": 2
-    },
     {
      "tu": "son",
      "ipa": "sʌn",
@@ -261,10 +337,58 @@
      "unit": 2
     },
     {
-     "tu": "husband",
-     "ipa": "ˈhʌzbənd",
-     "nghia": "chồng",
+     "tu": "once",
+     "ipa": "wʌns",
+     "nghia": "một lần",
+     "unit": 23
+    },
+    {
+     "tu": "month",
+     "ipa": "mʌnθ",
+     "nghia": "tháng tới",
+     "unit": 17
+    },
+    {
+     "tu": "uncle",
+     "ipa": "ˈʌŋkl",
+     "nghia": "chú, bác, cậu",
      "unit": 2
+    },
+    {
+     "tu": "cousin",
+     "ipa": "ˈkʌzn",
+     "nghia": "anh chị em họ",
+     "unit": 2
+    },
+    {
+     "tu": "of",
+     "ipa": "ʌv",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "up",
+     "ipa": "ʌp",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "us",
+     "ipa": "ʌs",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "bun",
+     "ipa": "bʌn",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "bus",
+     "ipa": "bʌs",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -299,25 +423,8 @@
    "tu_kiem": "Soi gương: phải thấy môi tròn. Không tròn là thành /ʌ/, tròn mà kéo dài là thành /ɔː/.",
    "uu_tien": 2,
    "nham_voi": "ɔː",
+   "doc_am": "on",
    "vi_du": [
-    {
-     "tu": "from",
-     "ipa": "frɒm",
-     "nghia": "từ, đến từ",
-     "unit": 1
-    },
-    {
-     "tu": "dollar",
-     "ipa": "ˈdɒlə",
-     "nghia": "đô la",
-     "unit": 3
-    },
-    {
-     "tu": "o’clock",
-     "ipa": "əˈklɒk",
-     "nghia": "giờ đúng",
-     "unit": 4
-    },
     {
      "tu": "job",
      "ipa": "dʒɒb",
@@ -325,22 +432,70 @@
      "unit": 5
     },
     {
-     "tu": "doctor",
-     "ipa": "ˈdɒktə",
-     "nghia": "bác sĩ",
-     "unit": 5
+     "tu": "from",
+     "ipa": "frɒm",
+     "nghia": "từ, đến từ",
+     "unit": 1
+    },
+    {
+     "tu": "shop",
+     "ipa": "ʃɒp",
+     "nghia": "cửa hàng",
+     "unit": 12
+    },
+    {
+     "tu": "stop",
+     "ipa": "stɒp",
+     "nghia": "bến, điểm dừng",
+     "unit": 13
+    },
+    {
+     "tu": "block",
+     "ipa": "blɒk",
+     "nghia": "dãy nhà, block",
+     "unit": 13
+    },
+    {
+     "tu": "cough",
+     "ipa": "kɒf",
+     "nghia": "ho",
+     "unit": 20
+    },
+    {
+     "tu": "watch",
+     "ipa": "wɒtʃ",
+     "nghia": "đồng hồ đeo tay",
+     "unit": 6
+    },
+    {
+     "tu": "on",
+     "ipa": "ɒn",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "box",
+     "ipa": "bɒks",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "con",
+     "ipa": "kɒn",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
     {
      "a": "cot",
-     "ipa_a": "kɑːt",
+     "ipa_a": "kɒt",
      "b": "caught",
-     "ipa_b": "kɑːt"
+     "ipa_b": "kɔːt"
     },
     {
      "a": "shot",
-     "ipa_a": "ʃɑːt",
+     "ipa_a": "ʃɒt",
      "b": "short",
      "ipa_b": "ʃɔːt"
     }
@@ -357,13 +512,8 @@
    "tu_kiem": "Đọc /ʊ/ rồi /uː/ trước gương: /uː/ môi chúm nhọn và đẩy ra trước, /ʊ/ thì không. Môi chúm là đã sai.",
    "uu_tien": 1,
    "nham_voi": "uː",
+   "doc_am": "book",
    "vi_du": [
-    {
-     "tu": "goodbye",
-     "ipa": "ˌɡʊdˈbaɪ",
-     "nghia": "tạm biệt",
-     "unit": 1
-    },
     {
      "tu": "book",
      "ipa": "bʊk",
@@ -371,10 +521,58 @@
      "unit": 6
     },
     {
-     "tu": "cooking",
-     "ipa": "ˈkʊkɪŋ",
-     "nghia": "nấu ăn",
-     "unit": 7
+     "tu": "put",
+     "ipa": "pʊt",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "cook",
+     "ipa": "kʊk",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "foot",
+     "ipa": "fʊt",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "full",
+     "ipa": "fʊl",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "good",
+     "ipa": "ɡʊd",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "look",
+     "ipa": "lʊk",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "took",
+     "ipa": "tʊk",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "books",
+     "ipa": "bʊks",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "could",
+     "ipa": "kʊd",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -409,6 +607,7 @@
    "tu_kiem": "Đọc 'teacher' và cố ý KHÔNG nhấn âm cuối — nếu bạn nghe rõ được một nguyên âm cụ thể ở cuối thì đang đọc quá rõ. Schwa đúng là gần như không nghe ra âm gì.",
    "uu_tien": 1,
    "nham_voi": "ʌ",
+   "doc_am": "ago",
    "vi_du": [
     {
      "tu": "teacher",
@@ -427,6 +626,48 @@
      "ipa": "ˈwelkəm",
      "nghia": "chào mừng",
      "unit": 1
+    },
+    {
+     "tu": "and",
+     "ipa": "ənd",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "the",
+     "ipa": "ðə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "lower",
+     "ipa": "ˈləʊə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "ago",
+     "ipa": "əˈɡəʊ",
+     "nghia": "cách đây",
+     "unit": 15
+    },
+    {
+     "tu": "data",
+     "ipa": "ˈdeɪtə",
+     "nghia": "dữ liệu",
+     "unit": 34
+    },
+    {
+     "tu": "ever",
+     "ipa": "ˈevə",
+     "nghia": "đã từng",
+     "unit": 23
+    },
+    {
+     "tu": "sofa",
+     "ipa": "ˈsəʊfə",
+     "nghia": "ghế sofa",
+     "unit": 10
     }
    ],
    "cap_toi_thieu": []
@@ -442,7 +683,32 @@
    "tu_kiem": "Đặt ngón tay ngang hai khoé môi: đọc /iː/ phải thấy môi kéo căng ra hai bên. Đếm thầm 'một-hai' trong lúc phát âm — chưa đủ hai nhịp là chưa đủ dài.",
    "uu_tien": 1,
    "nham_voi": "ɪ",
+   "doc_am": "eat",
    "vi_du": [
+    {
+     "tu": "key",
+     "ipa": "kiː",
+     "nghia": "chìa khóa",
+     "unit": 6
+    },
+    {
+     "tu": "beef",
+     "ipa": "biːf",
+     "nghia": "thịt bò",
+     "unit": 11
+    },
+    {
+     "tu": "free",
+     "ipa": "friː",
+     "nghia": "rảnh",
+     "unit": 17
+    },
+    {
+     "tu": "meal",
+     "ipa": "miːl",
+     "nghia": "bữa ăn",
+     "unit": 11
+    },
     {
      "tu": "meet",
      "ipa": "miːt",
@@ -450,16 +716,10 @@
      "unit": 1
     },
     {
-     "tu": "teacher",
-     "ipa": "ˈtiːtʃə",
-     "nghia": "giáo viên",
-     "unit": 1
-    },
-    {
-     "tu": "evening",
-     "ipa": "ˈiːvnɪŋ",
-     "nghia": "buổi tối",
-     "unit": 1
+     "tu": "week",
+     "ipa": "wiːk",
+     "nghia": "tuần trước",
+     "unit": 15
     },
     {
      "tu": "cheap",
@@ -468,10 +728,22 @@
      "unit": 3
     },
     {
-     "tu": "weekend",
-     "ipa": "ˌwiːkˈend",
-     "nghia": "cuối tuần",
-     "unit": 4
+     "tu": "dream",
+     "ipa": "driːm",
+     "nghia": "mơ ước",
+     "unit": 29
+    },
+    {
+     "tu": "teach",
+     "ipa": "tiːtʃ",
+     "nghia": "dạy",
+     "unit": 26
+    },
+    {
+     "tu": "screen",
+     "ipa": "skriːn",
+     "nghia": "màn hình",
+     "unit": 27
     }
    ],
    "cap_toi_thieu": [
@@ -506,24 +778,13 @@
    "tu_kiem": "Đây là âm bác sĩ bảo bạn kêu khi khám họng. Soi gương phải nhìn thấy cuống họng.",
    "uu_tien": 2,
    "nham_voi": "ʌ",
+   "doc_am": "arm",
    "vi_du": [
     {
-     "tu": "afternoon",
-     "ipa": "ˌɑːftəˈnuːn",
-     "nghia": "buổi chiều",
-     "unit": 1
-    },
-    {
-     "tu": "father",
-     "ipa": "ˈfɑːðə",
-     "nghia": "bố",
-     "unit": 2
-    },
-    {
-     "tu": "grandfather",
-     "ipa": "ˈɡrænfɑːðə",
-     "nghia": "ông",
-     "unit": 2
+     "tu": "far",
+     "ipa": "fɑː",
+     "nghia": "xa",
+     "unit": 13
     },
     {
      "tu": "aunt",
@@ -532,10 +793,52 @@
      "unit": 2
     },
     {
+     "tu": "card",
+     "ipa": "kɑːd",
+     "nghia": "thẻ",
+     "unit": 12
+    },
+    {
      "tu": "half",
      "ipa": "hɑːf",
      "nghia": "rưỡi, một nửa",
      "unit": 4
+    },
+    {
+     "tu": "last",
+     "ipa": "lɑːst",
+     "nghia": "vừa qua",
+     "unit": 24
+    },
+    {
+     "tu": "mark",
+     "ipa": "mɑːk",
+     "nghia": "chấm điểm",
+     "unit": 26
+    },
+    {
+     "tu": "pass",
+     "ipa": "pɑːs",
+     "nghia": "đỗ",
+     "unit": 26
+    },
+    {
+     "tu": "past",
+     "ipa": "pɑːst",
+     "nghia": "hơn (giờ)",
+     "unit": 4
+    },
+    {
+     "tu": "staff",
+     "ipa": "stɑːf",
+     "nghia": "nhân viên (tập thể)",
+     "unit": 25
+    },
+    {
+     "tu": "harmful",
+     "ipa": "ˈhɑːmfl",
+     "nghia": "gây hại (thay cho “good / bad”)",
+     "unit": 41
     }
    ],
    "cap_toi_thieu": [
@@ -570,56 +873,87 @@
    "tu_kiem": "Đặt ngón tay trước môi — phải chạm được môi đang chìa ra. Môi không chìa là đang đọc /ɑː/ hoặc /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɒ",
+   "doc_am": "all",
    "vi_du": [
     {
-     "tu": "morning",
-     "ipa": "ˈmɔːnɪŋ",
-     "nghia": "buổi sáng",
-     "unit": 1
+     "tu": "for",
+     "ipa": "fɔː",
+     "nghia": "trong (khoảng)",
+     "unit": 24
     },
     {
-     "tu": "daughter",
-     "ipa": "ˈdɔːtə",
-     "nghia": "con gái",
-     "unit": 2
+     "tu": "pork",
+     "ipa": "pɔːk",
+     "nghia": "thịt lợn",
+     "unit": 11
     },
     {
-     "tu": "quarter",
-     "ipa": "ˈkwɔːtə",
-     "nghia": "mười lăm phút",
-     "unit": 4
+     "tu": "sure",
+     "ipa": "ʃɔː",
+     "nghia": "chắc chắn",
+     "unit": 17
     },
     {
-     "tu": "boring",
-     "ipa": "ˈbɔːrɪŋ",
-     "nghia": "chán",
-     "unit": 7
+     "tu": "tall",
+     "ipa": "tɔːl",
+     "nghia": "cao",
+     "unit": 19
+    },
+    {
+     "tu": "wall",
+     "ipa": "wɔːl",
+     "nghia": "tường",
+     "unit": 10
     },
     {
      "tu": "floor",
      "ipa": "flɔː",
      "nghia": "sàn / tầng",
      "unit": 10
+    },
+    {
+     "tu": "short",
+     "ipa": "ʃɔːt",
+     "nghia": "thấp",
+     "unit": 19
+    },
+    {
+     "tu": "storm",
+     "ipa": "stɔːm",
+     "nghia": "bão",
+     "unit": 14
+    },
+    {
+     "tu": "launch",
+     "ipa": "lɔːntʃ",
+     "nghia": "ra mắt",
+     "unit": 27
+    },
+    {
+     "tu": "source",
+     "ipa": "sɔːs",
+     "nghia": "nguồn",
+     "unit": 42
     }
    ],
    "cap_toi_thieu": [
     {
      "a": "caught",
-     "ipa_a": "kɑːt",
+     "ipa_a": "kɔːt",
      "b": "cot",
-     "ipa_b": "kɑːt"
+     "ipa_b": "kɒt"
     },
     {
      "a": "port",
      "ipa_a": "pɔːt",
      "b": "pot",
-     "ipa_b": "pɑːt"
+     "ipa_b": "pɒt"
     },
     {
      "a": "short",
      "ipa_a": "ʃɔːt",
      "b": "shot",
-     "ipa_b": "ʃɑːt"
+     "ipa_b": "ʃɒt"
     }
    ]
   },
@@ -634,19 +968,8 @@
    "tu_kiem": "Thử huýt sáo rồi chuyển thẳng sang /uː/ — khẩu hình gần như không đổi. Nếu môi bè ra là sai.",
    "uu_tien": 1,
    "nham_voi": "ʊ",
+   "doc_am": "food",
    "vi_du": [
-    {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
-    },
-    {
-     "tu": "afternoon",
-     "ipa": "ˌɑːftəˈnuːn",
-     "nghia": "buổi chiều",
-     "unit": 1
-    },
     {
      "tu": "to",
      "ipa": "tuː",
@@ -654,16 +977,58 @@
      "unit": 4
     },
     {
-     "tu": "usually",
-     "ipa": "ˈjuːʒuəli",
-     "nghia": "thường thường",
-     "unit": 9
+     "tu": "flu",
+     "ipa": "fluː",
+     "nghia": "cúm",
+     "unit": 20
     },
     {
-     "tu": "routine",
-     "ipa": "ruːˈtiːn",
-     "nghia": "thói quen, nếp sinh hoạt",
-     "unit": 9
+     "tu": "new",
+     "ipa": "njuː",
+     "nghia": "mới",
+     "unit": 6
+    },
+    {
+     "tu": "move",
+     "ipa": "muːv",
+     "nghia": "chuyển (nhà, chỗ)",
+     "unit": 15
+    },
+    {
+     "tu": "soon",
+     "ipa": "suːn",
+     "nghia": "sớm",
+     "unit": 17
+    },
+    {
+     "tu": "loose",
+     "ipa": "luːs",
+     "nghia": "rộng",
+     "unit": 12
+    },
+    {
+     "tu": "route",
+     "ipa": "ruːt",
+     "nghia": "tuyến đường",
+     "unit": 38
+    },
+    {
+     "tu": "shoes",
+     "ipa": "ʃuːz",
+     "nghia": "giày",
+     "unit": 12
+    },
+    {
+     "tu": "useful",
+     "ipa": "ˈjuːsfl",
+     "nghia": "hữu ích",
+     "unit": 27
+    },
+    {
+     "tu": "crucial",
+     "ipa": "ˈkruːʃl",
+     "nghia": "then chốt (thay cho “important”)",
+     "unit": 41
     }
    ],
    "cap_toi_thieu": [
@@ -698,12 +1063,13 @@
    "tu_kiem": "Đây là schwa /ə/ nhưng kéo dài và có nhấn. Đọc /ə/ rồi giữ nguyên miệng mà kéo dài ra — đó là /ɜː/. Nếu lưỡi cong lên kiểu Mỹ thì đã sai với Anh-Anh.",
    "uu_tien": 2,
    "nham_voi": "ə",
+   "doc_am": "earn",
    "vi_du": [
     {
-     "tu": "early",
-     "ipa": "ˈɜːli",
-     "nghia": "sớm",
-     "unit": 4
+     "tu": "earn",
+     "ipa": "ɜːn",
+     "nghia": "kiếm (tiền)",
+     "unit": 28
     },
     {
      "tu": "work",
@@ -718,16 +1084,46 @@
      "unit": 5
     },
     {
-     "tu": "prefer",
-     "ipa": "prɪˈfɜː",
-     "nghia": "thích hơn",
-     "unit": 7
+     "tu": "shirt",
+     "ipa": "ʃɜːt",
+     "nghia": "áo sơ mi",
+     "unit": 12
     },
     {
-     "tu": "furniture",
-     "ipa": "ˈfɜːnɪtʃə",
-     "nghia": "đồ nội thất (không đếm được)",
-     "unit": 10
+     "tu": "worth",
+     "ipa": "wɜːθ",
+     "nghia": "đáng giá",
+     "unit": 28
+    },
+    {
+     "tu": "her",
+     "ipa": "hɜː",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "sir",
+     "ipa": "sɜː",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "bird",
+     "ipa": "bɜːd",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "firm",
+     "ipa": "fɜːm",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "girl",
+     "ipa": "ɡɜːl",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -762,18 +1158,31 @@
    "tu_kiem": "Đặt ngón tay dưới cằm: cằm phải NÂNG LÊN trong lúc phát âm. Cằm đứng yên nghĩa là bạn đang đọc 'ê' một nốt.",
    "uu_tien": 2,
    "nham_voi": "e",
+   "doc_am": "aim",
    "vi_du": [
-    {
-     "tu": "name",
-     "ipa": "neɪm",
-     "nghia": "tên",
-     "unit": 1
-    },
     {
      "tu": "age",
      "ipa": "eɪdʒ",
      "nghia": "tuổi",
      "unit": 3
+    },
+    {
+     "tu": "fail",
+     "ipa": "feɪl",
+     "nghia": "thất bại, trượt",
+     "unit": 23
+    },
+    {
+     "tu": "gain",
+     "ipa": "ɡeɪn",
+     "nghia": "đạt được (thay cho “get”)",
+     "unit": 41
+    },
+    {
+     "tu": "hate",
+     "ipa": "heɪt",
+     "nghia": "ghét",
+     "unit": 7
     },
     {
      "tu": "late",
@@ -782,16 +1191,34 @@
      "unit": 4
     },
     {
-     "tu": "table",
-     "ipa": "ˈteɪbl",
-     "nghia": "bàn",
-     "unit": 6
+     "tu": "name",
+     "ipa": "neɪm",
+     "nghia": "tên",
+     "unit": 1
     },
     {
-     "tu": "hate",
-     "ipa": "heɪt",
-     "nghia": "ghét",
-     "unit": 7
+     "tu": "sale",
+     "ipa": "seɪl",
+     "nghia": "đợt giảm giá",
+     "unit": 12
+    },
+    {
+     "tu": "save",
+     "ipa": "seɪv",
+     "nghia": "tiết kiệm",
+     "unit": 28
+    },
+    {
+     "tu": "stay",
+     "ipa": "steɪ",
+     "nghia": "ở lại",
+     "unit": 15
+    },
+    {
+     "tu": "aimed",
+     "ipa": "eɪmd",
+     "nghia": "nhắm tới",
+     "unit": 44
     }
    ],
    "cap_toi_thieu": [
@@ -826,6 +1253,7 @@
    "tu_kiem": "Cằm phải đi từ thấp lên cao. Giống 'ai' tiếng Việt nên thường đã đúng sẵn.",
    "uu_tien": 3,
    "nham_voi": "eɪ",
+   "doc_am": "eye",
    "vi_du": [
     {
      "tu": "hi",
@@ -834,28 +1262,58 @@
      "unit": 1
     },
     {
+     "tu": "dry",
+     "ipa": "draɪ",
+     "nghia": "khô",
+     "unit": 14
+    },
+    {
+     "tu": "shy",
+     "ipa": "ʃaɪ",
+     "nghia": "nhút nhát",
+     "unit": 19
+    },
+    {
+     "tu": "try",
+     "ipa": "traɪ",
+     "nghia": "thử",
+     "unit": 23
+    },
+    {
+     "tu": "bias",
+     "ipa": "ˈbaɪəs",
+     "nghia": "thiên vị",
+     "unit": 37
+    },
+    {
      "tu": "nice",
      "ipa": "naɪs",
      "nghia": "tốt, dễ chịu",
      "unit": 1
     },
     {
-     "tu": "goodbye",
-     "ipa": "ˌɡʊdˈbaɪ",
-     "nghia": "tạm biệt",
-     "unit": 1
+     "tu": "rice",
+     "ipa": "raɪs",
+     "nghia": "cơm, gạo",
+     "unit": 11
+    },
+    {
+     "tu": "size",
+     "ipa": "saɪz",
+     "nghia": "cỡ, kích thước",
+     "unit": 12
+    },
+    {
+     "tu": "time",
+     "ipa": "taɪm",
+     "nghia": "thời gian",
+     "unit": 4
     },
     {
      "tu": "wife",
      "ipa": "waɪf",
      "nghia": "vợ",
      "unit": 2
-    },
-    {
-     "tu": "price",
-     "ipa": "praɪs",
-     "nghia": "giá",
-     "unit": 3
     }
    ],
    "cap_toi_thieu": [
@@ -890,24 +1348,13 @@
    "tu_kiem": "Soi gương: môi phải đi từ tròn sang bè. Giống 'oi' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "aɪ",
+   "doc_am": "oil",
    "vi_du": [
-    {
-     "tu": "enjoy",
-     "ipa": "ɪnˈdʒɔɪ",
-     "nghia": "thích, tận hưởng",
-     "unit": 7
-    },
     {
      "tu": "join",
      "ipa": "dʒɔɪn",
      "nghia": "tham gia",
      "unit": 17
-    },
-    {
-     "tu": "appointment",
-     "ipa": "əˈpɔɪntmənt",
-     "nghia": "lịch hẹn",
-     "unit": 20
     },
     {
      "tu": "choice",
@@ -916,10 +1363,52 @@
      "unit": 29
     },
     {
-     "tu": "employment",
-     "ipa": "ɪmˈplɔɪmənt",
-     "nghia": "việc làm",
-     "unit": 32
+     "tu": "boy",
+     "ipa": "bɔɪ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "toy",
+     "ipa": "tɔɪ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "boys",
+     "ipa": "bɔɪz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "soil",
+     "ipa": "sɔɪl",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "toys",
+     "ipa": "tɔɪz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "noise",
+     "ipa": "nɔɪz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "point",
+     "ipa": "pɔɪnt",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "joined",
+     "ipa": "dʒɔɪnd",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -948,12 +1437,37 @@
    "tu_kiem": "Soi gương đọc 'go': lúc BẮT ĐẦU môi phải thả lỏng, chỉ tròn lại ở cuối. Nếu môi đã tròn ngay từ đầu thì bạn đang đọc 'gô' tiếng Việt chứ không phải /ɡəʊ/.",
    "uu_tien": 1,
    "nham_voi": "ɔː",
+   "doc_am": "owe",
    "vi_du": [
     {
-     "tu": "hello",
-     "ipa": "həˈləʊ",
-     "nghia": "xin chào",
-     "unit": 1
+     "tu": "old",
+     "ipa": "əʊld",
+     "nghia": "cũ",
+     "unit": 6
+    },
+    {
+     "tu": "owe",
+     "ipa": "əʊ",
+     "nghia": "nợ",
+     "unit": 28
+    },
+    {
+     "tu": "loan",
+     "ipa": "ləʊn",
+     "nghia": "khoản vay",
+     "unit": 28
+    },
+    {
+     "tu": "road",
+     "ipa": "rəʊd",
+     "nghia": "đường",
+     "unit": 13
+    },
+    {
+     "tu": "toll",
+     "ipa": "təʊl",
+     "nghia": "phí đường bộ",
+     "unit": 38
     },
     {
      "tu": "phone",
@@ -962,22 +1476,28 @@
      "unit": 6
     },
     {
-     "tu": "broken",
-     "ipa": "ˈbrəʊkən",
-     "nghia": "hỏng",
-     "unit": 6
+     "tu": "bo",
+     "ipa": "bəʊ",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "window",
-     "ipa": "ˈwɪndəʊ",
-     "nghia": "cửa sổ",
-     "unit": 10
+     "tu": "go",
+     "ipa": "ɡəʊ",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "sofa",
-     "ipa": "ˈsəʊfə",
-     "nghia": "ghế sofa",
-     "unit": 10
+     "tu": "ho",
+     "ipa": "həʊ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "no",
+     "ipa": "nəʊ",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -985,13 +1505,13 @@
      "a": "coat",
      "ipa_a": "kəʊt",
      "b": "caught",
-     "ipa_b": "kɑːt"
+     "ipa_b": "kɔːt"
     },
     {
      "a": "boat",
      "ipa_a": "bəʊt",
      "b": "bought",
-     "ipa_b": "bɑːt"
+     "ipa_b": "bɒt"
     },
     {
      "a": "so",
@@ -1012,19 +1532,8 @@
    "tu_kiem": "Môi phải tròn dần lại ở cuối. Giống 'ao' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "əʊ",
+   "doc_am": "out",
    "vi_du": [
-    {
-     "tu": "about",
-     "ipa": "əˈbaʊt",
-     "nghia": "khoảng",
-     "unit": 3
-    },
-    {
-     "tu": "accountant",
-     "ipa": "əˈkaʊntənt",
-     "nghia": "kế toán",
-     "unit": 5
-    },
     {
      "tu": "house",
      "ipa": "haʊs",
@@ -1032,16 +1541,58 @@
      "unit": 10
     },
     {
-     "tu": "discount",
-     "ipa": "ˈdɪskaʊnt",
-     "nghia": "giảm giá",
-     "unit": 12
+     "tu": "cow",
+     "ipa": "kaʊ",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "roundabout",
-     "ipa": "ˈraʊndəbaʊt",
-     "nghia": "vòng xuyến",
-     "unit": 13
+     "tu": "how",
+     "ipa": "haʊ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "now",
+     "ipa": "naʊ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "our",
+     "ipa": "ˈaʊə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "out",
+     "ipa": "aʊt",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "down",
+     "ipa": "daʊn",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "hour",
+     "ipa": "ˈaʊə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "loud",
+     "ipa": "laʊd",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "noun",
+     "ipa": "naʊn",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1076,12 +1627,19 @@
    "tu_kiem": "Đọc 'here' mà cuối câu lưỡi cong lên là bạn đang thêm /r/ kiểu Mỹ. Anh-Anh kết thúc bằng miệng thả lỏng.",
    "uu_tien": 2,
    "nham_voi": "eə",
+   "doc_am": "ear",
    "vi_du": [
     {
-     "tu": "engineer",
-     "ipa": "ˌendʒɪˈnɪə",
-     "nghia": "kỹ sư",
-     "unit": 5
+     "tu": "near",
+     "ipa": "nɪə",
+     "nghia": "gần",
+     "unit": 13
+    },
+    {
+     "tu": "year",
+     "ipa": "jɪə",
+     "nghia": "năm ngoái",
+     "unit": 15
     },
     {
      "tu": "beard",
@@ -1090,22 +1648,46 @@
      "unit": 19
     },
     {
-     "tu": "reliable",
-     "ipa": "rɪˈlaɪəbl",
-     "nghia": "đáng tin cậy",
-     "unit": 19
+     "tu": "ears",
+     "ipa": "ɪəz",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "experience",
-     "ipa": "ɪkˈspɪəriəns",
-     "nghia": "trải nghiệm, kinh nghiệm",
-     "unit": 23
+     "tu": "fear",
+     "ipa": "fɪə",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "appear",
-     "ipa": "əˈpɪə",
-     "nghia": "xuất hiện",
-     "unit": 23
+     "tu": "hear",
+     "ipa": "hɪə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "here",
+     "ipa": "hɪə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "clear",
+     "ipa": "klɪə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "mayor",
+     "ipa": "ˈmeɪə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "we're",
+     "ipa": "wɪə",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1140,12 +1722,13 @@
    "tu_kiem": "Khác /ɪə/ ở CHỖ BẮT ĐẦU: /eə/ hàm mở hơn. Đọc 'hair' rồi 'here' liền nhau, cằm phải ở hai độ cao khác nhau.",
    "uu_tien": 2,
    "nham_voi": "ɪə",
+   "doc_am": "air",
    "vi_du": [
     {
-     "tu": "parents",
-     "ipa": "ˈpeərənts",
-     "nghia": "bố mẹ",
-     "unit": 2
+     "tu": "fare",
+     "ipa": "feə",
+     "nghia": "giá vé",
+     "unit": 38
     },
     {
      "tu": "chair",
@@ -1160,16 +1743,46 @@
      "unit": 10
     },
     {
-     "tu": "vegetarian",
-     "ipa": "ˌvedʒɪˈteəriən",
-     "nghia": "người ăn chay",
-     "unit": 11
+     "tu": "air",
+     "ipa": "eə",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "software",
-     "ipa": "ˈsɒftweə",
-     "nghia": "phần mềm",
-     "unit": 27
+     "tu": "care",
+     "ipa": "keə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "fair",
+     "ipa": "feə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "hair",
+     "ipa": "heə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "rare",
+     "ipa": "reə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "wear",
+     "ipa": "weə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "share",
+     "ipa": "ʃeə",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1204,22 +1817,29 @@
    "tu_kiem": "Âm hiếm. Nhiều người bản ngữ nay đọc thành /ɔː/, nên đọc 'poor' thành /pɔː/ cũng chấp nhận được.",
    "uu_tien": 3,
    "nham_voi": "ɔː",
+   "doc_am": "tour",
    "vi_du": [
     {
-     "tu": "sure",
-     "ipa": "ʃʊə",
-     "nghia": "chắc chắn",
-     "unit": 17
-    },
-    {
-     "tu": "tour",
-     "ipa": "tʊə",
+     "tu": "poor",
+     "ipa": "pʊə",
      "nghia": "",
      "unit": 0
     },
     {
-     "tu": "poor",
-     "ipa": "pʊə",
+     "tu": "yours",
+     "ipa": "jʊəz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "mature",
+     "ipa": "məˈtʃʊə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "surely",
+     "ipa": "ˈʃʊəli",
      "nghia": "",
      "unit": 0
     }
@@ -1250,12 +1870,37 @@
    "tu_kiem": "Cầm một mảnh giấy trước miệng đọc 'pen' — giấy phải BAY. Không bay là chưa bật hơi. Cuối từ ('stop') cũng phải nghe được tiếng bật nhẹ.",
    "uu_tien": 1,
    "nham_voi": "b",
+   "doc_am": "puh",
    "vi_du": [
     {
-     "tu": "parents",
-     "ipa": "ˈpeərənts",
-     "nghia": "bố mẹ",
-     "unit": 2
+     "tu": "pen",
+     "ipa": "pen",
+     "nghia": "bút",
+     "unit": 6
+    },
+    {
+     "tu": "pass",
+     "ipa": "pɑːs",
+     "nghia": "đỗ",
+     "unit": 26
+    },
+    {
+     "tu": "past",
+     "ipa": "pɑːst",
+     "nghia": "hơn (giờ)",
+     "unit": 4
+    },
+    {
+     "tu": "plan",
+     "ipa": "plæn",
+     "nghia": "kế hoạch",
+     "unit": 17
+    },
+    {
+     "tu": "pork",
+     "ipa": "pɔːk",
+     "nghia": "thịt lợn",
+     "unit": 11
     },
     {
      "tu": "price",
@@ -1264,22 +1909,28 @@
      "unit": 3
     },
     {
-     "tu": "expensive",
-     "ipa": "ɪkˈspensɪv",
-     "nghia": "đắt",
-     "unit": 3
+     "tu": "policy",
+     "ipa": "ˈpɒləsi",
+     "nghia": "chính sách",
+     "unit": 42
     },
     {
-     "tu": "cheap",
-     "ipa": "tʃiːp",
-     "nghia": "rẻ",
-     "unit": 3
+     "tu": "prefer",
+     "ipa": "prɪˈfɜː",
+     "nghia": "thích hơn",
+     "unit": 7
     },
     {
-     "tu": "past",
-     "ipa": "pɑːst",
-     "nghia": "hơn (giờ)",
-     "unit": 4
+     "tu": "painful",
+     "ipa": "ˈpeɪnfl",
+     "nghia": "đau",
+     "unit": 20
+    },
+    {
+     "tu": "parents",
+     "ipa": "ˈpeərənts",
+     "nghia": "bố mẹ",
+     "unit": 2
     }
    ],
    "cap_toi_thieu": [
@@ -1314,36 +1965,67 @@
    "tu_kiem": "Mảnh giấy trước miệng đọc 'time' — phải bay. Đọc 'what' cuối câu vẫn phải cảm thấy lưỡi chạm lợi, đừng bỏ lửng.",
    "uu_tien": 1,
    "nham_voi": "d",
+   "doc_am": "tuh",
    "vi_du": [
     {
-     "tu": "meet",
-     "ipa": "miːt",
-     "nghia": "gặp",
-     "unit": 1
+     "tu": "to",
+     "ipa": "tuː",
+     "nghia": "kém (giờ)",
+     "unit": 4
     },
     {
-     "tu": "country",
-     "ipa": "ˈkʌntri",
-     "nghia": "đất nước",
-     "unit": 1
+     "tu": "try",
+     "ipa": "traɪ",
+     "nghia": "thử",
+     "unit": 23
     },
     {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
+     "tu": "tall",
+     "ipa": "tɔːl",
+     "nghia": "cao",
+     "unit": 19
     },
     {
-     "tu": "teacher",
-     "ipa": "ˈtiːtʃə",
-     "nghia": "giáo viên",
-     "unit": 1
+     "tu": "tend",
+     "ipa": "tend",
+     "nghia": "có xu hướng",
+     "unit": 45
     },
     {
-     "tu": "afternoon",
-     "ipa": "ˌɑːftəˈnuːn",
-     "nghia": "buổi chiều",
-     "unit": 1
+     "tu": "time",
+     "ipa": "taɪm",
+     "nghia": "thời gian",
+     "unit": 4
+    },
+    {
+     "tu": "toll",
+     "ipa": "təʊl",
+     "nghia": "phí đường bộ",
+     "unit": 38
+    },
+    {
+     "tu": "table",
+     "ipa": "ˈteɪbl",
+     "nghia": "bàn",
+     "unit": 6
+    },
+    {
+     "tu": "teach",
+     "ipa": "tiːtʃ",
+     "nghia": "dạy",
+     "unit": 26
+    },
+    {
+     "tu": "tight",
+     "ipa": "taɪt",
+     "nghia": "chật",
+     "unit": 12
+    },
+    {
+     "tu": "today",
+     "ipa": "təˈdeɪ",
+     "nghia": "hôm nay",
+     "unit": 4
     }
    ],
    "cap_toi_thieu": [
@@ -1378,24 +2060,55 @@
    "tu_kiem": "Mảnh giấy phải bay khi đọc 'cat'. Đặt tay lên cổ họng — KHÔNG được thấy rung; thấy rung là đang đọc /ɡ/.",
    "uu_tien": 1,
    "nham_voi": "ɡ",
+   "doc_am": "kuh",
    "vi_du": [
     {
-     "tu": "country",
-     "ipa": "ˈkʌntri",
-     "nghia": "đất nước",
-     "unit": 1
+     "tu": "key",
+     "ipa": "kiː",
+     "nghia": "chìa khóa",
+     "unit": 6
     },
     {
-     "tu": "welcome",
-     "ipa": "ˈwelkəm",
-     "nghia": "chào mừng",
-     "unit": 1
+     "tu": "card",
+     "ipa": "kɑːd",
+     "nghia": "thẻ",
+     "unit": 12
     },
     {
-     "tu": "uncle",
-     "ipa": "ˈʌŋkl",
-     "nghia": "chú, bác, cậu",
-     "unit": 2
+     "tu": "cash",
+     "ipa": "kæʃ",
+     "nghia": "tiền mặt",
+     "unit": 12
+    },
+    {
+     "tu": "cough",
+     "ipa": "kɒf",
+     "nghia": "ho",
+     "unit": 20
+    },
+    {
+     "tu": "curly",
+     "ipa": "ˈkɜːli",
+     "nghia": "tóc xoăn",
+     "unit": 19
+    },
+    {
+     "tu": "cancel",
+     "ipa": "ˈkænsl",
+     "nghia": "hủy",
+     "unit": 17
+    },
+    {
+     "tu": "cloudy",
+     "ipa": "ˈklaʊdi",
+     "nghia": "nhiều mây",
+     "unit": 14
+    },
+    {
+     "tu": "corner",
+     "ipa": "ˈkɔːnə",
+     "nghia": "góc phố",
+     "unit": 13
     },
     {
      "tu": "cousin",
@@ -1404,10 +2117,10 @@
      "unit": 2
     },
     {
-     "tu": "expensive",
-     "ipa": "ɪkˈspensɪv",
-     "nghia": "đắt",
-     "unit": 3
+     "tu": "custom",
+     "ipa": "ˈkʌstəm",
+     "nghia": "phong tục",
+     "unit": 39
     }
    ],
    "cap_toi_thieu": [
@@ -1442,7 +2155,50 @@
    "tu_kiem": "Soi gương: phải thấy răng trên đặt lên môi dưới. Đặt tay trước miệng thấy hơi ra đều. Kéo dài 'ffff' được 3 giây là đúng khẩu hình.",
    "uu_tien": 1,
    "nham_voi": "v",
+   "doc_am": "fff",
    "vi_du": [
+    {
+     "tu": "far",
+     "ipa": "fɑː",
+     "nghia": "xa",
+     "unit": 13
+    },
+    {
+     "tu": "flu",
+     "ipa": "fluː",
+     "nghia": "cúm",
+     "unit": 20
+    },
+    {
+     "tu": "for",
+     "ipa": "fɔː",
+     "nghia": "trong (khoảng)",
+     "unit": 24
+    },
+    {
+     "tu": "fail",
+     "ipa": "feɪl",
+     "nghia": "thất bại, trượt",
+     "unit": 23
+    },
+    {
+     "tu": "fare",
+     "ipa": "feə",
+     "nghia": "giá vé",
+     "unit": 38
+    },
+    {
+     "tu": "flat",
+     "ipa": "flæt",
+     "nghia": "căn hộ",
+     "unit": 10
+    },
+    {
+     "tu": "free",
+     "ipa": "friː",
+     "nghia": "rảnh",
+     "unit": 17
+    },
     {
      "tu": "from",
      "ipa": "frɒm",
@@ -1450,28 +2206,16 @@
      "unit": 1
     },
     {
-     "tu": "friend",
-     "ipa": "frend",
-     "nghia": "bạn",
-     "unit": 1
+     "tu": "faced",
+     "ipa": "feɪst",
+     "nghia": "đối mặt với",
+     "unit": 44
     },
     {
-     "tu": "afternoon",
-     "ipa": "ˌɑːftəˈnuːn",
-     "nghia": "buổi chiều",
-     "unit": 1
-    },
-    {
-     "tu": "family",
-     "ipa": "ˈfæməli",
-     "nghia": "gia đình",
-     "unit": 2
-    },
-    {
-     "tu": "father",
-     "ipa": "ˈfɑːðə",
-     "nghia": "bố",
-     "unit": 2
+     "tu": "fever",
+     "ipa": "ˈfiːvə",
+     "nghia": "sốt",
+     "unit": 20
     }
    ],
    "cap_toi_thieu": [
@@ -1506,6 +2250,7 @@
    "tu_kiem": "Hai phép thử: (1) soi gương phải thấy đầu lưỡi; (2) đặt ngón tay trước miệng, đọc 'think' — ngón tay phải chạm được lưỡi. Không chạm được nghĩa là lưỡi còn nằm trong, và bạn đang đọc /t/ hoặc /s/.",
    "uu_tien": 1,
    "nham_voi": "s",
+   "doc_am": "thhh",
    "vi_du": [
     {
      "tu": "thing",
@@ -1514,22 +2259,58 @@
      "unit": 6
     },
     {
-     "tu": "healthy",
-     "ipa": "ˈhelθi",
-     "nghia": "khỏe mạnh / không tốt cho sức khỏe",
-     "unit": 20
+     "tu": "thank",
+     "ipa": "θæŋk",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "worth",
-     "ipa": "wɜːθ",
-     "nghia": "đáng giá",
-     "unit": 28
+     "tu": "think",
+     "ipa": "θɪŋk",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "authentic",
-     "ipa": "ɔːˈθentɪk",
-     "nghia": "chân thực, nguyên bản",
-     "unit": 39
+     "tu": "third",
+     "ipa": "θɜːd",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "three",
+     "ipa": "θriː",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "thanks",
+     "ipa": "θæŋks",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "theory",
+     "ipa": "ˈθɪri",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "things",
+     "ipa": "θɪŋz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "thirty",
+     "ipa": "ˈθɜːdi",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "threat",
+     "ipa": "θret",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1564,36 +2345,67 @@
    "tu_kiem": "Kéo dài 'ssss' như tiếng rắn. Đặt tay lên cổ họng — không được rung. Cuối từ ('books') phải nghe rõ tiếng xì, nuốt mất là mất luôn dấu hiệu số nhiều.",
    "uu_tien": 1,
    "nham_voi": "z",
+   "doc_am": "sss",
    "vi_du": [
     {
-     "tu": "nice",
-     "ipa": "naɪs",
-     "nghia": "tốt, dễ chịu",
-     "unit": 1
-    },
-    {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
-    },
-    {
-     "tu": "parents",
-     "ipa": "ˈpeərənts",
-     "nghia": "bố mẹ",
-     "unit": 2
-    },
-    {
-     "tu": "sister",
-     "ipa": "ˈsɪstə",
-     "nghia": "chị/em gái",
-     "unit": 2
+     "tu": "CV",
+     "ipa": "ˌsiːˈviː",
+     "nghia": "sơ yếu lý lịch",
+     "unit": 25
     },
     {
      "tu": "son",
      "ipa": "sʌn",
      "nghia": "con trai",
      "unit": 2
+    },
+    {
+     "tu": "sale",
+     "ipa": "seɪl",
+     "nghia": "đợt giảm giá",
+     "unit": 12
+    },
+    {
+     "tu": "save",
+     "ipa": "seɪv",
+     "nghia": "tiết kiệm",
+     "unit": 28
+    },
+    {
+     "tu": "scan",
+     "ipa": "skæn",
+     "nghia": "đọc quét tìm chi tiết",
+     "unit": 48
+    },
+    {
+     "tu": "size",
+     "ipa": "saɪz",
+     "nghia": "cỡ, kích thước",
+     "unit": 12
+    },
+    {
+     "tu": "skim",
+     "ipa": "skɪm",
+     "nghia": "đọc lướt lấy ý chính",
+     "unit": 48
+    },
+    {
+     "tu": "slim",
+     "ipa": "slɪm",
+     "nghia": "mảnh khảnh",
+     "unit": 19
+    },
+    {
+     "tu": "sofa",
+     "ipa": "ˈsəʊfə",
+     "nghia": "ghế sofa",
+     "unit": 10
+    },
+    {
+     "tu": "soon",
+     "ipa": "suːn",
+     "nghia": "sớm",
+     "unit": 17
     }
    ],
    "cap_toi_thieu": [
@@ -1628,7 +2440,44 @@
    "tu_kiem": "Đây là âm ra hiệu im lặng 'suỵt'. Đọc /s/ rồi /ʃ/ liền nhau trước gương: môi phải tròn lại khi sang /ʃ/.",
    "uu_tien": 2,
    "nham_voi": "s",
+   "doc_am": "shhh",
    "vi_du": [
+    {
+     "tu": "shy",
+     "ipa": "ʃaɪ",
+     "nghia": "nhút nhát",
+     "unit": 19
+    },
+    {
+     "tu": "shop",
+     "ipa": "ʃɒp",
+     "nghia": "cửa hàng",
+     "unit": 12
+    },
+    {
+     "tu": "sure",
+     "ipa": "ʃɔː",
+     "nghia": "chắc chắn",
+     "unit": 17
+    },
+    {
+     "tu": "shirt",
+     "ipa": "ʃɜːt",
+     "nghia": "áo sơ mi",
+     "unit": 12
+    },
+    {
+     "tu": "shoes",
+     "ipa": "ʃuːz",
+     "nghia": "giày",
+     "unit": 12
+    },
+    {
+     "tu": "short",
+     "ipa": "ʃɔːt",
+     "nghia": "thấp",
+     "unit": 19
+    },
     {
      "tu": "shopping",
      "ipa": "ˈʃɒpɪŋ",
@@ -1636,28 +2485,22 @@
      "unit": 7
     },
     {
-     "tu": "finish",
-     "ipa": "ˈfɪnɪʃ",
-     "nghia": "kết thúc",
-     "unit": 9
+     "tu": "she",
+     "ipa": "ʃiː",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "dish",
-     "ipa": "dɪʃ",
-     "nghia": "món ăn",
-     "unit": 11
+     "tu": "chef",
+     "ipa": "ʃef",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "delicious",
-     "ipa": "dɪˈlɪʃəs",
-     "nghia": "ngon",
-     "unit": 11
-    },
-    {
-     "tu": "cash",
-     "ipa": "kæʃ",
-     "nghia": "tiền mặt",
-     "unit": 12
+     "tu": "show",
+     "ipa": "ʃəʊ",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1669,9 +2512,9 @@
     },
     {
      "a": "shop",
-     "ipa_a": "ʃɑːp",
+     "ipa_a": "ʃɒp",
      "b": "sop",
-     "ipa_b": "sɑːp"
+     "ipa_b": "sɒp"
     },
     {
      "a": "ship",
@@ -1692,12 +2535,13 @@
    "tu_kiem": "Đọc 'watch' cuối câu phải nghe rõ tiếng xì sau tiếng bật. Chỉ nghe tiếng bật là bạn đang đọc /t/.",
    "uu_tien": 2,
    "nham_voi": "dʒ",
+   "doc_am": "chuh",
    "vi_du": [
     {
-     "tu": "teacher",
-     "ipa": "ˈtiːtʃə",
-     "nghia": "giáo viên",
-     "unit": 1
+     "tu": "chair",
+     "ipa": "tʃeə",
+     "nghia": "ghế",
+     "unit": 6
     },
     {
      "tu": "cheap",
@@ -1706,22 +2550,52 @@
      "unit": 3
     },
     {
-     "tu": "watch",
-     "ipa": "wɒtʃ",
-     "nghia": "đồng hồ đeo tay",
-     "unit": 6
+     "tu": "change",
+     "ipa": "tʃeɪndʒ",
+     "nghia": "tiền thối / đổi",
+     "unit": 12
     },
     {
-     "tu": "chair",
-     "ipa": "tʃeə",
-     "nghia": "ghế",
-     "unit": 6
+     "tu": "choice",
+     "ipa": "tʃɔɪs",
+     "nghia": "lựa chọn",
+     "unit": 29
     },
     {
-     "tu": "kitchen",
-     "ipa": "ˈkɪtʃɪn",
-     "nghia": "bếp",
-     "unit": 10
+     "tu": "charity",
+     "ipa": "ˈtʃærəti",
+     "nghia": "từ thiện",
+     "unit": 29
+    },
+    {
+     "tu": "chicken",
+     "ipa": "ˈtʃɪkɪn",
+     "nghia": "thịt gà",
+     "unit": 11
+    },
+    {
+     "tu": "challenge",
+     "ipa": "ˈtʃælɪndʒ",
+     "nghia": "thử thách",
+     "unit": 23
+    },
+    {
+     "tu": "chats",
+     "ipa": "tʃæts",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "check",
+     "ipa": "tʃek",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "child",
+     "ipa": "tʃaɪld",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -1756,24 +2630,13 @@
    "tu_kiem": "Hà hơi vào lòng bàn tay như khi làm mờ kính — đó là /h/. Đọc 'hello', bàn tay đặt trước miệng phải thấy HƠI ẤM. Không thấy gì nghĩa là bạn đã nuốt mất /h/.",
    "uu_tien": 2,
    "nham_voi": "",
+   "doc_am": "huh",
    "vi_du": [
-    {
-     "tu": "hello",
-     "ipa": "həˈləʊ",
-     "nghia": "xin chào",
-     "unit": 1
-    },
     {
      "tu": "hi",
      "ipa": "haɪ",
      "nghia": "chào (thân mật)",
      "unit": 1
-    },
-    {
-     "tu": "husband",
-     "ipa": "ˈhʌzbənd",
-     "nghia": "chồng",
-     "unit": 2
     },
     {
      "tu": "half",
@@ -1782,10 +2645,52 @@
      "unit": 4
     },
     {
+     "tu": "hate",
+     "ipa": "heɪt",
+     "nghia": "ghét",
+     "unit": 7
+    },
+    {
+     "tu": "hello",
+     "ipa": "heˈləʊ",
+     "nghia": "xin chào",
+     "unit": 1
+    },
+    {
      "tu": "hobby",
      "ipa": "ˈhɒbi",
      "nghia": "sở thích",
      "unit": 7
+    },
+    {
+     "tu": "house",
+     "ipa": "haʊs",
+     "nghia": "nhà",
+     "unit": 10
+    },
+    {
+     "tu": "humid",
+     "ipa": "ˈhjuːmɪd",
+     "nghia": "ẩm",
+     "unit": 14
+    },
+    {
+     "tu": "happen",
+     "ipa": "ˈhæpən",
+     "nghia": "xảy ra",
+     "unit": 15
+    },
+    {
+     "tu": "having",
+     "ipa": "ˈhævɪŋ",
+     "nghia": "đã (dùng mở đầu mệnh đề rút gọn)",
+     "unit": 44
+    },
+    {
+     "tu": "harmful",
+     "ipa": "ˈhɑːmfl",
+     "nghia": "gây hại (thay cho “good / bad”)",
+     "unit": 41
     }
    ],
    "cap_toi_thieu": [
@@ -1820,36 +2725,67 @@
    "tu_kiem": "Đặt tay lên cổ họng đọc 'bat' — phải thấy RUNG. Mảnh giấy trước miệng thì gần như không bay (khác hẳn /p/).",
    "uu_tien": 2,
    "nham_voi": "p",
+   "doc_am": "buh",
    "vi_du": [
     {
-     "tu": "goodbye",
-     "ipa": "ˌɡʊdˈbaɪ",
-     "nghia": "tạm biệt",
-     "unit": 1
+     "tu": "bag",
+     "ipa": "bæɡ",
+     "nghia": "túi",
+     "unit": 6
     },
     {
-     "tu": "brother",
-     "ipa": "ˈbrʌðə",
-     "nghia": "anh/em trai",
-     "unit": 2
+     "tu": "band",
+     "ipa": "bænd",
+     "nghia": "thang điểm IELTS",
+     "unit": 50
     },
     {
-     "tu": "husband",
-     "ipa": "ˈhʌzbənd",
-     "nghia": "chồng",
-     "unit": 2
+     "tu": "beef",
+     "ipa": "biːf",
+     "nghia": "thịt bò",
+     "unit": 11
     },
     {
-     "tu": "about",
-     "ipa": "əˈbaʊt",
-     "nghia": "khoảng",
-     "unit": 3
+     "tu": "bias",
+     "ipa": "ˈbaɪəs",
+     "nghia": "thiên vị",
+     "unit": 37
     },
     {
-     "tu": "job",
-     "ipa": "dʒɒb",
-     "nghia": "công việc",
+     "tu": "bill",
+     "ipa": "bɪl",
+     "nghia": "hóa đơn",
+     "unit": 11
+    },
+    {
+     "tu": "book",
+     "ipa": "bʊk",
+     "nghia": "sách",
+     "unit": 6
+    },
+    {
+     "tu": "busy",
+     "ipa": "ˈbɪzi",
+     "nghia": "bận",
      "unit": 5
+    },
+    {
+     "tu": "based",
+     "ipa": "beɪst",
+     "nghia": "dựa trên",
+     "unit": 44
+    },
+    {
+     "tu": "beard",
+     "ipa": "bɪəd",
+     "nghia": "râu quai nón",
+     "unit": 19
+    },
+    {
+     "tu": "block",
+     "ipa": "blɒk",
+     "nghia": "dãy nhà, block",
+     "unit": 13
     }
    ],
    "cap_toi_thieu": [
@@ -1884,36 +2820,67 @@
    "tu_kiem": "Sờ cổ họng phải thấy rung. CẢNH BÁO: 'd' tiếng Việt KHÔNG phải âm này — 'da' tiếng Việt đọc gần /z/ (miền Bắc) hoặc /j/ (miền Nam). Phải đặt lưỡi chạm lợi thật sự.",
    "uu_tien": 1,
    "nham_voi": "t",
+   "doc_am": "duh",
    "vi_du": [
     {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
+     "tu": "dry",
+     "ipa": "draɪ",
+     "nghia": "khô",
+     "unit": 14
     },
     {
-     "tu": "friend",
-     "ipa": "frend",
-     "nghia": "bạn",
-     "unit": 1
+     "tu": "data",
+     "ipa": "ˈdeɪtə",
+     "nghia": "dữ liệu",
+     "unit": 34
     },
     {
-     "tu": "goodbye",
-     "ipa": "ˌɡʊdˈbaɪ",
-     "nghia": "tạm biệt",
-     "unit": 1
+     "tu": "dish",
+     "ipa": "dɪʃ",
+     "nghia": "món ăn",
+     "unit": 11
     },
     {
-     "tu": "daughter",
-     "ipa": "ˈdɔːtə",
-     "nghia": "con gái",
-     "unit": 2
+     "tu": "delay",
+     "ipa": "dɪˈleɪ",
+     "nghia": "trễ, hoãn",
+     "unit": 21
     },
     {
-     "tu": "husband",
-     "ipa": "ˈhʌzbənd",
-     "nghia": "chồng",
-     "unit": 2
+     "tu": "dream",
+     "ipa": "driːm",
+     "nghia": "mơ ước",
+     "unit": 29
+    },
+    {
+     "tu": "decide",
+     "ipa": "dɪˈsaɪd",
+     "nghia": "quyết định",
+     "unit": 15
+    },
+    {
+     "tu": "degree",
+     "ipa": "dɪˈɡriː",
+     "nghia": "độ",
+     "unit": 14
+    },
+    {
+     "tu": "depart",
+     "ipa": "dɪˈpɑːt",
+     "nghia": "khởi hành",
+     "unit": 21
+    },
+    {
+     "tu": "design",
+     "ipa": "dɪˈzaɪn",
+     "nghia": "thiết kế",
+     "unit": 27
+    },
+    {
+     "tu": "device",
+     "ipa": "dɪˈvaɪs",
+     "nghia": "thiết bị",
+     "unit": 27
     }
    ],
    "cap_toi_thieu": [
@@ -1948,12 +2915,49 @@
    "tu_kiem": "Sờ cổ họng đọc 'go' phải thấy rung; đọc 'coat' thì không. Đó là khác biệt duy nhất giữa hai âm.",
    "uu_tien": 2,
    "nham_voi": "k",
+   "doc_am": "guh",
    "vi_du": [
     {
+     "tu": "gain",
+     "ipa": "ɡeɪn",
+     "nghia": "đạt được (thay cho “get”)",
+     "unit": 41
+    },
+    {
+     "tu": "given",
+     "ipa": "ˈɡɪvən",
+     "nghia": "xét đến, do có",
+     "unit": 44
+    },
+    {
+     "tu": "grade",
+     "ipa": "ɡreɪd",
+     "nghia": "điểm",
+     "unit": 26
+    },
+    {
+     "tu": "glasses",
+     "ipa": "ˈɡlɑːsɪz",
+     "nghia": "kính (luôn số nhiều)",
+     "unit": 6
+    },
+    {
      "tu": "goodbye",
-     "ipa": "ˌɡʊdˈbaɪ",
+     "ipa": "ɡʊdˈbaɪ",
      "nghia": "tạm biệt",
      "unit": 1
+    },
+    {
+     "tu": "graduate",
+     "ipa": "ˈɡrædʒueɪt",
+     "nghia": "tốt nghiệp",
+     "unit": 24
+    },
+    {
+     "tu": "gardening",
+     "ipa": "ˈɡɑːdnɪŋ",
+     "nghia": "làm vườn",
+     "unit": 7
     },
     {
      "tu": "grandfather",
@@ -1968,16 +2972,10 @@
      "unit": 2
     },
     {
-     "tu": "bag",
-     "ipa": "bæɡ",
-     "nghia": "túi",
-     "unit": 6
-    },
-    {
-     "tu": "glasses",
-     "ipa": "ˈɡlɑːsɪz",
-     "nghia": "kính (luôn số nhiều)",
-     "unit": 6
+     "tu": "good-looking",
+     "ipa": "ɡʊd ˈlʊkɪŋ",
+     "nghia": "ưa nhìn",
+     "unit": 19
     }
    ],
    "cap_toi_thieu": [
@@ -2012,36 +3010,67 @@
    "tu_kiem": "Kéo dài 'vvvv' và sờ cổ họng — phải rung, và phải thấy tê nhẹ ở môi dưới. CẢNH BÁO: 'v' tiếng Việt miền Nam đọc gần /j/, không chạm răng vào môi. Soi gương kiểm tra.",
    "uu_tien": 1,
    "nham_voi": "f",
+   "doc_am": "vvv",
    "vi_du": [
     {
-     "tu": "evening",
-     "ipa": "ˈiːvnɪŋ",
-     "nghia": "buổi tối",
-     "unit": 1
+     "tu": "visa",
+     "ipa": "ˈviːzə",
+     "nghia": "thị thực",
+     "unit": 21
     },
     {
-     "tu": "expensive",
-     "ipa": "ɪkˈspensɪv",
-     "nghia": "đắt",
-     "unit": 3
+     "tu": "visit",
+     "ipa": "ˈvɪzɪt",
+     "nghia": "thăm",
+     "unit": 15
     },
     {
-     "tu": "driver",
-     "ipa": "ˈdraɪvə",
-     "nghia": "tài xế",
-     "unit": 5
+     "tu": "vital",
+     "ipa": "ˈvaɪtl",
+     "nghia": "thiết yếu (thay cho “important”)",
+     "unit": 41
     },
     {
-     "tu": "travelling",
-     "ipa": "ˈtrævəlɪŋ",
-     "nghia": "du lịch",
-     "unit": 7
+     "tu": "vehicle",
+     "ipa": "ˈviːəkl",
+     "nghia": "phương tiện",
+     "unit": 38
+    },
+    {
+     "tu": "variation",
+     "ipa": "ˌveəriːˈeɪʃn",
+     "nghia": "sự biến thiên",
+     "unit": 42
     },
     {
      "tu": "vegetables",
      "ipa": "ˈvedʒtəblz",
      "nghia": "rau củ",
      "unit": 11
+    },
+    {
+     "tu": "vegetarian",
+     "ipa": "ˌvedʒɪˈteəriən",
+     "nghia": "người ăn chay",
+     "unit": 11
+    },
+    {
+     "tu": "vocational",
+     "ipa": "vəʊˈkeɪʃənl",
+     "nghia": "dạy nghề",
+     "unit": 31
+    },
+    {
+     "tu": "vaccination",
+     "ipa": "ˌvæksɪˈneɪʃn",
+     "nghia": "tiêm chủng",
+     "unit": 35
+    },
+    {
+     "tu": "verb",
+     "ipa": "vɜːb",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -2076,36 +3105,67 @@
    "tu_kiem": "Đặt ngón tay trước miệng đọc 'this' — phải chạm lưỡi, VÀ sờ cổ họng phải thấy rung. Đủ hai điều mới đúng. Rất quan trọng vì the, this, that, they đều dùng âm này.",
    "uu_tien": 1,
    "nham_voi": "d",
+   "doc_am": "thuh",
    "vi_du": [
     {
-     "tu": "father",
-     "ipa": "ˈfɑːðə",
-     "nghia": "bố",
-     "unit": 2
+     "tu": "then",
+     "ipa": "ðen",
+     "nghia": "sau đó",
+     "unit": 15
     },
     {
-     "tu": "mother",
-     "ipa": "ˈmʌðə",
-     "nghia": "mẹ",
-     "unit": 2
+     "tu": "therefore",
+     "ipa": "ˈðeəfɔː",
+     "nghia": "vì thế",
+     "unit": 46
     },
     {
-     "tu": "brother",
-     "ipa": "ˈbrʌðə",
-     "nghia": "anh/em trai",
-     "unit": 2
+     "tu": "the",
+     "ipa": "ðə",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "grandfather",
-     "ipa": "ˈɡrænfɑːðə",
-     "nghia": "ông",
-     "unit": 2
+     "tu": "than",
+     "ipa": "ðæn",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "grandmother",
-     "ipa": "ˈɡrænmʌðə",
-     "nghia": "bà",
-     "unit": 2
+     "tu": "that",
+     "ipa": "ðæt",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "them",
+     "ipa": "ðem",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "they",
+     "ipa": "ðeɪ",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "this",
+     "ipa": "ðɪs",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "their",
+     "ipa": "ðeə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "there",
+     "ipa": "ðeə",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -2140,18 +3200,19 @@
    "tu_kiem": "Kéo dài 'zzzz' như tiếng ong bay, sờ cổ họng thấy rung. Đọc 'buzz' và 'bus' liền nhau — chỉ khác ở chỗ rung này.",
    "uu_tien": 1,
    "nham_voi": "s",
+   "doc_am": "zzz",
    "vi_du": [
     {
-     "tu": "husband",
-     "ipa": "ˈhʌzbənd",
-     "nghia": "chồng",
-     "unit": 2
+     "tu": "zero",
+     "ipa": "ˈzɪrəʊ",
+     "nghia": "",
+     "unit": 0
     },
     {
-     "tu": "cousin",
-     "ipa": "ˈkʌzn",
-     "nghia": "anh chị em họ",
-     "unit": 2
+     "tu": "zones",
+     "ipa": "zəʊnz",
+     "nghia": "",
+     "unit": 0
     },
     {
      "tu": "busy",
@@ -2160,16 +3221,46 @@
      "unit": 5
     },
     {
-     "tu": "glasses",
-     "ipa": "ˈɡlɑːsɪz",
-     "nghia": "kính (luôn số nhiều)",
-     "unit": 6
+     "tu": "exam",
+     "ipa": "ɪɡˈzæm",
+     "nghia": "kỳ thi",
+     "unit": 26
     },
     {
-     "tu": "stairs",
-     "ipa": "steəz",
-     "nghia": "cầu thang",
-     "unit": 10
+     "tu": "lazy",
+     "ipa": "ˈleɪzi",
+     "nghia": "lười",
+     "unit": 19
+    },
+    {
+     "tu": "size",
+     "ipa": "saɪz",
+     "nghia": "cỡ, kích thước",
+     "unit": 12
+    },
+    {
+     "tu": "visa",
+     "ipa": "ˈviːzə",
+     "nghia": "thị thực",
+     "unit": 21
+    },
+    {
+     "tu": "shoes",
+     "ipa": "ʃuːz",
+     "nghia": "giày",
+     "unit": 12
+    },
+    {
+     "tu": "visit",
+     "ipa": "ˈvɪzɪt",
+     "nghia": "thăm",
+     "unit": 15
+    },
+    {
+     "tu": "cousin",
+     "ipa": "ˈkʌzn",
+     "nghia": "anh chị em họ",
+     "unit": 2
     }
    ],
    "cap_toi_thieu": [
@@ -2204,13 +3295,8 @@
    "tu_kiem": "Đọc /ʃ/ rồi bật giọng lên thành /ʒ/, giữ nguyên khẩu hình. Âm hiếm, hay nằm giữa từ: measure, vision.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
+   "doc_am": "zhuh",
    "vi_du": [
-    {
-     "tu": "usually",
-     "ipa": "ˈjuːʒuəli",
-     "nghia": "thường thường",
-     "unit": 9
-    },
     {
      "tu": "unusual",
      "ipa": "ʌnˈjuːʒuəl",
@@ -2218,10 +3304,58 @@
      "unit": 23
     },
     {
+     "tu": "usually",
+     "ipa": "ˈjuːʒuəli",
+     "nghia": "thường thường",
+     "unit": 9
+    },
+    {
+     "tu": "cohesion",
+     "ipa": "kəʊˈhiːʒn",
+     "nghia": "tính liên kết",
+     "unit": 50
+    },
+    {
      "tu": "decision",
      "ipa": "dɪˈsɪʒn",
      "nghia": "quyết định",
      "unit": 29
+    },
+    {
+     "tu": "occasionally",
+     "ipa": "əˈkeɪʒənəli",
+     "nghia": "thỉnh thoảng",
+     "unit": 45
+    },
+    {
+     "tu": "casual",
+     "ipa": "ˈkæʒəwl",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "measure",
+     "ipa": "ˈmeʒə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "version",
+     "ipa": "ˈvɜːʒn",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "exposure",
+     "ipa": "ɪkˈspəʊʒə",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "measures",
+     "ipa": "ˈmeʒəz",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -2244,13 +3378,8 @@
    "tu_kiem": "Đọc 'jeep' và 'cheap' liền nhau, sờ cổ họng — /dʒ/ rung ngay từ đầu, /tʃ/ thì không.",
    "uu_tien": 2,
    "nham_voi": "tʃ",
+   "doc_am": "juh",
    "vi_du": [
-    {
-     "tu": "age",
-     "ipa": "eɪdʒ",
-     "nghia": "tuổi",
-     "unit": 3
-    },
     {
      "tu": "job",
      "ipa": "dʒɒb",
@@ -2258,22 +3387,58 @@
      "unit": 5
     },
     {
-     "tu": "engineer",
-     "ipa": "ˌendʒɪˈnɪə",
-     "nghia": "kỹ sư",
-     "unit": 5
+     "tu": "join",
+     "ipa": "dʒɔɪn",
+     "nghia": "tham gia",
+     "unit": 17
     },
     {
-     "tu": "enjoy",
-     "ipa": "ɪnˈdʒɔɪ",
-     "nghia": "thích, tận hưởng",
-     "unit": 7
+     "tu": "journey",
+     "ipa": "ˈdʒɜːni",
+     "nghia": "chuyến đi",
+     "unit": 21
     },
     {
-     "tu": "fridge",
-     "ipa": "frɪdʒ",
-     "nghia": "tủ lạnh",
-     "unit": 10
+     "tu": "generous",
+     "ipa": "ˈdʒenərəs",
+     "nghia": "hào phóng",
+     "unit": 19
+    },
+    {
+     "tu": "generally",
+     "ipa": "ˈdʒenərəli",
+     "nghia": "nhìn chung",
+     "unit": 45
+    },
+    {
+     "tu": "journalist",
+     "ipa": "ˈdʒɜːnəlɪst",
+     "nghia": "nhà báo",
+     "unit": 37
+    },
+    {
+     "tu": "generalisation",
+     "ipa": "ˌdʒenərəlaɪˈzeɪʃən",
+     "nghia": "sự khái quát hoá",
+     "unit": 49
+    },
+    {
+     "tu": "jobs",
+     "ipa": "dʒɒbz",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "jump",
+     "ipa": "dʒʌmp",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "junk",
+     "ipa": "dʒʌŋk",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -2308,36 +3473,67 @@
    "tu_kiem": "Đọc 'right' — nếu bạn nghe tiếng lưỡi rung lập bập thì đó là 'r' tiếng Việt, sai. Lưỡi phải lơ lửng. Và Anh-Anh KHÔNG đọc /r/ ở cuối: 'car' = /kɑː/, không có gì sau nguyên âm.",
    "uu_tien": 2,
    "nham_voi": "l",
+   "doc_am": "ruh",
    "vi_du": [
     {
-     "tu": "from",
-     "ipa": "frɒm",
-     "nghia": "từ, đến từ",
-     "unit": 1
+     "tu": "rent",
+     "ipa": "rent",
+     "nghia": "thuê / tiền thuê",
+     "unit": 10
     },
     {
-     "tu": "country",
-     "ipa": "ˈkʌntri",
-     "nghia": "đất nước",
-     "unit": 1
+     "tu": "rest",
+     "ipa": "rest",
+     "nghia": "nghỉ ngơi",
+     "unit": 20
     },
     {
-     "tu": "friend",
-     "ipa": "frend",
-     "nghia": "bạn",
-     "unit": 1
+     "tu": "rice",
+     "ipa": "raɪs",
+     "nghia": "cơm, gạo",
+     "unit": 11
     },
     {
-     "tu": "parents",
-     "ipa": "ˈpeərənts",
-     "nghia": "bố mẹ",
-     "unit": 2
+     "tu": "road",
+     "ipa": "rəʊd",
+     "nghia": "đường",
+     "unit": 13
     },
     {
-     "tu": "brother",
-     "ipa": "ˈbrʌðə",
-     "nghia": "anh/em trai",
-     "unit": 2
+     "tu": "rainy",
+     "ipa": "ˈreɪni",
+     "nghia": "mưa",
+     "unit": 14
+    },
+    {
+     "tu": "range",
+     "ipa": "reɪndʒ",
+     "nghia": "độ đa dạng",
+     "unit": 50
+    },
+    {
+     "tu": "reply",
+     "ipa": "rɪˈplaɪ",
+     "nghia": "trả lời",
+     "unit": 22
+    },
+    {
+     "tu": "right",
+     "ipa": "raɪt",
+     "nghia": "phải",
+     "unit": 13
+    },
+    {
+     "tu": "route",
+     "ipa": "ruːt",
+     "nghia": "tuyến đường",
+     "unit": 38
+    },
+    {
+     "tu": "refund",
+     "ipa": "ˈriːfʌnd",
+     "nghia": "hoàn tiền",
+     "unit": 12
     }
    ],
    "cap_toi_thieu": [
@@ -2372,12 +3568,19 @@
    "tu_kiem": "Bịt mũi rồi thử đọc 'm' — không kêu được. Đó là bằng chứng hơi đi đằng mũi.",
    "uu_tien": 3,
    "nham_voi": "n",
+   "doc_am": "mmm",
    "vi_du": [
     {
-     "tu": "name",
-     "ipa": "neɪm",
-     "nghia": "tên",
-     "unit": 1
+     "tu": "mark",
+     "ipa": "mɑːk",
+     "nghia": "chấm điểm",
+     "unit": 26
+    },
+    {
+     "tu": "meal",
+     "ipa": "miːl",
+     "nghia": "bữa ăn",
+     "unit": 11
     },
     {
      "tu": "meet",
@@ -2386,22 +3589,46 @@
      "unit": 1
     },
     {
-     "tu": "from",
-     "ipa": "frɒm",
-     "nghia": "từ, đến từ",
-     "unit": 1
+     "tu": "menu",
+     "ipa": "ˈmenjuː",
+     "nghia": "thực đơn",
+     "unit": 11
     },
     {
-     "tu": "morning",
-     "ipa": "ˈmɔːnɪŋ",
-     "nghia": "buổi sáng",
-     "unit": 1
+     "tu": "move",
+     "ipa": "muːv",
+     "nghia": "chuyển (nhà, chỗ)",
+     "unit": 15
     },
     {
-     "tu": "welcome",
-     "ipa": "ˈwelkəm",
-     "nghia": "chào mừng",
-     "unit": 1
+     "tu": "maybe",
+     "ipa": "ˈmeɪbi",
+     "nghia": "có lẽ",
+     "unit": 17
+    },
+    {
+     "tu": "money",
+     "ipa": "ˈmʌni",
+     "nghia": "tiền",
+     "unit": 3
+    },
+    {
+     "tu": "month",
+     "ipa": "mʌnθ",
+     "nghia": "tháng tới",
+     "unit": 17
+    },
+    {
+     "tu": "merely",
+     "ipa": "ˈmɪəli",
+     "nghia": "chỉ đơn thuần",
+     "unit": 43
+    },
+    {
+     "tu": "mother",
+     "ipa": "ˈmʌðə",
+     "nghia": "mẹ",
+     "unit": 2
     }
    ],
    "cap_toi_thieu": [
@@ -2430,12 +3657,25 @@
    "tu_kiem": "Bịt mũi thì không kêu được. Nếu bạn hay lẫn n–l: /n/ hơi ra mũi, /l/ hơi ra miệng — bịt mũi vẫn đọc được /l/.",
    "uu_tien": 2,
    "nham_voi": "l",
+   "doc_am": "nnn",
    "vi_du": [
+    {
+     "tu": "new",
+     "ipa": "njuː",
+     "nghia": "mới",
+     "unit": 6
+    },
     {
      "tu": "name",
      "ipa": "neɪm",
      "nghia": "tên",
      "unit": 1
+    },
+    {
+     "tu": "near",
+     "ipa": "nɪə",
+     "nghia": "gần",
+     "unit": 13
     },
     {
      "tu": "nice",
@@ -2444,22 +3684,40 @@
      "unit": 1
     },
     {
-     "tu": "country",
-     "ipa": "ˈkʌntri",
-     "nghia": "đất nước",
-     "unit": 1
+     "tu": "never",
+     "ipa": "ˈnevə",
+     "nghia": "chưa bao giờ",
+     "unit": 23
     },
     {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
+     "tu": "nurse",
+     "ipa": "nɜːs",
+     "nghia": "y tá",
+     "unit": 5
     },
     {
-     "tu": "friend",
-     "ipa": "frend",
-     "nghia": "bạn",
-     "unit": 1
+     "tu": "noodles",
+     "ipa": "ˈnuːdlz",
+     "nghia": "mì, bún",
+     "unit": 11
+    },
+    {
+     "tu": "notably",
+     "ipa": "ˈnəʊtəbli",
+     "nghia": "đáng chú ý là",
+     "unit": 43
+    },
+    {
+     "tu": "numerous",
+     "ipa": "ˈnjuːmərəs",
+     "nghia": "nhiều (thay cho “a lot of”)",
+     "unit": 41
+    },
+    {
+     "tu": "nonetheless",
+     "ipa": "ˌnʌnðəˈles",
+     "nghia": "dù vậy",
+     "unit": 46
     }
    ],
    "cap_toi_thieu": [
@@ -2488,18 +3746,13 @@
    "tu_kiem": "Tiếng Việt có sẵn trong 'ông', 'ăng'. Đọc 'sing' — đầu lưỡi phải nằm im dưới, chạm lợi là thành /n/ ('sin').",
    "uu_tien": 3,
    "nham_voi": "n",
+   "doc_am": "ing",
    "vi_du": [
     {
-     "tu": "morning",
-     "ipa": "ˈmɔːnɪŋ",
-     "nghia": "buổi sáng",
-     "unit": 1
-    },
-    {
-     "tu": "evening",
-     "ipa": "ˈiːvnɪŋ",
-     "nghia": "buổi tối",
-     "unit": 1
+     "tu": "thing",
+     "ipa": "θɪŋ",
+     "nghia": "đồ vật",
+     "unit": 6
     },
     {
      "tu": "uncle",
@@ -2508,16 +3761,52 @@
      "unit": 2
     },
     {
-     "tu": "thing",
-     "ipa": "θɪŋ",
-     "nghia": "đồ vật",
-     "unit": 6
+     "tu": "boring",
+     "ipa": "ˈbɔːrɪŋ",
+     "nghia": "chán",
+     "unit": 7
     },
     {
-     "tu": "swimming",
-     "ipa": "ˈswɪmɪŋ",
-     "nghia": "bơi lội",
+     "tu": "having",
+     "ipa": "ˈhævɪŋ",
+     "nghia": "đã (dùng mở đầu mệnh đề rút gọn)",
+     "unit": 44
+    },
+    {
+     "tu": "single",
+     "ipa": "ˈsɪŋɡl",
+     "nghia": "phòng đơn",
+     "unit": 21
+    },
+    {
+     "tu": "spring",
+     "ipa": "sprɪŋ",
+     "nghia": "xuân",
+     "unit": 14
+    },
+    {
+     "tu": "amazing",
+     "ipa": "əˈmeɪzɪŋ",
+     "nghia": "tuyệt vời",
+     "unit": 23
+    },
+    {
+     "tu": "boiling",
+     "ipa": "ˈbɔɪlɪŋ",
+     "nghia": "nóng như thiêu",
+     "unit": 14
+    },
+    {
+     "tu": "cooking",
+     "ipa": "ˈkʊkɪŋ",
+     "nghia": "nấu ăn",
      "unit": 7
+    },
+    {
+     "tu": "evening",
+     "ipa": "ˈiːvnɪŋ",
+     "nghia": "buổi tối",
+     "unit": 1
     }
    ],
    "cap_toi_thieu": [
@@ -2552,36 +3841,67 @@
    "tu_kiem": "Kéo dài 'llll' rồi hít vào — hai bên lưỡi phải thấy MÁT. Cuối từ ('well', 'call') tiếng Việt không có nên hay bị nuốt: phải cảm thấy lưỡi chạm lợi rồi mới dừng.",
    "uu_tien": 1,
    "nham_voi": "n",
+   "doc_am": "lll",
    "vi_du": [
     {
-     "tu": "hello",
-     "ipa": "həˈləʊ",
-     "nghia": "xin chào",
-     "unit": 1
+     "tu": "last",
+     "ipa": "lɑːst",
+     "nghia": "vừa qua",
+     "unit": 24
     },
     {
-     "tu": "welcome",
-     "ipa": "ˈwelkəm",
-     "nghia": "chào mừng",
-     "unit": 1
+     "tu": "late",
+     "ipa": "leɪt",
+     "nghia": "muộn",
+     "unit": 4
     },
     {
-     "tu": "family",
-     "ipa": "ˈfæməli",
-     "nghia": "gia đình",
-     "unit": 2
+     "tu": "lazy",
+     "ipa": "ˈleɪzi",
+     "nghia": "lười",
+     "unit": 19
     },
     {
-     "tu": "uncle",
-     "ipa": "ˈʌŋkl",
-     "nghia": "chú, bác, cậu",
-     "unit": 2
+     "tu": "lend",
+     "ipa": "lend",
+     "nghia": "cho mượn",
+     "unit": 28
     },
     {
-     "tu": "dollar",
-     "ipa": "ˈdɒlə",
-     "nghia": "đô la",
-     "unit": 3
+     "tu": "loan",
+     "ipa": "ləʊn",
+     "nghia": "khoản vay",
+     "unit": 28
+    },
+    {
+     "tu": "loose",
+     "ipa": "luːs",
+     "nghia": "rộng",
+     "unit": 12
+    },
+    {
+     "tu": "laptop",
+     "ipa": "ˈlæptɒp",
+     "nghia": "máy tính xách tay",
+     "unit": 6
+    },
+    {
+     "tu": "lately",
+     "ipa": "ˈleɪtli",
+     "nghia": "dạo này",
+     "unit": 24
+    },
+    {
+     "tu": "launch",
+     "ipa": "lɔːntʃ",
+     "nghia": "ra mắt",
+     "unit": 27
+    },
+    {
+     "tu": "likely",
+     "ipa": "ˈlaɪkli",
+     "nghia": "có khả năng",
+     "unit": 45
     }
    ],
    "cap_toi_thieu": [
@@ -2616,12 +3936,25 @@
    "tu_kiem": "Soi gương: môi phải chúm rõ ở đầu rồi mở ra. Môi không chúm là mất âm.",
    "uu_tien": 3,
    "nham_voi": "v",
+   "doc_am": "wuh",
    "vi_du": [
     {
-     "tu": "welcome",
-     "ipa": "ˈwelkəm",
-     "nghia": "chào mừng",
-     "unit": 1
+     "tu": "once",
+     "ipa": "wʌns",
+     "nghia": "một lần",
+     "unit": 23
+    },
+    {
+     "tu": "wall",
+     "ipa": "wɔːl",
+     "nghia": "tường",
+     "unit": 10
+    },
+    {
+     "tu": "week",
+     "ipa": "wiːk",
+     "nghia": "tuần trước",
+     "unit": 15
     },
     {
      "tu": "wife",
@@ -2630,22 +3963,40 @@
      "unit": 2
     },
     {
-     "tu": "quarter",
-     "ipa": "ˈkwɔːtə",
-     "nghia": "mười lăm phút",
-     "unit": 4
-    },
-    {
-     "tu": "weekend",
-     "ipa": "ˌwiːkˈend",
-     "nghia": "cuối tuần",
-     "unit": 4
+     "tu": "wish",
+     "ipa": "wɪʃ",
+     "nghia": "ước",
+     "unit": 29
     },
     {
      "tu": "work",
      "ipa": "wɜːk",
      "nghia": "làm việc / công việc (n)",
      "unit": 5
+    },
+    {
+     "tu": "waste",
+     "ipa": "weɪst",
+     "nghia": "lãng phí",
+     "unit": 28
+    },
+    {
+     "tu": "watch",
+     "ipa": "wɒtʃ",
+     "nghia": "đồng hồ đeo tay",
+     "unit": 6
+    },
+    {
+     "tu": "windy",
+     "ipa": "ˈwɪndi",
+     "nghia": "gió",
+     "unit": 14
+    },
+    {
+     "tu": "worth",
+     "ipa": "wɜːθ",
+     "nghia": "đáng giá",
+     "unit": 28
     }
    ],
    "cap_toi_thieu": [
@@ -2674,12 +4025,25 @@
    "tu_kiem": "Giống 'y' trong 'yêu'. Lưu ý Anh-Anh có /j/ ở 'student' /ˈstjuːdənt/, 'Tuesday' — đọc thiếu là ra giọng Mỹ.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
+   "doc_am": "yuh",
    "vi_du": [
     {
-     "tu": "student",
-     "ipa": "ˈstjuːdnt",
-     "nghia": "học sinh, sinh viên",
-     "unit": 1
+     "tu": "year",
+     "ipa": "jɪə",
+     "nghia": "năm ngoái",
+     "unit": 15
+    },
+    {
+     "tu": "useful",
+     "ipa": "ˈjuːsfl",
+     "nghia": "hữu ích",
+     "unit": 27
+    },
+    {
+     "tu": "useless",
+     "ipa": "ˈjuːsləs",
+     "nghia": "vô dụng",
+     "unit": 27
     },
     {
      "tu": "usually",
@@ -2688,22 +4052,40 @@
      "unit": 9
     },
     {
-     "tu": "menu",
-     "ipa": "ˈmenjuː",
-     "nghia": "thực đơn",
-     "unit": 11
-    },
-    {
-     "tu": "humid",
-     "ipa": "ˈhjuːmɪd",
-     "nghia": "ẩm",
-     "unit": 14
-    },
-    {
      "tu": "yesterday",
      "ipa": "ˈjestədeɪ",
      "nghia": "hôm qua",
-     "unit": 15
+     "unit": 4
+    },
+    {
+     "tu": "youngsters",
+     "ipa": "ˈjʌŋstəz",
+     "nghia": "giới trẻ (thay cho “children”)",
+     "unit": 41
+    },
+    {
+     "tu": "use",
+     "ipa": "juːs",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "yes",
+     "ipa": "jes",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "yet",
+     "ipa": "jet",
+     "nghia": "",
+     "unit": 0
+    },
+    {
+     "tu": "you",
+     "ipa": "juː",
+     "nghia": "",
+     "unit": 0
     }
    ],
    "cap_toi_thieu": [
@@ -2721,1516 +4103,5 @@
     }
    ]
   }
- ],
- "trong_am": {
-  "quy_tac": [
-   {
-    "ma": "duoi_tion",
-    "ten": "Đuôi -tion / -sion / -cian",
-    "mo_ta": "Trọng âm rơi vào âm tiết NGAY TRƯỚC đuôi. Quy tắc chắc nhất trong tiếng Anh, gần như không có ngoại lệ.",
-    "vi_tri": "truoc_duoi",
-    "hau_to": [
-     "tion",
-     "sion",
-     "cian"
-    ],
-    "vi_du": [
-     {
-      "tu": "acquisition",
-      "ipa": "ˌækwəˈzɪʃən",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "action",
-      "ipa": "ˈækʃən",
-      "nghia": "",
-      "unit": 16,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "addition",
-      "ipa": "əˈdɪʃən",
-      "nghia": "",
-      "unit": 20,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "administration",
-      "ipa": "æˌdmɪnɪˈstreɪʃən",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 5,
-      "trong_am": 4,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "agitation",
-      "ipa": "ˌædʒəˈteɪʃən",
-      "nghia": "",
-      "unit": 41,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "alteration",
-      "ipa": "ˌɔːltəˈreɪʃən",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "ma": "duoi_ic",
-    "ten": "Đuôi -ic / -ical",
-    "mo_ta": "Cũng nhấn vào âm tiết ngay trước đuôi.",
-    "vi_tri": "truoc_duoi",
-    "hau_to": [
-     "ic",
-     "ical"
-    ],
-    "vi_du": [
-     {
-      "tu": "academic",
-      "ipa": "ˌækəˈdemɪk",
-      "nghia": "thuộc học thuật",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "authentic",
-      "ipa": "ɔːˈθentɪk",
-      "nghia": "chân thực, nguyên bản",
-      "unit": 39,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "basic",
-      "ipa": "ˈbeɪsɪk",
-      "nghia": "",
-      "unit": 10,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "chaotic",
-      "ipa": "keɪˈɑːtɪk",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "chronic",
-      "ipa": "ˈkrɑːnɪk",
-      "nghia": "",
-      "unit": 35,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "clinic",
-      "ipa": "ˈklɪnɪk",
-      "nghia": "",
-      "unit": 20,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "ma": "duoi_ity",
-    "ten": "Đuôi -ity / -ify / -logy / -graphy",
-    "mo_ta": "Nhấn vào âm tiết thứ BA TÍNH TỪ CUỐI lên.",
-    "vi_tri": "ba_tu_cuoi",
-    "hau_to": [
-     "ity",
-     "ify",
-     "logy",
-     "graphy"
-    ],
-    "vi_du": [
-     {
-      "tu": "ability",
-      "ipa": "əˈbɪləˌtiː",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accessibility",
-      "ipa": "ˌæksesəˈbɪlɪtiː",
-      "nghia": "",
-      "unit": 38,
-      "so_am_tiet": 6,
-      "trong_am": 4,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "activity",
-      "ipa": "æˈktɪvətiː",
-      "nghia": "",
-      "unit": 5,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "availability",
-      "ipa": "əˌveɪləˈbɪlətiː",
-      "nghia": "",
-      "unit": 50,
-      "so_am_tiet": 6,
-      "trong_am": 4,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "biodiversity",
-      "ipa": "ˌbaɪəʊdaɪˈvɜːsəti",
-      "nghia": "đa dạng sinh học",
-      "unit": 33,
-      "so_am_tiet": 6,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "capability",
-      "ipa": "ˌkeɪpəˈbɪlətiː",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 5,
-      "trong_am": 3,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "ma": "duoi_ee",
-    "ten": "Đuôi -ee / -eer / -ese / -ette",
-    "mo_ta": "Hiếm gặp: nhấn vào CHÍNH cái đuôi. Đây là nhóm ngoại lệ ngược hẳn thói quen nhấn đầu từ.",
-    "vi_tri": "cuoi",
-    "hau_to": [
-     "ee",
-     "eer",
-     "ese",
-     "ette"
-    ],
-    "vi_du": [
-     {
-      "tu": "agree",
-      "ipa": "əˈɡriː",
-      "nghia": "",
-      "unit": 7,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "baguette",
-      "ipa": "ˌbæˈɡet",
-      "nghia": "",
-      "unit": 30,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "career",
-      "ipa": "kəˈrɪə",
-      "nghia": "",
-      "unit": 25,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "degree",
-      "ipa": "dɪˈɡriː",
-      "nghia": "độ",
-      "unit": 14,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "disagree",
-      "ipa": "dɪsəˈɡriː",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "engineer",
-      "ipa": "ˌendʒɪˈnɪə",
-      "nghia": "kỹ sư",
-      "unit": 5,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     }
-    ]
-   },
-   {
-    "ma": "hai_am_tiet",
-    "ten": "Từ hai âm tiết",
-    "mo_ta": "Danh từ và tính từ thường nhấn âm ĐẦU; động từ thường nhấn âm SAU. Đây là xu hướng, không phải luật cứng.",
-    "vi_tri": "tu_do",
-    "hau_to": [],
-    "vi_du": [
-     {
-      "tu": "able",
-      "ipa": "ˈeɪbəl",
-      "nghia": "",
-      "unit": 5,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "about",
-      "ipa": "əˈbaʊt",
-      "nghia": "khoảng",
-      "unit": 3,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "above",
-      "ipa": "əˈbʌv",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "abroad",
-      "ipa": "əˈbrɔːd",
-      "nghia": "ở nước ngoài",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "absence",
-      "ipa": "ˈæbsəns",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "absent",
-      "ipa": "ˈæbsənt",
-      "nghia": "",
-      "unit": 26,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     }
-    ]
-   }
-  ],
-  "bang_luyen": [
-   {
-    "so_am_tiet": 2,
-    "trong_am": 1,
-    "tu": [
-     {
-      "tu": "able",
-      "ipa": "ˈeɪbəl",
-      "nghia": "",
-      "unit": 5,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "absence",
-      "ipa": "ˈæbsəns",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "absent",
-      "ipa": "ˈæbsənt",
-      "nghia": "",
-      "unit": 26,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accents",
-      "ipa": "ˈæksents",
-      "nghia": "",
-      "unit": 47,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "access",
-      "ipa": "ˈæˌkses",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "action",
-      "ipa": "ˈækʃən",
-      "nghia": "",
-      "unit": 16,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "active",
-      "ipa": "ˈæktɪv",
-      "nghia": "",
-      "unit": 7,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "added",
-      "ipa": "ˈædəd",
-      "nghia": "",
-      "unit": 38,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "address",
-      "ipa": "ˈæˌdres",
-      "nghia": "",
-      "unit": 16,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adverb",
-      "ipa": "ˈædvəb",
-      "nghia": "",
-      "unit": 43,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "after",
-      "ipa": "ˈæftə",
-      "nghia": "",
-      "unit": 4,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "agent",
-      "ipa": "ˈeɪdʒənt",
-      "nghia": "",
-      "unit": 21,
-      "so_am_tiet": 2,
-      "trong_am": 1,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 2,
-    "trong_am": 2,
-    "tu": [
-     {
-      "tu": "about",
-      "ipa": "əˈbaʊt",
-      "nghia": "khoảng",
-      "unit": 3,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "above",
-      "ipa": "əˈbʌv",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "abroad",
-      "ipa": "əˈbrɔːd",
-      "nghia": "ở nước ngoài",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "abstract",
-      "ipa": "æbˈstrækt",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accent",
-      "ipa": "əˈksent",
-      "nghia": "",
-      "unit": 47,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accept",
-      "ipa": "æˈksept",
-      "nghia": "",
-      "unit": 17,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "account",
-      "ipa": "əˈkaʊnt",
-      "nghia": "tài khoản",
-      "unit": 28,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "achieve",
-      "ipa": "əˈtʃiːv",
-      "nghia": "đạt được",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "achieved",
-      "ipa": "əˈtʃiːvd",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "across",
-      "ipa": "əˈkrɔːs",
-      "nghia": "",
-      "unit": 2,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acute",
-      "ipa": "əˈkjuːt",
-      "nghia": "",
-      "unit": 35,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adapt",
-      "ipa": "əˈdæpt",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 2,
-      "trong_am": 2,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 3,
-    "trong_am": 1,
-    "tu": [
-     {
-      "tu": "absolute",
-      "ipa": "ˈæbsəˌluːt",
-      "nghia": "",
-      "unit": 45,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accident",
-      "ipa": "ˈæksədənt",
-      "nghia": "",
-      "unit": 29,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accurate",
-      "ipa": "ˈækjərət",
-      "nghia": "",
-      "unit": 37,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "actively",
-      "ipa": "ˈæktɪvliː",
-      "nghia": "",
-      "unit": 33,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "actual",
-      "ipa": "ˈæktʃəwəl",
-      "nghia": "",
-      "unit": 48,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adequate",
-      "ipa": "ˈædəkwət",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adjective",
-      "ipa": "ˈædʒɪktɪv",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "advocate",
-      "ipa": "ˈædvəkət",
-      "nghia": "",
-      "unit": 33,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "afterward",
-      "ipa": "ˈæftəwəd",
-      "nghia": "",
-      "unit": 41,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "allocate",
-      "ipa": "ˈæləˌkeɪt",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "analysts",
-      "ipa": "ˈænəlɪsts",
-      "nghia": "",
-      "unit": 37,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "analyze",
-      "ipa": "ˈænəˌlaɪz",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 3,
-      "trong_am": 1,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 3,
-    "trong_am": 2,
-    "tu": [
-     {
-      "tu": "abandon",
-      "ipa": "əˈbændən",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accessible",
-      "ipa": "əkˈsesəbl",
-      "nghia": "dễ tiếp cận",
-      "unit": 34,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "accomplished",
-      "ipa": "əˈkɑːmplɪʃt",
-      "nghia": "",
-      "unit": 48,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "according",
-      "ipa": "əˈkɔːdɪŋ",
-      "nghia": "",
-      "unit": 35,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accountant",
-      "ipa": "əˈkaʊntənt",
-      "nghia": "kế toán",
-      "unit": 5,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "accusing",
-      "ipa": "əˈkjuːzɪŋ",
-      "nghia": "",
-      "unit": 37,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "achievement",
-      "ipa": "əˈtʃiːvmənt",
-      "nghia": "",
-      "unit": 23,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "achieving",
-      "ipa": "əˈtʃiːvɪŋ",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acknowledge",
-      "ipa": "æˈknɑːlɪdʒ",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acquaintance",
-      "ipa": "əˈkweɪntəns",
-      "nghia": "",
-      "unit": 43,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acquire",
-      "ipa": "əˈkwaɪə",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acquiring",
-      "ipa": "əˈkwaɪrɪŋ",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 3,
-      "trong_am": 2,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 3,
-    "trong_am": 3,
-    "tu": [
-     {
-      "tu": "afternoon",
-      "ipa": "ˌɑːftəˈnuːn",
-      "nghia": "buổi chiều",
-      "unit": 1,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "anymore",
-      "ipa": "ˌeniːˈmɔː",
-      "nghia": "",
-      "unit": 21,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "automation",
-      "ipa": "ˌɔːtəˈmeɪʃn",
-      "nghia": "tự động hóa",
-      "unit": 34,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "coexist",
-      "ipa": "ˌkəʊəˈɡzɪst",
-      "nghia": "",
-      "unit": 45,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "comprehends",
-      "ipa": "ˌkɑːmpriːˈhendz",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "conservation",
-      "ipa": "ˌkɒnsəˈveɪʃn",
-      "nghia": "bảo tồn",
-      "unit": 33,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "contradicts",
-      "ipa": "ˌkɑːntrəˈdɪkts",
-      "nghia": "",
-      "unit": 48,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "disagree",
-      "ipa": "dɪsəˈɡriː",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "disappear",
-      "ipa": "ˌdɪsəˈpɪə",
-      "nghia": "",
-      "unit": 14,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "disappeared",
-      "ipa": "ˌdɪsəˈpɪəd",
-      "nghia": "",
-      "unit": 14,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "disappears",
-      "ipa": "ˌdɪsəˈpɪəz",
-      "nghia": "",
-      "unit": 14,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "engineer",
-      "ipa": "ˌendʒɪˈnɪə",
-      "nghia": "kỹ sư",
-      "unit": 5,
-      "so_am_tiet": 3,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 4,
-    "trong_am": 1,
-    "tu": [
-     {
-      "tu": "accuracy",
-      "ipa": "ˈækjərəsiː",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "actually",
-      "ipa": "ˈæˌktʃuːəliː",
-      "nghia": "",
-      "unit": 5,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adequately",
-      "ipa": "ˈædəkwətliː",
-      "nghia": "",
-      "unit": 50,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "advertisers",
-      "ipa": "ˈædvəˌtaɪzəz",
-      "nghia": "",
-      "unit": 37,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "agriculture",
-      "ipa": "ˈæɡrɪˌkʌltʃə",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "allocated",
-      "ipa": "ˈæləˌkeɪtɪd",
-      "nghia": "",
-      "unit": 41,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "architecture",
-      "ipa": "ˈɑːkəˌtektʃə",
-      "nghia": "",
-      "unit": 50,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "arguably",
-      "ipa": "ˈɑːɡjuːəbliː",
-      "nghia": "",
-      "unit": 45,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "calculated",
-      "ipa": "ˈkælkjəˌleɪtɪd",
-      "nghia": "",
-      "unit": 26,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "categories",
-      "ipa": "ˈkætəˌɡɔːriːz",
-      "nghia": "",
-      "unit": 35,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "circumstances",
-      "ipa": "ˈsɜːkəˌmstænsəz",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "comfortable",
-      "ipa": "ˈkʌmfətəbəl",
-      "nghia": "",
-      "unit": 8,
-      "so_am_tiet": 4,
-      "trong_am": 1,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 4,
-    "trong_am": 2,
-    "tu": [
-     {
-      "tu": "abilities",
-      "ipa": "əˈbɪləˌtiːz",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "ability",
-      "ipa": "əˈbɪləˌtiː",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accommodate",
-      "ipa": "əˈkɑːməˌdeɪt",
-      "nghia": "",
-      "unit": 39,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accomplishment",
-      "ipa": "əˈkɑːmplɪʃmənt",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "accountable",
-      "ipa": "əˈkaʊntəbəl",
-      "nghia": "",
-      "unit": 49,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "acknowledges",
-      "ipa": "æˈknɑːlɪdʒɪz",
-      "nghia": "",
-      "unit": 39,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "activities",
-      "ipa": "æˈktɪvətiːz",
-      "nghia": "",
-      "unit": 29,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "activity",
-      "ipa": "æˈktɪvətiː",
-      "nghia": "",
-      "unit": 5,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "adaptable",
-      "ipa": "əˈdæptəbəl",
-      "nghia": "",
-      "unit": 47,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "advantages",
-      "ipa": "æˈdvæntɪdʒɪz",
-      "nghia": "",
-      "unit": 36,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "advertisement",
-      "ipa": "ədˈvɜːtɪsmənt",
-      "nghia": "quảng cáo",
-      "unit": 37,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "affordable",
-      "ipa": "əˈfɔːdəbəl",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 2,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 4,
-    "trong_am": 3,
-    "tu": [
-     {
-      "tu": "absolutely",
-      "ipa": "ˌæbsəˈluːtliː",
-      "nghia": "",
-      "unit": 18,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "academic",
-      "ipa": "ˌækəˈdemɪk",
-      "nghia": "thuộc học thuật",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "acquisition",
-      "ipa": "ˌækwəˈzɪʃən",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "agitation",
-      "ipa": "ˌædʒəˈteɪʃən",
-      "nghia": "",
-      "unit": 41,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "alteration",
-      "ipa": "ˌɔːltəˈreɪʃən",
-      "nghia": "",
-      "unit": 42,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "application",
-      "ipa": "ˌæpləˈkeɪʃən",
-      "nghia": "",
-      "unit": 22,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "apprehension",
-      "ipa": "ˌæprɪˈhenʃən",
-      "nghia": "",
-      "unit": 45,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "artificial",
-      "ipa": "ˌɑːtəˈfɪʃəl",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "beneficial",
-      "ipa": "ˌbenəˈfɪʃəl",
-      "nghia": "",
-      "unit": 50,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "collocation",
-      "ipa": "kɑːləˈkeɪʃən",
-      "nghia": "",
-      "unit": 50,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "combination",
-      "ipa": "ˌkɑːmbəˈneɪʃən",
-      "nghia": "",
-      "unit": 32,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "complications",
-      "ipa": "ˌkɑːmpləˈkeɪʃənz",
-      "nghia": "",
-      "unit": 45,
-      "so_am_tiet": 4,
-      "trong_am": 3,
-      "nguon": "cmu"
-     }
-    ]
-   },
-   {
-    "so_am_tiet": 4,
-    "trong_am": 4,
-    "tu": [
-     {
-      "tu": "accommodation",
-      "ipa": "əˌkɒməˈdeɪʃn",
-      "nghia": "chỗ ở",
-      "unit": 21,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "deforestation",
-      "ipa": "ˌdiːfɒrɪˈsteɪʃn",
-      "nghia": "phá rừng",
-      "unit": 33,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "globalisation",
-      "ipa": "ˌɡləʊbəlaɪˈzeɪʃn",
-      "nghia": "toàn cầu hóa",
-      "unit": 39,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "nevertheless",
-      "ipa": "ˌnevəðəˈles",
-      "nghia": "",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "cmu"
-     },
-     {
-      "tu": "qualification",
-      "ipa": "ˌkwɒlɪfɪˈkeɪʃn",
-      "nghia": "bằng cấp",
-      "unit": 31,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "urbanisation",
-      "ipa": "ˌɜːbənaɪˈzeɪʃn",
-      "nghia": "đô thị hóa",
-      "unit": 36,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "giao_trinh"
-     },
-     {
-      "tu": "vietnamese",
-      "ipa": "viːˌetnɑːˈmiːs",
-      "nghia": "",
-      "unit": 1,
-      "so_am_tiet": 4,
-      "trong_am": 4,
-      "nguon": "cmu"
-     }
-    ]
-   }
-  ]
- },
- "noi_am": {
-  "quy_tac": [
-   {
-    "ma": "phu_nguyen",
-    "ten": "Phụ âm cuối + nguyên âm đầu",
-    "mo_ta": "Phụ âm cuối của từ trước dính sang nguyên âm đầu của từ sau, đọc như một từ. Đây là kiểu nối hay gặp nhất.",
-    "bay": "Người Việt tách rời từng từ vì tiếng Việt là ngôn ngữ đơn âm, mỗi tiếng một khối. Không nối thì câu nghe rời rạc như đọc danh sách.",
-    "vi_du": [
-     {
-      "cau": "I am fine, thank you. And you?",
-      "ipa_noi": "aɪ əm faɪn θæŋk‿jə ən‿juː",
-      "tho_noi": "ai-ơm-fain-thangk-yơ-ơn-yu",
-      "unit": 1
-     },
-     {
-      "cau": "No, I am not. I am a student.",
-      "ipa_noi": "nəʊ aɪ əm nɑːt‿aɪ əm‿ə ˈstjuːdnt",
-      "tho_noi": "nâu-ai-ơm-nat-ai-ơm-ơ-styudnt",
-      "unit": 1
-     },
-     {
-      "cau": "Really? How do you spell your name?",
-      "ipa_noi": "ˈrɪliː haʊ də jə spel‿jə neɪm",
-      "tho_noi": "rili-hao-dơ-yơ-spel-yơ-nâym",
-      "unit": 1
-     },
-     {
-      "cau": "A - N - N - A. Anna.",
-      "ipa_noi": "ə en‿en‿ə ˈænə",
-      "tho_noi": "ơ-en-en-ơ-anơ",
-      "unit": 1
-     },
-     {
-      "cau": "Thank you. See you tomorrow!",
-      "ipa_noi": "θæŋk‿jə siː jə təˈmɑːˌrəʊ",
-      "tho_noi": "thangk-yơ-si-yơ-tơmarâu",
-      "unit": 1
-     },
-     {
-      "cau": "See you. Have a nice day!",
-      "ipa_noi": "siː jə həv‿ə naɪs deɪ",
-      "tho_noi": "si-yơ-hơv-ơ-nais-dây",
-      "unit": 1
-     },
-     {
-      "cau": "Yes, it is. Please come in.",
-      "ipa_noi": "jes‿ɪt‿ɪz pliːz kʌm‿ɪn",
-      "tho_noi": "yes-it-iz-pliz-kâm-in",
-      "unit": 1
-     },
-     {
-      "cau": "Thank you. I am Lan. I am a new student.",
-      "ipa_noi": "θæŋk‿jə aɪ əm læn‿aɪ əm‿ə nuː ˈstjuːdnt",
-      "tho_noi": "thangk-yơ-ai-ơm-lan-ai-ơm-ơ-nu-styudnt",
-      "unit": 1
-     }
-    ]
-   },
-   {
-    "ma": "t_j",
-    "ten": "/t/ + /j/ → /tʃ/",
-    "mo_ta": "Âm /t/ gặp /j/ (chữ y) biến thành /tʃ/: meet you → mee-chu.",
-    "bay": "Nghe người bản ngữ nói 'mee-chu' rồi tưởng họ dùng từ khác.",
-    "vi_du": [
-     {
-      "cau": "Nice to meet you.",
-      "ipa_noi": "naɪs tə miː‿tʃuː",
-      "tho_noi": "nais-tơ-mi-chu",
-      "unit": 1
-     },
-     {
-      "cau": "Nice to meet you too. Where are you from?",
-      "ipa_noi": "naɪs tə miː‿tʃə tuː weə ə jə frɒm",
-      "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
-      "unit": 1
-     },
-     {
-      "cau": "Nice to meet you, Mr. Brown.",
-      "ipa_noi": "naɪs tə miː‿tʃə ˈmɪstə braʊn",
-      "tho_noi": "nais-tơ-mi-chơ-mistơ-braon",
-      "unit": 1
-     },
-     {
-      "cau": "Nice to meet you too. Where are you from?",
-      "ipa_noi": "naɪs tə miː‿tʃə tuː weə ə jə frɒm",
-      "tho_noi": "nais-tơ-mi-chơ-tu-we-ơ-yơ-from",
-      "unit": 1
-     },
-     {
-      "cau": "I am Nam. Nice to meet you, Lan.",
-      "ipa_noi": "aɪ əm næm naɪs tə miː‿tʃə læn",
-      "tho_noi": "ai-ơm-nam-nais-tơ-mi-chơ-lan",
-      "unit": 1
-     },
-     {
-      "cau": "Is that your friend over there?",
-      "ipa_noi": "ɪz ðə‿tʃə frend ˈəʊvə ðeə",
-      "tho_noi": "iz-dhơ-chơ-frend-âuvơ-dhe",
-      "unit": 1
-     }
-    ]
-   },
-   {
-    "ma": "d_j",
-    "ten": "/d/ + /j/ → /dʒ/",
-    "mo_ta": "Tương tự: would you → wou-ju, did you → di-ju.",
-    "bay": "Cùng lý do trên.",
-    "vi_du": [
-     {
-      "cau": "You look tired. What time did you start today?",
-      "ipa_noi": "jə lʊk ˈtaɪəd‿wʌt taɪm dɪ‿dʒə stɑːt təˈdeɪ",
-      "tho_noi": "yơ-luk-taiơd-wât-taim-di-jơ-stat-tơdây",
-      "unit": 9
-     },
-     {
-      "cau": "Would you like to stay there long?",
-      "ipa_noi": "wə‿dʒə laɪk tə steɪ ðə lɔːŋ",
-      "tho_noi": "wơ-jơ-laik-tơ-stây-dhơ-long",
-      "unit": 10
-     },
-     {
-      "cau": "What would you like to drink?",
-      "ipa_noi": "wʌt‿wə‿dʒə laɪk tə drɪŋk",
-      "tho_noi": "wât-wơ-jơ-laik-tơ-dringk",
-      "unit": 11
-     },
-     {
-      "cau": "Would you like anything to drink?",
-      "ipa_noi": "wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk",
-      "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
-      "unit": 11
-     },
-     {
-      "cau": "Would you like anything to drink?",
-      "ipa_noi": "wə‿dʒə laɪk ˈeniːˌθɪŋ tə drɪŋk",
-      "tho_noi": "wơ-jơ-laik-enithing-tơ-dringk",
-      "unit": 11
-     },
-     {
-      "cau": "Of course. How much rice would you like?",
-      "ipa_noi": "əv kɔːs haʊ mʌtʃ raɪs‿wə‿dʒə laɪk",
-      "tho_noi": "ơv-kos-hao-mâch-rais-wơ-jơ-laik",
-      "unit": 11
-     }
-    ]
-   },
-   {
-    "ma": "dang_yeu",
-    "ten": "Dạng yếu của từ chức năng",
-    "mo_ta": "to, of, and, for, are, was… trong câu nói nhanh bị rút thành schwa: to → /tə/, of → /əv/, and → /ən/.",
-    "bay": "Đọc rõ 'tu', 'ov', 'ended' cho mọi từ chức năng là nguyên nhân lớn nhất khiến câu nghe cứng và chậm.",
-    "vi_du": [
-     {
-      "cau": "Thank you. I am happy to be here.",
-      "ipa_noi": "θæŋk‿jə aɪ əm ˈhæpiː tə biː hɪə",
-      "tho_noi": "thangk-yơ-ai-ơm-hapi-tơ-bi-hia",
-      "unit": 1
-     },
-     {
-      "cau": "It is a nice afternoon to meet.",
-      "ipa_noi": "ɪt‿ɪz‿ə naɪs ˌɑːftəˈnuːn tə miːt",
-      "tho_noi": "it-iz-ơ-nais-aftơnun-tơ-mit",
-      "unit": 1
-     },
-     {
-      "cau": "That is nice. I want to meet them.",
-      "ipa_noi": "ðət‿ɪz naɪs‿aɪ wɑːnt tə miːt ðem",
-      "tho_noi": "dhơt-iz-nais-ai-want-tơ-mit-dhem",
-      "unit": 2
-     },
-     {
-      "cau": "Yes, let me introduce you to my father.",
-      "ipa_noi": "jes let miː ˌɪntrəˈduːs‿jə tə maɪ ˈfɑːðə",
-      "tho_noi": "yes-let-mi-intrơdus-yơ-tơ-mai-fadhơ",
-      "unit": 2
-     },
-     {
-      "cau": "Hello, it is nice to meet you.",
-      "ipa_noi": "həˈləʊ ɪt‿ɪz naɪs tə miː‿tʃuː",
-      "tho_noi": "hơlâu-it-iz-nais-tơ-mi-chu",
-      "unit": 2
-     },
-     {
-      "cau": "It is two dollars back to you.",
-      "ipa_noi": "ɪt‿ɪz tuː ˈdɑːləz bæk tə juː",
-      "tho_noi": "it-iz-tu-dalơz-bak-tơ-yu",
-      "unit": 3
-     }
-    ]
-   }
-  ]
- }
+ ]
 }

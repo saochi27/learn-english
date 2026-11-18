@@ -357,8 +357,45 @@ const nutTocDo = () => `<button class="nut-tron phu2 ct-toc" onclick="xoayTocDo(
 /* Không có gì để đọc thì KHÔNG vẽ nút. Trước đây nút vẫn hiện ở đề bài viết
    bằng tiếng Việt, bấm vào là giọng Anh đánh vần ra âm vô nghĩa. */
 const nutLoa = t => (String(t || "").trim()
-  ? `<button class="loa" onclick="doc(${JSON.stringify(t).replace(/"/g, "&quot;")})" title="Nghe">🔊</button>`
+  ? `<button class="loa" onclick="ngheMot(${JSON.stringify(t).replace(/"/g, "&quot;")})" title="Nghe">🔊</button>`
   : "");
+
+/* Nghe MỘT câu/từ do người dùng bấm: dừng hẳn mọi thứ đang chạy rồi mới đọc.
+   doc() thì không được làm vậy — chính các vòng phát gọi nó. */
+function ngheMot(t) {
+  dungHet();
+  doc(t);
+}
+
+/* Tắt tiếng VÀ huỷ mọi vòng phát đang chạy.
+
+   Khác dungTieng() ở chỗ đó: dungTieng chỉ tắt tiếng và được chính các vòng
+   gọi giữa hai câu, nên nó KHÔNG được phép huỷ vòng. Hàm này thì huỷ.
+
+   Bốn vòng phát độc lập, mỗi vòng một bộ hẹn giờ riêng:
+     Mẫu câu (phienCau) · đọc tách (phienTach)
+     chuỗi nghe âm (phienChuoiTu) · chạy liên tục bảng âm (BA.phien)
+   Thiếu một cái là còn một nguồn tiếng chạy tiếp bên dưới.
+
+   Gọi ở MỌI nút phát do người dùng bấm. Sau khi dừng thì không tự chạy lại —
+   muốn nghe tiếp phải bấm, để không bao giờ có hai tiếng cùng lúc. */
+function dungHet() {
+  phienCau++;
+  phienTach++;
+  phienChuoiTu++;
+  if (typeof BA === "object") { BA.phien++; BA.dang = false; }
+  clearTimeout(hen);
+  dungPhatBai = true;
+  baiDangPhat = null;
+  if (S.phatMauCau) S.phatMauCau.dang = false;
+  dungTieng();
+  try { dongBoNutPhatBai(); } catch (e) { /* chưa vẽ màn nào */ }
+  try { capNhatNutPhat_(); } catch (e) { /* nt */ }
+  try { veThanhBangAm(); } catch (e) { /* nt */ }
+  try { veBarPhat(); } catch (e) { /* nt */ }
+  xoaDangDoc();
+  $$(".o-am").forEach(x => x.classList.remove("dang-doc"));
+}
 
 /* ================= hiển thị câu (chạm từng từ) ================= */
 /* Bọc từng từ vào <span> để chạm tra nghĩa.
@@ -939,10 +976,9 @@ function chonCau(i) {
   const p = S.phatMauCau;
   /* Phải bỏ cả chuỗi đọc tách đang dở VÀ tắt tiếng đang phát. Thiếu một
      trong hai thì câu cũ đọc tiếp chồng lên câu vừa chọn. */
-  clearTimeout(hen);
-  phienCau++;
-  phienTach++;
-  dungTieng();
+  const dangChay = p.dang;
+  dungHet();
+  p.dang = dangChay;           // bấm chọn câu KHÔNG tắt chế độ đang phát
   p.i = i;
   hienCauHienTai();
   if (p.dang) chayCau(); else doc(p.danhSach[i].en);
@@ -1084,7 +1120,9 @@ function veBarPhat() {
 
 function batTatPhat() {
   const p = S.phatMauCau;
-  p.dang = !p.dang;
+  const bat = !p.dang;               // ý định TRƯỚC khi dungHet() tắt cờ
+  dungHet();
+  p.dang = bat;
   capNhatNutPhat_();
   if (p.dang) {
     p.unitDangPhat = S.unit;      // bar can biet dang phat unit nao
@@ -1273,10 +1311,9 @@ function chayCau() {
 
 function nhayCau(d) {
   const p = S.phatMauCau;
-  phienTach++;                 // bỏ chuỗi đọc tách đang dở của câu cũ
-  phienCau++;                  // và vòng phát của câu cũ
-  clearTimeout(hen);
-  dungTieng();
+  const dangChay = p.dang;
+  dungHet();                   // bỏ mọi vòng đang chạy, kể cả đọc tách
+  p.dang = dangChay;
   p.i = (p.i + d + p.danhSach.length) % p.danhSach.length;
   hienCauHienTai();
   if (p.dang) chayCau();
@@ -1633,6 +1670,7 @@ function dongBoNutPhatBai() {
 function phatCaBai(tienTo) {
   const cac = $$(`[id^="${tienTo}"]`);
   if (!cac.length) return;
+  dungHet();                 // không để vòng phát khác chạy chồng lên
   dungPhatBai = false;
   baiDangPhat = tienTo;
   dongBoNutPhatBai();
@@ -4739,6 +4777,7 @@ function veIPA() {
         <button class="${locIPA === "uu_tien" ? "chinh" : "phu"}" onclick="doiLocIPA('uu_tien')">
           Âm hay sai (18)</button>
       </div>
+      <div class="dieu-khien" id="thanh-bang-am" style="justify-content:flex-start"></div>
     </div>` + thanhThePhatAm();
 
   d.nhom.forEach(nh => {
@@ -4747,6 +4786,7 @@ function veIPA() {
     h += `<h3>${esc(nh.ten)} <span class="mo">· ${trong.length} âm</span></h3>
       <div class="luoi-am">` + trong.map(a => `
         <button class="o-am ${amDaHoc.has(a.ipa) ? "xong" : ""} ${a.uu_tien === 1 ? "hay-sai" : ""}"
+          data-am="${esc(a.ipa)}"
           onclick="moChiTietAm(${JSON.stringify(a.ipa).replace(/"/g, "&quot;")})">
           <span class="ky-hieu">/${esc(a.ipa)}/</span>
           <span class="tho">${esc(a.tho)}</span>
@@ -4755,7 +4795,7 @@ function veIPA() {
                 stopPropagation để bấm loa KHÔNG mở luôn màn chi tiết — đúng
                 cái bẫy nổi bọt đã gặp ở chỗ chạm vào từ. */""}
           <span class="loa-am" role="button" tabindex="0"
-            title="Nghe ${tuCuaAm(a).join(", ")}"
+            title="Nghe âm rồi ${tuCuaAm(a).slice(1).join(", ")}"
             aria-label="Nghe âm này"
             onclick="event.stopPropagation(); ngheChuoiTu(${thamSo(tuCuaAm(a))})"
             >🔊</span>
@@ -4764,6 +4804,115 @@ function veIPA() {
   });
 
   $("#ipa").innerHTML = h;
+  veThanhBangAm();
+}
+
+/* ================= CHẠY LIÊN TỤC CẢ BẢNG ÂM =================
+   Nghe từng âm thì phải bấm 44 lần. Thanh này chạy một mạch: âm -> 10 từ ví
+   dụ -> âm kế tiếp, có khoảng lặng sau mỗi từ để nhại theo.
+
+   Chạy theo ĐÚNG danh sách đang hiện: lọc "Âm hay sai (18)" thì chỉ chạy 18
+   âm đó — người học lọc ra để luyện thì không có lý do gì bắt nghe cả 44. */
+const BA = { dang: false, i: 0, j: -1, phien: 0, ds: [] };
+
+function dsAmDangHien() {
+  return (duLieuIPA?.am || []).filter(a => locIPA !== "uu_tien" || a.uu_tien === 1);
+}
+
+function veThanhBangAm() {
+  const o = $("#thanh-bang-am");
+  if (!o) return;
+  o.innerHTML = `
+    <button class="nut-tron to" onclick="phatBangAm()"
+      title="${BA.dang ? "Dừng" : "Nghe liên tục cả bảng"}"
+      aria-label="${BA.dang ? "Dừng" : "Nghe liên tục"}">${BA.dang ? "■" : "▶"}</button>
+    <button class="nut-tron phu2" onclick="nhayAm(-1)" title="Âm trước" aria-label="Âm trước">⏮</button>
+    <button class="nut-tron phu2" onclick="nhayAm(1)" title="Âm sau" aria-label="Âm sau">⏭</button>
+    ${nutTocDo()}
+    <span class="mo" id="dang-doc-am">${BA.dang ? moTaDangDoc() : "Nghe liên tục: âm rồi 10 từ ví dụ, có khoảng lặng để nhại theo"}</span>`;
+}
+
+function moTaDangDoc() {
+  const a = BA.ds[BA.i];
+  if (!a) return "";
+  const tu = BA.j < 0 ? "âm rời" : (a.vi_du[BA.j]?.tu || "");
+  return `/${a.ipa}/ — ${tu} · ${BA.i + 1}/${BA.ds.length}`;
+}
+
+function toSangOAm() {
+  $$(".o-am").forEach(x => x.classList.remove("dang-doc"));
+  const a = BA.ds[BA.i];
+  if (!a) return;
+  const o = $$(".o-am").find(x => x.dataset.am === a.ipa);
+  if (o) {
+    o.classList.add("dang-doc");
+    o.scrollIntoView({ block: "center", behavior: "smooth" });
+  }
+}
+
+function phatBangAm() {
+  const bat = !BA.dang;              // lấy ý định TRƯỚC khi dungHet() tắt cờ
+  dungHet();
+  BA.dang = bat;
+  if (!BA.dang) {
+    $$(".o-am").forEach(x => x.classList.remove("dang-doc"));
+    veThanhBangAm();
+    thoiGiuManHinh();
+    return;
+  }
+  BA.ds = dsAmDangHien();
+  if (!BA.ds.length) { BA.dang = false; return veThanhBangAm(); }
+  if (BA.i >= BA.ds.length) BA.i = 0;
+  BA.j = -1;
+  giuManHinhSang();
+  chayBangAm();
+}
+
+/* Một bước = một tiếng. j = -1 là chính cái âm, j >= 0 là từ ví dụ thứ j. */
+function chayBangAm() {
+  const phien = BA.phien;
+  const con = () => BA.dang && phien === BA.phien;
+  if (!con()) return;
+
+  const a = BA.ds[BA.i];
+  if (!a) { BA.dang = false; return veThanhBangAm(); }
+  toSangOAm();
+  veThanhBangAm();
+
+  const van = BA.j < 0 ? a.doc_am : (a.vi_du[BA.j]?.tu || "");
+  const buocKe = () => {
+    if (!con()) return;
+    BA.j++;
+    if (BA.j >= Math.min(10, a.vi_du.length)) {
+      BA.j = -1;
+      BA.i = (BA.i + 1) % BA.ds.length;
+    }
+    chayBangAm();
+  };
+
+  if (!van) return buocKe();
+
+  /* Khoảng lặng để NHẠI THEO: bằng đúng độ dài vừa nghe, tối thiểu 0,9 giây.
+     Ngắn hơn thì chưa kịp mở miệng, dài hơn thì sốt ruột. */
+  let daQua = false;
+  const qua = (giay) => {
+    if (daQua || !con()) return;
+    daQua = true;
+    hen = setTimeout(buocKe, Math.max(900, (giay || 1) * 1000) / (S.tocDo || 1));
+  };
+  const batDau = Date.now();
+  const canh = setTimeout(() => qua(1.2), 6000 / (S.tocDo || 1));
+  doc(van, { xong: () => { clearTimeout(canh); qua((Date.now() - batDau) / 1000); } });
+}
+
+function nhayAm(d) {
+  BA.ds = BA.ds.length ? BA.ds : dsAmDangHien();
+  BA.phien++;
+  dungTieng();
+  clearTimeout(hen);
+  BA.i = (BA.i + d + BA.ds.length) % BA.ds.length;
+  BA.j = -1;
+  if (BA.dang) chayBangAm(); else { toSangOAm(); veThanhBangAm(); }
 }
 
 /* Đọc liền một chuỗi từ, dùng cho nút "nghe âm".
@@ -4777,8 +4926,8 @@ function veIPA() {
 let phienChuoiTu = 0;
 
 function ngheChuoiTu(cacTu) {
+  dungHet();
   const phien = ++phienChuoiTu;
-  dungTieng();
   let i = 0;
   const tiep = () => {
     if (phien !== phienChuoiTu || i >= cacTu.length) return;
@@ -4795,8 +4944,13 @@ function ngheChuoiTu(cacTu) {
   tiep();
 }
 
-/* Ba từ là đủ để tai bắt ra phần chung, nhiều hơn thì thành sốt ruột. */
-const tuCuaAm = a => (a.vi_du || []).slice(0, 3).map(v => v.tu);
+/* Nghe một âm = nghe CHÍNH ÂM ĐÓ trước, rồi mới tới từ chứa nó.
+
+   doc_am là cách đánh vần để máy đọc được âm rời ("ih" cho /ɪ/, "sss" cho
+   /s/) — xem bảng DOC_AM trong nguon/sinh_ipa.py. Âm nào chưa có thì bỏ
+   qua, đọc thẳng từ ví dụ, không gãy. */
+const tuCuaAm = (a, n = 3) =>
+  (a.doc_am ? [a.doc_am] : []).concat((a.vi_du || []).slice(0, n).map(v => v.tu));
 const thamSo = x => JSON.stringify(x).replace(/"/g, "&quot;");
 
 function moChiTietAm(ipa) {
@@ -4808,10 +4962,8 @@ function moChiTietAm(ipa) {
   $("#ipa").innerHTML = `
     <div class="dau-chi-tiet">
       <span class="tieu">/${esc(a.ipa)}/ — đọc thô: ${esc(a.tho)}</span>
-      <button class="chinh" style="padding:4px 10px"
-        onclick="ngheChuoiTu(${thamSo(tuCuaAm(a))})"
-        title="Đọc liền ${tuCuaAm(a).join(", ")} — nghe phần chung giữa ba từ"
-        >🔊 Nghe âm này</button>
+      <button class="nut-tron phu2" onclick="ngheChuoiTu(${thamSo(tuCuaAm(a, 10))})"
+        title="Nghe âm này rồi 10 từ ví dụ" aria-label="Nghe âm này">🔊</button>
       ${a.uu_tien === 1 ? `<span class="nhan canh">Người Việt hay sai</span>` : ""}
       <button class="nut-xong" onclick="veIPA()">← Về bảng âm</button>
     </div>
