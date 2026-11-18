@@ -307,6 +307,16 @@ th{background:var(--chinh-nhat); color:var(--chinh); font-weight:600}
 /* ---------- hội thoại ---------- */
 .luot{padding:10px 0; border-bottom:1px dashed var(--vien)}
 .luot:last-child{border-bottom:0}
+/* Loa nhỏ trong ô âm của bảng 44 âm. Đặt ở góc để không đẩy ký hiệu
+   xuống, và vùng bấm rộng hơn hình vẽ cho vừa đầu ngón tay. */
+.loa-am{
+  position:absolute; right:6px; bottom:4px;
+  font-size:13px; line-height:1; opacity:.75; cursor:pointer;
+  padding:4px; border-radius:6px;
+}
+.loa-am:hover{opacity:1; background:var(--chinh-nhat)}
+.o-am{position:relative}
+
 .vai{
   display:inline-block; min-width:26px; font-weight:700; color:var(--chinh);
 }

@@ -4750,12 +4750,54 @@ function veIPA() {
           onclick="moChiTietAm(${JSON.stringify(a.ipa).replace(/"/g, "&quot;")})">
           <span class="ky-hieu">/${esc(a.ipa)}/</span>
           <span class="tho">${esc(a.tho)}</span>
+          ${/* Dùng span chứ không dùng button: thẻ button lồng trong button là
+                HTML sai, trình duyệt tự gỡ ra và nút biến mất.
+                stopPropagation để bấm loa KHÔNG mở luôn màn chi tiết — đúng
+                cái bẫy nổi bọt đã gặp ở chỗ chạm vào từ. */""}
+          <span class="loa-am" role="button" tabindex="0"
+            title="Nghe ${tuCuaAm(a).join(", ")}"
+            aria-label="Nghe âm này"
+            onclick="event.stopPropagation(); ngheChuoiTu(${thamSo(tuCuaAm(a))})"
+            >🔊</span>
           ${amDaHoc.has(a.ipa) ? `<span class="dau-xong">✓</span>` : ""}
         </button>`).join("") + `</div>`;
   });
 
   $("#ipa").innerHTML = h;
 }
+
+/* Đọc liền một chuỗi từ, dùng cho nút "nghe âm".
+
+   Máy không đọc được âm rời (/æ/ đưa thẳng cho bộ đọc chỉ ra tiếng vô nghĩa),
+   nên cách thật để nghe một âm là nghe nó trong vài từ khác nhau liên tiếp.
+
+   Có số phiên như vòng phát Mẫu câu: bấm nút khác giữa chừng thì chuỗi cũ im
+   ngay, không chồng tiếng. Và có hẹn giờ dự phòng vì trên điện thoại tín
+   hiệu "đọc xong" có lúc không về. */
+let phienChuoiTu = 0;
+
+function ngheChuoiTu(cacTu) {
+  const phien = ++phienChuoiTu;
+  dungTieng();
+  let i = 0;
+  const tiep = () => {
+    if (phien !== phienChuoiTu || i >= cacTu.length) return;
+    const tu = cacTu[i++];
+    let daQua = false;
+    const quaTu = () => {
+      if (daQua || phien !== phienChuoiTu) return;
+      daQua = true;
+      setTimeout(tiep, 450);
+    };
+    const canh = setTimeout(quaTu, 2600 / (S.tocDo || 1));
+    doc(tu, { xong: () => { clearTimeout(canh); quaTu(); } });
+  };
+  tiep();
+}
+
+/* Ba từ là đủ để tai bắt ra phần chung, nhiều hơn thì thành sốt ruột. */
+const tuCuaAm = a => (a.vi_du || []).slice(0, 3).map(v => v.tu);
+const thamSo = x => JSON.stringify(x).replace(/"/g, "&quot;");
 
 function moChiTietAm(ipa) {
   const a = duLieuIPA.am.find(x => x.ipa === ipa);
@@ -4766,11 +4808,18 @@ function moChiTietAm(ipa) {
   $("#ipa").innerHTML = `
     <div class="dau-chi-tiet">
       <span class="tieu">/${esc(a.ipa)}/ — đọc thô: ${esc(a.tho)}</span>
+      <button class="chinh" style="padding:4px 10px"
+        onclick="ngheChuoiTu(${thamSo(tuCuaAm(a))})"
+        title="Đọc liền ${tuCuaAm(a).join(", ")} — nghe phần chung giữa ba từ"
+        >🔊 Nghe âm này</button>
       ${a.uu_tien === 1 ? `<span class="nhan canh">Người Việt hay sai</span>` : ""}
       <button class="nut-xong" onclick="veIPA()">← Về bảng âm</button>
     </div>
 
     <div class="the">
+      ${a.cap_toi_thieu?.length ? `<div class="mo" style="margin-bottom:10px">
+        Nghe một âm riêng thì khó nhận ra. Cách chắc hơn: kéo xuống mục
+        <b>Cặp tối thiểu</b> ở cuối trang, nghe hai từ chỉ khác đúng âm này.</div>` : ""}
       <h3 style="margin-top:0">Khẩu hình — môi, hàm, lưỡi</h3>
       <div>${esc(a.khau_hinh || a.mo_ta)}</div>
       <h3>Luồng hơi</h3>
