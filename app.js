@@ -4829,13 +4829,13 @@ function veThanhBangAm() {
     <button class="nut-tron phu2" onclick="nhayAm(-1)" title="Âm trước" aria-label="Âm trước">⏮</button>
     <button class="nut-tron phu2" onclick="nhayAm(1)" title="Âm sau" aria-label="Âm sau">⏭</button>
     ${nutTocDo()}
-    <span class="mo" id="dang-doc-am">${BA.dang ? moTaDangDoc() : "Nghe liên tục: âm rồi 10 từ ví dụ, có khoảng lặng để nhại theo"}</span>`;
+    <span class="mo" id="dang-doc-am">${BA.dang ? moTaDangDoc() : "Nghe liên tục: từ khoá rồi 10 từ ví dụ, có khoảng lặng để nhại theo"}</span>`;
 }
 
 function moTaDangDoc() {
   const a = BA.ds[BA.i];
   if (!a) return "";
-  const tu = BA.j < 0 ? "âm rời" : (a.vi_du[BA.j]?.tu || "");
+  const tu = BA.j < 0 ? (a.doc_am || "") : (a.vi_du[BA.j]?.tu || "");
   return `/${a.ipa}/ — ${tu} · ${BA.i + 1}/${BA.ds.length}`;
 }
 
@@ -4944,7 +4944,11 @@ function ngheChuoiTu(cacTu) {
   tiep();
 }
 
-/* Nghe một âm = nghe CHÍNH ÂM ĐÓ trước, rồi mới tới từ chứa nó.
+/* Nghe một âm = nghe TỪ KHOÁ của âm đó trước, rồi mới tới các từ ví dụ.
+
+   Không đọc âm rời được: bộ đọc máy không nhận ký hiệu IPA, còn ký âm kiểu
+   "ih"/"puh"/"sss" thì nó đọc ra tiếng ậm ừ, rè và sai hẳn âm. Đã thử hai
+   lần. Nên dùng từ khoá đúng chuẩn bảng IPA — /p/ as in pen.
 
    doc_am là cách đánh vần để máy đọc được âm rời ("ih" cho /ɪ/, "sss" cho
    /s/) — xem bảng DOC_AM trong nguon/sinh_ipa.py. Âm nào chưa có thì bỏ
@@ -4961,9 +4965,9 @@ function moChiTietAm(ipa) {
 
   $("#ipa").innerHTML = `
     <div class="dau-chi-tiet">
-      <span class="tieu">/${esc(a.ipa)}/ — đọc thô: ${esc(a.tho)}</span>
+      <span class="tieu">/${esc(a.ipa)}/${a.doc_am ? ` như trong <b>${esc(a.doc_am)}</b>` : ""} — đọc thô: ${esc(a.tho)}</span>
       <button class="nut-tron phu2" onclick="ngheChuoiTu(${thamSo(tuCuaAm(a, 10))})"
-        title="Nghe âm này rồi 10 từ ví dụ" aria-label="Nghe âm này">🔊</button>
+        title="Nghe ${esc(a.doc_am || "")} rồi 10 từ ví dụ" aria-label="Nghe âm này">🔊</button>
       ${a.uu_tien === 1 ? `<span class="nhan canh">Người Việt hay sai</span>` : ""}
       <button class="nut-xong" onclick="veIPA()">← Về bảng âm</button>
     </div>

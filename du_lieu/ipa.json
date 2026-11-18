@@ -43,7 +43,7 @@
    "tu_kiem": "Đặt ngón tay dưới cằm: đọc /ɪ/ rồi /iː/ — cằm phải gần như không nhúc nhích, chỉ khác ở ĐỘ DÀI. Nếu bạn thấy môi kéo ngang ra là đang đọc thành /iː/.",
    "uu_tien": 1,
    "nham_voi": "iː",
-   "doc_am": "it",
+   "doc_am": "ship",
    "vi_du": [
     {
      "tu": "bill",
@@ -138,7 +138,7 @@
    "tu_kiem": "Soi gương: miệng mở vừa phải. Nếu mở rộng đến mức thấy hàm dưới hạ hẳn xuống thì đã thành /æ/.",
    "uu_tien": 2,
    "nham_voi": "æ",
-   "doc_am": "egg",
+   "doc_am": "pen",
    "vi_du": [
     {
      "tu": "pen",
@@ -233,7 +233,7 @@
    "tu_kiem": "Đặt hai ngón tay dọc giữa hai hàm răng — /æ/ phải lọt được hai ngón. /e/ chỉ lọt một. Đây là cách chắc nhất để biết mình có mở đủ rộng chưa.",
    "uu_tien": 1,
    "nham_voi": "e",
-   "doc_am": "apple",
+   "doc_am": "cat",
    "vi_du": [
     {
      "tu": "bag",
@@ -328,7 +328,7 @@
    "tu_kiem": "Thả lỏng hàm rồi kêu một tiếng ngạc nhiên ngắn — đó gần đúng /ʌ/. Nếu môi tròn lại là đang trượt sang /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɑː",
-   "doc_am": "up",
+   "doc_am": "cup",
    "vi_du": [
     {
      "tu": "son",
@@ -423,7 +423,7 @@
    "tu_kiem": "Soi gương: phải thấy môi tròn. Không tròn là thành /ʌ/, tròn mà kéo dài là thành /ɔː/.",
    "uu_tien": 2,
    "nham_voi": "ɔː",
-   "doc_am": "on",
+   "doc_am": "hot",
    "vi_du": [
     {
      "tu": "job",
@@ -607,7 +607,7 @@
    "tu_kiem": "Đọc 'teacher' và cố ý KHÔNG nhấn âm cuối — nếu bạn nghe rõ được một nguyên âm cụ thể ở cuối thì đang đọc quá rõ. Schwa đúng là gần như không nghe ra âm gì.",
    "uu_tien": 1,
    "nham_voi": "ʌ",
-   "doc_am": "ago",
+   "doc_am": "about",
    "vi_du": [
     {
      "tu": "teacher",
@@ -683,7 +683,7 @@
    "tu_kiem": "Đặt ngón tay ngang hai khoé môi: đọc /iː/ phải thấy môi kéo căng ra hai bên. Đếm thầm 'một-hai' trong lúc phát âm — chưa đủ hai nhịp là chưa đủ dài.",
    "uu_tien": 1,
    "nham_voi": "ɪ",
-   "doc_am": "eat",
+   "doc_am": "sheep",
    "vi_du": [
     {
      "tu": "key",
@@ -778,7 +778,7 @@
    "tu_kiem": "Đây là âm bác sĩ bảo bạn kêu khi khám họng. Soi gương phải nhìn thấy cuống họng.",
    "uu_tien": 2,
    "nham_voi": "ʌ",
-   "doc_am": "arm",
+   "doc_am": "car",
    "vi_du": [
     {
      "tu": "far",
@@ -873,7 +873,7 @@
    "tu_kiem": "Đặt ngón tay trước môi — phải chạm được môi đang chìa ra. Môi không chìa là đang đọc /ɑː/ hoặc /ɒ/.",
    "uu_tien": 2,
    "nham_voi": "ɒ",
-   "doc_am": "all",
+   "doc_am": "door",
    "vi_du": [
     {
      "tu": "for",
@@ -1063,7 +1063,7 @@
    "tu_kiem": "Đây là schwa /ə/ nhưng kéo dài và có nhấn. Đọc /ə/ rồi giữ nguyên miệng mà kéo dài ra — đó là /ɜː/. Nếu lưỡi cong lên kiểu Mỹ thì đã sai với Anh-Anh.",
    "uu_tien": 2,
    "nham_voi": "ə",
-   "doc_am": "earn",
+   "doc_am": "bird",
    "vi_du": [
     {
      "tu": "earn",
@@ -1158,7 +1158,7 @@
    "tu_kiem": "Đặt ngón tay dưới cằm: cằm phải NÂNG LÊN trong lúc phát âm. Cằm đứng yên nghĩa là bạn đang đọc 'ê' một nốt.",
    "uu_tien": 2,
    "nham_voi": "e",
-   "doc_am": "aim",
+   "doc_am": "day",
    "vi_du": [
     {
      "tu": "age",
@@ -1253,7 +1253,7 @@
    "tu_kiem": "Cằm phải đi từ thấp lên cao. Giống 'ai' tiếng Việt nên thường đã đúng sẵn.",
    "uu_tien": 3,
    "nham_voi": "eɪ",
-   "doc_am": "eye",
+   "doc_am": "my",
    "vi_du": [
     {
      "tu": "hi",
@@ -1348,7 +1348,7 @@
    "tu_kiem": "Soi gương: môi phải đi từ tròn sang bè. Giống 'oi' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "aɪ",
-   "doc_am": "oil",
+   "doc_am": "boy",
    "vi_du": [
     {
      "tu": "join",
@@ -1437,7 +1437,7 @@
    "tu_kiem": "Soi gương đọc 'go': lúc BẮT ĐẦU môi phải thả lỏng, chỉ tròn lại ở cuối. Nếu môi đã tròn ngay từ đầu thì bạn đang đọc 'gô' tiếng Việt chứ không phải /ɡəʊ/.",
    "uu_tien": 1,
    "nham_voi": "ɔː",
-   "doc_am": "owe",
+   "doc_am": "go",
    "vi_du": [
     {
      "tu": "old",
@@ -1532,7 +1532,7 @@
    "tu_kiem": "Môi phải tròn dần lại ở cuối. Giống 'ao' tiếng Việt.",
    "uu_tien": 3,
    "nham_voi": "əʊ",
-   "doc_am": "out",
+   "doc_am": "now",
    "vi_du": [
     {
      "tu": "house",
@@ -1627,7 +1627,7 @@
    "tu_kiem": "Đọc 'here' mà cuối câu lưỡi cong lên là bạn đang thêm /r/ kiểu Mỹ. Anh-Anh kết thúc bằng miệng thả lỏng.",
    "uu_tien": 2,
    "nham_voi": "eə",
-   "doc_am": "ear",
+   "doc_am": "here",
    "vi_du": [
     {
      "tu": "near",
@@ -1722,7 +1722,7 @@
    "tu_kiem": "Khác /ɪə/ ở CHỖ BẮT ĐẦU: /eə/ hàm mở hơn. Đọc 'hair' rồi 'here' liền nhau, cằm phải ở hai độ cao khác nhau.",
    "uu_tien": 2,
    "nham_voi": "ɪə",
-   "doc_am": "air",
+   "doc_am": "hair",
    "vi_du": [
     {
      "tu": "fare",
@@ -1870,7 +1870,7 @@
    "tu_kiem": "Cầm một mảnh giấy trước miệng đọc 'pen' — giấy phải BAY. Không bay là chưa bật hơi. Cuối từ ('stop') cũng phải nghe được tiếng bật nhẹ.",
    "uu_tien": 1,
    "nham_voi": "b",
-   "doc_am": "puh",
+   "doc_am": "pen",
    "vi_du": [
     {
      "tu": "pen",
@@ -1965,7 +1965,7 @@
    "tu_kiem": "Mảnh giấy trước miệng đọc 'time' — phải bay. Đọc 'what' cuối câu vẫn phải cảm thấy lưỡi chạm lợi, đừng bỏ lửng.",
    "uu_tien": 1,
    "nham_voi": "d",
-   "doc_am": "tuh",
+   "doc_am": "ten",
    "vi_du": [
     {
      "tu": "to",
@@ -2060,7 +2060,7 @@
    "tu_kiem": "Mảnh giấy phải bay khi đọc 'cat'. Đặt tay lên cổ họng — KHÔNG được thấy rung; thấy rung là đang đọc /ɡ/.",
    "uu_tien": 1,
    "nham_voi": "ɡ",
-   "doc_am": "kuh",
+   "doc_am": "key",
    "vi_du": [
     {
      "tu": "key",
@@ -2155,7 +2155,7 @@
    "tu_kiem": "Soi gương: phải thấy răng trên đặt lên môi dưới. Đặt tay trước miệng thấy hơi ra đều. Kéo dài 'ffff' được 3 giây là đúng khẩu hình.",
    "uu_tien": 1,
    "nham_voi": "v",
-   "doc_am": "fff",
+   "doc_am": "fish",
    "vi_du": [
     {
      "tu": "far",
@@ -2250,7 +2250,7 @@
    "tu_kiem": "Hai phép thử: (1) soi gương phải thấy đầu lưỡi; (2) đặt ngón tay trước miệng, đọc 'think' — ngón tay phải chạm được lưỡi. Không chạm được nghĩa là lưỡi còn nằm trong, và bạn đang đọc /t/ hoặc /s/.",
    "uu_tien": 1,
    "nham_voi": "s",
-   "doc_am": "thhh",
+   "doc_am": "think",
    "vi_du": [
     {
      "tu": "thing",
@@ -2345,7 +2345,7 @@
    "tu_kiem": "Kéo dài 'ssss' như tiếng rắn. Đặt tay lên cổ họng — không được rung. Cuối từ ('books') phải nghe rõ tiếng xì, nuốt mất là mất luôn dấu hiệu số nhiều.",
    "uu_tien": 1,
    "nham_voi": "z",
-   "doc_am": "sss",
+   "doc_am": "sun",
    "vi_du": [
     {
      "tu": "CV",
@@ -2440,7 +2440,7 @@
    "tu_kiem": "Đây là âm ra hiệu im lặng 'suỵt'. Đọc /s/ rồi /ʃ/ liền nhau trước gương: môi phải tròn lại khi sang /ʃ/.",
    "uu_tien": 2,
    "nham_voi": "s",
-   "doc_am": "shhh",
+   "doc_am": "she",
    "vi_du": [
     {
      "tu": "shy",
@@ -2535,7 +2535,7 @@
    "tu_kiem": "Đọc 'watch' cuối câu phải nghe rõ tiếng xì sau tiếng bật. Chỉ nghe tiếng bật là bạn đang đọc /t/.",
    "uu_tien": 2,
    "nham_voi": "dʒ",
-   "doc_am": "chuh",
+   "doc_am": "chair",
    "vi_du": [
     {
      "tu": "chair",
@@ -2630,7 +2630,7 @@
    "tu_kiem": "Hà hơi vào lòng bàn tay như khi làm mờ kính — đó là /h/. Đọc 'hello', bàn tay đặt trước miệng phải thấy HƠI ẤM. Không thấy gì nghĩa là bạn đã nuốt mất /h/.",
    "uu_tien": 2,
    "nham_voi": "",
-   "doc_am": "huh",
+   "doc_am": "hat",
    "vi_du": [
     {
      "tu": "hi",
@@ -2725,7 +2725,7 @@
    "tu_kiem": "Đặt tay lên cổ họng đọc 'bat' — phải thấy RUNG. Mảnh giấy trước miệng thì gần như không bay (khác hẳn /p/).",
    "uu_tien": 2,
    "nham_voi": "p",
-   "doc_am": "buh",
+   "doc_am": "book",
    "vi_du": [
     {
      "tu": "bag",
@@ -2820,7 +2820,7 @@
    "tu_kiem": "Sờ cổ họng phải thấy rung. CẢNH BÁO: 'd' tiếng Việt KHÔNG phải âm này — 'da' tiếng Việt đọc gần /z/ (miền Bắc) hoặc /j/ (miền Nam). Phải đặt lưỡi chạm lợi thật sự.",
    "uu_tien": 1,
    "nham_voi": "t",
-   "doc_am": "duh",
+   "doc_am": "dog",
    "vi_du": [
     {
      "tu": "dry",
@@ -2915,7 +2915,7 @@
    "tu_kiem": "Sờ cổ họng đọc 'go' phải thấy rung; đọc 'coat' thì không. Đó là khác biệt duy nhất giữa hai âm.",
    "uu_tien": 2,
    "nham_voi": "k",
-   "doc_am": "guh",
+   "doc_am": "go",
    "vi_du": [
     {
      "tu": "gain",
@@ -3010,7 +3010,7 @@
    "tu_kiem": "Kéo dài 'vvvv' và sờ cổ họng — phải rung, và phải thấy tê nhẹ ở môi dưới. CẢNH BÁO: 'v' tiếng Việt miền Nam đọc gần /j/, không chạm răng vào môi. Soi gương kiểm tra.",
    "uu_tien": 1,
    "nham_voi": "f",
-   "doc_am": "vvv",
+   "doc_am": "van",
    "vi_du": [
     {
      "tu": "visa",
@@ -3105,7 +3105,7 @@
    "tu_kiem": "Đặt ngón tay trước miệng đọc 'this' — phải chạm lưỡi, VÀ sờ cổ họng phải thấy rung. Đủ hai điều mới đúng. Rất quan trọng vì the, this, that, they đều dùng âm này.",
    "uu_tien": 1,
    "nham_voi": "d",
-   "doc_am": "thuh",
+   "doc_am": "this",
    "vi_du": [
     {
      "tu": "then",
@@ -3200,7 +3200,7 @@
    "tu_kiem": "Kéo dài 'zzzz' như tiếng ong bay, sờ cổ họng thấy rung. Đọc 'buzz' và 'bus' liền nhau — chỉ khác ở chỗ rung này.",
    "uu_tien": 1,
    "nham_voi": "s",
-   "doc_am": "zzz",
+   "doc_am": "zoo",
    "vi_du": [
     {
      "tu": "zero",
@@ -3295,7 +3295,7 @@
    "tu_kiem": "Đọc /ʃ/ rồi bật giọng lên thành /ʒ/, giữ nguyên khẩu hình. Âm hiếm, hay nằm giữa từ: measure, vision.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
-   "doc_am": "zhuh",
+   "doc_am": "vision",
    "vi_du": [
     {
      "tu": "unusual",
@@ -3378,7 +3378,7 @@
    "tu_kiem": "Đọc 'jeep' và 'cheap' liền nhau, sờ cổ họng — /dʒ/ rung ngay từ đầu, /tʃ/ thì không.",
    "uu_tien": 2,
    "nham_voi": "tʃ",
-   "doc_am": "juh",
+   "doc_am": "jam",
    "vi_du": [
     {
      "tu": "job",
@@ -3473,7 +3473,7 @@
    "tu_kiem": "Đọc 'right' — nếu bạn nghe tiếng lưỡi rung lập bập thì đó là 'r' tiếng Việt, sai. Lưỡi phải lơ lửng. Và Anh-Anh KHÔNG đọc /r/ ở cuối: 'car' = /kɑː/, không có gì sau nguyên âm.",
    "uu_tien": 2,
    "nham_voi": "l",
-   "doc_am": "ruh",
+   "doc_am": "red",
    "vi_du": [
     {
      "tu": "rent",
@@ -3568,7 +3568,7 @@
    "tu_kiem": "Bịt mũi rồi thử đọc 'm' — không kêu được. Đó là bằng chứng hơi đi đằng mũi.",
    "uu_tien": 3,
    "nham_voi": "n",
-   "doc_am": "mmm",
+   "doc_am": "man",
    "vi_du": [
     {
      "tu": "mark",
@@ -3657,7 +3657,7 @@
    "tu_kiem": "Bịt mũi thì không kêu được. Nếu bạn hay lẫn n–l: /n/ hơi ra mũi, /l/ hơi ra miệng — bịt mũi vẫn đọc được /l/.",
    "uu_tien": 2,
    "nham_voi": "l",
-   "doc_am": "nnn",
+   "doc_am": "nose",
    "vi_du": [
     {
      "tu": "new",
@@ -3746,7 +3746,7 @@
    "tu_kiem": "Tiếng Việt có sẵn trong 'ông', 'ăng'. Đọc 'sing' — đầu lưỡi phải nằm im dưới, chạm lợi là thành /n/ ('sin').",
    "uu_tien": 3,
    "nham_voi": "n",
-   "doc_am": "ing",
+   "doc_am": "sing",
    "vi_du": [
     {
      "tu": "thing",
@@ -3841,7 +3841,7 @@
    "tu_kiem": "Kéo dài 'llll' rồi hít vào — hai bên lưỡi phải thấy MÁT. Cuối từ ('well', 'call') tiếng Việt không có nên hay bị nuốt: phải cảm thấy lưỡi chạm lợi rồi mới dừng.",
    "uu_tien": 1,
    "nham_voi": "n",
-   "doc_am": "lll",
+   "doc_am": "leg",
    "vi_du": [
     {
      "tu": "last",
@@ -3936,7 +3936,7 @@
    "tu_kiem": "Soi gương: môi phải chúm rõ ở đầu rồi mở ra. Môi không chúm là mất âm.",
    "uu_tien": 3,
    "nham_voi": "v",
-   "doc_am": "wuh",
+   "doc_am": "wet",
    "vi_du": [
     {
      "tu": "once",
@@ -4025,7 +4025,7 @@
    "tu_kiem": "Giống 'y' trong 'yêu'. Lưu ý Anh-Anh có /j/ ở 'student' /ˈstjuːdənt/, 'Tuesday' — đọc thiếu là ra giọng Mỹ.",
    "uu_tien": 3,
    "nham_voi": "dʒ",
-   "doc_am": "yuh",
+   "doc_am": "yes",
    "vi_du": [
     {
      "tu": "year",
